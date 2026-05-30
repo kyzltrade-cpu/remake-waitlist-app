@@ -1,0 +1,699 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <meta name="description" content="REMAKE: Your AI beauty buyer. Scan products for shade matches, safety checks, and honest comparisons before you buy.">  
+  <title>REMAKE • Shop Smarter, Not Harder</title>  
+  <script src="https://cdn.tailwindcss.com"></script>  
+  <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600\&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400\&display=swap" rel="stylesheet">  
+  <style>  
+    :root {  
+      /* Pink-Forward Rhode Palette */  
+      --rhode-text: #3D3532;  
+      --rhode-white: #FFF9F7;  
+      --rhode-ivory: #FFF5F2;  
+      --rhode-cream: #FDF0EC;  
+      --rhode-beige: #FBE8E3;  
+      --rhode-blush: #FCE4EC;  
+      --rhode-pink: #F8D7DA;  
+      --rhode-pink-mid: #F0B8C0;  
+      --rhode-pink-deep: #E8A0AA;  
+      --rhode-pink-rich: #D98A96;  
+      --rhode-gold: #D4AF37;  
+      --rhode-gold-soft: #E6C88A;  
+      --rhode-gold-dark: #B8943E;  
+      --rhode-border: #F5DDE3;  
+      --rhode-gray: #9A8E8A;  
+      --rhode-light-gray: #B8ADA9;  
+      --rhode-success: #8BA88E;  
+      --rhode-error: #D48A8A;  
+        
+      --radius-soft: 16px;  
+      --radius-pill: 50px;  
+      --glaze-gradient: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(252,228,236,0.3) 50%, rgba(248,215,218,0.2) 100%);  
+      --card-shadow: 0 8px 24px rgba(61,53,50,0.05), 0 2px 8px rgba(232,160,170,0.15);  
+      --hover-shadow: 0 12px 32px rgba(61,53,50,0.07), 0 4px 12px rgba(232,160,170,0.22);  
+      --gold-shadow: 0 4px 12px rgba(212,175,55,0.12);  
+      --gold-hover-shadow: 0 8px 20px rgba(212,175,55,0.2);  
+    }  
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }  
+    body {   
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;   
+      background: var(--rhode-white); color: var(--rhode-text);  
+      line-height: 1.75; font-weight: 400; overflow-x: hidden;  
+    }  
+    .font-serif { font-family: 'Playfair Display', serif; }  
+    .font-light { font-weight: 300; }  
+      
+    body::before {  
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;  
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");  
+      pointer-events: none; z-index: 0;  
+    }
+
+    .btn-primary, .btn-secondary {  
+      position: relative; overflow: hidden;  
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);  
+      font-family: 'Inter', sans-serif; font-weight: 500;  
+      letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.72rem;  
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;  
+      cursor: pointer; border-radius: var(--radius-pill);  
+    }  
+    .btn-primary {   
+      background: var(--rhode-white);   
+      color: var(--rhode-gold);   
+      border: 1px solid var(--rhode-gold-soft);   
+      padding: 0.85rem 2.2rem;  
+      box-shadow: var(--gold-shadow);  
+    }  
+    .btn-primary:hover {   
+      background: var(--rhode-ivory);   
+      border-color: var(--rhode-gold);   
+      color: var(--rhode-gold-dark);  
+      transform: translateY(-2px);   
+      box-shadow: var(--gold-hover-shadow);   
+    }  
+    .btn-secondary { background: var(--rhode-white); color: var(--rhode-text); border: 1px solid var(--rhode-pink-mid); padding: 0.85rem 2.2rem; }  
+    .btn-secondary:hover { background: var(--rhode-pink); border-color: var(--rhode-pink-deep); transform: translateY(-2px); box-shadow: var(--card-shadow); }  
+    .btn-primary:disabled, .btn-secondary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }  
+      
+    .input-field {  
+      border: 1px solid var(--rhode-border); transition: all 0.3s ease;  
+      font-family: 'Inter', sans-serif; background: rgba(255,249,247,0.8); caret-color: var(--rhode-pink-rich);  
+      border-radius: var(--radius-soft); padding: 0.9rem 1.2rem;  
+    }  
+    .input-field:focus { outline: none; border-color: var(--rhode-pink-deep); box-shadow: 0 0 0 3px rgba(232,160,170,0.18); background: var(--rhode-white); }  
+    .input-field::placeholder { color: var(--rhode-light-gray); font-style: italic; font-weight: 300; }  
+      
+    .card {  
+      border: 1px solid rgba(245,221,227,0.8); background: rgba(255,245,242,0.85);  
+      backdrop-filter: blur(14px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
+      position: relative; overflow: hidden; border-radius: var(--radius-soft);  
+      box-shadow: var(--card-shadow);  
+    }  
+    .card::before {  
+      content: ""; position: absolute; inset: 0; background: var(--glaze-gradient);  
+      opacity: 0; transition: opacity 0.4s ease; pointer-events: none;  
+    }  
+    .card:hover { box-shadow: var(--hover-shadow); transform: translateY(-4px); }  
+    .card:hover::before { opacity: 1; }  
+      
+    .divider-elegant {  
+      height: 1px; background: linear-gradient(to right, transparent, var(--rhode-pink-deep), transparent);  
+      border: none; margin: 1.5rem 0; opacity: 0.7;  
+    }  
+      
+    .badge {  
+      background: linear-gradient(135deg, var(--rhode-pink) 0%, var(--rhode-pink-deep) 100%);   
+      color: var(--rhode-text); font-size: 0.62rem; font-weight: 600;  
+      padding: 0.4rem 1rem; border-radius: var(--radius-pill); letter-spacing: 0.16em; text-transform: uppercase;  
+      box-shadow: 0 2px 8px rgba(232,160,170,0.3);  
+    }  
+    .rating-stars { color: var(--rhode-gold); letter-spacing: 0.22em; text-shadow: 0 1px 2px rgba(212,175,55,0.2); }  
+      
+    .form-status { font-size: 0.78rem; margin-top: 0.6rem; min-height: 1.2rem; transition: all 0.3s ease; }  
+    .form-status.success { color: var(--rhode-success); }  
+    .form-status.error { color: var(--rhode-error); }  
+    .hidden { display: none !important; }  
+    .spinner {  
+      width: 16px; height: 16px; border: 2px solid rgba(212,175,55,0.25);  
+      border-top-color: var(--rhode-gold); border-radius: 50%; animation: spin 0.6s linear infinite;  
+    }  
+    @keyframes spin { to { transform: rotate(360deg); } }  
+      
+    .hero-title { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.015em; line-height: 1.18; }  
+    .section-title { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.01em; }  
+    .nav-link {  
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; position: relative; color: var(--rhode-gray);  
+    }  
+    .nav-link::after {  
+      content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;  
+      background: var(--rhode-pink-deep); transition: width 0.3s ease;  
+    }  
+    .nav-link:hover { color: var(--rhode-text); }  
+    .nav-link:hover::after { width: 100%; }  
+    .text-elegant { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; }  
+    .text-pink-solid { color: var(--rhode-pink-deep); }  
+      
+    .modal-overlay {  
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;  
+      background: rgba(61, 53, 50, 0.3); display: flex; align-items: center; justify-content: center;  
+      z-index: 1000; opacity: 0; visibility: hidden; pointer-events: none;  
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(8px);  
+    }  
+    .modal-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }  
+    .modal-content {  
+      background: var(--rhode-ivory); max-width: 540px; width: 92%;  
+      max-height: 85vh; overflow-y: auto; transform: translateY(20px) scale(0.98);  
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
+      border: 1px solid var(--rhode-border); border-radius: var(--radius-soft);  
+      box-shadow: 0 20px 50px rgba(61,53,50,0.1), 0 8px 20px rgba(232,160,170,0.18);  
+      scrollbar-width: none; -ms-overflow-style: none;  
+    }  
+    .modal-content::-webkit-scrollbar { display: none; }  
+    .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }  
+      
+    /* Product Scan Specific Styles */  
+    .scan-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(245,221,227,0.5); }  
+    .scan-row:last-child { border-bottom: none; }  
+    .scan-label { font-size: 0.8rem; color: var(--rhode-gray); font-weight: 400; }  
+    .scan-value { font-size: 0.85rem; font-weight: 500; color: var(--rhode-text); }  
+    .scan-badge-safe { background: rgba(139,168,142,0.15); color: #5E7A61; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }  
+    .scan-badge-warn { background: rgba(212,138,138,0.15); color: #9A5858; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }  
+    .scan-badge-neutral { background: rgba(184,173,169,0.15); color: #6B6360; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }  
+      
+    .bg-cream { background: var(--rhode-cream); }  
+    .hero-bg {  
+      background: radial-gradient(circle at 25% 20%, rgba(252,228,236,0.45) 0%, transparent 45%),  
+                  radial-gradient(circle at 75% 80%, rgba(248,215,218,0.35) 0%, transparent 45%),  
+                  radial-gradient(circle at 50% 50%, rgba(255,245,242,0.6) 0%, transparent 60%),  
+                  var(--rhode-white);  
+    }  
+      
+    .reveal { opacity: 0; transform: translateY(22px); transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1); }  
+    .reveal.visible { opacity: 1; transform: translateY(0); }  
+    .reveal-delay-1 { transition-delay: 0.1s; }  
+    .reveal-delay-2 { transition-delay: 0.2s; }  
+    .reveal-delay-3 { transition-delay: 0.3s; }  
+      
+    .score-ring { transform: rotate(-90deg); }  
+    .score-ring circle { transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1); }  
+      
+    details summary::-webkit-details-marker { display: none; }  
+    details .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }  
+    details[open] .faq-content { max-height: 200px; padding-top: 0.75rem; }  
+    details .faq-icon { transition: transform 0.3s ease; color: var(--rhode-pink-deep); }  
+    details[open] .faq-icon { transform: rotate(45deg); }  
+      
+    .logo-wrap {  
+      display: inline-flex; align-items: center; gap: 0.75rem;  
+      padding: 0.35rem 0.6rem; border-radius: var(--radius-pill);  
+      transition: all 0.3s ease;  
+    }  
+    .logo-wrap:hover { background: rgba(248,215,218,0.2); }  
+    .logo-wrap img {  
+      height: 32px; width: auto; border-radius: 8px;  
+      box-shadow: 0 2px 8px rgba(232,160,170,0.25);  
+      transition: transform 0.3s ease, box-shadow 0.3s ease;  
+    }  
+    .logo-wrap:hover img { transform: scale(1.05); box-shadow: 0 4px 12px rgba(232,160,170,0.4); }  
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 500; letter-spacing: 0.08em; color: var(--rhode-text); }
+
+    .glow-accent {  
+      position: absolute; width: 300px; height: 300px; border-radius: 50%;  
+      background: radial-gradient(circle, rgba(252,228,236,0.35) 0%, transparent 70%);  
+      filter: blur(40px); pointer-events: none; z-index: 0;  
+    }
+
+    @media (prefers-reduced-motion: reduce) {  
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }  
+      .reveal { opacity: 1; transform: none; }  
+    }  
+  </style>  
+
+  <script src="https://unpkg.com/@instantdb/core@1.0.42"></script>
+</head>  
+<body class="min-h-screen flex flex-col relative z-10">  
+    
+  <div class="bg-[#D98A96] text-white text-center text-xs py-2.5 px-4 font-medium tracking-widest uppercase relative z-20">  
+    New • AI Product Scanner & Shade Matcher  
+  </div>
+
+  <header class="border-b border-[#F5DDE3] bg-[#FFF9F7]/85 backdrop-blur-md sticky top-0 z-30">  
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
+      <a href="/" class="logo-wrap group">  
+        <img src="https://res.cloudinary.com/dqpwcwdy5/image/upload/f_auto,q_auto/Screenshot_2026-04-30_000020_nqyafh" alt="REMAKE Logo">  
+        <span class="logo-text">REMAKE</span>  
+      </a>  
+      <nav class="hidden md:flex items-center gap-8">  
+        <a href="#features" class="nav-link transition">Features</a>  
+        <a href="#demo" class="nav-link transition">The Scan</a>  
+        <a href="#faq" class="nav-link transition">FAQ</a>  
+      </nav>  
+      <button id="header-cta" class="btn-primary">Get Early Access</button>  
+    </div>  
+  </header>
+
+  <section class="flex-1 flex items-center justify-center px-6 py-16 md:py-20 hero-bg relative overflow-hidden">  
+    <div class="glow-accent" style="top: 10%; left: 15%;"></div>  
+    <div class="glow-accent" style="bottom: 5%; right: 10%; background: radial-gradient(circle, rgba(248,215,218,0.3) 0%, transparent 70%);"></div>  
+    <div class="max-w-3xl text-center relative z-10">  
+      <span class="badge mb-6 inline-block reveal">AI Beauty Buyer</span>  
+      <h1 class="hero-title text-4xl md:text-6xl mb-6 reveal reveal-delay-1">  
+        Stop guessing.<br><span class="text-elegant text-pink-solid">Start knowing.</span>  
+      </h1>  
+      <p class="text-base md:text-lg text-[#9A8E8A] mb-10 max-w-xl mx-auto font-light leading-relaxed reveal reveal-delay-2">  
+        Scan any product to instantly see if it matches your skin tone, clashes with your allergies, or actually delivers on its promises. Your pocket-sized beauty analyst.  
+      </p>  
+        
+      <form class="waitlist-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4 reveal reveal-delay-3" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">  
+        <input type="email" name="email" placeholder="Enter your email" required  
+          class="input-field flex-1"  
+          aria-label="Email address"/>  
+        <button type="submit" class="btn-primary whitespace-nowrap">  
+          <span class="btn-text">Join Waitlist</span>  
+        </button>  
+        <input type="text" name="_gotcha" style="display:none">  
+        <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
+      </form>  
+      <p class="form-status text-center hidden"></p>  
+        
+      <p class="text-xs text-[#B8ADA9] mt-6 mb-8 font-light reveal">Free for early adopters • No credit card required</p>  
+        
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[#9A8E8A] font-light reveal">  
+        <div class="flex items-center gap-2"><span class="rating-stars">★★★★★</span><span>Loved by beta testers</span></div>  
+        <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
+        <span>20+ Allergen Checks</span>  
+        <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
+        <span>Sephora Price Matching</span>  
+      </div>  
+    </div>  
+  </section>
+
+  <section id="features" class="py-24 px-6 bg-[#FDF0EC] relative overflow-hidden">  
+    <div class="glow-accent" style="top: -10%; right: -5%; background: radial-gradient(circle, rgba(248,215,218,0.25) 0%, transparent 60%);"></div>  
+    <div class="max-w-5xl mx-auto text-center relative z-10">  
+      <h2 class="section-title text-3xl md:text-4xl mb-4 reveal">Your Beauty BS Detector</h2>  
+      <p class="text-[#9A8E8A] font-light mb-16 max-w-lg mx-auto reveal">Three scans. Zero buyer's remorse. Expert-level analysis in seconds.</p>  
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">  
+        <div class="card p-8 text-center reveal reveal-delay-1">  
+          <div class="w-14 h-14 mx-auto mb-5 border border-[#E8A0AA] flex items-center justify-center text-sm font-semibold tracking-wider bg-[#FFF9F7] rounded-full text-[#3D3532]">1</div>  
+          <div class="font-medium text-sm tracking-wide mb-2">Shade Match</div>  
+          <div class="text-sm text-[#9A8E8A] font-light leading-relaxed">Snap a photo of foundation or concealer. We analyze undertones against your unique skin hex code for a precise match.</div>  
+        </div>  
+        <div class="card p-8 text-center reveal reveal-delay-2">  
+          <div class="w-14 h-14 mx-auto mb-5 border border-[#E8A0AA] flex items-center justify-center text-sm font-semibold tracking-wider bg-[#FFF9F7] rounded-full text-[#3D3532]">2</div>  
+          <div class="font-medium text-sm tracking-wide mb-2">Safety Check</div>  
+          <div class="text-sm text-[#9A8E8A] font-light leading-relaxed">Instantly flag allergens, comedogenic ingredients, or ethical concerns based on your personal profile.</div>  
+        </div>  
+        <div class="card p-8 text-center reveal reveal-delay-3">  
+          <div class="w-14 h-14 mx-auto mb-5 border border-[#E8A0AA] flex items-center justify-center text-sm font-semibold tracking-wider bg-[#FFF9F7] rounded-full text-[#3D3532]">3</div>  
+          <div class="font-medium text-sm tracking-wide mb-2">Product Duel</div>  
+          <div class="text-sm text-[#9A8E8A] font-light leading-relaxed">Can't decide? Compare two products side-by-side. Get a clear winner verdict based on value, safety, and fit.</div>  
+        </div>  
+      </div>  
+    </div>  
+  </section>
+
+  <section id="demo" class="py-24 px-6 bg-[#FBE8E3] relative overflow-hidden">  
+    <div class="glow-accent" style="bottom: 0; left: 20%; background: radial-gradient(circle, rgba(240,184,192,0.25) 0%, transparent 60%);"></div>  
+    <div class="max-w-4xl mx-auto relative z-10">  
+      <div class="text-center mb-16">  
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-[#FFF9F7] rounded-full shadow-md mb-4 reveal">  
+          <img src="https://res.cloudinary.com/dqpwcwdy5/image/upload/f_auto,q_auto/Screenshot_2026-04-30_000020_nqyafh" alt="REMAKE" class="h-12 w-auto opacity-90">  
+        </div>  
+        <h2 class="section-title text-3xl md:text-4xl mb-3 reveal">See the Analysis</h2>  
+        <p class="text-[#9A8E8A] font-light reveal">Honest. Detailed. Personalized to your DNA.</p>  
+      </div>  
+        
+      <!-- PRODUCT SCAN MOCKUP CARD -->  
+      <div class="card max-w-sm mx-auto p-8 reveal relative">  
+        <div class="flex items-center justify-between mb-6">  
+          <span class="text-xs font-medium text-[#B8ADA9] tracking-wide">Fenty Beauty Pro Filt'r</span>  
+          <span class="text-xs badge">Match: 94%</span>  
+        </div>  
+          
+        <div class="flex items-center justify-center mb-6 relative">  
+          <svg class="score-ring w-28 h-28" viewBox="0 0 100 100">  
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="6"/>  
+            <circle class="score-path" cx="50" cy="50" r="42" fill="none" stroke="#8BA88E" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>  
+          </svg>  
+          <div class="absolute text-center">  
+            <div class="hero-title text-4xl text-[#3D3532]">87</div>  
+            <!-- Removed /100 label as requested -->  
+          </div>  
+        </div>  
+          
+        <p class="text-[#5A534D] mb-6 font-light leading-relaxed text-center">Excellent shade match for Warm Autumn. Contains fragrance—caution for sensitive skin.</p>  
+          
+        <div class="divider-elegant"></div>  
+          
+        <div class="space-y-1">  
+          <div class="scan-row">  
+            <span class="scan-label">Undertone Fit</span>  
+            <span class="scan-value text-[#8BA88E]">Perfect Match</span>  
+          </div>  
+          <div class="scan-row">  
+            <span class="scan-label">SPF Reality</span>  
+            <span class="scan-value">None (Layer needed)</span>  
+          </div>  
+          <div class="scan-row">  
+            <span class="scan-label">Allergens</span>  
+            <span class="scan-badge-warn">Fragrance</span>  
+          </div>  
+          <div class="scan-row">  
+            <span class="scan-label">Ethics</span>  
+            <span class="scan-badge-safe">Cruelty-Free</span>  
+          </div>  
+        </div>  
+          
+        <button id="viewFullScanBtn" class="btn-secondary w-full mt-8">View Full Report</button>  
+      </div>  
+      <p class="text-center text-xs text-[#B8ADA9] mt-8 font-light reveal">Actual app interface. Analysis powered by Gemini Vision + GPT-4o.</p>  
+    </div>  
+  </section>
+
+  <section class="py-24 px-6 bg-[#FFF9F7] relative overflow-hidden">  
+    <div class="glow-accent" style="top: 20%; right: 10%; background: radial-gradient(circle, rgba(252,228,236,0.3) 0%, transparent 65%);"></div>  
+    <div class="max-w-4xl mx-auto text-center relative z-10">  
+      <div class="rating-stars text-3xl mb-6 reveal">★★★★★</div>  
+      <blockquote class="text-xl md:text-2xl font-serif font-normal mb-8 max-w-2xl mx-auto leading-relaxed italic reveal">  
+        "I used to waste so much money on foundations that oxidized or broke me out. REMAKE flagged my triggers instantly. It's paid for itself ten times over."  
+      </blockquote>  
+      <div class="text-sm text-[#9A8E8A] font-medium tracking-wide reveal">  
+        <span>— Maya R.</span> • <span class="font-light">Beta Tester • Los Angeles</span>  
+      </div>  
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">  
+        <div class="reveal reveal-delay-1"><div class="hero-title text-3xl mb-1 counter text-[#3D3532]" data-target="1247">0</div><div class="text-xs text-[#B8ADA9] uppercase tracking-wider font-light">on waitlist</div></div>  
+        <div class="reveal reveal-delay-2"><div class="hero-title text-3xl mb-1 counter text-[#3D3532]" data-target="94" data-suffix="%">0</div><div class="text-xs text-[#B8ADA9] uppercase tracking-wider font-light">accuracy rate</div></div>  
+        <div class="reveal reveal-delay-3"><div class="hero-title text-3xl mb-1 text-[#3D3532]">20+</div><div class="text-xs text-[#B8ADA9] uppercase tracking-wider font-light">allergens tracked</div></div>  
+        <div class="reveal"><div class="hero-title text-3xl mb-1 text-[#3D3532]">∞</div><div class="text-xs text-[#B8ADA9] uppercase tracking-wider font-light">products scanned</div></div>  
+      </div>  
+    </div>  
+  </section>
+
+  <section id="faq" class="py-24 px-6 bg-[#FDF0EC]">  
+    <div class="max-w-3xl mx-auto">  
+      <h2 class="section-title text-3xl md:text-4xl text-center mb-16 reveal">FAQ</h2>  
+      <div class="space-y-4">  
+        <details class="card p-6 reveal"><summary class="font-medium cursor-pointer list-none flex justify-between items-center text-sm tracking-wide text-[#3D3532]">How accurate is the shade matching?<span class="faq-icon text-xl font-serif">+</span></summary><div class="faq-content"><p class="text-[#9A8E8A] text-sm font-light leading-relaxed">We use advanced color science (ΔE calculation) combined with AI vision to compare product swatches against your calibrated skin tone reference. Lighting matters—we'll guide you to get the best shot.</p></div></details>  
+        <details class="card p-6 reveal reveal-delay-1"><summary class="font-medium cursor-pointer list-none flex justify-between items-center text-sm tracking-wide text-[#3D3532]">Does it check for my specific allergies?<span class="faq-icon text-xl font-serif">+</span></summary><div class="faq-content"><p class="text-[#9A8E8A] text-sm font-light leading-relaxed">Yes. During setup, you select from 20+ common allergens (fragrance, niacinamide, etc.) or add custom ones. Every scan cross-references the ingredient list against your profile.</p></div></details>  
+        <details class="card p-6 reveal reveal-delay-2"><summary class="font-medium cursor-pointer list-none flex justify-between items-center text-sm tracking-wide text-[#3D3532]">Can I compare dupes?<span class="faq-icon text-xl font-serif">+</span></summary><div class="faq-content"><p class="text-[#9A8E8A] text-sm font-light leading-relaxed">Absolutely. Use "Compare Mode" to scan two products back-to-back. We'll highlight differences in price-per-ml, ingredient safety, and finish to declare a clear winner.</p></div></details>  
+        <details class="card p-6 reveal reveal-delay-3"><summary class="font-medium cursor-pointer list-none flex justify-between items-center text-sm tracking-wide text-[#3D3532]">Is this free?<span class="faq-icon text-xl font-serif">+</span></summary><div class="faq-content"><p class="text-[#9A8E8A] text-sm font-light leading-relaxed">Early access members get unlimited free scans during beta. Post-launch, we'll offer a generous free tier with optional Pro features for deep-dive analysis and shopping links.</p></div></details>  
+      </div>  
+    </div>  
+  </section>
+
+  <section class="py-24 px-6 bg-[#D98A96] text-white text-center relative overflow-hidden">  
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.2),transparent_50%)]"></div>  
+    <div class="max-w-2xl mx-auto relative z-10">  
+      <h2 class="hero-title text-3xl md:text-5xl mb-6 reveal">Shop with certainty.</h2>  
+      <p class="text-white/80 mb-10 font-light reveal">Join the waitlist for early access to the AI product scanner.</p>  
+        
+      <form class="waitlist-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4 reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">  
+        <input type="email" name="email" placeholder="Enter your email" required  
+          class="input-field flex-1 bg-white text-[#3D3532] border-[#E8A0AA]"  
+          aria-label="Email address"/>  
+        <button type="submit" class="btn-primary whitespace-nowrap">  
+          <span class="btn-text">Get Early Access</span>  
+        </button>  
+        <input type="text" name="_gotcha" style="display:none">  
+        <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
+      </form>  
+      <p class="form-status text-center hidden" style="color: rgba(255,255,255,0.7);"></p>  
+        
+      <p class="text-xs text-white/60 mt-6 font-light reveal">No spam. Unsubscribe anytime.</p>  
+    </div>  
+  </section>
+
+  <footer class="py-12 px-6 border-t border-[#F5DDE3] text-sm text-[#9A8E8A] bg-[#FFF9F7]">  
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">  
+      <div><div class="flex items-center gap-2 mb-3"><img src="https://res.cloudinary.com/dqpwcwdy5/image/upload/f_auto,q_auto/Screenshot_2026-04-30_000020_nqyafh" alt="REMAKE" class="h-6 w-auto rounded-md"><span class="font-serif text-lg text-[#3D3532]">REMAKE</span></div><p class="text-xs font-light leading-relaxed">Your AI beauty buyer.</p></div>  
+      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#3D3532]">Product</div><ul class="space-y-2 text-xs font-light"><li><a href="#features" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Features</a></li><li><a href="#demo" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">The Scan</a></li><li><a href="#faq" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">FAQ</a></li></ul></div>  
+      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#3D3532]">Legal</div><ul class="space-y-2 text-xs font-light"><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Privacy</a></li><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Terms</a></li><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Data Policy</a></li></ul></div>  
+      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#3D3532]">Connect</div><ul class="space-y-2 text-xs font-light"><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Instagram</a></li><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">TikTok</a></li><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Press</a></li></ul></div>  
+    </div>  
+    <div class="max-w-6xl mx-auto mt-12 pt-6 border-t border-[#F5DDE3] text-xs text-[#B8ADA9] flex flex-col md:flex-row justify-between items-center font-light">  
+      <p>© 2026 REMAKE Labs. All rights reserved.</p>  
+      <p class="mt-2 md:mt-0">Designed in California • Built for smart shoppers</p>  
+    </div>  
+  </footer>
+
+  <!-- Full Scan Modal - COMPLETE PRODUCT ANALYSIS PILLARS -->  
+  <div id="scanModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="scan-title">  
+    <div class="modal-content card p-8 md:p-10">  
+      <div class="flex items-center justify-between mb-2">  
+        <div>  
+          <h3 id="scan-title" class="section-title text-2xl md:text-3xl mb-1 text-[#3D3532]">Full Analysis</h3>  
+          <p class="text-sm text-[#9A8E8A] font-light">Fenty Beauty Pro Filt'r Soft Matte</p>  
+        </div>  
+        <button id="closeScanModal" class="text-[#B8ADA9] hover:text-[#3D3532] transition cursor-pointer text-2xl font-serif w-8 h-8 flex items-center justify-center" aria-label="Close">×</button>  
+      </div>  
+        
+      <!-- SCORE RING IN MODAL -->  
+      <div class="flex items-center justify-center my-6 relative">  
+        <svg class="score-ring w-32 h-32" viewBox="0 0 100 100">  
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="6"/>  
+          <circle class="score-path-modal" cx="50" cy="50" r="42" fill="none" stroke="#8BA88E" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>  
+        </svg>  
+        <div class="absolute text-center">  
+          <div class="hero-title text-5xl text-[#3D3532]">87</div>  
+          <!-- Removed Match Score label as requested -->  
+        </div>  
+      </div>
+
+      <div class="space-y-4 mb-8">  
+        <!-- 1\. SHADE & TONE -->  
+        <div class="card p-4 bg-white/50">  
+          <div class="text-xs uppercase tracking-wider text-[#B8ADA9] mb-2">Shade & Tone Match</div>  
+          <div class="flex items-center gap-3 mb-2">  
+            <div class="flex items-center gap-1">  
+              <div class="w-6 h-6 rounded-full bg-[#C9956A] border border-white shadow-sm" title="Your Skin"></div>  
+              <span class="text-xs text-[#9A8E8A]">vs</span>  
+              <div class="w-6 h-6 rounded-full bg-[#C68E6A] border border-white shadow-sm" title="Product"></div>  
+            </div>  
+            <div class="text-sm"><span class="font-medium text-[#8BA88E]">94% Match</span> <span class="text-[#9A8E8A]">• ΔE 1.2</span></div>  
+          </div>  
+          <p class="text-xs text-[#9A8E8A] font-light">Perfect undertone alignment for Warm Autumn. Minimal oxidation risk.</p>  
+        </div>  
+          
+        <!-- 2\. COVERAGE & FINISH -->  
+        <div class="card p-4 bg-white/50">  
+          <div class="text-xs uppercase tracking-wider text-[#B8ADA9] mb-2">Coverage & Finish</div>  
+          <div class="flex justify-between text-sm mb-1">  
+            <span class="text-[#5A534D]">Finish Type</span>  
+            <span class="font-medium">Soft Matte</span>  
+          </div>  
+          <div class="flex justify-between text-sm mb-1">  
+            <span class="text-[#5A534D]">Wear Time</span>  
+            <span class="font-medium">8-10 Hours</span>  
+          </div>  
+          <div class="flex justify-between text-sm">  
+            <span class="text-[#5A534D]">SPF Level</span>  
+            <span class="scan-badge-warn">None Detected</span>  
+          </div>  
+        </div>  
+          
+        <!-- 3\. SKIN COMPATIBILITY -->  
+        <div class="card p-4 bg-white/50">  
+          <div class="text-xs uppercase tracking-wider text-[#B8ADA9] mb-2">Skin Compatibility</div>  
+          <div class="grid grid-cols-2 gap-2 text-xs">  
+            <div class="flex justify-between"><span class="text-[#9A8E8A]">Oily</span><span class="scan-badge-safe">Great</span></div>  
+            <div class="flex justify-between"><span class="text-[#9A8E8A]">Dry</span><span class="scan-badge-neutral">Caution</span></div>  
+            <div class="flex justify-between"><span class="text-[#9A8E8A]">Acne-Prone</span><span class="scan-badge-safe">Safe</span></div>  
+            <div class="flex justify-between"><span class="text-[#9A8E8A]">Sensitive</span><span class="scan-badge-warn">Risk</span></div>  
+          </div>  
+        </div>  
+          
+        <!-- 4\. STYLE FIT -->  
+        <div class="card p-4 bg-white/50">  
+          <div class="text-xs uppercase tracking-wider text-[#B8ADA9] mb-2">Style Fit</div>  
+          <div class="flex items-center gap-2 mb-2">  
+            <span class="badge" style="font-size: 0.55rem; padding: 0.2rem 0.6rem;">The Power Contour</span>  
+          </div>  
+          <p class="text-xs text-[#5A534D] font-light">High-coverage matte base aligns with sculpted, chiselled aesthetic. Pairs well with cream bronzer.</p>  
+        </div>  
+          
+        <!-- 5\. SAFETY CHECK -->  
+        <div class="card p-4 bg-white/50">  
+          <div class="text-xs uppercase tracking-wider text-[#B8ADA9] mb-2">Safety & Allergens</div>  
+          <div class="flex flex-wrap gap-2 mb-2">  
+            <span class="scan-badge-warn">⚠ Fragrance / Parfum</span>  
+            <span class="scan-badge-safe">✓ Non-comedogenic</span>  
+            <span class="scan-badge-safe">✓ Oil-free</span>  
+          </div>  
+          <p class="text-xs text-[#9A8E8A] font-light italic">Contains 1 flagged allergen from your profile. Patch test recommended.</p>  
+        </div>  
+          
+        <!-- 6\. CONSCIOUS CHOICE -->  
+        <div class="card p-4 bg-white/50">  
+          <div class="text-xs uppercase tracking-wider text-[#B8ADA9] mb-2">Conscious Choice</div>  
+          <div class="flex flex-wrap gap-2">  
+            <span class="scan-badge-safe">🐰 Cruelty-Free</span>  
+            <span class="scan-badge-neutral">✗ Not Vegan</span>  
+            <span class="scan-badge-neutral">✗ No Eco-Cert</span>  
+          </div>  
+        </div>  
+      </div>  
+        
+      <div class="pt-6 border-t border-[#F5DDE3] text-center">  
+        <p class="text-sm text-[#9A8E8A] font-light mb-4">Want unlimited deep-dives like this?</p>  
+        <button id="scanToWaitlist" class="btn-primary w-full">Join Waitlist</button>  
+      </div>  
+    </div>  
+  </div>
+
+  <!-- Waitlist Popup Modal -->  
+  <div id="waitlistModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">  
+    <div class="modal-content card p-8 md:p-10">  
+      <div class="flex items-center justify-between mb-6">  
+        <h3 id="waitlist-title" class="section-title text-2xl text-[#3D3532]">Get Early Access</h3>  
+        <button id="closeWaitlistModal" class="text-[#B8ADA9] hover:text-[#3D3532] transition cursor-pointer text-2xl font-serif w-8 h-8 flex items-center justify-center" aria-label="Close">×</button>  
+      </div>  
+      <p class="text-sm text-[#9A8E8A] font-light mb-6">Be first to try the AI product scanner. Free during beta.</p>  
+      <form id="waitlistForm" class="space-y-4" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">  
+        <input type="email" name="email" placeholder="Enter your email" required class="input-field w-full" aria-label="Email address"/>  
+        <button type="submit" class="btn-primary w-full">  
+          <span class="btn-text">Join Waitlist</span>  
+        </button>  
+        <input type="text" name="_gotcha" style="display:none">  
+        <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
+      </form>  
+      <p id="waitlistStatus" class="form-status text-center hidden"></p>  
+      <p class="text-xs text-[#B8ADA9] mt-4 font-light text-center">By joining, you agree to our <a href="#" class="underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Terms</a> and <a href="#" class="underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Privacy Policy</a>.</p>  
+    </div>  
+  </div>
+
+  <script>  
+    document.addEventListener('DOMContentLoaded', () => {  
+      const reveals = document.querySelectorAll('.reveal');  
+      const observer = new IntersectionObserver((entries) => {  
+        entries.forEach(entry => {  
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }  
+        });  
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });  
+      reveals.forEach(el => observer.observe(el));
+
+      document.querySelectorAll('.counter').forEach(el => {  
+        new IntersectionObserver((entries) => {  
+          if (entries[0].isIntersecting) {  
+            const target = parseInt(el.dataset.target);  
+            const suffix = el.dataset.suffix || '';  
+            let current = 0;  
+            const step = Math.ceil(target / 40);  
+            const timer = setInterval(() => {  
+              current += step;  
+              if (current >= target) { current = target; clearInterval(timer); }  
+              el.textContent = current.toLocaleString() + suffix;  
+            }, 30);  
+            observer.unobserve(el);  
+          }  
+        }, { threshold: 0.5 }).observe(el);  
+      });
+
+      // Animate score ring on main page to 87%  
+      const scorePath = document.querySelector('.score-path');  
+      if (scorePath) {  
+        new IntersectionObserver((entries) => {  
+          if (entries[0].isIntersecting) {  
+            scorePath.style.strokeDashoffset = 264 - (264 * 0.87);  
+            observer.unobserve(scorePath);  
+          }  
+        }, { threshold: 0.5 }).observe(scorePath);  
+      }
+
+      const modals = {  
+        scan: { overlay: document.getElementById('scanModal'), close: document.getElementById('closeScanModal'), triggers: [document.getElementById('viewFullScanBtn')], focusTarget: '#closeScanModal' },  
+        waitlist: { overlay: document.getElementById('waitlistModal'), close: document.getElementById('closeWaitlistModal'), triggers: [document.getElementById('scanToWaitlist'), document.getElementById('header-cta')], focusTarget: '#waitlistForm input[name="email"]' }  
+      };
+
+      let lastFocused = null;  
+      const openModal = (key) => {  
+        const m = modals[key];  
+        if (!m.overlay) return;  
+        lastFocused = document.activeElement;  
+        m.overlay.classList.add('active');  
+        document.body.style.overflow = 'hidden';  
+        const target = document.querySelector(m.focusTarget);  
+        if (target) setTimeout(() => target.focus(), 100);  
+          
+        // Animate modal score ring when opened  
+        if (key === 'scan') {  
+          const modalScorePath = document.querySelector('.score-path-modal');  
+          if (modalScorePath) {  
+            // Reset first for re-animation effect  
+            modalScorePath.style.transition = 'none';  
+            modalScorePath.style.strokeDashoffset = 264;  
+            // Force reflow  
+            void modalScorePath.offsetWidth;  
+            // Animate  
+            modalScorePath.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1)';  
+            modalScorePath.style.strokeDashoffset = 264 - (264 * 0.87);  
+          }  
+        }  
+      };  
+      const closeModal = (key) => {  
+        const m = modals[key];  
+        if (!m.overlay) return;  
+        m.overlay.classList.remove('active');  
+        document.body.style.overflow = '';  
+        if (lastFocused) lastFocused.focus();  
+      };
+
+      Object.keys(modals).forEach(key => {  
+        const m = modals[key];  
+        m.triggers.forEach(btn => btn?.addEventListener('click', () => openModal(key)));  
+        m.close?.addEventListener('click', () => closeModal(key));  
+        m.overlay?.addEventListener('click', (e) => { if (e.target === m.overlay) closeModal(key); });  
+      });
+
+      document.addEventListener('keydown', (e) => {  
+        if (e.key === 'Escape') {  
+          if (modals.scan.overlay.classList.contains('active')) closeModal('scan');  
+          else if (modals.waitlist.overlay.classList.contains('active')) closeModal('waitlist');  
+        }  
+      });
+
+      
+      // Initialize InstantDB
+      const APP_ID = '3d183980-ff6d-4952-b883-7c3852d7e5b6';
+      const db = instant.init({ appId: APP_ID });
+
+      const handleFormSubmit = async (form) => {
+        const statusEl = form.id === 'waitlistForm' ? document.getElementById('waitlistStatus') : form.nextElementSibling;
+        const btn = form.querySelector('button[type="submit"]');
+        const btnText = btn.querySelector('.btn-text');
+        const original = btnText.textContent;
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          btn.disabled = true;
+          btnText.innerHTML = '<span class="spinner"></span>';
+          statusEl.className = 'form-status hidden';
+
+          const emailInput = form.querySelector('input[name="email"]');
+          const email = emailInput ? emailInput.value : '';
+
+          try {
+            // Save to InstantDB
+            await db.transact(
+              db.tx.waitlist.update({
+                id: instant.id(),
+                email: email,
+                createdAt: new Date().toISOString(),
+                source: form.id === 'waitlistForm' ? 'modal' : 'page'
+              })
+            );
+            
+            btnText.textContent = '✓ JOINED';
+            statusEl.textContent = "You're on the list. Watch your inbox.";
+            statusEl.className = 'form-status success';
+            statusEl.style.color = form.closest('.bg-[#D98A96]') ? 'rgba(255,255,255,0.9)' : '';
+            form.reset();
+            if (form.id === 'waitlistForm') setTimeout(() => closeModal('waitlist'), 2000);
+          } catch (err) {
+            console.error(err);
+            btnText.textContent = original;
+            statusEl.textContent = 'Something went wrong. Please try again.';
+            statusEl.className = 'form-status error';
+          } finally {
+            btn.disabled = false;
+            statusEl.classList.remove('hidden');
+          }
+        });
+      };
+\n      document.querySelectorAll('.waitlist-form, #waitlistForm').forEach(handleFormSubmit);
+
+      document.querySelectorAll('a[href^="#"]').forEach(a => {  
+        a.addEventListener('click', function(e) {  
+          e.preventDefault();  
+          document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });  
+        });  
+      });  
+    });  
+  </script>  
+</body>  
+</html>
