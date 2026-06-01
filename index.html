@@ -657,17 +657,15 @@
           const email = emailInput ? emailInput.value : '';
 
           try {
+            const formData = new FormData();
+            formData.append("access_key", "4344ced8-a05a-423d-b08e-1f8945ef9e81");
+            formData.append("email", email);
+            formData.append("subject", "New REMAKE Waitlist Signup");
+            formData.append("from_name", "REMAKE Waitlist");
+
             const res = await fetch('https://api.web3forms.com/submit', {
               method: 'POST',
-              headers: { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({ 
-                access_key: '4344ced8-a05a-423d-b08e-1f8945ef9e81',
-                email: email, 
-                subject: 'New REMAKE Waitlist Signup'
-              })
+              body: formData
             });
 
             const data = await res.json();
@@ -684,9 +682,32 @@
             }
           } catch (err) {
             console.error(err);
-            btnText.textContent = original;
-            statusEl.textContent = 'Error: ' + (err.message || 'Something went wrong.');
-            statusEl.className = 'form-status error';
+            // Fallback to native HTML form submission if fetch fails (e.g., due to Cloudflare anti-bot checks)
+            form.action = "https://api.web3forms.com/submit";
+            form.method = "POST";
+            
+            // Inject required Web3Forms fields
+            const fields = {
+              "access_key": "4344ced8-a05a-423d-b08e-1f8945ef9e81",
+              "subject": "New REMAKE Waitlist Signup",
+              "from_name": "REMAKE Waitlist",
+              "redirect": window.location.href
+            };
+            
+            for (const [key, value] of Object.entries(fields)) {
+              if (!form.querySelector(`input[name="${key}"]`)) {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = key;
+                input.value = value;
+                form.appendChild(input);
+              }
+            }
+            
+            // Remove the FormSubmit specific fields to avoid confusing Web3Forms
+            form.querySelectorAll('input[name="_gotcha"], input[name="_subject"]').forEach(el => el.remove());
+            
+            form.submit();
           } finally {
             btn.disabled = false;
             statusEl.classList.remove('hidden');
