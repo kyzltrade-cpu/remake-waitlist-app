@@ -245,35 +245,43 @@
   <section class="flex-1 flex items-center justify-center px-6 py-16 md:py-20 hero-bg relative overflow-hidden">  
     <div class="glow-accent" style="top: 10%; left: 15%;"></div>  
     <div class="glow-accent" style="bottom: 5%; right: 10%; background: radial-gradient(circle, rgba(248,215,218,0.3) 0%, transparent 70%);"></div>  
-    <div class="max-w-3xl text-center relative z-10">  
-      <span class="badge mb-6 inline-block reveal">AI Beauty Buyer</span>  
-      <h1 class="hero-title text-4xl md:text-6xl mb-6 reveal reveal-delay-1">  
-        Stop guessing.<br><span class="text-elegant text-pink-solid">Start knowing.</span>  
-      </h1>  
-      <p class="text-base md:text-lg text-[#9A8E8A] mb-10 max-w-xl mx-auto font-light leading-relaxed reveal reveal-delay-2">  
-        Scan any product to instantly see if it matches your skin tone, clashes with your allergies, or actually delivers on its promises. Your pocket-sized beauty analyst.  
-      </p>  
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-16">  
+      <div class="flex-1 text-center md:text-left">  
+        <span class="badge mb-6 inline-block reveal">AI Beauty Buyer</span>  
+        <h1 class="hero-title text-4xl md:text-6xl mb-6 reveal reveal-delay-1">  
+          Stop guessing.<br><span class="text-elegant text-pink-solid">Start knowing.</span>  
+        </h1>  
+        <p class="text-base md:text-lg text-[#9A8E8A] mb-10 max-w-xl font-light leading-relaxed reveal reveal-delay-2">  
+          Scan any product to instantly see if it matches your skin tone, clashes with your allergies, or actually delivers on its promises. Your pocket-sized beauty analyst.  
+        </p>  
+          
+        <form class="waitlist-form flex flex-col sm:flex-row gap-3 max-w-md mb-4 reveal reveal-delay-3">  
+          <input type="email" name="email" placeholder="Enter your email" required  
+            class="input-field flex-1"  
+            aria-label="Email address"/>  
+          <button type="submit" class="btn-primary whitespace-nowrap">  
+            <span class="btn-text">Join Waitlist</span>  
+          </button>  
+          <input type="text" name="_gotcha" style="display:none">  
+          <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
+        </form>  
+        <p class="form-status hidden"></p>  
+          
+        <p class="text-xs text-[#B8ADA9] mt-3 mb-8 font-light reveal">🎁 First 200 signups get $20 off their first year • Secure your spot</p>  
+          
+        <div class="flex flex-wrap items-center gap-6 text-sm text-[#9A8E8A] font-light reveal justify-center md:justify-start">  
+          <div class="flex items-center gap-2"><span class="rating-stars">★★★★★</span><span>Loved by beta testers</span></div>  
+          <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
+          <span>20+ Allergen Checks</span>  
+          <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
+          <span>Sephora Price Matching</span>  
+        </div>  
+      </div>  
         
-      <form class="waitlist-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4 reveal reveal-delay-3">  
-        <input type="email" name="email" placeholder="Enter your email" required  
-          class="input-field flex-1"  
-          aria-label="Email address"/>  
-        <button type="submit" class="btn-primary whitespace-nowrap">  
-          <span class="btn-text">Join Waitlist</span>  
-        </button>  
-        <input type="text" name="_gotcha" style="display:none">  
-        <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
-      </form>  
-      <p class="form-status text-center hidden"></p>  
-        
-      <p class="text-xs text-[#B8ADA9] mt-3 mb-8 font-light reveal">🎁 First 200 signups get $20 off their first year • Secure your spot</p>  
-        
-      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[#9A8E8A] font-light reveal">  
-        <div class="flex items-center gap-2"><span class="rating-stars">★★★★★</span><span>Loved by beta testers</span></div>  
-        <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
-        <span>20+ Allergen Checks</span>  
-        <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
-        <span>Sephora Price Matching</span>  
+      <div class="flex-1 flex justify-center items-center">  
+        <div class="relative w-[280px] md:w-[320px] aspect-[9/19.5] border-[10px] md:border-[12px] border-[#3D3532] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl mx-auto">  
+          <img src="./mockup-scanner.jpg" class="w-full h-full object-cover">  
+        </div>  
       </div>  
     </div>  
   </section>
@@ -305,58 +313,64 @@
 
   <section id="demo" class="py-24 px-6 bg-[#FBE8E3] relative overflow-hidden">  
     <div class="glow-accent" style="bottom: 0; left: 20%; background: radial-gradient(circle, rgba(240,184,192,0.25) 0%, transparent 60%);"></div>  
-    <div class="max-w-4xl mx-auto relative z-10">  
-      <div class="text-center mb-16">  
+    <div class="max-w-5xl mx-auto relative z-10 flex flex-col md:flex-row-reverse items-center gap-12 md:gap-16">  
+      <div class="flex-1 text-center md:text-left">  
         <div class="inline-flex items-center justify-center w-20 h-20 rounded-full shadow-md mb-4 reveal overflow-hidden">  
           <img src="./scan-icon.jpg" alt="REMAKE" class="w-full h-full object-cover">  
         </div>  
         <h2 class="section-title text-3xl md:text-4xl mb-3 reveal">See the Analysis</h2>  
-        <p class="text-[#9A8E8A] font-light reveal">Honest. Detailed. Personalized to your DNA.</p>  
+        <p class="text-[#9A8E8A] font-light reveal mb-10">Honest. Detailed. Personalized to your DNA.</p>  
+          
+        <!-- PRODUCT SCAN MOCKUP CARD -->  
+        <div class="card p-8 reveal relative">  
+          <div class="flex items-center justify-between mb-6">  
+            <span class="text-xs font-medium text-[#B8ADA9] tracking-wide">Fenty Beauty Pro Filt'r</span>  
+            <span class="text-xs badge">Match: 94%</span>  
+          </div>  
+            
+          <div class="flex items-center justify-center mb-6 relative">  
+          <svg class="score-ring w-28 h-28" viewBox="0 0 100 100">  
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="6"/>  
+            <circle class="score-path" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>  
+          </svg>  
+          <div class="absolute inset-0 flex items-center justify-center">  
+            <div class="hero-title text-4xl text-[#3D3532] relative -top-0.5">87</div>  
+          </div>
+          </div>  
+            
+          <p class="text-[#5A534D] mb-6 font-light leading-relaxed text-center">Excellent shade match for Warm Autumn. Contains fragrance—caution for sensitive skin.</p>  
+            
+          <div class="divider-elegant"></div>  
+            
+          <div class="space-y-1">  
+            <div class="scan-row">  
+              <span class="scan-label">Undertone Fit</span>  
+              <span class="scan-value text-[#8BA88E]">Perfect Match</span>  
+            </div>  
+            <div class="scan-row">  
+              <span class="scan-label">SPF Reality</span>  
+              <span class="scan-value">None (Layer needed)</span>  
+            </div>  
+            <div class="scan-row">  
+              <span class="scan-label">Allergens</span>  
+              <span class="scan-badge-warn">Fragrance</span>  
+            </div>  
+            <div class="scan-row">  
+              <span class="scan-label">Ethics</span>  
+              <span class="scan-badge-safe">Cruelty-Free</span>  
+            </div>  
+          </div>  
+            
+          <button id="viewFullScanBtn" class="btn-secondary w-full mt-8">View Full Report</button>  
+        </div>  
+        <p class="text-xs text-[#B8ADA9] mt-8 font-light reveal">Actual app interface. Analysis powered by Gemini Vision + GPT-4o.</p>  
       </div>  
         
-      <!-- PRODUCT SCAN MOCKUP CARD -->  
-      <div class="card max-w-sm mx-auto p-8 reveal relative">  
-        <div class="flex items-center justify-between mb-6">  
-          <span class="text-xs font-medium text-[#B8ADA9] tracking-wide">Fenty Beauty Pro Filt'r</span>  
-          <span class="text-xs badge">Match: 94%</span>  
+      <div class="flex-1 flex justify-center items-center">  
+        <div class="relative w-[280px] md:w-[320px] aspect-[9/19.5] border-[10px] md:border-[12px] border-[#3D3532] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl mx-auto">  
+          <img src="./mockup-analysis-1.jpg" class="w-full h-full object-cover">  
         </div>  
-          
-        <div class="flex items-center justify-center mb-6 relative">  
-        <svg class="score-ring w-28 h-28" viewBox="0 0 100 100">  
-          <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="6"/>  
-          <circle class="score-path" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>  
-        </svg>  
-        <div class="absolute inset-0 flex items-center justify-center">  
-          <div class="hero-title text-4xl text-[#3D3532] relative -top-0.5">87</div>  
-        </div>
-        </div>  
-          
-        <p class="text-[#5A534D] mb-6 font-light leading-relaxed text-center">Excellent shade match for Warm Autumn. Contains fragrance—caution for sensitive skin.</p>  
-          
-        <div class="divider-elegant"></div>  
-          
-        <div class="space-y-1">  
-          <div class="scan-row">  
-            <span class="scan-label">Undertone Fit</span>  
-            <span class="scan-value text-[#8BA88E]">Perfect Match</span>  
-          </div>  
-          <div class="scan-row">  
-            <span class="scan-label">SPF Reality</span>  
-            <span class="scan-value">None (Layer needed)</span>  
-          </div>  
-          <div class="scan-row">  
-            <span class="scan-label">Allergens</span>  
-            <span class="scan-badge-warn">Fragrance</span>  
-          </div>  
-          <div class="scan-row">  
-            <span class="scan-label">Ethics</span>  
-            <span class="scan-badge-safe">Cruelty-Free</span>  
-          </div>  
-        </div>  
-          
-        <button id="viewFullScanBtn" class="btn-secondary w-full mt-8">View Full Report</button>  
       </div>  
-      <p class="text-center text-xs text-[#B8ADA9] mt-8 font-light reveal">Actual app interface. Analysis powered by Gemini Vision + GPT-4o.</p>  
     </div>  
   </section>
 
