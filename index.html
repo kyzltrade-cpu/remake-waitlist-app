@@ -657,28 +657,20 @@
           const email = emailInput ? emailInput.value : '';
 
           try {
-            const res = await fetch('https://formsubmit.co/ajax/theremakeapp@gmail.com', {
+            const res = await fetch('https://api.web3forms.com/submit', {
               method: 'POST',
               headers: { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
               },
-              body: JSON.stringify({ email, _subject: 'New Waitlist Signup' })
+              body: JSON.stringify({ 
+                access_key: '4344ced8-a05a-423d-b08e-1f8945ef9e81',
+                email: email, 
+                subject: 'New REMAKE Waitlist Signup'
+              })
             });
 
-            // Formsubmit may return an HTML activation page instead of JSON if the email hasn't been verified yet
-            let data;
-            const textResponse = await res.text();
-            try {
-              data = JSON.parse(textResponse);
-            } catch (e) {
-              if (textResponse.includes('activate') || textResponse.includes('Check your email')) {
-                // We got the HTML activation page
-                throw new Error("Please check theremakeapp@gmail.com to activate the form first.");
-              } else {
-                throw new Error("Unexpected response from server.");
-              }
-            }
+            const data = await res.json();
 
             if (data.success) {
               btnText.textContent = '✓ JOINED';
