@@ -659,11 +659,26 @@
           try {
             const res = await fetch('https://formsubmit.co/ajax/theremakeapp@gmail.com', {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
               body: JSON.stringify({ email, _subject: 'New Waitlist Signup' })
             });
 
-            const data = await res.json();
+            // Formsubmit may return an HTML activation page instead of JSON if the email hasn't been verified yet
+            let data;
+            const textResponse = await res.text();
+            try {
+              data = JSON.parse(textResponse);
+            } catch (e) {
+              if (textResponse.includes('activate') || textResponse.includes('Check your email')) {
+                // We got the HTML activation page
+                throw new Error("Please check theremakeapp@gmail.com to activate the form first.");
+              } else {
+                throw new Error("Unexpected response from server.");
+              }
+            }
 
             if (data.success) {
               btnText.textContent = '✓ JOINED';
