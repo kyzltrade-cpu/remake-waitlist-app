@@ -685,7 +685,7 @@
           } catch (err) {
             console.error(err);
             btnText.textContent = original;
-            statusEl.textContent = 'Something went wrong. Please try again.';
+            statusEl.textContent = 'Error: ' + (err.message || 'Something went wrong.');
             statusEl.className = 'form-status error';
           } finally {
             btn.disabled = false;
