@@ -220,7 +220,6 @@
     }  
   </style>  
 
-  <script src="https://unpkg.com/@instantdb/core@1.0.42"></script>
 </head>  
 <body class="min-h-screen flex flex-col relative z-10">  
     
@@ -642,11 +641,7 @@
       });
 
       
-      // Initialize InstantDB
-      const APP_ID = '3d183980-ff6d-4952-b883-7c3852d7e5b6';
-      const db = instant.init({ appId: APP_ID });
-
-      const handleFormSubmit = async (form) => {
+      const handleFormSubmit = (form) => {
         const statusEl = form.id === 'waitlistForm' ? document.getElementById('waitlistStatus') : form.nextElementSibling;
         const btn = form.querySelector('button[type="submit"]');
         const btnText = btn.querySelector('.btn-text');
@@ -662,22 +657,24 @@
           const email = emailInput ? emailInput.value : '';
 
           try {
-            // Save to InstantDB
-            await db.transact(
-              db.tx.waitlist.update({
-                id: instant.id(),
-                email: email,
-                createdAt: new Date().toISOString(),
-                source: form.id === 'waitlistForm' ? 'modal' : 'page'
-              })
-            );
-            
-            btnText.textContent = '✓ JOINED';
-            statusEl.textContent = "You're on the list. Watch your inbox.";
-            statusEl.className = 'form-status success';
-            statusEl.style.color = form.closest('.bg-[#D98A96]') ? 'rgba(255,255,255,0.9)' : '';
-            form.reset();
-            if (form.id === 'waitlistForm') setTimeout(() => closeModal('waitlist'), 2000);
+            const res = await fetch('https://formsubmit.co/ajax/theremakeapp@gmail.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, _subject: 'New Waitlist Signup' })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+              btnText.textContent = '✓ JOINED';
+              statusEl.textContent = "You're on the list. Watch your inbox.";
+              statusEl.className = 'form-status success';
+              statusEl.style.color = form.closest('.bg-[#D98A96]') ? 'rgba(255,255,255,0.9)' : '';
+              form.reset();
+              if (form.id === 'waitlistForm') setTimeout(() => closeModal('waitlist'), 2000);
+            } else {
+              throw new Error(data.message || 'Request failed');
+            }
           } catch (err) {
             console.error(err);
             btnText.textContent = original;
