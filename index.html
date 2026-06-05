@@ -693,13 +693,19 @@
 
       
       const handleFormSubmit = (form) => {
+        if (form.dataset.handled === 'true') return;
+        form.dataset.handled = 'true';
+
         const statusEl = form.id === 'waitlistForm' ? document.getElementById('waitlistStatus') : form.nextElementSibling;
         const btn = form.querySelector('button[type="submit"]');
         const btnText = btn.querySelector('.btn-text');
         const original = btnText.textContent;
+        let isSubmitting = false;
 
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
+          if (isSubmitting) return;
+          isSubmitting = true;
           btn.disabled = true;
           btnText.innerHTML = '<span class="spinner"></span>';
           statusEl.className = 'form-status hidden';
@@ -763,6 +769,7 @@
             
             form.submit();
           } finally {
+            isSubmitting = false;
             btn.disabled = false;
             statusEl.classList.remove('hidden');
           }
