@@ -708,18 +708,18 @@
           const email = emailInput ? emailInput.value : '';
 
           try {
-            const formData = new FormData();
-            formData.append("access_key", "4344ced8-a05a-423d-b08e-1f8945ef9e81");
-            formData.append("email", email);
-            formData.append("subject", "New REMAKE Waitlist Signup");
-            formData.append("from_name", "REMAKE Waitlist");
-
             const res = await fetch('https://api.web3forms.com/submit', {
               method: 'POST',
               headers: {
+                'Content-Type': 'application/json',
                 'Accept': 'application/json'
               },
-              body: formData
+              body: JSON.stringify({
+                access_key: "4344ced8-a05a-423d-b08e-1f8945ef9e81",
+                email: email,
+                subject: "New REMAKE Waitlist Signup",
+                from_name: "REMAKE Waitlist"
+              })
             });
 
             const data = await res.json();
