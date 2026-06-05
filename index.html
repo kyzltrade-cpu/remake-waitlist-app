@@ -732,11 +732,14 @@
 
             if (data.success) {
               btnText.textContent = '✓ JOINED';
-              statusEl.textContent = "You're on the list. Watch your inbox.";
+              statusEl.textContent = "You're on the list. Redirecting...";
               statusEl.className = 'form-status success';
-              statusEl.style.color = form.closest('.bg-[#D98A96]') ? 'rgba(255,255,255,0.9)' : '';
+              statusEl.style.color = form.closest('.bg-\\[\\#D98A96\\]') ? 'rgba(255,255,255,0.9)' : '';
               form.reset();
-              if (form.id === 'waitlistForm') setTimeout(() => closeModal('waitlist'), 2000);
+              setTimeout(() => {
+                const redirectUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/success.html';
+                window.location.href = redirectUrl;
+              }, 800);
             } else {
               throw new Error(data.message || 'Request failed');
             }
@@ -746,12 +749,14 @@
             form.action = "https://api.web3forms.com/submit";
             form.method = "POST";
             
+            const redirectUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/success.html';
+
             // Inject required Web3Forms fields
             const fields = {
               "access_key": "4344ced8-a05a-423d-b08e-1f8945ef9e81",
               "subject": "New REMAKE Waitlist Signup",
               "from_name": "REMAKE Waitlist",
-              "redirect": window.location.href
+              "redirect": redirectUrl
             };
             
             for (const [key, value] of Object.entries(fields)) {
