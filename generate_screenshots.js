@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const sizes = {
+    "6.7-inch": { width: 1290, height: 2796 },
     "6.5-inch": { width: 1284, height: 2778 },
     "5.5-inch": { width: 1242, height: 2208 }
 };

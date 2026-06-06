@@ -1,1 +1,12 @@
-node_modules/\npackage.json\npackage-lock.json\ngenerate_screenshots.*\nappstore_gen.html\nscreenshots/\nappstore_screenshots.zip
+node_modules/
+package.json
+package-lock.json
+generate_screenshots.*
+appstore_gen.html
+screenshots/
+screenshots_jpeg/
+appstore_screenshots.zip
+appstore_screenshots_all.zip
+tiktok_screenshot.png
+scrape_tiktok_remake.js
+screenshot_tiktok.js
