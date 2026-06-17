@@ -717,10 +717,10 @@
             const res = await fetch('https://api.web3forms.com/submit', {
               method: 'POST',
               headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json'
               },
-              body: JSON.stringify({
+              body: new URLSearchParams({
                 access_key: "4344ced8-a05a-423d-b08e-1f8945ef9e81",
                 email: email,
                 subject: "New REMAKE Waitlist Signup",
