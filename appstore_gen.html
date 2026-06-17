@@ -4,16 +4,18 @@
     <meta charset="utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">  
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">  
     <style>
         body, html {
             margin: 0; padding: 0;
-            background-color: #FFF9F7; /* rhode-white */
+            background-color: #FFE6EC; /* light pink background */
             font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             align-items: flex-end; /* Phone at the bottom */
             overflow: hidden;
+            width: 100%;
+            height: 100%;
         }
         
         .container {
@@ -28,39 +30,41 @@
         .text-section {
             text-align: center;
             width: 90%;
-            padding-top: 12%; /* Space at top */
+            padding-top: 14%; /* Space at top */
             flex: 0 0 auto;
+            z-index: 10;
         }
 
         .title {
             font-family: 'Playfair Display', serif;
-            color: #3D3532;
-            font-size: 6.5vw;
+            color: #1C1C1C;
+            font-size: 7vw;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.15;
             margin: 0;
-            margin-bottom: 2%;
+            margin-top: 1.5%;
+            letter-spacing: -0.01em;
         }
 
         .subtitle {
             font-family: 'Inter', sans-serif;
-            color: #D98A96; /* rhode-pink-rich */
+            color: #E25C70; /* vibrant branding pink-red */
             font-size: 3.2vw;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             margin: 0;
         }
 
         .phone-wrapper {
             position: absolute;
             bottom: -5%; /* Let it bleed off the bottom slightly */
-            width: 80%; /* Adjust width of phone relative to screen */
-            border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(61, 53, 50, 0.2);
+            width: 82%; /* Adjust width of phone relative to screen */
+            border-radius: 44px;
+            box-shadow: 0 35px 70px rgba(226, 92, 112, 0.25);
             overflow: hidden;
-            border: 12px solid #3D3532;
-            background: black;
+            border: 14px solid #1C1C1C; /* Sleek dark bezel */
+            background: #1C1C1C;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -76,8 +80,8 @@
 <body>
     <div class="container">
         <div class="text-section">
-            <h2 class="subtitle" id="subtitleText">Smart Beauty</h2>
-            <h1 class="title" id="titleText">Scan Any Product</h1>
+            <h2 class="subtitle" id="subtitleText">SCANNING CAMERA</h2>
+            <h1 class="title" id="titleText">Scan Makeup Barcodes<br>Instantly</h1>
         </div>
         <div class="phone-wrapper" id="phoneWrapper">
             <img id="mockupImg" src="" />
@@ -89,28 +93,27 @@
         const index = urlParams.get('i') || '0';
         
         const data = [
-            { img: 'mockup-scanner.jpg', sub: 'Instant Scanner', title: 'Scan Any Skincare<br>or Makeup' },
-            { img: 'mockup-analysis-1.jpg', sub: 'Transparency', title: 'Uncover Toxic<br>Ingredients' },
-            { img: 'mockup-analysis-2.jpg', sub: 'Skin Barrier', title: 'Check Acne-Safe<br>Ratings' },
-            { img: 'mockup-analysis-3.jpg', sub: 'Personalized', title: 'Find Your Perfect<br>Shade Match' }
+            { img: 'mockup-scanner.jpg', sub: 'SCANNING CAMERA', title: 'Scan Makeup Barcodes<br>Instantly' },
+            { img: 'mockup-analysis-1.jpg', sub: 'PRODUCT RATING', title: 'Expose Clogging &<br>Toxic Ingredients' },
+            { img: 'mockup-analysis-3.jpg', sub: 'AI FACE SCAN', title: 'Match Your Perfect<br>Shade & Fit' },
+            { img: 'mockup-analysis-2.jpg', sub: 'SIDE-BY-SIDE COMPARISON', title: 'Swap Bad Products<br>for Clean Matches' }
         ];
         
-        const item = data[parseInt(index)];
+        const item = data[parseInt(index)] || data[0];
         document.getElementById('subtitleText').innerHTML = item.sub;
         document.getElementById('titleText').innerHTML = item.title;
         document.getElementById('mockupImg').src = item.img;
 
-        // Dynamic adjusting for 5.5 inch (which is wider aspect ratio 1242x2208 vs 1284x2778)
+        // Dynamic adjusting for 5.5 inch (wider aspect ratio 1242x2208 vs 1284x2778)
         const width = window.innerWidth;
         const height = window.innerHeight;
         const ratio = height / width;
         
-        if (ratio < 2.0) { // 5.5 inch is ~1.77, 6.5 inch is ~2.16
-            // Wider screen requires slightly smaller phone width and top padding adjustment
-            document.querySelector('.text-section').style.paddingTop = '8%';
-            document.querySelector('.phone-wrapper').style.width = '65%';
+        if (ratio < 2.0) { // 5.5 inch is ~1.77
+            document.querySelector('.text-section').style.paddingTop = '10%';
+            document.querySelector('.phone-wrapper').style.width = '66%';
             document.querySelector('.phone-wrapper').style.bottom = '-8%';
-            document.querySelector('.title').style.fontSize = '6vw';
+            document.querySelector('.title').style.fontSize = '6.2vw';
             document.querySelector('.subtitle').style.fontSize = '2.8vw';
         }
     </script>

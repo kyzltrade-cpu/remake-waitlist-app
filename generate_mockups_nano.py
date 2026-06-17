@@ -18,25 +18,25 @@ mockups = [
         "filename": "mockup-scanner.jpg",
         "target_w": 588,
         "target_h": 1280,
-        "prompt": "A premium, high-fidelity mobile app UI screenshot on an iPhone screen, showcasing an active barcode scanner feature for skincare. The camera viewfinder occupies the upper portion, displaying a crisp, detailed view of the back of a luxury pink-and-white cosmetic cream tube. A glowing rose-gold neon rectangle outlines the barcode, with a thin pink scanning laser line active across it. The app's bottom menu is a frosted glass (glassmorphism) panel with the text 'Align Barcode' in a clean geometric sans-serif font. The background is a soft pastel pink (#FFD1E3) and warm ivory studio setup. No random messy graphics, very clean design."
+        "prompt": "An elegant, high-fidelity App Store screenshot mockup for a luxury beauty app. A realistic, front-facing matte black iPhone 15 Pro frame centered on a solid matte light pink (#FFE6EC) background. Above the phone, a clean, bold title in an elegant serif typeface reads: 'IS YOUR MAKEUP SAFE?'. Inside the iPhone screen, an active barcode scanner is shown. The camera view is sharp, displaying the back of a luxury cosmetic cream bottle (Rhode/Chanel style). A crisp, flat solid rose-gold reticle outlines the barcode, with a thin solid pink horizontal laser line. The app's bottom panel is a solid flat charcoal-black (#1C1C1C) card with neat, white geometric sans-serif text reading 'Align Barcode'. No messy 3D glass, no translucent layers, no gradient blobs, 100% flat professional graphic design."
     },
     {
         "filename": "mockup-analysis-1.jpg",
         "target_w": 652,
         "target_h": 1280,
-        "prompt": "A luxury mobile app UI screenshot on an iPhone screen, presenting a skincare ingredient analysis. In the center is a beautifully animated pink circular score ring displaying a low score of '28' in a bold, charcoal-grey sans-serif font. Below the score, an elegant red alert card highlights 'TOXIC INGREDIENTS DETECTED' in clear white text. Underneath is a perfectly styled list with bullet points: 'Bismuth Oxychloride - Irritant Risk' and 'Fragrance/Parfum - Allergen' in modern, minimalist typography. The overall color scheme is pastel pink (#FFD1E3), deep red, and soft cream, looking extremely professional and clean."
+        "prompt": "A high-end App Store screenshot mockup of a beauty product analysis screen. A realistic, front-facing matte black iPhone 15 Pro frame centered on a solid matte light pink (#FFE6EC) background. Inside the iPhone screen, a clean white interface presents a skincare formula analysis for a trending makeup product. In the upper half is a flat, solid dark charcoal circular score ring showing a low score of '24/100' in a bold, crisp sans-serif font. Below the score, a flat, solid red warning banner displays 'NOT ACNE SAFE' in stark white typography. Underneath is a neat, high-contrast list of ingredients with small warning icons: 'Bismuth Oxychloride - Irritant Risk' and 'Synthetic Fragrance - Allergen' in minimalist black text. Flat vector style, clean alignment, absolutely no frosted glass, no transparency, no slop."
     },
     {
         "filename": "mockup-analysis-2.jpg",
         "target_w": 652,
         "target_h": 1280,
-        "prompt": "A sleek cosmetic app UI design screenshot on an iPhone screen, displaying a skin barrier and acne-safe rating page. At the top of the interface, a prominent warning card displays 'NOT ACNE SAFE' in bold white typography on a sharp crimson red background. Below is a beautifully detailed list of comedogenic ingredients with rating badges, such as 'Ethylhexyl Palmitate - Rating: 4/5' in elegant sans-serif typography. Glassmorphic containers, pastel pink and warm ivory layout. The interface is clean, uncluttered, with pixel-perfect alignment."
+        "prompt": "A premium App Store screenshot mockup for a cosmetic rating app showing a side-by-side comparison screen. A realistic, front-facing matte black iPhone 15 Pro frame centered on a solid matte light pink (#FFE6EC) background. Inside the iPhone screen, the app displays a product comparison. On the left half, a column with a dark-red card at the top reads 'PORE CLOGGING' in clean white typography, showing a toxic product with comedogenic ratings. On the right half, a column with a clean white card reads 'CLEAN ALTERNATIVE' in black typography, displaying a safe organic replacement with '100% SAFE' badge. Minimalist, professional UI comparing ingredients side-by-side, 100% flat design, zero glass, zero blur, zero gradient blobs."
     },
     {
         "filename": "mockup-analysis-3.jpg",
         "target_w": 652,
         "target_h": 1280,
-        "prompt": "A luxury mobile app UI screenshot on an iPhone screen, presenting a shade-matching feature for makeup. It shows a close-up photo of a woman's cheek with subtle, elegant color swatches, overlaid with a glowing pink ring that reads '98% SHADE MATCH' in a bold serif font. Below, a glassmorphic card recommends the exact makeup shade: 'Fenty Beauty Pro Filt'r 145N' in modern, clean typography. The background is a warm ivory and pastel pink marble, accented with delicate gold details, embodying a premium, high-converting cosmetic aesthetic."
+        "prompt": "A luxury beauty App Store screenshot mockup for an AI face-scanning app. A realistic, front-facing matte black iPhone 15 Pro frame centered on a solid matte light pink (#FFE6EC) background. Inside the iPhone screen, the app displays a computer-vision shade-matching analysis. It shows a close-up photo of a woman's cheek with clean skin, overlaid with a solid rose-gold badge that reads '98% SHADE MATCH'. Below, a flat solid black (#1C1C1C) card recommends the exact product match: 'Fenty Beauty Pro Filt'r - Shade 145N' in crisp, clean white sans-serif typography. Flat luxury branding, solid backgrounds, extremely clean layout, zero 3D glass, zero reflections, zero slop."
     }
 ]
 
@@ -46,7 +46,7 @@ def generate_mockup(item):
     target_h = item["target_h"]
     prompt = item["prompt"]
     
-    print(f"\nGenerating {filename} with Nano Banana (Imagen 4.0)...")
+    print(f"\nGenerating {filename} with Imagen 4.0...")
     print(f"Prompt: {prompt[:100]}...")
     
     response = client.models.generate_images(
@@ -85,12 +85,14 @@ def generate_mockup(item):
     final_img = resized_img.crop((left, top, right, bottom))
     
     # Save image
-    output_path = os.path.join("/Users/kyzl/remake-waitlist-app", filename)
+    output_dir = "/Users/kyzl/remake-waitlist-app"
+    os.makedirs(output_dir, exist_ok=True)
+    output_path = os.path.join(output_dir, filename)
     final_img.save(output_path, "JPEG", quality=95)
     print(f"Successfully saved to {output_path}")
 
 def main():
-    print("Starting App Store Mockup Generation via Google GenAI (Nano Banana)...")
+    print("Starting App Store Mockup Generation via Google GenAI (Imagen 4.0)...")
     for item in mockups:
         generate_mockup(item)
     print("\nAll 4 mockups successfully generated and saved!")
