@@ -1,0 +1,14 @@
+# Core Principles: Remake Waitlist App
+
+## 1. Premium Aesthetic
+- Primary Color (Pastel Pink): `#FFE6EC`
+- Secondary/Background Color (Solid Dark): `#1C1C1C`
+- The overall look and feel must convey a premium, high-quality experience.
+
+## 2. Design Authenticity
+- NO AI-slop or overused AI-generated artifacts.
+- NO glassmorphism (avoid excessive blur and transparency overlays).
+- 100% original design fidelity - implementations must strictly adhere to the original design specs.
+
+## 3. Strict Mobile Resolutions
+- The layout and design must be built specifically for strict mobile screen resolutions, ensuring a flawless mobile-first or mobile-only experience.
