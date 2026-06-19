@@ -411,7 +411,7 @@
         
       <!-- PHOTOREALISTIC ULTRA-PREMIUM IPHONE 15 PRO SHELL (HOUSED VERBATIM AROUND RAW APP SCREENSHOT) -->
       <div class="flex-1 flex justify-center items-center reveal reveal-delay-2 relative py-4">  
-        <div class="relative w-[235px] md:w-[285px] aspect-[9/19.5]">
+        <div class="relative w-[235px] h-[510px] md:w-[285px] md:h-[618px]">
           <!-- Left Side Buttons (Volume Rockers + Ring Switcher) -->
           <div class="absolute top-[80px] -left-[3px] w-[3px] h-6 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)]"></div>
           <div class="absolute top-[120px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)]"></div>
@@ -606,7 +606,7 @@
       
       <!-- Left Column: Immersive Visual (Dynamic Scan Interface inside premium iPhone Shell) -->
       <div class="flex-1 flex justify-center items-center relative py-4 order-2 lg:order-1">
-        <div class="relative w-[235px] md:w-[285px] aspect-[9/19.5]">
+        <div class="relative w-[235px] h-[510px] md:w-[285px] md:h-[618px]">
           <!-- Side Buttons -->
           <div class="absolute top-[80px] -left-[3px] w-[3px] h-6 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
           <div class="absolute top-[120px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
@@ -1660,18 +1660,27 @@
     // Setup events on page load
     document.addEventListener('DOMContentLoaded', () => {  
       const reveals = document.querySelectorAll('.reveal');  
-      const observer = new IntersectionObserver((entries) => {  
+      
+      // Immediate trigger for viewport elements on load
+      const triggerImmediateReveal = () => {
         reveals.forEach(el => {
           const bounding = el.getBoundingClientRect();
           if (bounding.top < window.innerHeight) {
             el.classList.add('visible');
           }
         });
+      };
+      
+      const observer = new IntersectionObserver((entries) => {  
+        triggerImmediateReveal();
         entries.forEach(entry => {  
           if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }  
         });  
       }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });  
       reveals.forEach(el => observer.observe(el));
+
+      // Execute immediately as fallback
+      triggerImmediateReveal();
 
       // Trigger initial lab setup to Rhode
       selectProduct('rhode');
