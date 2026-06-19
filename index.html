@@ -618,17 +618,12 @@
             <!-- Inner bezel: Slim deep-black bezel margin -->
             <div class="w-full h-full p-[6px] md:p-[7px] rounded-[2.4rem] md:rounded-[2.9rem] bg-zinc-950 border border-zinc-900">
               <!-- Screen Container -->
-              <div class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex items-center justify-center">
+              <div id="viewFullScanBtnPhone" class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex items-center justify-center cursor-pointer group">
                 <!-- Diagonal Screen Glare reflection -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/12 pointer-events-none z-30"></div>
                 
                 <!-- Actual App Analysis Screenshot -->
-                <img src="./mockup-analysis-1.jpg" alt="REMAKE Skincare Barcode Scanner actual analysis report inside premium shell" class="w-full h-full object-cover">
-                
-                <!-- Floating Glassy See Full Analysis Button inside phone screen -->
-                <button id="viewFullScanBtnPhone" class="absolute bottom-6 left-4 right-4 bg-white/15 hover:bg-white/25 text-white backdrop-blur-md py-3 rounded-full text-[10px] font-bold uppercase tracking-widest transition duration-300 border border-white/20 active:scale-95 z-40 flex items-center justify-center gap-1.5 shadow-lg">
-                  <span>See Full Analysis</span>
-                </button>
+                <img src="./mockup-analysis-1.jpg" alt="REMAKE Skincare Barcode Scanner actual analysis report inside premium shell" class="w-full h-full object-cover transition duration-500 group-hover:scale-[1.02]">
               </div>
             </div>
           </div>
