@@ -76,7 +76,17 @@
       --hover-shadow: 0 20px 40px rgba(42,36,33,0.06), 0 4px 15px rgba(217,138,150,0.12);  
     }  
     
-    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }  
+    * { 
+      -webkit-font-smoothing: antialiased; 
+      -moz-osx-font-smoothing: grayscale; 
+      box-sizing: border-box; 
+      scrollbar-width: none !important; 
+      -ms-overflow-style: none !important; 
+    }  
+    
+    ::-webkit-scrollbar {
+      display: none !important;
+    }
     
     body {   
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;   
