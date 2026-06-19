@@ -942,92 +942,132 @@
     </div>  
   </footer>
 
-  <!-- Full Scan Modal - 3D AI FACIAL SCAN SKIN REPORT & MAKEUP FEEDBACK -->  
+  <!-- Full Scan Modal - MAKEUP SCAN REPORT -->  
   <div id="scanModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="scan-title">  
-    <div class="modal-content card-luxury p-8 md:p-10 !bg-[#FFF9F7]">  
-      <div class="flex items-center justify-between mb-4 border-b border-[#F5DDE3] pb-4">  
-        <div>  
-          <h3 id="scan-title" class="section-title text-2xl md:text-3xl mb-1 text-[#2A2421]">Derm Scan Report</h3>  
-          <p class="text-sm text-[#7C726E] font-light">3D AI Skin & Makeup Feedback Diagnostic</p>  
-        </div>  
-        <button id="closeScanModal" class="text-[#B8ADA9] hover:text-[#2A2421] transition cursor-pointer text-3xl font-light w-8 h-8 flex items-center justify-center" aria-label="Close">×</button>  
+    <div class="modal-content card-luxury p-6 md:p-8 !bg-[#FFF9F7]">  
+      
+      <!-- Premium Phone Screen Header Inside Modal -->
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-[#F5DDE3]">  
+        <!-- Custom styled Back Button that also closes the modal -->
+        <button id="closeScanModalBack" class="border border-[#F5DDE3] bg-white/40 h-8 w-8 rounded-full flex items-center justify-center text-[#2A2421] hover:bg-[#F5DDE3]/20 transition cursor-pointer font-serif" aria-label="Go Back">
+          ‹
+        </button>  
+        <!-- Centered REMAKE Title -->
+        <h3 id="scan-title" class="font-serif tracking-[0.2em] text-[#2A2421] text-base font-semibold uppercase">REMAKE</h3>  
+        <!-- Symmetric Close Button (acts as close) -->
+        <button id="closeScanModal" class="border border-[#F5DDE3] bg-white/40 h-8 w-8 rounded-full flex items-center justify-center text-[#2A2421] hover:bg-[#F5DDE3]/20 transition cursor-pointer text-sm" aria-label="Close">
+          ×
+        </button>  
       </div>  
         
-      <!-- SKIN BARRIER FIT SCORE RING -->  
-      <div class="flex items-center justify-center my-6 relative">  
-        <svg class="score-ring w-32 h-32" viewBox="0 0 100 100">  
-          <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="5"/>  
-          <circle class="score-path-modal" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>  
-        </svg>  
-        <div class="absolute inset-0 flex flex-col items-center justify-center">  
-          <div class="hero-title text-5xl text-[#2A2421]">92</div>  
-          <div class="text-[9px] uppercase tracking-wider text-[#7C726E] font-medium">barrier index</div>  
-        </div>  
-      </div>
-
-      <div class="space-y-4 mb-8 max-h-[50vh] overflow-y-auto pr-1" style="scrollbar-width: thin;">  
-        <!-- 1. CELLULAR PORE CONGESTION -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Cellular Pore Congestion</div>  
-          <div class="flex items-center gap-2 mb-2">  
-            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">✓ Low Congestion</span>  
-          </div>  
-          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
-            Follicle analysis indicates clean epidermal texture with minor sebum accumulation in T-zone cheeks. To maintain this status, **avoid heavy synthetic waxes, mineral oils, and isopropyl esters** which trigger congestion.
-          </p>  
-        </div>  
-          
-        <!-- 2. VASCULAR BARRIER REDNESS -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Vascular Barrier Redness</div>  
-          <div class="flex items-center gap-2 mb-2">  
-            <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 font-bold border border-amber-100 text-[8px] uppercase tracking-wider">⚠ Minor Cheek Redness</span>  
-          </div>  
-          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
-            Vascular tracking detected 14% inflammation over upper cheeks, indicative of slight barrier sensitivity. Highly compatible with **lightweight, peptide-packed, or squalane-based formulas**. Avoid synthetic perfume carriers.
-          </p>  
-        </div>  
-          
-        <!-- 3. HEX SHADE CALIBRATION -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Hex Shade Calibration</div>  
-          <div class="flex items-center gap-3 mb-2">  
-            <div class="flex items-center gap-1">  
-              <div class="w-6 h-6 rounded-full bg-[#E8B48F] border border-white shadow-sm" title="Your Skin Hex"></div>  
-              <span class="text-xs text-[#7C726E]">Calibrated Hex: <span class="font-mono text-[10px] font-bold">#E8B48F</span></span>  
+      <!-- SCROLLABLE CONTENT BODY (Simulated App View) -->
+      <div class="space-y-6 mb-8 max-h-[60vh] overflow-y-auto pr-1" style="scrollbar-width: thin;">  
+        
+        <!-- CIRCULAR GAUGE SECTION -->  
+        <div class="flex flex-col items-center justify-center text-center py-4">  
+          <div class="relative w-36 h-36 flex items-center justify-center">  
+            <svg class="score-ring w-full h-full" viewBox="0 0 100 100">  
+              <!-- Muted pink track circle -->
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(245,221,227,0.4)" stroke-width="4"/>  
+              <!-- Main pink filled progress circle (82%) -->
+              <circle class="score-path-modal" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="5" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="47.52"/>  
+            </svg>  
+            <div class="absolute inset-0 flex items-center justify-center">  
+              <span class="font-serif text-2xl md:text-3xl font-medium text-[#2A2421]">Strong</span>  
             </div>  
-            <span class="text-xs text-[#6E8E75] font-semibold uppercase bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded text-[8px]">Warm Autumn</span>  
           </div>  
-          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
-            Calibration model extracted Warm Autumn undertones. Your matches are 94% compatible with warm golden bases. Highly recommended to select liquid filters with high squalane carriers to avoid mid-day oxidation.
-          </p>  
-        </div>  
           
-        <!-- 4. MAKEUP STYLE FIT RECOMMENDATION -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Archetype Recommendation</div>  
-          <div class="flex items-center gap-2 mb-2">  
-            <span class="badge-luxury">The Glazed Canvas era 🎀</span>  
-          </div>  
-          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
-            Your high moisture retention coefficient makes you a perfect match for dew-heavy aesthetics. Glossy finishes align seamlessly with your archetype's signature natural glow.
-          </p>  
-        </div>  
+          <!-- Green Pill Badge -->
+          <div class="mt-4 inline-flex items-center gap-1 bg-[#E6F4EA] border border-[#137333]/15 px-3 py-1 rounded-full text-xs font-semibold text-[#137333]">
+            <span>Looking flawless</span>  
+            <span class="font-bold">↑ 0</span>  
+          </div>
+
+          <!-- Description Paragraph -->
+          <p class="mt-4 text-sm text-[#2A2421] font-light leading-relaxed max-w-sm mx-auto px-4">
+            I love how you've nailed the blending in your look, with an impressive score of 82 - it's clear you've been practicing, and it's paying off beautifully.
+          </p>
+        </div>
+
+        <!-- 4-COLUMN STATS CARD -->
+        <div class="bg-white/80 rounded-2xl p-4 border border-[#F5DDE3]/50 shadow-sm grid grid-cols-4 divide-x divide-[#F5DDE3]/50 text-center">
+          <div class="flex flex-col justify-center">
+            <span class="font-bold text-lg md:text-xl text-[#D98A96]">81</span>
+            <span class="text-[9px] uppercase tracking-wider text-[#B8ADA9] mt-0.5">Today</span>
+          </div>
+          <div class="flex flex-col justify-center">
+            <span class="font-bold text-lg md:text-xl text-[#D98A96]">88</span>
+            <span class="text-[9px] uppercase tracking-wider text-[#B8ADA9] mt-0.5">Best</span>
+          </div>
+          <div class="flex flex-col justify-center">
+            <span class="font-bold text-lg md:text-xl text-[#D98A96]">81</span>
+            <span class="text-[9px] uppercase tracking-wider text-[#B8ADA9] mt-0.5">Average</span>
+          </div>
+          <div class="flex flex-col justify-center">
+            <span class="font-bold text-lg md:text-xl text-[#D98A96]">81</span>
+            <span class="text-[9px] uppercase tracking-wider text-[#B8ADA9] mt-0.5">Last scan</span>
+          </div>
+        </div>
+
+        <!-- BREAKDOWN SECTION -->
+        <div class="text-left">
+          <div class="text-[10px] uppercase tracking-[0.15em] font-bold text-[#B8ADA9] mb-4">BREAKDOWN</div>  
           
-        <!-- 5. CRITICAL ALLERGEN GATEKEEPING -->  
-        <div class="p-4 rounded-xl border border-red-200 bg-red-50/25">  
-          <div class="text-[10px] uppercase tracking-wider text-red-500 font-bold mb-2">Critical Allergen Blocker</div>  
-          <div class="flex flex-wrap gap-2 mb-2">  
-            <span class="px-1.5 py-0.5 rounded bg-red-100 text-red-700 font-bold border border-red-200 text-[8px] uppercase tracking-wider">⚠ Fragrance / Parfum Blocker Active</span>  
-          </div>  
-          <p class="text-xs text-[#7C726E] font-light leading-relaxed italic">
-            Synthetic fragrances will instantly exacerbate cheek micro-redness. Ensure your cosmetic purchases remain fragrance-free. REMAKE's automatic barcode gatekeeper will flag this in RED upon scanning.
-          </p>  
-        </div>  
+          <div class="space-y-4">
+            <!-- 1. COVERAGE -->  
+            <div class="p-5 rounded-2xl border border-[#F5DDE3]/50 bg-white/70 shadow-sm space-y-3">  
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 bg-[#D98A96] rounded-[2px] inline-block"></span>
+                  <span class="font-semibold text-sm text-[#2A2421]">Coverage</span>  
+                </div>
+                <span class="font-serif text-lg font-medium text-[#2A2421]">71</span>
+              </div>
+              
+              <!-- Custom Horizontal Progress Bar -->
+              <div class="w-full h-2 rounded-full bg-[#F5DDE3]/30 overflow-hidden">
+                <div class="h-full bg-[#D98A96] rounded-full" style="width: 71%"></div>
+              </div>
+              
+              <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+                The coverage is generally good, but there are some areas where the skin tone is uneven. Consider using a concealer to cover blemishes and dark circles under the eyes.
+              </p>  
+              
+              <!-- Watch Tutorial Button -->
+              <div class="pt-1">
+                <button class="inline-flex items-center gap-2 bg-[#D98A96] hover:bg-[#C97A86] text-white text-[11px] font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition duration-300">
+                  <span>Watch tutorial</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>  
+              
+            <!-- 2. SYMMETRY -->  
+            <div class="p-5 rounded-2xl border border-[#F5DDE3]/50 bg-white/70 shadow-sm space-y-3">  
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 bg-[#D98A96] rotate-45 inline-block"></span>
+                  <span class="font-semibold text-sm text-[#2A2421]">Symmetry</span>  
+                </div>
+                <span class="font-serif text-lg font-medium text-[#2A2421]">78</span>
+              </div>
+              
+              <!-- Progress Bar -->
+              <div class="w-full h-2 rounded-full bg-[#F5DDE3]/30 overflow-hidden">
+                <div class="h-full bg-[#D98A96] rounded-full" style="width: 78%"></div>
+              </div>
+              
+              <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+                The overall symmetry of the face is good, but the eyebrows could be more evenly shaped. Consider using a brow pencil or powder to define and balance the brows.
+              </p>  
+            </div>  
+          </div>
+        </div>
+
       </div>  
         
       <div class="pt-6 border-t border-[#F5DDE3] text-center">  
-        <p class="text-sm text-[#7C726E] font-light mb-4">Want your custom clinical skin report?</p>  
+        <p class="text-sm text-[#7C726E] font-light mb-4">Want your custom clinical makeup scan?</p>  
         <button id="scanToWaitlist" class="btn-primary w-full">Join Waitlist</button>  
       </div>  
     </div>  
@@ -1678,14 +1718,14 @@
         document.body.style.overflow = 'hidden';
         playScannerBeep();
 
-        // Animate modal score ring when opened
+        // Animate modal score ring when opened (82% filled match)
         const modalScorePath = document.querySelector('.score-path-modal');
         if (modalScorePath) {
           modalScorePath.style.transition = 'none';
           modalScorePath.style.strokeDashoffset = 264;
           void modalScorePath.offsetWidth; // force reflow
           modalScorePath.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
-          modalScorePath.style.strokeDashoffset = 264 - (264 * 0.87);
+          modalScorePath.style.strokeDashoffset = 264 - (264 * 0.82);
         }
       };
 
@@ -1698,6 +1738,7 @@
       viewFullScanBtnPhone?.addEventListener('click', openScanModal);
       viewFullScanBtnMain?.addEventListener('click', openScanModal);
       closeScanModal?.addEventListener('click', closeScanModalFn);
+      document.getElementById('closeScanModalBack')?.addEventListener('click', closeScanModalFn);
       
       scanModal?.addEventListener('click', (e) => {
         if (e.target === scanModal) closeScanModalFn();
