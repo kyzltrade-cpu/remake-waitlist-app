@@ -607,66 +607,65 @@
           <div class="w-full h-full p-[3px] rounded-[2.6rem] md:rounded-[3.1rem] bg-gradient-to-b from-zinc-600 via-zinc-800 to-zinc-950 shadow-[0_30px_70px_rgba(42,36,33,0.38)] ring-1 ring-zinc-500/20">
             <div class="w-full h-full p-[8px] md:p-[9px] rounded-[2.4rem] md:rounded-[2.9rem] bg-zinc-900 border border-zinc-950">
               <!-- Screen Container -->
-              <div class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex flex-col justify-between p-4 pt-10 text-white">
+              <div class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-[#FFF9F7] flex flex-col justify-between p-4 pt-8 text-[#2A2421] border border-[#F5DDE3] shadow-[inset_0_0_10px_rgba(0,0,0,0.03)]">
                 <!-- Status Bar Overlay -->
-                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-[35%] h-[15px] bg-black rounded-b-xl z-50"></div>
-                
-                <!-- Scanner interface header -->
-                <div class="text-center mt-2">
-                  <div class="text-[9px] uppercase tracking-widest text-[#FDA8BD] font-semibold">REMAKE SENSOR v2.0</div>
-                  <div class="text-[12px] font-bold font-serif text-white">Skin Map Calibration</div>
-                </div>
-
-                <!-- Circular Scanner Grid with face outline -->
-                <div class="relative w-full aspect-square flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-800/80">
-                  <div class="scan-laser opacity-100" style="animation-duration: 2s;"></div>
-                  
-                  <!-- Face contour SVG overlay -->
-                  <svg class="absolute w-[80%] h-[80%] opacity-45 stroke-[#FDA8BD]" viewBox="0 0 100 100" fill="none">
-                    <path d="M50,15 C30,15 25,40 25,60 C25,80 38,90 50,90 C62,90 75,80 75,60 C75,40 70,15 50,15 Z" stroke-width="1.5" stroke-dasharray="3 3"/>
-                    <path d="M40,45 C40,45 43,40 46,45" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M54,45 C54,45 57,40 60,45" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M45,62 C45,62 50,68 55,62" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-
-                  <!-- Pulsing node points on the face -->
-                  <div class="absolute top-[35%] left-[30%] w-2 h-2 rounded-full bg-[#FDA8BD] animate-ping"></div>
-                  <div class="absolute top-[35%] left-[30%] w-1.5 h-1.5 rounded-full bg-[#FDA8BD]"></div>
-                  
-                  <div class="absolute top-[35%] right-[30%] w-2 h-2 rounded-full bg-[#FDA8BD] animate-ping" style="animation-delay: 0.5s;"></div>
-                  <div class="absolute top-[35%] right-[30%] w-1.5 h-1.5 rounded-full bg-[#FDA8BD]"></div>
-
-                  <div class="absolute top-[55%] left-[48%] w-2 h-2 rounded-full bg-emerald-400 animate-ping" style="animation-delay: 0.8s;"></div>
-                  <div class="absolute top-[55%] left-[48%] w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-
-                  <div class="absolute top-[70%] left-[35%] w-2 h-2 rounded-full bg-red-400 animate-ping" style="animation-delay: 0.3s;"></div>
-                  <div class="absolute top-[70%] left-[35%] w-1.5 h-1.5 rounded-full bg-red-400" title="Pore clog alert zone"></div>
-
-                  <div class="absolute top-[70%] right-[35%] w-2 h-2 rounded-full bg-[#FDA8BD] animate-ping" style="animation-delay: 0.6s;"></div>
-                  <div class="absolute top-[70%] right-[35%] w-1.5 h-1.5 rounded-full bg-[#FDA8BD]"></div>
-
-                  <!-- Face Scanner stats overlays -->
-                  <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-zinc-900/80 text-[7px] font-mono border border-zinc-800 text-[#FDA8BD] uppercase">ISO 800</div>
-                  <div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-zinc-900/80 text-[7px] font-mono border border-zinc-800 text-emerald-400 uppercase">99.4% CAPTURE</div>
-                </div>
-
-                <!-- Scanner report details -->
-                <div class="space-y-1.5 mb-2 bg-zinc-950/80 p-2.5 rounded-xl border border-zinc-800/80">
-                  <div class="flex justify-between items-center text-[8px] font-mono text-zinc-400">
-                    <span>SEBUM LEVELS:</span>
-                    <span class="text-amber-400 font-bold">ZONE A DRY, ZONE T OILY</span>
-                  </div>
-                  <div class="flex justify-between items-center text-[8px] font-mono text-zinc-400">
-                    <span>BARRIER REDNESS:</span>
-                    <span class="text-red-400 font-bold">14% INFLAMMATORY RISK</span>
-                  </div>
-                  <div class="flex justify-between items-center text-[8px] font-mono text-zinc-400">
-                    <span>EXACT SKIN HEX CODE:</span>
-                    <span class="text-emerald-400 font-bold">#C9956A</span>
+                <div class="absolute top-0 left-0 w-full h-7 px-4 pt-2 flex justify-between items-center text-[8px] text-[#2A2421] font-semibold font-sans pointer-events-none select-none z-50">
+                  <span>9:41</span>
+                  <div class="flex items-center gap-1">
+                    <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 21a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-5-3a5 5 0 0 1 10 0h-1.5a3.5 3.5 0 0 0-7 0H7zm-3-3a9 9 0 0 1 16 0h-1.5c0-3.31-2.69-6-6-6s-6 2.69-6 6H4z"/></svg>
+                    <div class="border border-[#2A2421]/60 rounded-[2px] p-[1px] h-2.5 w-4 flex items-center"><div class="h-full w-[80%] bg-[#2A2421] rounded-[1px]"></div></div>
                   </div>
                 </div>
 
-                <div class="text-[8px] text-center text-zinc-500 font-light mt-1">REMAKE CLINICAL DIAGNOSTICS DEPT.</div>
+                <!-- Product Scan Mockup Header -->
+                <div class="flex items-center justify-between mt-3 mb-2">  
+                  <span class="text-[9px] font-bold text-[#7C726E] uppercase tracking-wide">Fenty Beauty Pro Filt'r</span>  
+                  <span class="text-[8px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100 uppercase tracking-widest">Match: 94%</span>  
+                </div>  
+
+                <!-- Score Ring Circle (87%) -->
+                <div class="flex items-center justify-center my-1 relative">  
+                  <svg class="score-ring w-24 h-24" viewBox="0 0 100 100">  
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="5"/>  
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="34.32"/>  
+                  </svg>  
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">  
+                    <div class="hero-title text-3xl text-[#2A2421]" id="faceReportScoreText">87</div>  
+                    <div class="text-[7px] uppercase tracking-wider text-[#7C726E] font-medium">score</div>
+                  </div>  
+                </div>  
+
+                <!-- Description -->
+                <p class="text-[10px] text-[#7C726E] font-light leading-relaxed text-center px-1 mb-2">
+                  Excellent shade match for Warm Autumn. Contains fragrance—caution for sensitive skin.
+                </p>  
+
+                <div class="divider-elegant !my-1 opacity-50"></div>  
+
+                <!-- Grid details from original report -->
+                <div class="space-y-1 text-[9px] mb-2">  
+                  <div class="flex justify-between items-center py-1 border-b border-[#F5DDE3]/30">  
+                    <span class="text-[#7C726E]">Undertone Fit</span>  
+                    <span class="font-medium text-[#6E8E75]">Perfect Match</span>  
+                  </div>  
+                  <div class="flex justify-between items-center py-1 border-b border-[#F5DDE3]/30">  
+                    <span class="text-[#7C726E]">SPF Reality</span>  
+                    <span class="font-medium text-[#7C726E]">None (Layer needed)</span>  
+                  </div>  
+                  <div class="flex justify-between items-center py-1 border-b border-[#F5DDE3]/30">  
+                    <span class="text-[#7C726E]">Allergens</span>  
+                    <span class="px-1.5 py-0.5 rounded bg-red-50 text-red-700 font-bold border border-red-100 text-[8px]">Fragrance</span>  
+                  </div>  
+                  <div class="flex justify-between items-center py-1">  
+                    <span class="text-[#7C726E]">Ethics</span>  
+                    <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px]">Cruelty-Free</span>  
+                  </div>  
+                </div>  
+
+                <!-- View Full Report Button inside the screen -->
+                <button id="viewFullScanBtnPhone" class="btn-primary py-2 w-full text-[9px] !bg-[#2A2421] !text-white hover:!bg-[#D98A96] tracking-widest uppercase flex items-center justify-center">
+                  <span>See Full Analysis</span>
+                </button>
               </div>
             </div>
           </div>
@@ -707,8 +706,8 @@
           </div>
         </div>
 
-        <button onclick="document.getElementById('interactive-lab').scrollIntoView({ behavior: 'smooth' })" class="btn-primary">
-          <span>Try AI Scanner Demo</span>
+        <button id="viewFullScanBtnMain" class="btn-primary">
+          <span>See Full Analysis</span>
         </button>
       </div>
 
@@ -1188,6 +1187,112 @@
       <p class="mt-3 md:mt-0">Designed in California • Crafted for skin barrier safety</p>  
     </div>  
   </footer>
+
+  <!-- Full Scan Modal - COMPLETE PRODUCT ANALYSIS PILLARS -->  
+  <div id="scanModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="scan-title">  
+    <div class="modal-content card-luxury p-8 md:p-10 !bg-[#FFF9F7]">  
+      <div class="flex items-center justify-between mb-4 border-b border-[#F5DDE3] pb-4">  
+        <div>  
+          <h3 id="scan-title" class="section-title text-2xl md:text-3xl mb-1 text-[#2A2421]">Full Analysis</h3>  
+          <p class="text-sm text-[#7C726E] font-light">Fenty Beauty Pro Filt'r Soft Matte</p>  
+        </div>  
+        <button id="closeScanModal" class="text-[#B8ADA9] hover:text-[#2A2421] transition cursor-pointer text-3xl font-light w-8 h-8 flex items-center justify-center" aria-label="Close">×</button>  
+      </div>  
+        
+      <!-- SCORE RING IN MODAL -->  
+      <div class="flex items-center justify-center my-6 relative">  
+        <svg class="score-ring w-32 h-32" viewBox="0 0 100 100">  
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="5"/>  
+          <circle class="score-path-modal" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>  
+        </svg>  
+        <div class="absolute inset-0 flex flex-col items-center justify-center">  
+          <div class="hero-title text-5xl text-[#2A2421]">87</div>  
+          <div class="text-[9px] uppercase tracking-wider text-[#7C726E] font-medium">score</div>
+        </div>  
+      </div>
+
+      <div class="space-y-4 mb-8 max-h-[50vh] overflow-y-auto pr-1" style="scrollbar-width: thin;">  
+        <!-- 1. SHADE & TONE -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Shade & Tone Match</div>  
+          <div class="flex items-center gap-3 mb-2">  
+            <div class="flex items-center gap-1">  
+              <div class="w-6 h-6 rounded-full bg-[#C9956A] border border-white shadow-sm" title="Your Skin"></div>  
+              <span class="text-xs text-[#7C726E]">vs</span>  
+              <div class="w-6 h-6 rounded-full bg-[#C68E6A] border border-white shadow-sm" title="Product"></div>  
+            </div>  
+            <div class="text-sm"><span class="font-medium text-[#6E8E75]">94% Match</span> <span class="text-[#7C726E]">• ΔE 1.2</span></div>  
+          </div>  
+          <p class="text-xs text-[#7C726E] font-light">Perfect undertone alignment for Warm Autumn. Minimal oxidation risk.</p>  
+        </div>  
+          
+        <!-- 2. COVERAGE & FINISH -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Coverage & Finish</div>  
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between">  
+              <span class="text-[#7C726E]">Finish Type</span>  
+              <span class="font-medium">Soft Matte</span>  
+            </div>  
+            <div class="flex justify-between">  
+              <span class="text-[#7C726E]">Wear Time</span>  
+              <span class="font-medium">8-10 Hours</span>  
+            </div>  
+            <div class="flex justify-between">  
+              <span class="text-[#7C726E]">SPF Level</span>  
+              <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 font-semibold border border-amber-100 text-[8px] uppercase tracking-wide">None Detected</span>  
+            </div>  
+          </div>
+        </div>  
+          
+        <!-- 3. SKIN COMPATIBILITY -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Skin Compatibility</div>  
+          <div class="grid grid-cols-2 gap-3 text-xs">  
+            <div class="flex justify-between"><span class="text-[#7C726E]">Oily</span><span class="text-[#6E8E75] font-semibold">Great</span></div>  
+            <div class="flex justify-between"><span class="text-[#7C726E]">Dry</span><span class="text-amber-600 font-semibold">Caution</span></div>  
+            <div class="flex justify-between"><span class="text-[#7C726E]">Acne-Prone</span><span class="text-[#6E8E75] font-semibold">Safe</span></div>  
+            <div class="flex justify-between"><span class="text-[#7C726E]">Sensitive</span><span class="text-red-500 font-semibold">Risk</span></div>  
+          </div>  
+        </div>  
+          
+        <!-- 4. STYLE FIT -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Style Fit</div>  
+          <div class="flex items-center gap-2 mb-2">  
+            <span class="badge-luxury">The Power Contour</span>  
+          </div>  
+          <p class="text-xs text-[#7C726E] font-light">High-coverage matte base aligns with sculpted, chiselled aesthetic. Pairs well with cream bronzer.</p>  
+        </div>  
+          
+        <!-- 5. SAFETY CHECK -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Safety & Allergens</div>  
+          <div class="flex flex-wrap gap-2 mb-2">  
+            <span class="px-1.5 py-0.5 rounded bg-red-50 text-red-700 font-bold border border-red-100 text-[8px] uppercase tracking-wider">⚠ Fragrance / Parfum</span>  
+            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">✓ Non-comedogenic</span>  
+            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">✓ Oil-free</span>  
+          </div>  
+          <p class="text-xs text-[#7C726E] font-light italic">Contains 1 flagged allergen from your profile. Patch test recommended.</p>  
+        </div>  
+          
+        <!-- 6. CONSCIOUS CHOICE -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Conscious Choice</div>  
+          <div class="flex flex-wrap gap-2">  
+            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">🐰 Cruelty-Free</span>  
+            <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-600 font-semibold border border-amber-100 text-[8px] uppercase tracking-wide">✗ Not Vegan</span>  
+            <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-600 font-semibold border border-amber-100 text-[8px] uppercase tracking-wide">✗ No Eco-Cert</span>  
+          </div>  
+        </div>  
+      </div>  
+        
+      <div class="pt-6 border-t border-[#F5DDE3] text-center">  
+        <p class="text-sm text-[#7C726E] font-light mb-4">Want unlimited deep-dives like this?</p>  
+        <button id="scanToWaitlist" class="btn-primary w-full">Join Waitlist</button>  
+      </div>  
+    </div>  
+  </div>
 
   <!-- Interactive Lab Javascript Data and Core Logic -->
   <script>
@@ -1811,6 +1916,56 @@
       };
 
       document.querySelectorAll('.waitlist-form, #waitlistForm').forEach(handleFormSubmit);
+
+      // Modal control logic for the "Full Analysis" report modal
+      const scanModal = document.getElementById('scanModal');
+      const closeScanModal = document.getElementById('closeScanModal');
+      const scanToWaitlist = document.getElementById('scanToWaitlist');
+      const viewFullScanBtnPhone = document.getElementById('viewFullScanBtnPhone');
+      const viewFullScanBtnMain = document.getElementById('viewFullScanBtnMain');
+
+      const openScanModal = () => {
+        if (!scanModal) return;
+        scanModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        playScannerBeep();
+
+        // Animate modal score ring when opened
+        const modalScorePath = document.querySelector('.score-path-modal');
+        if (modalScorePath) {
+          modalScorePath.style.transition = 'none';
+          modalScorePath.style.strokeDashoffset = 264;
+          void modalScorePath.offsetWidth; // force reflow
+          modalScorePath.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+          modalScorePath.style.strokeDashoffset = 264 - (264 * 0.87);
+        }
+      };
+
+      const closeScanModalFn = () => {
+        if (!scanModal) return;
+        scanModal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      viewFullScanBtnPhone?.addEventListener('click', openScanModal);
+      viewFullScanBtnMain?.addEventListener('click', openScanModal);
+      closeScanModal?.addEventListener('click', closeScanModalFn);
+      
+      scanModal?.addEventListener('click', (e) => {
+        if (e.target === scanModal) closeScanModalFn();
+      });
+
+      scanToWaitlist?.addEventListener('click', () => {
+        closeScanModalFn();
+        document.querySelector('.waitlist-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+
+      // Escape key to close modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeScanModalFn();
+        }
+      });
 
       // Smooth scroll triggers
       document.querySelectorAll('a[href^="#"]').forEach(a => {  
