@@ -7,45 +7,186 @@
   <meta name="description" content="We scanned Maybelline Fit Me Matte + Poreless Foundation. Verdict: CONTAINS PARABENS. Formulated with Methylparaben and Butylparaben, which are known endocrine (hormone) disruptors. Download REMAKE to scan your own makeup for toxic ingredients.">
   <title>Maybelline Fit Me Matte + Poreless: Toxic Ingredient Scan | REMAKE</title>
   <meta name="keywords" content="maybelline fit me toxic, maybelline fit me parabens, acne safe drugstore foundation, remake makeup app, shade finder, skincare barcode scanner">
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+  
   <style>
-    body { font-family: 'Inter', sans-serif; background: #FFF9F7; color: #2A2422; }
-    .hero-title { font-family: 'Playfair Display', serif; }
-    .btn-primary { background: #D98A96; color: white; padding: 12px 24px; border-radius: 9999px; font-weight: 600; transition: transform 0.2s; }
-    .btn-primary:hover { transform: scale(1.05); }
-    .warning-card { background: #FEF2F2; border: 2px solid #FECACA; border-radius: 1rem; padding: 2rem; }
+    :root {
+      --rhode-navy: #061021;
+      --rhode-pink: #ffd1e3;
+      --rhode-pink-rich: #d98a96;
+      --rhode-border: #f5dde3;
+      --rhode-white: #fffdfd;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgba(253,168,189,0.12) 0%, transparent 60%), 
+                  radial-gradient(circle at 90% 80%, rgba(217,138,150,0.1) 0%, transparent 60%), 
+                  #FFF9F7;
+      color: #2A2421;
+      overflow-x: hidden;
+    }
+    .text-elegant {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+    }
+    .card-luxury {
+      background: var(--rhode-white);
+      border: 1px solid var(--rhode-border);
+      box-shadow: 0 20px 40px rgba(42,36,33,0.04);
+      border-radius: 1.5rem;
+    }
+    .btn-primary {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(217,138,150,0.15);
+    }
+    /* Hide scrollbars but keep functionality */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--rhode-border);
+      border-radius: 10px;
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col relative z-10">
-  <header class="border-b border-[#F5DDE3] bg-[#FFF9F7]/85 backdrop-blur-md sticky top-0 z-30">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="font-bold tracking-widest text-xl" style="font-family: 'Playfair Display', serif; color: #2A2422;">REMAKE</a>
-      <a href="/" class="btn-primary">Get Early Access</a>
-    </div>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Elegant Sticky Header -->
+  <header class="border-b border-[#F5DDE3] bg-[#FFF9F7]/85 backdrop-blur-md sticky top-0 z-40">  
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
+      <a href="/" class="flex items-center gap-2 group">  
+        <img src="../logo.png" alt="REMAKE Logo" class="h-8 w-auto rounded-lg shadow-sm mix-blend-multiply transition group-hover:scale-[1.03]">  
+        <span class="font-serif text-xl text-[#2A2421] tracking-wide">REMAKE</span>  
+      </a>  
+      <a href="/" class="btn-primary inline-block px-5 py-2 text-xs font-bold uppercase tracking-widest bg-[#2A2421] text-white rounded-full hover:bg-[#D98A96] transition duration-300">
+        Get Early Access
+      </a>
+    </div>  
   </header>
 
-  <section class="flex-1 flex items-center justify-center px-6 py-16 md:py-20">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="inline-block px-3 py-1 bg-red-100 text-red-800 text-xs font-bold tracking-widest uppercase rounded-full mb-6">
-        Product Teardown
-      </div>
-      <h1 class="hero-title text-3xl md:text-5xl mb-6 text-[#2A2422]">
-        Is <span style="color: #D98A96;">Maybelline Fit Me Matte + Poreless Foundation</span> Safe?
+  <!-- Product Teardown Content -->
+  <main class="flex-1 flex items-center justify-center px-6 py-20 relative">
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      
+      <span class="inline-block px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-[10px] font-bold tracking-widest uppercase mb-6 shadow-sm">
+        🎀 DETECTED INGREDIENT RISK
+      </span>
+      
+      <h1 class="font-serif text-3xl md:text-5xl mb-6 text-[#2A2421] leading-tight">
+        Is <span class="text-elegant text-[#D98A96] font-normal italic">Maybelline Fit Me Matte + Poreless Foundation</span> Safe?
       </h1>
       
-      <div class="warning-card mt-10 mb-10 text-left">
-        <h2 class="font-bold text-red-600 mb-2 uppercase tracking-wide">Scanner Verdict: CONTAINS PARABENS</h2>
-        <p class="text-gray-700 text-lg">Formulated with Methylparaben and Butylparaben, which are known endocrine (hormone) disruptors.</p>
+      <!-- Premium Warning Card -->
+      <div class="card-luxury p-8 border-red-200 bg-red-50/25 max-w-xl mx-auto text-left my-10 shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-[3px] bg-red-400"></div>
+        <h2 class="font-bold text-red-600 mb-3 uppercase tracking-wider text-xs flex items-center gap-1.5">
+          <span>🚨</span> Scanner Verdict: CONTAINS PARABENS
+        </h2>
+        <p class="text-[#2A2421] text-base leading-relaxed font-light font-sans">Formulated with Methylparaben and Butylparaben, which are known endocrine (hormone) disruptors.</p>
       </div>
 
-      <h3 class="font-bold text-2xl mb-4 hero-title">Don't guess. Scan it.</h3>
-      <p class="text-gray-600 mb-8 max-w-xl mx-auto">
-        Brands lie. The barcode doesn't. Download REMAKE to scan any makeup product instantly. See if it matches your skin tone, clashes with your allergies, or contains toxic ingredients.
+      <!-- Actionable App Sell -->
+      <h3 class="font-serif text-2xl md:text-3xl mb-4 text-[#2A2421]">Don't guess. Scan it.</h3>
+      <p class="text-[#7C726E] mb-10 max-w-lg mx-auto text-sm md:text-base font-light leading-relaxed">
+        Brands lie. The barcode doesn't. Join our private beta to check any cosmetic or skincare ingredient list instantly. Protect your skin barrier and avoid bad formulations.
       </p>
 
-      <a href="/" class="btn-primary inline-block px-8 py-4 text-lg">Join the App Waitlist</a>
+      <!-- Integrated Waitlist Form -->
+      <div class="max-w-md mx-auto relative">
+        <form class="waitlist-form flex flex-col sm:flex-row gap-3 mb-4">  
+          <input type="email" name="email" placeholder="Your premium email address" required  
+            class="px-5 py-3.5 rounded-full text-sm bg-white text-[#2A2421] border border-[#F5DDE3] focus:outline-none focus:border-[#D98A96] flex-1 shadow-sm font-sans"  
+            aria-label="Email address"/>  
+          <button type="submit" class="btn-primary whitespace-nowrap bg-[#2A2421] text-white hover:bg-[#D98A96] px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-md">  
+            <span class="btn-text">Protect My Skin</span>  
+          </button>  
+        </form>  
+        <p class="form-status text-center hidden text-xs font-semibold mt-3"></p>  
+      </div>
+
     </div>
-  </section>
+  </main>
+
+  <!-- Luxurious Minimalist Footer -->
+  <footer class="py-12 border-t border-[#F5DDE3] text-xs text-[#7C726E] bg-[#FFF9F7]/60 text-center font-light">
+    <p>© 2026 REMAKE Labs Inc. All rights reserved. • Crafted for skin barrier safety</p>
+  </footer>
+
+  <!-- Submission Handlers -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const handleFormSubmit = (form) => {
+        if (form.dataset.handled === 'true') return;
+        form.dataset.handled = 'true';
+
+        const statusEl = form.nextElementSibling;
+        const btn = form.querySelector('button[type="submit"]');
+        const btnText = btn.querySelector('.btn-text') || btn;
+        let isSubmitting = false;
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (isSubmitting) return;
+          isSubmitting = true;
+          btn.disabled = true;
+          const originalHTML = btnText.innerHTML;
+          btnText.innerHTML = '<span class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>';
+          statusEl.className = 'form-status hidden';
+
+          const emailInput = form.querySelector('input[name="email"]');
+          const email = emailInput ? emailInput.value : '';
+
+          try {
+            const res = await fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+              },
+              body: new URLSearchParams({
+                access_key: "4344ced8-a05a-423d-b08e-1f8945ef9e81",
+                email: email,
+                subject: "New REMAKE Waitlist Signup",
+                from_name: "REMAKE Waitlist"
+              })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+              btnText.textContent = '✓ JOINED';
+              statusEl.textContent = "You're on the list! Priority access secured.";
+              statusEl.className = 'form-status text-emerald-600 block mt-3';
+              form.reset();
+            } else {
+              btnText.innerHTML = originalHTML;
+              statusEl.textContent = "Something went wrong. Please try again.";
+              statusEl.className = 'form-status text-red-500 block mt-3';
+            }
+          } catch (err) {
+            btnText.innerHTML = originalHTML;
+            statusEl.textContent = "Connection error. Please try again.";
+            statusEl.className = 'form-status text-red-500 block mt-3';
+          } finally {
+            isSubmitting = false;
+            btn.disabled = false;
+          }
+        });
+      };
+
+      document.querySelectorAll('.waitlist-form').forEach(handleFormSubmit);
+    });
+  </script>
 </body>
 </html>

@@ -610,7 +610,7 @@
       </div>
 
       <button id="viewFullScanBtnMain" class="btn-primary mx-auto">
-        <span>See Full Analysis</span>
+        <span>See Face & Makeup Scan</span>
       </button>
 
     </div>
@@ -1059,6 +1059,66 @@
               
               <p class="text-xs text-[#7C726E] font-light leading-relaxed">
                 The overall symmetry of the face is good, but the eyebrows could be more evenly shaped. Consider using a brow pencil or powder to define and balance the brows.
+              </p>  
+            </div>  
+
+            <!-- 3. CELLULAR PORE CONGESTION -->  
+            <div class="p-5 rounded-2xl border border-[#F5DDE3]/50 bg-white/70 shadow-sm space-y-3">  
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 bg-[#6E8E75] rounded-full inline-block"></span>
+                  <span class="font-semibold text-sm text-[#2A2421]">Cellular Pore Congestion</span>  
+                </div>
+                <span class="font-serif text-lg font-medium text-[#2A2421]">92</span>
+              </div>
+              
+              <!-- Progress Bar -->
+              <div class="w-full h-2 rounded-full bg-[#F5DDE3]/30 overflow-hidden">
+                <div class="h-full bg-[#6E8E75] rounded-full" style="width: 92%"></div>
+              </div>
+              
+              <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+                Follicle analysis indicates clean epidermal texture with minor sebum accumulation in T-zone cheeks. To maintain this status, avoid heavy synthetic waxes, mineral oils, and isopropyl esters which trigger congestion.
+              </p>  
+            </div>  
+
+            <!-- 4. BARRIER REDNESS ANALYSIS -->  
+            <div class="p-5 rounded-2xl border border-[#F5DDE3]/50 bg-white/70 shadow-sm space-y-3">  
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 bg-amber-500 rounded-sm inline-block"></span>
+                  <span class="font-semibold text-sm text-[#2A2421]">Barrier Redness Analysis</span>  
+                </div>
+                <span class="font-serif text-lg font-medium text-[#2A2421]">85</span>
+              </div>
+              
+              <!-- Progress Bar -->
+              <div class="w-full h-2 rounded-full bg-[#F5DDE3]/30 overflow-hidden">
+                <div class="h-full bg-amber-500 rounded-full" style="width: 85%"></div>
+              </div>
+              
+              <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+                Vascular tracking detected 15% inflammation over upper cheeks, indicative of slight barrier sensitivity. Highly compatible with lightweight, peptide-packed, or squalane-based formulas. Avoid synthetic perfume carriers.
+              </p>  
+            </div>  
+
+            <!-- 5. SHADE CALIBRATION -->  
+            <div class="p-5 rounded-2xl border border-[#F5DDE3]/50 bg-white/70 shadow-sm space-y-3">  
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-4 h-4 rounded-full bg-[#E8B48F] border border-white shadow-sm inline-block"></div>
+                  <span class="font-semibold text-sm text-[#2A2421]">Shade Calibration</span>  
+                </div>
+                <span class="font-serif text-lg font-medium text-[#2A2421]">94</span>
+              </div>
+              
+              <!-- Progress Bar -->
+              <div class="w-full h-2 rounded-full bg-[#F5DDE3]/30 overflow-hidden">
+                <div class="h-full bg-[#D98A96] rounded-full" style="width: 94%"></div>
+              </div>
+              
+              <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+                Calibration model extracted Warm Autumn undertones (Hex: #E8B48F). Your matches are 94% compatible with warm golden bases. Highly recommended to select liquid filters with high squalane carriers to avoid mid-day oxidation.
               </p>  
             </div>  
           </div>
@@ -1757,13 +1817,13 @@
       const wrappedSlides = {
         1: {
           tag: "BEAUTY WRAPPED • SLIDE 1",
-          title: "My Skin Diary <span class=\"font-luxury text-elegant text-pink-400\">🎀</span>",
+          title: "My Skin Diary",
           html: `
             <div class="bg-gradient-to-tr from-[#FFF5F2] to-[#FFF9F7] p-5 rounded-2xl border border-[#F5DDE3] flex items-center justify-between shadow-[inset_0_2px_4px_rgba(217,138,150,0.02)]">
               <div>
                 <span class="text-[9px] text-[#7C726E] uppercase font-bold tracking-widest block">Skin safety rating</span>
                 <span class="text-4xl font-serif text-[#6E8E75] block mt-1">94%</span>
-                <span class="text-[9px] text-[#6E8E75] font-semibold uppercase tracking-wider block mt-0.5">✓ Certified Clean-Safe Bestie</span>
+                <span class="text-[9px] text-[#6E8E75] font-semibold uppercase tracking-wider block mt-0.5">✓ Certified Clean-Safe</span>
               </div>
               <div class="relative w-16 h-16 flex items-center justify-center">
                 <div class="absolute inset-0 bg-[#6E8E75]/10 rounded-full animate-soft-ping"></div>
@@ -1773,42 +1833,41 @@
             <div class="space-y-4 text-sm text-[#2A2421]">
               <div class="flex justify-between items-center border-b border-[#F5DDE3]/50 pb-2.5">
                 <span class="text-[#7C726E] font-light">Total formulas analyzed:</span>
-                <span class="font-bold">142 iconic products</span>
+                <span class="font-bold">142 products</span>
               </div>
               <div class="flex justify-between items-center border-b border-[#F5DDE3]/50 pb-2.5">
                 <span class="text-[#7C726E] font-light">Pore cloggers avoided:</span>
-                <span class="font-bold text-red-500">23 breakouters 💅</span>
+                <span class="font-bold text-red-500">23 formulas</span>
               </div>
               <div class="flex justify-between items-center pb-1">
                 <span class="text-[#7C726E] font-light">Signature Aesthetic:</span>
-                <span class="font-bold text-[#D98A96] uppercase tracking-wider">Glazed Canvas era 🎀</span>
+                <span class="font-bold text-[#D98A96] uppercase tracking-wider">Glazed Canvas archetype</span>
               </div>
             </div>
           `
         },
         2: {
           tag: "BEAUTY WRAPPED • SLIDE 2",
-          title: "Chemical Dodge Tally <span class=\"font-luxury text-elegant text-pink-400\">✨</span>",
+          title: "Chemical Dodge Tally",
           html: `
             <div class="bg-gradient-to-tr from-[#FFF5F2] to-[#FFF9F7] p-5 rounded-2xl border border-[#F5DDE3] flex items-center justify-between shadow-[inset_0_2px_4px_rgba(217,138,150,0.02)]">
               <div>
                 <span class="text-[9px] text-red-500 uppercase font-bold tracking-widest block">Chemical Cloggers Saved</span>
                 <span class="text-4xl font-serif text-red-500 block mt-1">23 avoided</span>
-                <span class="text-[9px] text-red-500 font-semibold uppercase tracking-wider block mt-0.5">🔥 Saved your lipid barrier!</span>
+                <span class="text-[9px] text-red-500 font-semibold uppercase tracking-wider block mt-0.5">Skin lipid barrier protected</span>
               </div>
-              <div class="text-3xl">🛡️</div>
             </div>
             <div class="space-y-4 text-sm text-[#2A2421]">
               <div class="flex justify-between items-center border-b border-[#F5DDE3]/50 pb-2.5">
                 <span class="text-[#7C726E] font-light">Heavy Isopropyl Esters:</span>
-                <span class="font-bold text-red-500">8 dodged 💅</span>
+                <span class="font-bold text-red-500">8 dodged</span>
               </div>
               <div class="flex justify-between items-center border-b border-[#F5DDE3]/50 pb-2.5">
                 <span class="text-[#7C726E] font-light">Synthetic Fragrance:</span>
-                <span class="font-bold text-red-500">11 allergen alerts 🚫</span>
+                <span class="font-bold text-red-500">11 alerts</span>
               </div>
               <div class="flex justify-between items-center pb-1">
-                <span class="text-[#7C726E] font-light">Wallet saved from slop:</span>
+                <span class="text-[#7C726E] font-light">Wallet saved:</span>
                 <span class="font-bold text-[#6E8E75] font-mono">$432 saved</span>
               </div>
             </div>
@@ -1816,15 +1875,14 @@
         },
         3: {
           tag: "BEAUTY WRAPPED • SLIDE 3",
-          title: "My Aesthetic Profile <span class=\"font-luxury text-elegant text-pink-400\">🎨</span>",
+          title: "My Aesthetic Profile",
           html: `
             <div class="bg-gradient-to-tr from-[#FFF1F4] to-[#FFF6F9] p-5 rounded-2xl border border-pink-200 flex items-center justify-between">
               <div>
                 <span class="text-[9px] text-[#D98A96] uppercase font-bold tracking-widest block">Style Archetype</span>
                 <span class="text-3xl font-serif text-[#D98A96] block mt-1">Glazed Canvas</span>
-                <span class="text-[9px] text-[#7C726E] font-semibold uppercase tracking-wider block mt-0.5">🎀 Ultra-dewy luxury queen</span>
+                <span class="text-[9px] text-[#7C726E] font-semibold uppercase tracking-wider block mt-0.5">Ultra-dewy luxury profile</span>
               </div>
-              <div class="text-3xl">✨</div>
             </div>
             <div class="space-y-4 text-sm text-[#2A2421]">
               <div class="flex justify-between items-center border-b border-[#F5DDE3]/50 pb-2.5">
@@ -1833,7 +1891,7 @@
               </div>
               <div class="flex justify-between items-center border-b border-[#F5DDE3]/50 pb-2.5">
                 <span class="text-[#7C726E] font-light">Favorite Ingredients:</span>
-                <span class="font-bold">Squalane, Peptides 💖</span>
+                <span class="font-bold">Squalane, Peptides</span>
               </div>
               <div class="flex justify-between items-center pb-1">
                 <span class="text-[#7C726E] font-light">Compatible Brands:</span>
