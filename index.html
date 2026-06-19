@@ -381,7 +381,7 @@
   <section class="flex-1 flex items-center justify-center px-6 py-16 md:py-28 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
     <div class="glow-accent" style="top: 10%; left: 10%;"></div>  
     <div class="glow-accent" style="bottom: 5%; right: 10%;"></div>  
-    <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-16 md:gap-24">  
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-16 md:gap-20">  
       <div class="flex-1 text-center md:text-left">  
         <span class="badge-luxury mb-6 reveal">SKIN INTELLIGENCE DIRECTORY</span>  
         <h1 class="hero-title text-4xl md:text-6xl mb-6 reveal reveal-delay-1 text-[#2A2421]">  
@@ -421,14 +421,57 @@
         </div>  
       </div>  
         
-      <div class="flex-1 flex justify-center items-center reveal reveal-delay-2">  
-        <div class="relative w-[230px] md:w-[280px] aspect-[9/19.5] border-[12px] md:border-[14px] border-[#2C2422] rounded-[2.8rem] md:rounded-[3.4rem] shadow-2xl mx-auto bg-black overflow-hidden" style="-webkit-mask-image: -webkit-radial-gradient(white, black);">
-          <!-- Dynamic Island -->
-          <div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-[33%] h-[22px] md:h-[26px] bg-[#2C2422] rounded-full z-20"></div>
+      <!-- ULTRA-REALISTIC IPHONE DEVICE CONTAINER WITH DYNAMIC SLIDESHOW -->
+      <div class="flex-1 flex justify-center items-center reveal reveal-delay-2 relative py-8">  
+        <div class="relative w-[240px] md:w-[290px] aspect-[9/19.5]">
           
-          <div class="scanning-container w-full h-full">
-            <div class="scan-laser"></div>
-            <img src="./mockup-scanner-raw.jpg" alt="REMAKE iOS app skincare barcode scanner interface mockup" class="w-full h-full object-cover rounded-[1.8rem] md:rounded-[2.2rem]">
+          <!-- Left Side buttons (Volume, Silent switcher) -->
+          <div class="absolute top-24 -left-[4px] w-[4px] h-8 bg-[#38312E] rounded-l-md border-r border-[#1D1817] z-0 shadow-sm"></div>
+          <div class="absolute top-36 -left-[4px] w-[4px] h-12 bg-[#38312E] rounded-l-md border-r border-[#1D1817] z-0 shadow-sm"></div>
+          <div class="absolute top-52 -left-[4px] w-[4px] h-12 bg-[#38312E] rounded-l-md border-r border-[#1D1817] z-0 shadow-sm"></div>
+          
+          <!-- Right Side button (Power/Action) -->
+          <div class="absolute top-32 -right-[4px] w-[4px] h-16 bg-[#38312E] rounded-r-md border-l border-[#1D1817] z-0 shadow-sm"></div>
+
+          <!-- Main Device Bezel (Brushed Titanium Bronze Look) -->
+          <div class="relative w-full h-full border-[10px] md:border-[12px] border-[#25201E] rounded-[2.8rem] md:rounded-[3.4rem] shadow-[0_30px_70px_-15px_rgba(42,36,33,0.5)] bg-[#120F0D] ring-2 ring-[#4A3E3B]/40 overflow-hidden z-10 flex items-center justify-center">
+            
+            <!-- Inner Screen Wrapper -->
+            <div class="relative w-full h-full rounded-[1.9rem] md:rounded-[2.4rem] overflow-hidden bg-black flex items-center justify-center">
+              
+              <!-- Screen Diagonal Glass Reflection Overlay -->
+              <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-white/0 via-white/4 to-white/14 pointer-events-none z-30"></div>
+              
+              <!-- Dynamic Island with simulated lens reflection -->
+              <div class="absolute top-3.5 left-1/2 -translate-x-1/2 w-[34%] h-[20px] md:h-[24px] bg-[#171210] rounded-full z-40 flex items-center justify-end px-2 gap-1 shadow-inner">
+                <!-- Lens reflection dot -->
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0a2324] border border-[#0d4f52]/45 opacity-80"></span>
+                <span class="w-1 h-1 rounded-full bg-zinc-900 opacity-60"></span>
+              </div>
+
+              <!-- High-Fidelity Slideshow Container -->
+              <div class="relative w-full h-full z-20 scanning-container">
+                <!-- Glowing scanner laser overlay -->
+                <div class="scan-laser opacity-100" style="animation-duration: 3s"></div>
+                
+                <!-- Slide 1: Barcode scan viewfinder -->
+                <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
+                  <img src="./final-appstore-pink-2.jpg" alt="REMAKE App Barcode Scanner screen" class="w-full h-full object-cover">
+                </div>
+                <!-- Slide 2: Expose pore cloggers report -->
+                <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                  <img src="./final-appstore-pink-3.jpg" alt="REMAKE App Ingredient Risk Report screen" class="w-full h-full object-cover">
+                </div>
+                <!-- Slide 3: Neural shade matching calibration -->
+                <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                  <img src="./final-appstore-pink-4.jpg" alt="REMAKE App Shade Finder screen" class="w-full h-full object-cover">
+                </div>
+                <!-- Slide 4: Cosmetic formula duplicate finder -->
+                <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+                  <img src="./final-appstore-pink-5.jpg" alt="REMAKE App Dupe Finder screen" class="w-full h-full object-cover">
+                </div>
+              </div>
+            </div>
           </div>
         </div>  
       </div>  
@@ -1058,7 +1101,7 @@
     }
 
     // Intersect floating scan to interactive laboratory
-    function handleScanAlertClick() {
+    function handleScanNotificationClick() {
       playScannerBeep();
       const keys = ['rhode', 'char', 'fenty', 'laroche'];
       const target = keys[currentAlertIndex % keys.length];
@@ -1068,15 +1111,12 @@
       document.getElementById('interactive-lab').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Trigger handle click on the floating toaster alert
-    document.getElementById('liveScanAlert').addEventListener('click', handleScanAlertClick);
-
     // Interactive Widget UI: Shade Calibration Selector
     const shadeMappings = {
-      fair: { hex: "#F6E2D5", text: "Fair Undertone", percentage: "99.2% Match", recommended: "Rhode Gel Base #1 / Fenty Soft Matte 110", offset: "264 - (264 * 0.992)" },
-      light: { hex: "#E8C1A8", text: "Light Neutral", percentage: "98.7% Match", recommended: "Rhode Gel Base #2 / Fenty Soft Matte 150", offset: "264 - (264 * 0.987)" },
-      medium: { hex: "#C9956A", text: "Medium Warm Autumn", percentage: "99.4% Match", recommended: "Rhode Gel Base #3 / Fenty Soft Matte 240", offset: "264 - (264 * 0.994)" },
-      deep: { hex: "#8E5A3C", text: "Deep Espresso", percentage: "99.1% Match", recommended: "Rhode Gel Base #5 / Fenty Soft Matte 420", offset: "264 - (264 * 0.991)" }
+      fair: { hex: "#F6E2D5", text: "Fair Undertone", percentage: "99.2% Match", recommended: "Rhode Gel Base #1 / Fenty Soft Matte 110" },
+      light: { hex: "#E8C1A8", text: "Light Neutral", percentage: "98.7% Match", recommended: "Rhode Gel Base #2 / Fenty Soft Matte 150" },
+      medium: { hex: "#C9956A", text: "Medium Warm Autumn", percentage: "99.4% Match", recommended: "Rhode Gel Base #3 / Fenty Soft Matte 240" },
+      deep: { hex: "#8E5A3C", text: "Deep Espresso", percentage: "99.1% Match", recommended: "Rhode Gel Base #5 / Fenty Soft Matte 420" }
     };
 
     function calibrateShade(key, hexColor) {
@@ -1085,7 +1125,8 @@
 
       // Reset buttons
       document.querySelectorAll('[id^="tone-"]').forEach(btn => btn.style.transform = 'scale(1)');
-      document.getElementById('tone-' + key).style.transform = 'scale(1.15)';
+      const activeToneBtn = document.getElementById('tone-' + key);
+      if (activeToneBtn) activeToneBtn.style.transform = 'scale(1.15)';
 
       // update displays
       document.getElementById('matchDisplayHex').style.backgroundColor = hexColor;
@@ -1303,6 +1344,31 @@
 
       // Setup quote slide loop
       setInterval(cycleQuotes, 7000);
+
+      // Ultra-Realistic Hero App slideshow loop
+      let currentHeroSlide = 0;
+      const heroSlides = document.querySelectorAll('.hero-slide');
+      if (heroSlides.length > 0) {
+        setInterval(() => {
+          heroSlides[currentHeroSlide].classList.replace('opacity-100', 'opacity-0');
+          currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+          heroSlides[currentHeroSlide].classList.replace('opacity-0', 'opacity-100');
+          // Play a tiny, low-pitch beep when the screen swipes to simulate scrolling through cards
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(450, ctx.currentTime); // low pitch swipe tap
+            gain.gain.setValueAtTime(0.02, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.1);
+          } catch(e) {}
+        }, 3800);
+      }
 
       // Web3Forms Submit Handling (Extremely Robust)
       const handleFormSubmit = (form) => {
