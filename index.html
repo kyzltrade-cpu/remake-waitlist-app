@@ -329,6 +329,16 @@
       100% { box-shadow: 0 0 0 0 rgba(110,142,117, 0); }
     }
 
+    /* Elegant slow ping animation */
+    .animate-soft-ping {
+      animation: soft-ping-keyframes 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+    @keyframes soft-ping-keyframes {
+      0% { transform: scale(1); opacity: 0.8; }
+      80% { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
     /* Camera view video styles */
     #faceScanVideo {
       width: 100%; height: 100%; object-cover: cover;
@@ -454,7 +464,7 @@
                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/12 pointer-events-none z-30"></div>
 
                 <!-- Active laser line -->
-                <div class="scan-laser opacity-100 animate-pulse" style="animation-duration: 2.8s"></div>
+                <div class="scan-laser opacity-70"></div>
 
                 <!-- Raw screenshot image -->
                 <img src="./mockup-scanner-raw.jpg" alt="REMAKE Skincare Barcode Scanner raw screenshot inside premium shell" class="w-full h-full object-cover">
@@ -568,72 +578,40 @@
   <!-- AI Facial Scan Section -->
   <section id="facial-scan" class="py-24 px-6 bg-[#FFF9F7] border-b border-[#F5DDE3] relative overflow-hidden">
     <div class="glow-accent" style="top: 15%; left: 5%;"></div>
-    <div class="max-w-6xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+    <div class="max-w-4xl mx-auto relative z-10 text-center">
       
-      <!-- Left Column: Immersive Visual (Dynamic Scan Interface inside premium iPhone Shell) -->
-      <div class="flex-1 flex justify-center items-center relative py-4 order-2 lg:order-1">
-        <div class="relative w-[235px] h-[510px] md:w-[285px] md:h-[618px]">
-          <!-- Side Buttons -->
-          <div class="absolute top-[80px] -left-[3px] w-[3px] h-6 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
-          <div class="absolute top-[120px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
-          <div class="absolute top-[170px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
-          <div class="absolute top-[110px] -right-[3px] w-[3px] h-[50px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-r"></div>
-
-          <!-- Main Bezel Frame: Luxurious Brushed Natural Titanium -->
-          <div class="w-full h-full p-[3px] rounded-[2.6rem] md:rounded-[3.1rem] bg-gradient-to-tr from-[#8a8479] via-[#d6d2c4] to-[#a39e93] shadow-[0_30px_70px_rgba(42,36,33,0.38)] ring-1 ring-[#e5e0d4]/40">
-            <!-- Inner bezel: Slim deep-black bezel margin -->
-            <div class="w-full h-full p-[6px] md:p-[7px] rounded-[2.4rem] md:rounded-[2.9rem] bg-zinc-950 border border-zinc-900">
-              <!-- Screen Container -->
-              <div id="viewFullScanBtnPhone" class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex items-center justify-center cursor-pointer group">
-                <!-- Diagonal Screen Glare reflection -->
-                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/12 pointer-events-none z-30"></div>
-                
-                <!-- Actual App Analysis Screenshot -->
-                <img src="./beauty-profiler.jpg" alt="REMAKE Skincare Barcode Scanner actual analysis report inside premium shell" class="w-full h-full object-cover transition duration-500 group-hover:scale-[1.02]">
-              </div>
-            </div>
-          </div>
+      <span class="badge-luxury mb-6 mx-auto">SPECTRAL DERM MAPPING</span>
+      <h2 class="section-title text-3xl md:text-5xl mb-6">
+        The 3D AI Facial Scan.<br><span class="font-luxury text-elegant text-pink-solid">stopping breakout slop at first touch.</span>
+      </h2>
+      <p class="text-base text-[#7C726E] mb-12 font-light leading-relaxed max-w-2xl mx-auto">
+        Your skin is a complex ecosystem, not a static color card. Our advanced face scanning tech uses your iPhone's front-facing optics to construct a hyper-accurate, 3D bio-chemical skin mesh. We map cellular zones to help you prevent product matching disasters.
+      </p>
+      
+      <!-- 3-Column Luxury Features Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+        <div class="card-luxury p-6 bg-white/60">
+          <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold mb-4">1</div>
+          <h4 class="font-serif text-lg text-[#2A2421] mb-2">Micro-Pore Congestion</h4>
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed">We scan skin texture to pinpoint micro-comedones and active follicle blockage zones. We warn you about exactly which zones to protect from heavy cosmetic waxes.</p>
         </div>
-      </div>
-
-      <!-- Right Column: Strategic Selling Copy & Feature Details -->
-      <div class="flex-1 text-left order-1 lg:order-2">
-        <span class="badge-luxury mb-6">SPECTRAL DERM MAPPING</span>
-        <h2 class="section-title text-3xl md:text-5xl mb-6">
-          The 3D AI Facial Scan.<br><span class="font-luxury text-elegant text-pink-solid">stopping breakout slop at first touch.</span>
-        </h2>
-        <p class="text-base text-[#7C726E] mb-8 font-light leading-relaxed">
-          Your skin is a complex ecosystem, not a static color card. Our advanced face scanning tech uses your iPhone's front-facing optics to construct a hyper-accurate, 3D bio-chemical skin mesh. We map cellular zones to help you prevent product matching disasters.
-        </p>
         
-        <div class="space-y-6 mb-10">
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold flex-shrink-0">1</div>
-            <div>
-              <h4 class="font-serif text-lg text-[#2A2421] mb-1">Micro-Pore Congestion Mapping</h4>
-              <p class="text-sm text-[#7C726E] font-light">We scan skin texture to pinpoint micro-comedones and active follicle blockage zones. We warn you about exactly which zones to protect from heavy cosmetic waxes.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold flex-shrink-0">2</div>
-            <div>
-              <h4 class="font-serif text-lg text-[#2A2421] mb-1">Inflammatory Barrier Analysis</h4>
-              <p class="text-sm text-[#7C726E] font-light">Detects underlying redness, microscopic skin scratches, and allergic sensitivities before they flare up into painful breakouts.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold flex-shrink-0">3</div>
-            <div>
-              <h4 class="font-serif text-lg text-[#2A2421] mb-1">Precision Shade Calibration</h4>
-              <p class="text-sm text-[#7C726E] font-light">No more orange oxidation lines. We calibrate lighting variables to extract your exact skin hex code, matching it flawlessly against 5,000+ foundation databases.</p>
-            </div>
-          </div>
+        <div class="card-luxury p-6 bg-white/60">
+          <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold mb-4">2</div>
+          <h4 class="font-serif text-lg text-[#2A2421] mb-2">Barrier Redness Analysis</h4>
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed">Detects underlying redness, microscopic skin scratches, and allergic sensitivities before they flare up into painful breakouts.</p>
         </div>
-
-        <button id="viewFullScanBtnMain" class="btn-primary">
-          <span>See Full Analysis</span>
-        </button>
+        
+        <div class="card-luxury p-6 bg-white/60">
+          <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold mb-4">3</div>
+          <h4 class="font-serif text-lg text-[#2A2421] mb-2">Shade Calibration</h4>
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed">No more orange oxidation lines. We calibrate lighting variables to extract your exact skin hex code, matching it flawlessly against 5,000+ foundation databases.</p>
+        </div>
       </div>
+
+      <button id="viewFullScanBtnMain" class="btn-primary mx-auto">
+        <span>See Full Analysis</span>
+      </button>
 
     </div>
   </section>
@@ -813,7 +791,7 @@
                 <span class="text-[9px] text-[#6E8E75] font-semibold uppercase tracking-wider block mt-0.5">✓ Certified Clean-Safe Bestie</span>
               </div>
               <div class="relative w-16 h-16 flex items-center justify-center">
-                <div class="absolute inset-0 bg-[#6E8E75]/10 rounded-full animate-ping" style="animation-duration: 3s;"></div>
+                <div class="absolute inset-0 bg-[#6E8E75]/10 rounded-full animate-soft-ping"></div>
                 <div class="w-16 h-16 rounded-full border-4 border-[#6E8E75] bg-white flex items-center justify-center font-bold font-mono text-[#6E8E75] text-sm shadow-sm">94</div>
               </div>
             </div>
@@ -1764,7 +1742,7 @@
                 <span class="text-[9px] text-[#6E8E75] font-semibold uppercase tracking-wider block mt-0.5">✓ Certified Clean-Safe Bestie</span>
               </div>
               <div class="relative w-16 h-16 flex items-center justify-center">
-                <div class="absolute inset-0 bg-[#6E8E75]/10 rounded-full animate-ping" style="animation-duration: 3s;"></div>
+                <div class="absolute inset-0 bg-[#6E8E75]/10 rounded-full animate-soft-ping"></div>
                 <div class="w-16 h-16 rounded-full border-4 border-[#6E8E75] bg-white flex items-center justify-center font-bold font-mono text-[#6E8E75] text-sm shadow-sm">94</div>
               </div>
             </div>
