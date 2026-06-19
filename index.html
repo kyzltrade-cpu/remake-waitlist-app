@@ -546,23 +546,52 @@
       <!-- Bento Grid Layout -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
         
-        <!-- Bento Card 1: Wide (Shade matching) -->
+        <!-- Bento Card 1: Wide (Shade matching) WITH LIVE CALIBRATION WIDGET -->
         <div class="md:col-span-7 card-luxury p-8 md:p-10 flex flex-col justify-between">
           <div>
             <div class="text-[10px] tracking-widest uppercase text-[#B8ADA9] font-bold mb-3">01 / SPECTRAL SHADE CALIBRATION</div>
-            <h3 class="font-serif text-2xl md:text-3xl mb-4">Accurate Under-Tone Matching</h3>
-            <p class="text-sm text-[#7C726E] font-light leading-relaxed max-w-md">
-              We analyze your facial blood flow, melanin levels, and skin hex code against product swatch registers using professional ΔE values. Never look cakey, orange, or ghostly again.
+            <h3 class="font-serif text-2xl md:text-3xl mb-4">Live Calibration Matcher</h3>
+            <p class="text-xs text-[#7C726E] font-light leading-relaxed max-w-md mb-6">
+              Select a tone profile and undertone below to see how our engine calibrates skin hex codes and displays real recommended shade mappings instantly.
             </p>
           </div>
-          <div class="mt-8 p-4 rounded-2xl bg-[#FDF0EC] border border-[#F5DDE3] flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-full bg-[#C9956A] border border-white shadow-sm"></span>
-              <span class="text-xs uppercase tracking-widest text-[#7C726E] font-semibold">Your Skin Hex</span>
+          
+          <!-- Interactive Widget UI -->
+          <div class="bg-[#FDF0EC]/70 p-5 rounded-2xl border border-[#F5DDE3] mt-2">
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <!-- Select Tone -->
+              <div>
+                <span class="text-[9px] uppercase tracking-wider text-[#7C726E] font-bold block mb-2">1. Select Base Tone</span>
+                <div class="flex gap-2">
+                  <button onclick="calibrateShade('fair', '#F6E2D5')" id="tone-fair" class="w-6 h-6 rounded-full bg-[#F6E2D5] border-2 border-white shadow-sm hover:scale-110 transition ring-offset-2" title="Fair"></button>
+                  <button onclick="calibrateShade('light', '#E8C1A8')" id="tone-light" class="w-6 h-6 rounded-full bg-[#E8C1A8] border-2 border-white shadow-sm hover:scale-110 transition ring-offset-2" title="Light"></button>
+                  <button onclick="calibrateShade('medium', '#C9956A')" id="tone-medium" class="w-6 h-6 rounded-full bg-[#C9956A] border-2 border-[#D98A96] scale-110 shadow-sm hover:scale-110 transition ring-offset-2" title="Medium"></button>
+                  <button onclick="calibrateShade('deep', '#8E5A3C')" id="tone-deep" class="w-6 h-6 rounded-full bg-[#8E5A3C] border-2 border-white shadow-sm hover:scale-110 transition ring-offset-2" title="Deep"></button>
+                </div>
+              </div>
+              <!-- Select Undertone -->
+              <div>
+                <span class="text-[9px] uppercase tracking-wider text-[#7C726E] font-bold block mb-2">2. Select Undertone</span>
+                <div class="flex gap-1.5 bg-white p-1 rounded-lg border border-[#F5DDE3] text-[9px] font-semibold text-[#7C726E]">
+                  <button onclick="setUndertone('cool', 0.92)" id="under-cool" class="flex-1 py-1 rounded text-center transition">COOL</button>
+                  <button onclick="setUndertone('neutral', 0.99)" id="under-neutral" class="flex-1 py-1 rounded text-center transition bg-[#D98A96] text-white">NEUT</button>
+                  <button onclick="setUndertone('warm', 0.95)" id="under-warm" class="flex-1 py-1 rounded text-center transition">WARM</button>
+                </div>
+              </div>
             </div>
-            <span class="text-xs font-mono bg-white px-3 py-1 rounded-md border border-[#F5DDE3] text-[#2A2421]">#C9956A</span>
-            <div class="flex items-center gap-1.5 text-xs text-[#6E8E75] font-bold">
-              <span>99.4% Match</span>
+            
+            <div class="flex items-center justify-between pt-4 border-t border-[#F5DDE3]/60 text-xs">
+              <div class="flex items-center gap-2">
+                <span id="matchDisplayHex" class="w-5 h-5 rounded-full bg-[#C9956A] border border-white shadow-sm"></span>
+                <div>
+                  <span id="matchDisplayHexCode" class="font-mono text-[10px] text-[#2A2421] font-semibold block">#C9956A</span>
+                  <span class="text-[8px] uppercase tracking-wider text-[#7C726E] block font-light">Calibrated Ref</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span id="matchPercent" class="font-bold text-[#6E8E75] block">99.4% Match</span>
+                <span id="matchRecom" class="text-[9px] text-[#7C726E] font-light block">Fenty Soft Matte #240</span>
+              </div>
             </div>
           </div>
         </div>
@@ -588,24 +617,38 @@
           </div>
         </div>
 
-        <!-- Bento Card 3: Column left (Ethics/Allergens) -->
+        <!-- Bento Card 3: Wide Dupe Finder Widget -->
         <div class="md:col-span-5 card-luxury p-8 md:p-10 flex flex-col justify-between">
           <div>
             <div class="text-[10px] tracking-widest uppercase text-[#B8ADA9] font-bold mb-3">03 / TRACEABILITY</div>
-            <h3 class="font-serif text-2xl mb-4">Dupe Finder & Price Match</h3>
-            <p class="text-sm text-[#7C726E] font-light leading-relaxed">
-              Don't pay the Sephora tax. Compare ingredients side-by-side to find cheaper drugstore twins with identical active profiles and clean formulation standards.
+            <h3 class="font-serif text-2xl mb-4">Interactive Dupe Finder</h3>
+            <p class="text-xs text-[#7C726E] font-light leading-relaxed mb-6">
+              Click to toggle trending cosmetics and see exact verified drugstore twin formulations that save your wallet and skin.
             </p>
           </div>
-          <div class="mt-8 p-4 rounded-xl bg-white/40 border border-[#F5DDE3] flex justify-between items-center text-xs">
-            <div>
-              <span class="text-[#7C726E] font-light block">Luxury Foundation</span>
-              <span class="font-semibold text-red-500">$64.00</span>
+          
+          <!-- Dupe Widget UI -->
+          <div class="bg-white p-4 rounded-xl border border-[#F5DDE3] text-xs">
+            <div class="flex justify-between mb-3 bg-[#FFF5F2] p-1 rounded-lg border border-[#F5DDE3]">
+              <button onclick="switchDupe('filter')" id="btn-dupe-filter" class="flex-1 text-[9px] font-bold py-1 rounded bg-[#D98A96] text-white transition">GLOW FILTER</button>
+              <button onclick="switchDupe('lip')" id="btn-dupe-lip" class="flex-1 text-[9px] font-bold py-1 rounded text-[#7C726E] transition">LIP GLAZE</button>
+              <button onclick="switchDupe('wear')" id="btn-dupe-wear" class="flex-1 text-[9px] font-bold py-1 rounded text-[#7C726E] transition">MATTE BASE</button>
             </div>
-            <div class="text-xs text-[#7C726E] font-light">vs</div>
-            <div class="text-right">
-              <span class="text-[#6E8E75] font-semibold block">98% Twin Formula</span>
-              <span class="font-bold text-[#6E8E75]">$14.99</span>
+            
+            <div class="flex justify-between items-center py-2">
+              <div>
+                <span id="dupeLuxuryName" class="font-semibold text-[#2A2421] block">Charlotte Tilbury Filter</span>
+                <span class="text-[8px] text-[#7C726E] uppercase tracking-wider block font-light">Luxury Original</span>
+                <span class="font-mono text-red-500 font-bold block mt-0.5">$49.00</span>
+              </div>
+              <div class="text-center font-bold text-[#6E8E75] px-2 py-1 bg-emerald-50 rounded border border-emerald-100 text-[10px]" id="dupeMatchScore">
+                96% MATCH
+              </div>
+              <div class="text-right">
+                <span id="dupeDrugstoreName" class="font-semibold text-[#2A2421] block">e.l.f. Halo Glow</span>
+                <span class="text-[8px] text-[#7C726E] uppercase tracking-wider block font-light">Drugstore Twin</span>
+                <span class="font-mono text-[#6E8E75] font-bold block mt-0.5">$14.00</span>
+              </div>
             </div>
           </div>
         </div>
@@ -694,7 +737,7 @@
           <span class="btn-text">Protect My Skin</span>  
         </button>  
         <input type="text" name="_gotcha" style="display:none">  
-        <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
+        <input type="hidden" name="_subject" value="New REMAKE Waitlist Signup!">  
       </form>  
       <p class="form-status text-center hidden" style="color: rgba(255,255,255,0.9);"></p>  
         
@@ -920,6 +963,91 @@
     function clearIngredients() {
       document.getElementById('ingredientsInput').value = '';
       document.getElementById('analyzerOutput').classList.add('hidden');
+    }
+
+    // Interactive Shade Calibration Widget Logic
+    const shadeCalibrations = {
+      fair: { hex: "#F6E2D5", matches: { cool: "94% Match • Dior Glow 1C", neutral: "98% Match • Rhode Glaze #1", warm: "91% Match • Fenty Soft #110" } },
+      light: { hex: "#E8C1A8", matches: { cool: "92% Match • Armani Silk 2", neutral: "99% Match • Chanel Water 10", warm: "95% Match • Fenty Soft #150" } },
+      medium: { hex: "#C9956A", matches: { cool: "93% Match • Dior Glow 3C", neutral: "99.4% Match • Fenty Soft #240", warm: "96% Match • Rhode Glaze #3" } },
+      deep: { hex: "#8E5A3C", matches: { cool: "91% Match • Dior Glow 6C", neutral: "98% Match • Fenty Soft #420", warm: "94% Match • Chanel Water 40" } }
+    };
+    let currentTone = 'medium';
+    let currentUndertone = 'neutral';
+
+    function calibrateShade(tone, hex) {
+      currentTone = tone;
+      // Style buttons
+      ['fair', 'light', 'medium', 'deep'].forEach(t => {
+        const btn = document.getElementById('tone-' + t);
+        if (t === tone) {
+          btn.style.borderColor = "var(--rhode-pink-rich)";
+          btn.style.transform = "scale(1.15)";
+        } else {
+          btn.style.borderColor = "white";
+          btn.style.transform = "scale(1.0)";
+        }
+      });
+      updateCalibrationResult();
+    }
+
+    function setUndertone(under) {
+      currentUndertone = under;
+      // Style buttons
+      ['cool', 'neutral', 'warm'].forEach(u => {
+        const btn = document.getElementById('under-' + u);
+        if (u === under) {
+          btn.className = "flex-1 py-1 rounded text-center transition bg-[#D98A96] text-white";
+        } else {
+          btn.className = "flex-1 py-1 rounded text-center transition";
+        }
+      });
+      updateCalibrationResult();
+    }
+
+    function updateCalibrationResult() {
+      const matchHexDisplay = document.getElementById('matchDisplayHex');
+      const matchHexCode = document.getElementById('matchDisplayHexCode');
+      const matchPercent = document.getElementById('matchPercent');
+      const matchRecom = document.getElementById('matchRecom');
+      
+      const config = shadeCalibrations[currentTone];
+      const detail = config.matches[currentUndertone];
+      const matchText = detail.split(' • ')[0];
+      const productText = detail.split(' • ')[1];
+      
+      matchHexDisplay.style.backgroundColor = config.hex;
+      matchHexCode.textContent = config.hex.toUpperCase();
+      matchPercent.textContent = matchText;
+      matchRecom.textContent = productText;
+    }
+
+    // Interactive Dupe Finder Logic
+    const dupeData = {
+      filter: { luxury: "Charlotte Tilbury Filter", drug: "e.l.f. Halo Glow", luxPrice: "$49.00", drugPrice: "$14.00", match: "96% MATCH" },
+      lip: { luxury: "Rhode Lip Treatment", drug: "Laneige Glowy Balm", luxPrice: "$16.00", drugPrice: "$19.00", match: "91% MATCH" },
+      wear: { luxury: "Estée Lauder Double Wear", drug: "L'Oreal Infallible 24H", luxPrice: "$49.00", drugPrice: "$16.00", match: "94% MATCH" }
+    };
+
+    function switchDupe(key) {
+      ['filter', 'lip', 'wear'].forEach(k => {
+        const btn = document.getElementById('btn-dupe-' + k);
+        if (k === key) {
+          btn.className = "flex-1 text-[9px] font-bold py-1 rounded bg-[#D98A96] text-white transition";
+        } else {
+          btn.className = "flex-1 text-[9px] font-bold py-1 rounded text-[#7C726E] transition";
+        }
+      });
+      
+      const data = dupeData[key];
+      document.getElementById('dupeLuxuryName').textContent = data.luxury;
+      document.getElementById('dupeDrugstoreName').textContent = data.drug;
+      document.getElementById('dupeMatchScore').textContent = data.match;
+      
+      const luxPriceEl = document.querySelector('#dupeLuxuryName ~ .font-mono');
+      const drugPriceEl = document.querySelector('#dupeDrugstoreName ~ .font-mono');
+      if (luxPriceEl) luxPriceEl.textContent = data.luxPrice;
+      if (drugPriceEl) drugPriceEl.textContent = data.drugPrice;
     }
 
     // Real-Time Floating Recent Scan Alerts (Simulate Live Global Action)
