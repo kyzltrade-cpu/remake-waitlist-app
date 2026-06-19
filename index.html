@@ -563,41 +563,7 @@
     </div>
   </section>
 
-  <!-- Live Ingredient Risk Analyzer Tool (Anti-Slop Utility) -->
-  <section class="py-24 px-6 bg-[#FDF0EC] border-b border-[#F5DDE3] relative overflow-hidden">
-    <div class="glow-accent" style="bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(253,168,189,0.12) 0%, transparent 70%);"></div>
-    <div class="max-w-3xl mx-auto relative z-10 text-center">
-      <span class="badge-luxury mb-4">Bio-chemical Engine</span>
-      <h2 class="section-title text-3xl md:text-5xl mb-4">Paste Your Ingredient List</h2>
-      <p class="text-[#7C726E] font-light max-w-lg mx-auto mb-12">Copy any ingredient label from Sephora, Ulta, or a bottle in your bathroom, and paste it below to run a direct client-side analysis.</p>
 
-      <div class="card-luxury p-6 md:p-8 text-left max-w-2xl mx-auto">
-        <label for="ingredientsInput" class="block text-xs uppercase tracking-widest text-[#7C726E] font-semibold mb-3">Copy-Paste Ingredients (INCI string):</label>
-        <textarea id="ingredientsInput" rows="5" class="w-full p-4 border border-[#F5DDE3] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#D98A96] bg-[#FFF9F7] text-sm text-[#2A2421] font-light leading-relaxed placeholder:italic" placeholder="Paste ingredients here... e.g., Water, Glycerin, Ethylhexyl Palmitate, Isopropyl Myristate, Coconut Oil, Benzyl Alcohol...">Water, Ethylhexyl Palmitate, Cocos Nucifera (Coconut) Oil, Isopropyl Myristate, Algae Extract, Cetearyl Alcohol, Glycerin, Phenoxyethanol, Parfum (Fragrance)</textarea>
-        
-        <div class="flex justify-between items-center mt-4">
-          <button onclick="clearIngredients()" class="text-xs text-[#7C726E] hover:text-[#2A2421] transition hover:underline">Clear list</button>
-          <button onclick="analyzeIngredients()" class="btn-primary py-3 px-8 text-xs">Expose The Formula</button>
-        </div>
-
-        <!-- Analyzer output panel -->
-        <div id="analyzerOutput" class="mt-8 pt-6 border-t border-[#F5DDE3] hidden">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#C96F6F]" id="analyzerPulse"></span>
-            <h4 class="font-serif text-lg text-[#2A2421]" id="analyzerHeader">Scan Complete: 3 Hazards Exposed</h4>
-          </div>
-          
-          <div id="analyzerHazardsList" class="space-y-3">
-            <!-- Dynamically populated danger rows -->
-          </div>
-
-          <div class="mt-6 p-4 rounded-xl bg-[#FFF5F2] border border-[#F5DDE3] text-xs text-[#7C726E] leading-relaxed" id="analyzerSummaryText">
-            ⚠ WARNING: This formula contains high comedogenic hazard components. Avoid if you are prone to persistent cystic breakouts.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- AI Facial Scan Section -->
   <section id="facial-scan" class="py-24 px-6 bg-[#FFF9F7] border-b border-[#F5DDE3] relative overflow-hidden">
