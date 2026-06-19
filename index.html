@@ -344,9 +344,11 @@
         <img src="./logo.png" alt="REMAKE Logo" class="mix-blend-multiply">  
         <span class="logo-text">REMAKE</span>  
       </a>  
-      <nav class="hidden md:flex items-center gap-10">  
-        <a href="#features" class="nav-link transition">The Tech</a>  
-        <a href="#interactive-lab" class="nav-link transition">Live Test Lab</a>  
+      <nav class="hidden lg:flex items-center gap-8">  
+        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+        <a href="#comparison" class="nav-link transition">Compare</a>  
+        <a href="#wrapped" class="nav-link transition">Beauty Wrapped™</a>  
         <a href="#faq" class="nav-link transition">FAQ</a>  
       </nav>  
       <button id="header-cta" class="btn-primary px-4 py-2 text-[10px] md:px-6 md:py-2.5 md:text-xs">Get Early Access</button>  
@@ -593,6 +595,132 @@
     </div>
   </section>
 
+  <!-- AI Facial Scan Section -->
+  <section id="facial-scan" class="py-24 px-6 bg-[#FFF9F7] border-b border-[#F5DDE3] relative overflow-hidden">
+    <div class="glow-accent" style="top: 15%; left: 5%;"></div>
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+      
+      <!-- Left Column: Immersive Visual (Dynamic Scan Interface inside premium iPhone Shell) -->
+      <div class="flex-1 flex justify-center items-center relative py-4 order-2 lg:order-1">
+        <div class="relative w-[235px] md:w-[285px] aspect-[9/19.5]">
+          <!-- Side Buttons -->
+          <div class="absolute top-[80px] -left-[3px] w-[3px] h-6 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
+          <div class="absolute top-[120px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
+          <div class="absolute top-[170px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l"></div>
+          <div class="absolute top-[110px] -right-[3px] w-[3px] h-[50px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-r"></div>
+
+          <!-- Main Bezel Frame -->
+          <div class="w-full h-full p-[3px] rounded-[2.6rem] md:rounded-[3.1rem] bg-gradient-to-b from-zinc-600 via-zinc-800 to-zinc-950 shadow-[0_30px_70px_rgba(42,36,33,0.38)] ring-1 ring-zinc-500/20">
+            <div class="w-full h-full p-[8px] md:p-[9px] rounded-[2.4rem] md:rounded-[2.9rem] bg-zinc-900 border border-zinc-950">
+              <!-- Screen Container -->
+              <div class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex flex-col justify-between p-4 pt-10 text-white">
+                <!-- Status Bar Overlay -->
+                <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-[35%] h-[15px] bg-black rounded-b-xl z-50"></div>
+                
+                <!-- Scanner interface header -->
+                <div class="text-center mt-2">
+                  <div class="text-[9px] uppercase tracking-widest text-[#FDA8BD] font-semibold">REMAKE SENSOR v2.0</div>
+                  <div class="text-[12px] font-bold font-serif text-white">Skin Map Calibration</div>
+                </div>
+
+                <!-- Circular Scanner Grid with face outline -->
+                <div class="relative w-full aspect-square flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-zinc-950 border border-zinc-800/80">
+                  <div class="scan-laser opacity-100" style="animation-duration: 2s;"></div>
+                  
+                  <!-- Face contour SVG overlay -->
+                  <svg class="absolute w-[80%] h-[80%] opacity-45 stroke-[#FDA8BD]" viewBox="0 0 100 100" fill="none">
+                    <path d="M50,15 C30,15 25,40 25,60 C25,80 38,90 50,90 C62,90 75,80 75,60 C75,40 70,15 50,15 Z" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    <path d="M40,45 C40,45 43,40 46,45" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M54,45 C54,45 57,40 60,45" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M45,62 C45,62 50,68 55,62" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+
+                  <!-- Pulsing node points on the face -->
+                  <div class="absolute top-[35%] left-[30%] w-2 h-2 rounded-full bg-[#FDA8BD] animate-ping"></div>
+                  <div class="absolute top-[35%] left-[30%] w-1.5 h-1.5 rounded-full bg-[#FDA8BD]"></div>
+                  
+                  <div class="absolute top-[35%] right-[30%] w-2 h-2 rounded-full bg-[#FDA8BD] animate-ping" style="animation-delay: 0.5s;"></div>
+                  <div class="absolute top-[35%] right-[30%] w-1.5 h-1.5 rounded-full bg-[#FDA8BD]"></div>
+
+                  <div class="absolute top-[55%] left-[48%] w-2 h-2 rounded-full bg-emerald-400 animate-ping" style="animation-delay: 0.8s;"></div>
+                  <div class="absolute top-[55%] left-[48%] w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
+
+                  <div class="absolute top-[70%] left-[35%] w-2 h-2 rounded-full bg-red-400 animate-ping" style="animation-delay: 0.3s;"></div>
+                  <div class="absolute top-[70%] left-[35%] w-1.5 h-1.5 rounded-full bg-red-400" title="Pore clog alert zone"></div>
+
+                  <div class="absolute top-[70%] right-[35%] w-2 h-2 rounded-full bg-[#FDA8BD] animate-ping" style="animation-delay: 0.6s;"></div>
+                  <div class="absolute top-[70%] right-[35%] w-1.5 h-1.5 rounded-full bg-[#FDA8BD]"></div>
+
+                  <!-- Face Scanner stats overlays -->
+                  <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-zinc-900/80 text-[7px] font-mono border border-zinc-800 text-[#FDA8BD] uppercase">ISO 800</div>
+                  <div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-zinc-900/80 text-[7px] font-mono border border-zinc-800 text-emerald-400 uppercase">99.4% CAPTURE</div>
+                </div>
+
+                <!-- Scanner report details -->
+                <div class="space-y-1.5 mb-2 bg-zinc-950/80 p-2.5 rounded-xl border border-zinc-800/80">
+                  <div class="flex justify-between items-center text-[8px] font-mono text-zinc-400">
+                    <span>SEBUM LEVELS:</span>
+                    <span class="text-amber-400 font-bold">ZONE A DRY, ZONE T OILY</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[8px] font-mono text-zinc-400">
+                    <span>BARRIER REDNESS:</span>
+                    <span class="text-red-400 font-bold">14% INFLAMMATORY RISK</span>
+                  </div>
+                  <div class="flex justify-between items-center text-[8px] font-mono text-zinc-400">
+                    <span>EXACT SKIN HEX CODE:</span>
+                    <span class="text-emerald-400 font-bold">#C9956A</span>
+                  </div>
+                </div>
+
+                <div class="text-[8px] text-center text-zinc-500 font-light mt-1">REMAKE CLINICAL DIAGNOSTICS DEPT.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Strategic Selling Copy & Feature Details -->
+      <div class="flex-1 text-left order-1 lg:order-2">
+        <span class="badge-luxury mb-6">SPECTRAL DERM MAPPING</span>
+        <h2 class="section-title text-3xl md:text-5xl mb-6">
+          The 3D AI Facial Scan.<br><span class="font-luxury text-elegant text-pink-solid">stopping breakout slop at first touch.</span>
+        </h2>
+        <p class="text-base text-[#7C726E] mb-8 font-light leading-relaxed">
+          Your skin is a complex ecosystem, not a static color card. Our advanced face scanning tech uses your iPhone's front-facing optics to construct a hyper-accurate, 3D bio-chemical skin mesh. We map cellular zones to help you prevent product matching disasters.
+        </p>
+        
+        <div class="space-y-6 mb-10">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold flex-shrink-0">1</div>
+            <div>
+              <h4 class="font-serif text-lg text-[#2A2421] mb-1">Micro-Pore Congestion Mapping</h4>
+              <p class="text-sm text-[#7C726E] font-light">We scan skin texture to pinpoint micro-comedones and active follicle blockage zones. We warn you about exactly which zones to protect from heavy cosmetic waxes.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold flex-shrink-0">2</div>
+            <div>
+              <h4 class="font-serif text-lg text-[#2A2421] mb-1">Inflammatory Barrier Analysis</h4>
+              <p class="text-sm text-[#7C726E] font-light">Detects underlying redness, microscopic skin scratches, and allergic sensitivities before they flare up into painful breakouts.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-bold flex-shrink-0">3</div>
+            <div>
+              <h4 class="font-serif text-lg text-[#2A2421] mb-1">Precision Shade Calibration</h4>
+              <p class="text-sm text-[#7C726E] font-light">No more orange oxidation lines. We calibrate lighting variables to extract your exact skin hex code, matching it flawlessly against 5,000+ foundation databases.</p>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="document.getElementById('interactive-lab').scrollIntoView({ behavior: 'smooth' })" class="btn-primary">
+          <span>Try AI Scanner Demo</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Bento Features Grid (Editorial-Grade Layout) -->
   <section id="features" class="py-24 px-6 bg-[#FFF9F7] border-b border-[#F5DDE3] relative overflow-hidden">  
     <div class="max-w-6xl mx-auto relative z-10">  
@@ -754,6 +882,116 @@
     </div>  
   </section>
 
+  <!-- Side-by-Side Product Comparison Section -->
+  <section id="comparison" class="py-24 px-6 bg-[#FDF0EC] border-b border-[#F5DDE3] relative overflow-hidden">
+    <div class="glow-accent" style="bottom: -15%; right: 5%; background: radial-gradient(circle, rgba(253,168,189,0.12) 0%, transparent 70%);"></div>
+    <div class="max-w-5xl mx-auto relative z-10 text-center">
+      <span class="badge-luxury mb-4">Chemical Faceoff</span>
+      <h2 class="section-title text-3xl md:text-5xl mb-4">Expose The Formula Difference</h2>
+      <p class="text-[#7C726E] font-light max-w-lg mx-auto mb-16">Compare trending cosmetics side-by-side. See exactly why one bottle ruins your skin barrier while its counterpart keeps you safe.</p>
+
+      <!-- Matchup Selector Toggles -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button onclick="switchComparisonMatchup('filter')" id="comp-btn-filter" class="px-5 py-2.5 text-xs font-bold rounded-full border-2 border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105">GLOW FILTER BATTLE</button>
+        <button onclick="switchComparisonMatchup('bronzer')" id="comp-btn-bronzer" class="px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">MILK BRONZER BATTLE</button>
+        <button onclick="switchComparisonMatchup('lip')" id="comp-btn-lip" class="px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">PEPTIDE LIP BATTLE</button>
+      </div>
+
+      <!-- Comparison Grid Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto text-left">
+        
+        <!-- Left Product: The Toxic/Hazardous One -->
+        <div class="card-luxury p-8 border-red-200 bg-red-50/25 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-[9px] text-red-500 font-bold uppercase tracking-widest block mb-1">❌ NOT ACNE SAFE</span>
+                <h3 id="compLuxName" class="font-serif text-2xl text-[#2A2421]">Charlotte Tilbury</h3>
+                <p id="compLuxProduct" class="text-xs text-[#7C726E] font-light">Hollywood Flawless Filter</p>
+              </div>
+              <div class="text-right">
+                <span id="compLuxScore" class="text-3xl font-serif text-red-500 block">38</span>
+                <span class="text-[8px] uppercase text-[#7C726E] tracking-wider font-light">Score</span>
+              </div>
+            </div>
+            
+            <p id="compLuxPrice" class="font-mono text-sm text-red-500 font-bold mb-4">$49.00 • High Markup</p>
+            <div class="divider-elegant !my-3"></div>
+
+            <!-- Detailed Chemical breakdown -->
+            <div class="space-y-3.5 my-6 text-xs">
+              <div class="flex justify-between py-1 border-b border-red-100/50">
+                <span class="text-[#7C726E]">Primary Carrier:</span>
+                <span id="compLuxCarrier" class="font-medium text-red-600">Ethylhexyl Palmitate</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-red-100/50">
+                <span class="text-[#7C726E]">Comedogenic Rating:</span>
+                <span id="compLuxRating" class="font-bold text-red-600">4/5 (Extreme Clog Risk)</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-red-100/50">
+                <span class="text-[#7C726E]">Key Allergens:</span>
+                <span id="compLuxAllergens" class="font-medium text-red-600">Bismuth Oxychloride</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-red-100/50">
+                <span class="text-[#7C726E]">Endocrine Disruptors:</span>
+                <span id="compLuxEndo" class="font-medium text-[#7C726E]">Trace synthetic preservatives</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-red-100/40 border border-red-100 text-xs text-red-800 font-light mt-4">
+            <p id="compLuxVerdict">⚠ **Verdict:** Contains heavy comedogenic waxes and irritants that seal dead skin cells. Guaranteed breakout trigger for sensitive/acne-prone skin besties.</p>
+          </div>
+        </div>
+
+        <!-- Right Product: The Clean/Safe Alternative -->
+        <div class="card-luxury p-8 border-emerald-200 bg-emerald-50/25 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-[9px] text-[#6E8E75] font-bold uppercase tracking-widest block mb-1">✓ 100% ACNE SAFE</span>
+                <h3 id="compSafeName" class="font-serif text-2xl text-[#2A2421]">e.l.f. Cosmetics</h3>
+                <p id="compSafeProduct" class="text-xs text-[#7C726E] font-light">Halo Glow Liquid Filter</p>
+              </div>
+              <div class="text-right">
+                <span id="compSafeScore" class="text-3xl font-serif text-[#6E8E75] block">96</span>
+                <span class="text-[8px] uppercase text-[#7C726E] tracking-wider font-light">Score</span>
+              </div>
+            </div>
+            
+            <p id="compSafePrice" class="font-mono text-sm text-[#6E8E75] font-bold mb-4">$14.00 • High Value</p>
+            <div class="divider-elegant !my-3"></div>
+
+            <!-- Detailed Chemical breakdown -->
+            <div class="space-y-3.5 my-6 text-xs">
+              <div class="flex justify-between py-1 border-b border-emerald-100/50">
+                <span class="text-[#7C726E]">Primary Carrier:</span>
+                <span id="compSafeCarrier" class="font-medium text-[#6E8E75]">Squalane, Glycerin</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-emerald-100/50">
+                <span class="text-[#7C726E]">Comedogenic Rating:</span>
+                <span id="compSafeRating" class="font-bold text-[#6E8E75]">0/5 (Non-comedogenic)</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-emerald-100/50">
+                <span class="text-[#7C726E]">Key Allergens:</span>
+                <span id="compSafeAllergens" class="font-medium text-[#6E8E75]">None (Fragrance-Free)</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-emerald-100/50">
+                <span class="text-[#7C726E]">Endocrine Disruptors:</span>
+                <span id="compSafeEndo" class="font-medium text-[#6E8E75]">0 (Clean verified)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-100/40 border border-emerald-100 text-xs text-emerald-800 font-light mt-4">
+            <p id="compSafeVerdict">✓ **Verdict:** Extremely clean, light texture base that respects your skin lipid barrier. Hydrates with squalane and delivers identical luxury glow safely.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Social Proof & Live Metrics -->  
   <section class="py-24 px-6 bg-[#FDF0EC] border-b border-[#F5DDE3] relative overflow-hidden">  
     <div class="glow-accent" style="top: 20%; right: 10%;"></div>  
@@ -787,6 +1025,96 @@
         </div>  
       </div>  
     </div>  
+  </section>
+
+  <!-- Beauty Wrapped™ Viral Feature Section -->
+  <section id="wrapped" class="py-24 px-6 bg-[#D98A96] text-[#FFF9F7] relative overflow-hidden border-b border-[#F5DDE3]">
+    <div class="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.4),transparent_60%)]"></div>
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+      
+      <!-- Left Column: Copy & Viral Concept Explanatory -->
+      <div class="flex-1 text-left">
+        <span class="badge-luxury bg-white/20 text-white border-white/30 mb-6">VIRAL WRAPPED INSIGHTS</span>
+        <h2 class="hero-title text-4xl md:text-5xl mb-6">
+          Meet Beauty Wrapped™.<br><span class="font-luxury text-elegant text-zinc-900">your cosmetic year in review.</span>
+        </h2>
+        <p class="text-white/80 mb-8 font-light leading-relaxed">
+          Like Spotify Wrapped but for your skin. REMAKE tracks every scan, product added, and chemical avoided to deliver a stunning, shareable aesthetic card that dissects your makeup habits. Check your clean-safe ratios and brag about dodging toxic formulas.
+        </p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 text-white">
+          <div class="p-4 rounded-xl bg-white/10 border border-white/20">
+            <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-white">✨ Toxic Tally Dodge</h4>
+            <p class="text-xs text-white/70 font-light">See a precise tally of bad chemical fillers, heavy esters, and endocrine disruptors you successfully avoided buying this year.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white/10 border border-white/20">
+            <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-white">🎨 Aesthetic Signature</h4>
+            <p class="text-xs text-white/70 font-light">We identify your visual archetype (e.g., "Glazed Canvas", "Dark Feminine") based on your scanned cosmetics profile.</p>
+          </div>
+        </div>
+
+        <button onclick="document.getElementById('header-cta').click()" class="btn-primary !bg-[#2A2421] !text-white !border-[#2A2421] hover:!bg-white hover:!text-[#D98A96] hover:!border-white">
+          <span>Get Your Wrapped Preview</span>
+        </button>
+      </div>
+
+      <!-- Right Column: Premium Infographic Interactive Card Layout (Ultra Realistic, Non-Slop) -->
+      <div class="flex-1 w-full max-w-md mx-auto relative py-4">
+        <div class="card-luxury p-8 !bg-[#FFF9F7] border-[#F5DDE3] text-[#2A2421] shadow-2xl relative overflow-hidden rounded-[1.8rem]">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-[#FDA8BD]/20 rounded-full filter blur-xl"></div>
+          
+          <!-- Wrapped Header -->
+          <div class="flex justify-between items-center mb-6">
+            <div>
+              <span class="text-[9px] uppercase tracking-widest text-[#D98A96] font-bold block">BEAUTY WRAPPED • 2026</span>
+              <span class="text-xl font-serif font-normal text-[#2A2421]">My Skin Diary</span>
+            </div>
+            <img src="./logo.png" alt="REMAKE" class="h-8 w-auto rounded-lg shadow-sm mix-blend-multiply">
+          </div>
+
+          <!-- Major Metric Ring/Stat -->
+          <div class="bg-[#FDF0EC] p-5 rounded-2xl border border-[#F5DDE3] mb-6 flex items-center justify-between">
+            <div>
+              <span class="text-[9px] text-[#7C726E] uppercase font-bold tracking-widest block">Skin safety rating</span>
+              <span class="text-4xl font-serif text-[#6E8E75] block mt-1">94%</span>
+              <span class="text-[9px] text-[#6E8E75] font-semibold uppercase tracking-wider block mt-0.5">✓ Certified Clean-Safe Bestie</span>
+            </div>
+            <div class="w-16 h-16 rounded-full border-4 border-[#6E8E75] flex items-center justify-center font-bold font-mono text-[#6E8E75] text-sm">
+              94
+            </div>
+          </div>
+
+          <!-- Wrapped detailed metrics -->
+          <div class="space-y-4 mb-8">
+            <div class="flex justify-between items-center text-xs border-b border-[#F5DDE3] pb-2.5">
+              <span class="text-[#7C726E]">Total formulas analyzed:</span>
+              <span class="font-bold text-[#2A2421]">142 products</span>
+            </div>
+            <div class="flex justify-between items-center text-xs border-b border-[#F5DDE3] pb-2.5">
+              <span class="text-[#7C726E]">Pore cloggers avoided:</span>
+              <span class="font-bold text-red-500">23 major breakouters</span>
+            </div>
+            <div class="flex justify-between items-center text-xs border-b border-[#F5DDE3] pb-2.5">
+              <span class="text-[#7C726E]">Signature Aesthetic:</span>
+              <span class="font-bold text-[#D98A96] uppercase tracking-wider">Glazed Canvas era</span>
+            </div>
+            <div class="flex justify-between items-center text-xs pb-1">
+              <span class="text-[#7C726E]">Favorite brand:</span>
+              <span class="font-bold text-[#2A2421]">Rhode Skin (4 scans)</span>
+            </div>
+          </div>
+
+          <!-- Share button simulated -->
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2 bg-[#D98A96] text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md hover:scale-[1.02] transition cursor-pointer">
+              <span>📲 SHARE TO INSTAGRAM STORIES</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!-- Luxurious FAQ Accordion -->
@@ -1213,6 +1541,107 @@
       const drugPriceEl = document.querySelector('#dupeDrugstoreName ~ .font-mono');
       if (luxPriceEl) luxPriceEl.textContent = data.luxPrice;
       if (drugPriceEl) drugPriceEl.textContent = data.drugPrice;
+    }
+
+    // Interactive Side-by-Side Comparison Feature Logic
+    const comparisonData = {
+      filter: {
+        luxName: "Charlotte Tilbury",
+        luxProduct: "Hollywood Flawless Filter",
+        luxScore: 38,
+        luxPrice: "$49.00 • High Markup",
+        luxCarrier: "Ethylhexyl Palmitate",
+        luxRating: "4/5 (Extreme Clog Risk)",
+        luxAllergens: "Bismuth Oxychloride",
+        luxEndo: "Trace synthetic preservatives",
+        luxVerdict: "⚠ **Verdict:** Contains heavy comedogenic waxes and irritants that seal dead skin cells. Guaranteed breakout trigger for sensitive/acne-prone skin besties.",
+        safeName: "e.l.f. Cosmetics",
+        safeProduct: "Halo Glow Liquid Filter",
+        safeScore: 96,
+        safePrice: "$14.00 • High Value",
+        safeCarrier: "Squalane, Glycerin",
+        safeRating: "0/5 (Non-comedogenic)",
+        safeAllergens: "None (Fragrance-Free)",
+        safeEndo: "0 (Clean verified)",
+        safeVerdict: "✓ **Verdict:** Extremely clean, light texture base that respects your skin lipid barrier. Hydrates with squalane and delivers identical luxury glow safely."
+      },
+      bronzer: {
+        luxName: "Milk Makeup",
+        luxProduct: "Matte Cream Bronzer",
+        luxScore: 45,
+        luxPrice: "$24.00 • Heavy Formula",
+        luxCarrier: "Cocos Nucifera (Coconut) Oil",
+        luxRating: "4/5 (High Clog Risk)",
+        luxAllergens: "Synthetic Fragrance",
+        luxEndo: "None detected",
+        luxVerdict: "⚠ **Verdict:** Formulated with raw coconut oil as a primary carrier. Forms an occlusive barrier that is a certified nightmare for pore congestion.",
+        safeName: "Merit Beauty",
+        safeProduct: "Bronze Balm Sheer Bronzer",
+        safeScore: 94,
+        safePrice: "$30.00 • Premium Clean",
+        safeCarrier: "Microcrystalline Wax, Octyldodecanol",
+        safeRating: "0/5 (Acne-Safe)",
+        safeAllergens: "Fragrance-Free",
+        safeEndo: "0 (Clean verified)",
+        safeVerdict: "✓ **Verdict:** Ultra-sheer, buttery balm that melts into the skin without triggering blemishes. Dermatologist-tested and completely acne-safe."
+      },
+      lip: {
+        luxName: "Laneige",
+        luxProduct: "Lip Glowy Balm",
+        luxScore: 55,
+        luxPrice: "$19.00 • Heavy Gloss",
+        luxCarrier: "Hydrogenated Polyisobutene, Petrolatum",
+        luxRating: "3/5 (Moderate Clog Risk)",
+        luxAllergens: "Artificial Berry Flavors, BHT",
+        luxEndo: "BHT preservative (Allergen)",
+        luxVerdict: "⚠ **Verdict:** While intensely hydrating, BHT and artificial fragrances can cause chronic lip border irritation, chapping, and micro-comedones around the mouth.",
+        safeName: "Rhode Skin",
+        safeProduct: "Peptide Lip Treatment",
+        safeScore: 94,
+        safePrice: "$16.00 • Viral Favorite",
+        safeCarrier: "Shea Butter, Peptides, Cupuacu",
+        safeRating: "0/5 (Non-comedogenic)",
+        safeAllergens: "Fragrance-Free / Natural",
+        safeEndo: "0 (Clean verified)",
+        safeVerdict: "✓ **Verdict:** Nutrient-rich formula that naturally plumps and restores the barrier. Absolutely zero pore cloggers or harsh synthetic preservatives."
+      }
+    };
+
+    function switchComparisonMatchup(key) {
+      playScannerBeep();
+      ['filter', 'bronzer', 'lip'].forEach(k => {
+        const btn = document.getElementById('comp-btn-' + k);
+        if (k === key) {
+          btn.className = "px-5 py-2.5 text-xs font-bold rounded-full border-2 border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105";
+        } else {
+          btn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105";
+        }
+      });
+
+      const data = comparisonData[key];
+      if (!data) return;
+
+      // Update Lux side
+      document.getElementById('compLuxName').textContent = data.luxName;
+      document.getElementById('compLuxProduct').textContent = data.luxProduct;
+      document.getElementById('compLuxScore').textContent = data.luxScore;
+      document.getElementById('compLuxPrice').textContent = data.luxPrice;
+      document.getElementById('compLuxCarrier').textContent = data.luxCarrier;
+      document.getElementById('compLuxRating').textContent = data.luxRating;
+      document.getElementById('compLuxAllergens').textContent = data.luxAllergens;
+      document.getElementById('compLuxEndo').textContent = data.luxEndo;
+      document.getElementById('compLuxVerdict').innerHTML = data.luxVerdict;
+
+      // Update Safe side
+      document.getElementById('compSafeName').textContent = data.compSafeName || data.safeName;
+      document.getElementById('compSafeProduct').textContent = data.compSafeProduct || data.safeProduct;
+      document.getElementById('compSafeScore').textContent = data.compSafeScore || data.safeScore;
+      document.getElementById('compSafePrice').textContent = data.compSafePrice || data.safePrice;
+      document.getElementById('compSafeCarrier').textContent = data.compSafeCarrier || data.safeCarrier;
+      document.getElementById('compSafeRating').textContent = data.compSafeRating || data.safeRating;
+      document.getElementById('compSafeAllergens').textContent = data.compSafeAllergens || data.safeAllergens;
+      document.getElementById('compSafeEndo').textContent = data.compSafeEndo || data.safeEndo;
+      document.getElementById('compSafeVerdict').innerHTML = data.compSafeVerdict || data.safeVerdict;
     }
 
     // Beauty Profiler Archetypes Data Logic
