@@ -826,8 +826,6 @@
           
         </div>
       </div>
-      </div>
-
     </div>
   </section>
 
@@ -944,107 +942,92 @@
     </div>  
   </footer>
 
-  <!-- Full Scan Modal - COMPLETE PRODUCT ANALYSIS PILLARS -->  
+  <!-- Full Scan Modal - 3D AI FACIAL SCAN SKIN REPORT & MAKEUP FEEDBACK -->  
   <div id="scanModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="scan-title">  
     <div class="modal-content card-luxury p-8 md:p-10 !bg-[#FFF9F7]">  
       <div class="flex items-center justify-between mb-4 border-b border-[#F5DDE3] pb-4">  
         <div>  
-          <h3 id="scan-title" class="section-title text-2xl md:text-3xl mb-1 text-[#2A2421]">Full Analysis</h3>  
-          <p class="text-sm text-[#7C726E] font-light">Fenty Beauty Pro Filt'r Soft Matte</p>  
+          <h3 id="scan-title" class="section-title text-2xl md:text-3xl mb-1 text-[#2A2421]">Derm Scan Report</h3>  
+          <p class="text-sm text-[#7C726E] font-light">3D AI Skin & Makeup Feedback Diagnostic</p>  
         </div>  
         <button id="closeScanModal" class="text-[#B8ADA9] hover:text-[#2A2421] transition cursor-pointer text-3xl font-light w-8 h-8 flex items-center justify-center" aria-label="Close">×</button>  
       </div>  
         
-      <!-- SCORE RING IN MODAL -->  
+      <!-- SKIN BARRIER FIT SCORE RING -->  
       <div class="flex items-center justify-center my-6 relative">  
         <svg class="score-ring w-32 h-32" viewBox="0 0 100 100">  
           <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="5"/>  
           <circle class="score-path-modal" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>  
         </svg>  
         <div class="absolute inset-0 flex flex-col items-center justify-center">  
-          <div class="hero-title text-5xl text-[#2A2421]">87</div>  
-          <div class="text-[9px] uppercase tracking-wider text-[#7C726E] font-medium">score</div>
+          <div class="hero-title text-5xl text-[#2A2421]">92</div>  
+          <div class="text-[9px] uppercase tracking-wider text-[#7C726E] font-medium">barrier index</div>  
         </div>  
       </div>
 
       <div class="space-y-4 mb-8 max-h-[50vh] overflow-y-auto pr-1" style="scrollbar-width: thin;">  
-        <!-- 1. SHADE & TONE -->  
+        <!-- 1. CELLULAR PORE CONGESTION -->  
         <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Shade & Tone Match</div>  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Cellular Pore Congestion</div>  
+          <div class="flex items-center gap-2 mb-2">  
+            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">✓ Low Congestion</span>  
+          </div>  
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+            Follicle analysis indicates clean epidermal texture with minor sebum accumulation in T-zone cheeks. To maintain this status, **avoid heavy synthetic waxes, mineral oils, and isopropyl esters** which trigger congestion.
+          </p>  
+        </div>  
+          
+        <!-- 2. VASCULAR BARRIER REDNESS -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Vascular Barrier Redness</div>  
+          <div class="flex items-center gap-2 mb-2">  
+            <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 font-bold border border-amber-100 text-[8px] uppercase tracking-wider">⚠ Minor Cheek Redness</span>  
+          </div>  
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+            Vascular tracking detected 14% inflammation over upper cheeks, indicative of slight barrier sensitivity. Highly compatible with **lightweight, peptide-packed, or squalane-based formulas**. Avoid synthetic perfume carriers.
+          </p>  
+        </div>  
+          
+        <!-- 3. HEX SHADE CALIBRATION -->  
+        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Hex Shade Calibration</div>  
           <div class="flex items-center gap-3 mb-2">  
             <div class="flex items-center gap-1">  
-              <div class="w-6 h-6 rounded-full bg-[#C9956A] border border-white shadow-sm" title="Your Skin"></div>  
-              <span class="text-xs text-[#7C726E]">vs</span>  
-              <div class="w-6 h-6 rounded-full bg-[#C68E6A] border border-white shadow-sm" title="Product"></div>  
+              <div class="w-6 h-6 rounded-full bg-[#E8B48F] border border-white shadow-sm" title="Your Skin Hex"></div>  
+              <span class="text-xs text-[#7C726E]">Calibrated Hex: <span class="font-mono text-[10px] font-bold">#E8B48F</span></span>  
             </div>  
-            <div class="text-sm"><span class="font-medium text-[#6E8E75]">94% Match</span> <span class="text-[#7C726E]">• ΔE 1.2</span></div>  
+            <span class="text-xs text-[#6E8E75] font-semibold uppercase bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded text-[8px]">Warm Autumn</span>  
           </div>  
-          <p class="text-xs text-[#7C726E] font-light">Perfect undertone alignment for Warm Autumn. Minimal oxidation risk.</p>  
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+            Calibration model extracted Warm Autumn undertones. Your matches are 94% compatible with warm golden bases. Highly recommended to select liquid filters with high squalane carriers to avoid mid-day oxidation.
+          </p>  
         </div>  
           
-        <!-- 2. COVERAGE & FINISH -->  
+        <!-- 4. MAKEUP STYLE FIT RECOMMENDATION -->  
         <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Coverage & Finish</div>  
-          <div class="space-y-1.5 text-xs">
-            <div class="flex justify-between">  
-              <span class="text-[#7C726E]">Finish Type</span>  
-              <span class="font-medium">Soft Matte</span>  
-            </div>  
-            <div class="flex justify-between">  
-              <span class="text-[#7C726E]">Wear Time</span>  
-              <span class="font-medium">8-10 Hours</span>  
-            </div>  
-            <div class="flex justify-between">  
-              <span class="text-[#7C726E]">SPF Level</span>  
-              <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 font-semibold border border-amber-100 text-[8px] uppercase tracking-wide">None Detected</span>  
-            </div>  
-          </div>
-        </div>  
-          
-        <!-- 3. SKIN COMPATIBILITY -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Skin Compatibility</div>  
-          <div class="grid grid-cols-2 gap-3 text-xs">  
-            <div class="flex justify-between"><span class="text-[#7C726E]">Oily</span><span class="text-[#6E8E75] font-semibold">Great</span></div>  
-            <div class="flex justify-between"><span class="text-[#7C726E]">Dry</span><span class="text-amber-600 font-semibold">Caution</span></div>  
-            <div class="flex justify-between"><span class="text-[#7C726E]">Acne-Prone</span><span class="text-[#6E8E75] font-semibold">Safe</span></div>  
-            <div class="flex justify-between"><span class="text-[#7C726E]">Sensitive</span><span class="text-red-500 font-semibold">Risk</span></div>  
-          </div>  
-        </div>  
-          
-        <!-- 4. STYLE FIT -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Style Fit</div>  
+          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Archetype Recommendation</div>  
           <div class="flex items-center gap-2 mb-2">  
-            <span class="badge-luxury">The Power Contour</span>  
+            <span class="badge-luxury">The Glazed Canvas era 🎀</span>  
           </div>  
-          <p class="text-xs text-[#7C726E] font-light">High-coverage matte base aligns with sculpted, chiselled aesthetic. Pairs well with cream bronzer.</p>  
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed">
+            Your high moisture retention coefficient makes you a perfect match for dew-heavy aesthetics. Glossy finishes align seamlessly with your archetype's signature natural glow.
+          </p>  
         </div>  
           
-        <!-- 5. SAFETY CHECK -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Safety & Allergens</div>  
+        <!-- 5. CRITICAL ALLERGEN GATEKEEPING -->  
+        <div class="p-4 rounded-xl border border-red-200 bg-red-50/25">  
+          <div class="text-[10px] uppercase tracking-wider text-red-500 font-bold mb-2">Critical Allergen Blocker</div>  
           <div class="flex flex-wrap gap-2 mb-2">  
-            <span class="px-1.5 py-0.5 rounded bg-red-50 text-red-700 font-bold border border-red-100 text-[8px] uppercase tracking-wider">⚠ Fragrance / Parfum</span>  
-            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">✓ Non-comedogenic</span>  
-            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">✓ Oil-free</span>  
+            <span class="px-1.5 py-0.5 rounded bg-red-100 text-red-700 font-bold border border-red-200 text-[8px] uppercase tracking-wider">⚠ Fragrance / Parfum Blocker Active</span>  
           </div>  
-          <p class="text-xs text-[#7C726E] font-light italic">Contains 1 flagged allergen from your profile. Patch test recommended.</p>  
-        </div>  
-          
-        <!-- 6. CONSCIOUS CHOICE -->  
-        <div class="p-4 rounded-xl border border-[#F5DDE3] bg-white/60">  
-          <div class="text-[10px] uppercase tracking-wider text-[#B8ADA9] font-bold mb-2">Conscious Choice</div>  
-          <div class="flex flex-wrap gap-2">  
-            <span class="px-1.5 py-0.5 rounded bg-emerald-50 text-[#6E8E75] font-bold border border-emerald-100 text-[8px] uppercase tracking-wider">🐰 Cruelty-Free</span>  
-            <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-600 font-semibold border border-amber-100 text-[8px] uppercase tracking-wide">✗ Not Vegan</span>  
-            <span class="px-1.5 py-0.5 rounded bg-amber-50 text-amber-600 font-semibold border border-amber-100 text-[8px] uppercase tracking-wide">✗ No Eco-Cert</span>  
-          </div>  
+          <p class="text-xs text-[#7C726E] font-light leading-relaxed italic">
+            Synthetic fragrances will instantly exacerbate cheek micro-redness. Ensure your cosmetic purchases remain fragrance-free. REMAKE's automatic barcode gatekeeper will flag this in RED upon scanning.
+          </p>  
         </div>  
       </div>  
         
       <div class="pt-6 border-t border-[#F5DDE3] text-center">  
-        <p class="text-sm text-[#7C726E] font-light mb-4">Want unlimited deep-dives like this?</p>  
+        <p class="text-sm text-[#7C726E] font-light mb-4">Want your custom clinical skin report?</p>  
         <button id="scanToWaitlist" class="btn-primary w-full">Join Waitlist</button>  
       </div>  
     </div>  
