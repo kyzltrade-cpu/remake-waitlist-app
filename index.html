@@ -421,29 +421,9 @@
         </div>  
       </div>  
         
-      <!-- PHOTOREALISTIC PREMIUM PRE-RENDERED MOCKUP SHOWCASE (REMOVED CSS BOXES FOR EXTREME REALISM) -->
+      <!-- PHOTOREALISTIC PREMIUM PRE-RENDERED STATIC MOCKUP (ZERO BEZEL ANIMATION OR CLIPPING) -->
       <div class="flex-1 flex justify-center items-center reveal reveal-delay-2 relative">  
-        <div class="relative w-full max-w-[340px] md:max-w-[420px] mx-auto flex items-center justify-center">
-          <!-- Slide Image Container (Clean rotating pre-rendered premium graphics!) -->
-          <div class="relative w-full aspect-[652/1280] overflow-hidden drop-shadow-[0_35px_65px_rgba(42,36,33,0.35)] transition-all duration-500 rounded-3xl">
-            <!-- Slide 1: Barcode scan viewfinder rendered mockup -->
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
-              <img src="./mockup-scanner.jpg" alt="REMAKE App Barcode Scanner Premium Mockup" class="w-full h-full object-cover">
-            </div>
-            <!-- Slide 2: Expose pore cloggers report rendered mockup -->
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-              <img src="./mockup-analysis-1.jpg" alt="REMAKE App Ingredient Risk Report Premium Mockup" class="w-full h-full object-cover">
-            </div>
-            <!-- Slide 3: Neural shade matching calibration rendered mockup -->
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-              <img src="./mockup-analysis-2.jpg" alt="REMAKE App Shade Finder Premium Mockup" class="w-full h-full object-cover">
-            </div>
-            <!-- Slide 4: Cosmetic formula duplicate finder rendered mockup -->
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-              <img src="./mockup-analysis-3.jpg" alt="REMAKE App Dupe Finder Premium Mockup" class="w-full h-full object-cover">
-            </div>
-          </div>
-        </div>  
+        <img src="./mockup-scanner.jpg" alt="REMAKE App Barcode Scanner Premium Mockup" class="w-full max-w-[310px] md:max-w-[365px] mx-auto drop-shadow-[0_30px_70px_rgba(42,36,33,0.32)] hover:scale-105 transition-transform duration-500 rounded-[2.5rem]">
       </div>  
     </div>  
   </section>
@@ -1360,31 +1340,6 @@
 
       // Setup quote slide loop
       setInterval(cycleQuotes, 7000);
-
-      // Ultra-Realistic Hero App slideshow loop using pre-rendered premium mockups directly!
-      let currentHeroSlide = 0;
-      const heroSlides = document.querySelectorAll('.hero-slide');
-      if (heroSlides.length > 0) {
-        setInterval(() => {
-          heroSlides[currentHeroSlide].classList.replace('opacity-100', 'opacity-0');
-          currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-          heroSlides[currentHeroSlide].classList.replace('opacity-0', 'opacity-100');
-          // Play a tiny, low-pitch beep when the screen swipes to simulate scrolling through cards
-          try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = ctx.createOscillator();
-            const fontGain = ctx.createGain();
-            osc.type = "sine";
-            osc.frequency.setValueAtTime(450, ctx.currentTime); // low pitch swipe tap
-            fontGain.gain.setValueAtTime(0.02, ctx.currentTime);
-            fontGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
-            osc.connect(fontGain);
-            fontGain.connect(ctx.destination);
-            osc.start();
-            osc.stop(ctx.currentTime + 0.1);
-          } catch(e) {}
-        }, 3800);
-      }
 
       // Web3Forms Submit Handling (Extremely Robust)
       const handleFormSubmit = (form) => {
