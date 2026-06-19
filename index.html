@@ -226,6 +226,7 @@
       border: 1px solid var(--rhode-border); border-radius: var(--radius-soft);  
       box-shadow: 0 30px 60px rgba(42,36,33,0.15), 0 10px 25px rgba(217,138,150,0.1);  
       scrollbar-width: none; -ms-overflow-style: none;  
+      -webkit-overflow-scrolling: touch;  
     }  
     .modal-content::-webkit-scrollbar { display: none; }  
     .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }  
@@ -945,8 +946,8 @@
   <div id="scanModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="scan-title">  
     <div class="modal-content card-luxury p-6 md:p-8 !bg-[#FFF9F7]">  
       
-      <!-- Premium Phone Screen Header Inside Modal -->
-      <div class="flex items-center justify-between mb-6 pb-4 border-b border-[#F5DDE3]">  
+      <!-- Premium Phone Screen Header Inside Modal (Sticky & Seamless) -->
+      <div class="flex items-center justify-between sticky top-0 bg-[#FFF9F7] z-30 pt-6 pb-4 border-b border-[#F5DDE3] -mt-6 -mx-6 px-6 md:-mt-8 md:-mx-8 md:px-8 mb-6">  
         <!-- Custom styled Back Button that also closes the modal -->
         <button id="closeScanModalBack" class="border border-[#F5DDE3] bg-white/40 h-8 w-8 rounded-full flex items-center justify-center text-[#2A2421] hover:bg-[#F5DDE3]/20 transition cursor-pointer font-serif" aria-label="Go Back">
           ‹
@@ -959,8 +960,8 @@
         </button>  
       </div>  
         
-      <!-- SCROLLABLE CONTENT BODY (Simulated App View) -->
-      <div class="space-y-6 mb-8 max-h-[60vh] overflow-y-auto pr-1" style="scrollbar-width: thin;">  
+      <!-- UNIFIED CONTENT BODY (Scrolls Naturally inside .modal-content) -->
+      <div class="space-y-6 mb-8 pr-1">  
         
         <!-- CIRCULAR GAUGE SECTION -->  
         <div class="flex flex-col items-center justify-center text-center py-4">  
