@@ -11,16 +11,16 @@
   <script src="https://cdn.tailwindcss.com"></script>  
   <link rel="preconnect" href="https://fonts.googleapis.com">  
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">  
   <style>  
     :root {  
-      --rhode-text: #3D3532;  
+      --rhode-text: #2A2421;  
       --rhode-white: #FFF9F7;  
       --rhode-ivory: #FFF5F2;  
       --rhode-cream: #FDF0EC;  
       --rhode-beige: #FBE8E3;  
       --rhode-blush: #FCE4EC;  
-      --rhode-pink: #F8D7DA;  
+      --rhode-pink: #FDA8BD;  
       --rhode-pink-mid: #F0B8C0;  
       --rhode-pink-deep: #E8A0AA;  
       --rhode-pink-rich: #D98A96;  
@@ -28,117 +28,127 @@
       --rhode-gold-soft: #E6C88A;  
       --rhode-gold-dark: #B8943E;  
       --rhode-border: #F5DDE3;  
-      --rhode-gray: #9A8E8A;  
+      --rhode-gray: #7C726E;  
       --rhode-light-gray: #B8ADA9;  
-      --rhode-success: #8BA88E;  
-      --rhode-error: #D48A8A;  
+      --rhode-success: #6E8E75;  
+      --rhode-error: #C96F6F;  
         
-      --radius-soft: 16px;  
-      --radius-pill: 50px;  
-      --glaze-gradient: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(252,228,236,0.3) 50%, rgba(248,215,218,0.2) 100%);  
-      --card-shadow: 0 8px 24px rgba(61,53,50,0.05), 0 2px 8px rgba(232,160,170,0.15);  
-      --hover-shadow: 0 12px 32px rgba(61,53,50,0.07), 0 4px 12px rgba(232,160,170,0.22);  
-      --gold-shadow: 0 4px 12px rgba(212,175,55,0.12);  
-      --gold-hover-shadow: 0 8px 20px rgba(212,175,55,0.2);  
+      --radius-soft: 20px;  
+      --radius-pill: 100px;  
+      --glaze-gradient: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(253,240,236,0.4) 50%, rgba(253,168,189,0.1) 100%);  
+      --card-shadow: 0 10px 30px rgba(42,36,33,0.03), 0 1px 3px rgba(217,138,150,0.05);  
+      --hover-shadow: 0 20px 40px rgba(42,36,33,0.06), 0 4px 15px rgba(217,138,150,0.12);  
     }  
     * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; box-sizing: border-box; }  
     body {   
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;   
       background: var(--rhode-white); color: var(--rhode-text);  
-      line-height: 1.75; font-weight: 400; overflow-x: hidden;  
+      line-height: 1.8; font-weight: 400; overflow-x: hidden;  
     }  
     .font-serif { font-family: 'Playfair Display', serif; }  
+    .font-luxury { font-family: 'Cormorant Garamond', serif; }
     .font-light { font-weight: 300; }  
       
     body::before {  
       content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;  
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E");  
-      pointer-events: none; z-index: 0;  
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");  
+      pointer-events: none; z-index: 100;  
     }
 
     .btn-primary, .btn-secondary {  
       position: relative; overflow: hidden;  
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);  
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);  
       font-family: 'Inter', sans-serif; font-weight: 500;  
-      letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.72rem;  
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;  
+      letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.7rem;  
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;  
       cursor: pointer; border-radius: var(--radius-pill);  
     }  
     .btn-primary {   
-      background: var(--rhode-white);   
-      color: var(--rhode-gold);   
-      border: 1px solid var(--rhode-gold-soft);   
-      padding: 0.65rem 1.5rem;  
-      box-shadow: var(--gold-shadow);  
+      background: var(--rhode-text);   
+      color: var(--rhode-white);   
+      border: 1px solid var(--rhode-text);   
+      padding: 0.85rem 1.8rem;  
+      box-shadow: 0 4px 15px rgba(42,36,33,0.1);  
     }  
     .btn-primary:hover {   
-      background: var(--rhode-ivory);   
-      border-color: var(--rhode-gold);   
-      color: var(--rhode-gold-dark);  
+      background: var(--rhode-pink-rich);   
+      border-color: var(--rhode-pink-rich);   
+      color: var(--rhode-white);  
       transform: translateY(-2px);   
-      box-shadow: var(--gold-hover-shadow);   
+      box-shadow: 0 8px 25px rgba(217,138,150,0.3);   
     }  
-    .btn-secondary { background: var(--rhode-white); color: var(--rhode-text); border: 1px solid var(--rhode-pink-mid); padding: 0.65rem 1.5rem; }  
-    .btn-secondary:hover { background: var(--rhode-pink); border-color: var(--rhode-pink-deep); transform: translateY(-2px); box-shadow: var(--card-shadow); }  
+    .btn-secondary { 
+      background: transparent; 
+      color: var(--rhode-text); 
+      border: 1px solid var(--rhode-border); 
+      padding: 0.85rem 1.8rem; 
+    }  
+    .btn-secondary:hover { 
+      background: rgba(253,168,189,0.08); 
+      border-color: var(--rhode-pink-mid); 
+      transform: translateY(-2px); 
+    }  
     
-    .card {  
-      border: 1px solid rgba(245,221,227,0.8); background: rgba(255,245,242,0.85);  
-      backdrop-filter: blur(14px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
+    .card-luxury {  
+      border: 1px solid rgba(245,221,227,0.7); background: rgba(255,253,252,0.75);  
+      backdrop-filter: blur(20px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);  
       position: relative; overflow: hidden; border-radius: var(--radius-soft);  
       box-shadow: var(--card-shadow);  
     }  
-    .card::before {  
+    .card-luxury::before {  
       content: ""; position: absolute; inset: 0; background: var(--glaze-gradient);  
-      opacity: 0; transition: opacity 0.4s ease; pointer-events: none;  
+      opacity: 0; transition: opacity 0.5s ease; pointer-events: none;  
     }  
-    .card:hover { box-shadow: var(--hover-shadow); transform: translateY(-4px); }  
-    .card:hover::before { opacity: 1; }  
+    .card-luxury:hover { box-shadow: var(--hover-shadow); transform: translateY(-4px); border-color: rgba(245,221,227,0.95); }  
+    .card-luxury:hover::before { opacity: 1; }  
       
-    .badge {  
-      background: linear-gradient(135deg, var(--rhode-pink) 0%, var(--rhode-pink-deep) 100%);   
-      color: var(--rhode-text); font-size: 0.62rem; font-weight: 600;  
-      padding: 0.4rem 1rem; border-radius: var(--radius-pill); letter-spacing: 0.16em; text-transform: uppercase;  
-      box-shadow: 0 2px 8px rgba(232,160,170,0.3);  
+    .badge-luxury {  
+      background: rgba(110,142,117,0.1);   
+      color: var(--rhode-success); font-size: 0.65rem; font-weight: 600;  
+      padding: 0.45rem 1.1rem; border-radius: var(--radius-pill); letter-spacing: 0.15em; text-transform: uppercase;  
+      border: 1px solid rgba(110,142,117,0.15);
+      display: inline-block;
     }  
       
-    .hero-title { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.015em; line-height: 1.18; }  
-    .section-title { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.01em; }  
+    .hero-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }  
+    .section-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.005em; color: var(--rhode-text); }  
     .nav-link {  
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; position: relative; color: var(--rhode-gray);  
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; position: relative; color: var(--rhode-gray);  
+      transition: color 0.3s ease;
     }  
     .nav-link::after {  
-      content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;  
-      background: var(--rhode-pink-deep); transition: width 0.3s ease;  
+      content: ""; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px;  
+      background: var(--rhode-pink-rich); transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);  
     }  
     .nav-link:hover { color: var(--rhode-text); }  
     .nav-link:hover::after { width: 100%; }  
-    .text-elegant { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; }  
-    .text-pink-solid { color: var(--rhode-pink-deep); }  
+    .text-elegant { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }  
+    .text-pink-solid { color: var(--rhode-pink-rich); }  
     
     .logo-wrap {  
-      display: inline-flex; align-items: center; gap: 0.75rem;  
-      padding: 0.35rem 0.6rem; border-radius: var(--radius-pill);  
+      display: inline-flex; align-items: center; gap: 0.85rem;  
+      padding: 0.4rem 0.8rem; border-radius: var(--radius-pill);  
       transition: all 0.3s ease;  
     }  
-    .logo-wrap:hover { background: rgba(248,215,218,0.2); }  
+    .logo-wrap:hover { background: rgba(253,168,189,0.08); }  
     .logo-wrap img {  
-      height: 32px; width: auto; border-radius: 8px;  
-      box-shadow: 0 2px 8px rgba(232,160,170,0.25);  
-      transition: transform 0.3s ease, box-shadow 0.3s ease;  
+      height: 34px; width: auto; border-radius: 10px;  
+      box-shadow: 0 4px 12px rgba(217,138,150,0.15);  
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;  
     }  
-    .logo-wrap:hover img { transform: scale(1.05); box-shadow: 0 4px 12px rgba(232,160,170,0.4); }  
-    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 500; letter-spacing: 0.08em; color: var(--rhode-text); }  
+    .logo-wrap:hover img { transform: scale(1.08); box-shadow: 0 6px 18px rgba(217,138,150,0.3); }  
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); }  
 
     .glow-accent {  
       position: absolute; width: 450px; height: 450px;  
-      background: radial-gradient(circle, rgba(232,160,170,0.25) 0%, transparent 70%);  
-      filter: blur(40px); pointer-events: none; z-index: 1;  
+      background: radial-gradient(circle, rgba(253,168,189,0.15) 0%, transparent 75%);  
+      filter: blur(50px); pointer-events: none; z-index: 1;  
     }  
   </style>  
 </head>  
 <body class="min-h-screen flex flex-col relative z-10">  
     
-  <div class="bg-[#D98A96] text-white text-center text-xs py-2.5 px-4 font-medium tracking-widest uppercase relative z-20">  
+  <div class="bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs py-2.5 px-4 font-medium tracking-widest uppercase relative z-20">  
     🔥 SPOT SECURED • CHECK YOUR EMAIL FOR CONFIRMATION
   </div>  
 
@@ -148,24 +158,24 @@
         <img src="./logo.png" alt="REMAKE Logo" class="mix-blend-multiply">  
         <span class="logo-text">REMAKE</span>  
       </a>  
-      <nav class="hidden md:flex items-center gap-8">  
-        <a href="/#features" class="nav-link transition">Features</a>  
-        <a href="/#demo" class="nav-link transition">The Scan</a>  
+      <nav class="hidden md:flex items-center gap-10">  
+        <a href="/#features" class="nav-link transition">The Tech</a>  
+        <a href="/#interactive-lab" class="nav-link transition">Live Test Lab</a>  
         <a href="/#faq" class="nav-link transition">FAQ</a>  
       </nav>  
-      <a href="/" class="btn-primary px-3 py-1.5 text-[10px] md:px-5 md:py-2 md:text-xs">Back to Home</a>  
+      <a href="/" class="btn-primary px-4 py-2 text-[10px] md:px-6 md:py-2.5 md:text-xs">Back to Home</a>  
     </div>  
   </header>  
 
   <section class="flex-1 flex items-center justify-center px-6 py-16 md:py-24 hero-bg relative overflow-hidden">  
     <div class="glow-accent" style="top: 15%; left: 20%;"></div>  
-    <div class="glow-accent" style="bottom: 10%; right: 15%; background: radial-gradient(circle, rgba(248,215,218,0.25) 0%, transparent 70%);"></div>  
+    <div class="glow-accent" style="bottom: 10%; right: 15%; background: radial-gradient(circle, rgba(253,168,189,0.12) 0%, transparent 75%);"></div>  
     
     <div class="max-w-xl w-full mx-auto relative z-10 text-center">  
-      <span class="badge mb-6 inline-block">Waitlist Confirmed</span>  
+      <span class="badge-luxury mb-6 inline-block">Waitlist Confirmed</span>  
       
       <!-- Premium Score-style checkmark circle -->
-      <div class="relative w-32 h-32 mx-auto mb-8 flex items-center justify-center">
+      <div class="relative w-32 h-32 mx-auto mb-10 flex items-center justify-center">
         <!-- SVG Ring -->
         <svg class="absolute inset-0 w-full h-full transform -rotate-90">
           <circle cx="64" cy="64" r="54" stroke="#F5DDE3" stroke-width="4" fill="transparent" />
@@ -175,33 +185,33 @@
         <!-- Inner Check / Score -->
         <div class="flex flex-col items-center justify-center">
           <span class="text-3xl font-bold tracking-tight text-[#D98A96] font-sans">100%</span>
-          <span class="text-[9px] uppercase tracking-wider text-[#9A8E8A] font-medium">Secured</span>
+          <span class="text-[9px] uppercase tracking-wider text-[#7C726E] font-medium">Secured</span>
         </div>
       </div>
 
       <h1 class="hero-title text-3xl md:text-5xl mb-6">  
-        Your skin <span class="text-elegant text-pink-solid">thanks you.</span>  
+        Your skin <span class="font-luxury text-elegant text-pink-solid">thanks you.</span>  
       </h1>  
       
-      <p class="text-base text-[#9A8E8A] mb-10 font-light leading-relaxed max-w-lg mx-auto">  
+      <p class="text-base text-[#7C726E] mb-10 font-light leading-relaxed max-w-lg mx-auto">  
         You've officially joined the inner circle of REMAKE. We are mapping shade data, verifying ingredients, and preparing the limited iOS beta release. Your discount has been locked to your email.
       </p>  
         
       <!-- Details Card -->
-      <div class="card p-6 md:p-8 mb-10 text-left max-w-md mx-auto">  
-        <h3 class="font-serif text-[#3D3532] text-lg mb-4 text-center">Waitlist Benefits Locked</h3>
+      <div class="card-luxury p-6 md:p-8 mb-10 text-left max-w-md mx-auto">  
+        <h3 class="font-serif text-[#2A2421] text-lg mb-4 text-center">Waitlist Benefits Locked</h3>
         <div class="space-y-3">
-          <div class="flex justify-between items-center py-2 border-b border-[#F5DDE3]/50">
-            <span class="text-xs uppercase tracking-wider text-[#9A8E8A]">Your Status</span>
-            <span class="text-xs font-semibold px-2.5 py-1 rounded bg-[#FCE4EC] text-[#D98A96] uppercase tracking-wider">VIP Early Adopter</span>
+          <div class="flex justify-between items-center py-2 border-b border-[#F5DDE3]/40 text-xs">
+            <span class="uppercase tracking-widest text-[#7C726E] font-medium text-[10px]">Your Status</span>
+            <span class="text-[10px] font-bold px-3 py-1 rounded bg-[#FCE4EC] text-[#D98A96] uppercase tracking-wider border border-[#F5DDE3]">VIP Early Adopter</span>
           </div>
-          <div class="flex justify-between items-center py-2 border-b border-[#F5DDE3]/50">
-            <span class="text-xs uppercase tracking-wider text-[#9A8E8A]">Special Offer</span>
-            <span class="text-xs font-medium text-[#8BA88E]">$20 OFF first year</span>
+          <div class="flex justify-between items-center py-2 border-b border-[#F5DDE3]/40 text-xs">
+            <span class="uppercase tracking-widest text-[#7C726E] font-medium text-[10px]">Special Offer</span>
+            <span class="text-[10px] font-bold text-[#6E8E75] uppercase tracking-wider">$20 OFF first year</span>
           </div>
-          <div class="flex justify-between items-center py-2">
-            <span class="text-xs uppercase tracking-wider text-[#9A8E8A]">Access Level</span>
-            <span class="text-xs font-medium text-[#3D3532]">Priority Beta Scan Queue</span>
+          <div class="flex justify-between items-center py-2 text-xs">
+            <span class="uppercase tracking-widest text-[#7C726E] font-medium text-[10px]">Access Level</span>
+            <span class="text-[10px] font-semibold text-[#2A2421] uppercase tracking-wider">Priority Beta Queue</span>
           </div>
         </div>
       </div>
@@ -217,18 +227,18 @@
     </div>  
   </section>  
 
-  <footer class="py-12 px-6 border-t border-[#F5DDE3] text-sm text-[#9A8E8A] bg-[#FFF9F7] relative z-10">  
+  <footer class="py-12 px-6 border-t border-[#F5DDE3] text-sm text-[#7C726E] bg-[#FFF9F7] relative z-10">  
     <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">  
-      <div><div class="flex items-center gap-2 mb-3"><img src="./logo.png" alt="REMAKE" class="h-6 w-auto rounded-md"><span class="font-serif text-lg text-[#3D3532]">REMAKE</span></div><p class="text-xs font-light leading-relaxed">Your personal beauty buyer.</p></div>  
-      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#3D3532]">Product</div><ul class="space-y-2 text-xs font-light"><li><a href="/#features" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Features</a></li><li><a href="/#demo" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">The Scan</a></li><li><a href="/#faq" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">FAQ</a></li></ul></div>  
-      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#3D3532]">Legal</div><ul class="space-y-2 text-xs font-light"><li><a href="/privacy.html" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Privacy</a></li><li><a href="/terms.html" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Terms</a></li><li><a href="/privacy.html#data" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Data Policy</a></li></ul></div>  
-      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#3D3532]">Connect</div><ul class="space-y-2 text-xs font-light"><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Instagram</a></li><li><a href="https://tiktok.com/@remakebeauty" target="_blank" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">TikTok</a></li><li><a href="#" class="hover:underline hover:text-[#3D3532] transition decoration-[#E8A0AA]">Press</a></li></ul></div>  
+      <div><div class="flex items-center gap-2 mb-3"><img src="./logo.png" alt="REMAKE" class="h-6 w-auto rounded-md"><span class="font-serif text-lg text-[#2A2421]">REMAKE</span></div><p class="text-xs font-light leading-relaxed">Your personal beauty buyer.</p></div>  
+      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#2A2421]">Product</div><ul class="space-y-2 text-xs font-light"><li><a href="/#features" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Molecular Engine</a></li><li><a href="/#interactive-lab" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Live Scanner</a></li><li><a href="/#faq" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">FAQ</a></li></ul></div>  
+      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#2A2421]">Legal</div><ul class="space-y-2 text-xs font-light"><li><a href="/privacy.html" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Privacy Charter</a></li><li><a href="/terms.html" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Terms of Use</a></li><li><a href="/privacy.html#data" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Data Policy</a></li></ul></div>  
+      <div><div class="font-medium mb-3 text-xs uppercase tracking-wider text-[#2A2421]">Connect</div><ul class="space-y-2 text-xs font-light"><li><a href="#" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Instagram @remake</a></li><li><a href="https://tiktok.com/@remakebeauty" target="_blank" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">TikTok @remakebeauty</a></li><li><a href="#" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Press Kit</a></li></ul></div>  
     </div>  
     <div class="max-w-6xl mx-auto mt-12 pt-6 border-t border-[#F5DDE3] text-xs text-[#B8ADA9] flex flex-col md:flex-row justify-between items-center font-light">  
-      <p>© 2026 REMAKE Labs. All rights reserved.</p>  
-      <p class="mt-2 md:mt-0">Designed in California • Built for smart shoppers</p>  
+      <p>© 2026 REMAKE Labs Inc. All rights reserved.</p>  
+      <p class="mt-2 md:mt-0">Designed in California • Built for skin barrier safety</p>  
     </div>  
   </footer>  
 
-</body>  
+</body>
 </html>
