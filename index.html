@@ -243,10 +243,7 @@
       
     .bg-cream { background: var(--rhode-cream); }  
     .hero-bg {  
-      background: radial-gradient(circle at 15% 15%, rgba(253,168,189,0.2) 0%, transparent 50%),  
-                  radial-gradient(circle at 85% 85%, rgba(253,168,189,0.15) 0%, transparent 50%),  
-                  radial-gradient(circle at 50% 50%, rgba(255,253,252,0.8) 0%, transparent 70%),  
-                  var(--rhode-white);  
+      background: var(--rhode-white);  
     }  
       
     .reveal { opacity: 0; transform: translateY(25px); transition: all 0.85s cubic-bezier(0.16, 1, 0.3, 1); }  
@@ -279,9 +276,7 @@
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); }
 
     .glow-accent {  
-      position: absolute; width: 400px; height: 400px; border-radius: 50%;  
-      background: radial-gradient(circle, rgba(253,168,189,0.18) 0%, transparent 75%);  
-      filter: blur(50px); pointer-events: none; z-index: 0;  
+      display: none !important;  
     }
 
     /* Beautiful custom scan line animations */
@@ -729,8 +724,7 @@
   </section>
 
   <!-- Beauty DNA™ Viral Feature Section -->
-  <section id="wrapped" class="py-24 px-6 text-[#FFF9F7] relative overflow-hidden border-b border-[#F5DDE3]" style="background: radial-gradient(circle at 10% 20%, rgba(253,168,189,0.35) 0%, transparent 60%), radial-gradient(circle at 90% 80%, rgba(217,138,150,0.45) 0%, transparent 60%), #D98A96;">
-    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.4),transparent_55%)]"></div>
+  <section id="wrapped" class="py-24 px-6 text-[#FFF9F7] relative overflow-hidden border-b border-[#F5DDE3] bg-[#D98A96]">
     <div class="max-w-6xl mx-auto relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
       
       <!-- Left Column: Copy & Viral Concept Explanatory -->
@@ -770,8 +764,6 @@
         </div>
 
         <div id="wrappedCardBody" class="card-luxury p-8 !bg-[#FFFDFD] border-[#F5DDE3] text-[#2A2421] shadow-[0_30px_70px_rgba(42,36,33,0.12),0_10px_30px_rgba(217,138,150,0.15)] relative overflow-hidden rounded-[2rem] ring-1 ring-pink-100/50 min-h-[460px] flex flex-col justify-between transition-all duration-500 ease-out">
-          <div class="absolute -top-12 -right-12 w-32 h-32 bg-[#FDA8BD]/20 rounded-full filter blur-2xl"></div>
-          <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-[#FCE4EC]/30 rounded-full filter blur-2xl"></div>
           
           <!-- Slide Container dynamically managed by JS -->
           <div id="wrappedSlideContent" class="space-y-6 transition-all duration-300">
@@ -878,14 +870,13 @@
 
   <!-- Full Call-To-Action (Rich Rose Pink Ribbon) -->
   <section class="py-24 px-6 bg-[#D98A96] text-[#FFF9F7] text-center relative overflow-hidden">  
-    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.35),transparent_55%)]"></div>  
     <div class="max-w-2xl mx-auto relative z-10">  
       <span class="text-[10px] tracking-widest uppercase text-white/90 font-bold mb-4 block">SECURE PRIORITY SECTOR ACCESS</span>
       <h2 class="hero-title text-4xl md:text-5xl mb-6">Stop guessing. Start knowing.</h2>  
       <p class="text-white/80 mb-10 font-light leading-relaxed max-w-lg mx-auto">Join our private beta waitlist today. Stop ruining your skin barrier and burning your wallet on bad products.</p>  
         
       <form class="waitlist-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4">  
-        <input type="email" name="email" placeholder="Your premium email address" required  
+        <input type="email" name="email" placeholder="Your email address" required  
           class="input-field flex-1 bg-[#FFF9F7] text-[#2A2421] border-[#E8A0AA]"  
           aria-label="Email address"/>  
         <button type="submit" class="btn-primary whitespace-nowrap !bg-[#2A2421] !text-white !border-[#2A2421] hover:!bg-white hover:!text-[#D98A96] hover:!border-white">  
