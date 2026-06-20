@@ -304,6 +304,28 @@
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); transform: translateY(-2px); }
 
     /* Bulletproof Safari status bar shield */
+    .sticky-header-shield::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: var(--rhode-white);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Header mobile adjustments */
+    @media (max-width: 768px) {
+      #header-cta {
+        padding: 0.45rem 1rem !important;
+        font-size: 9px !important;
+        letter-spacing: 0.05em !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
+      }
+    }
 
     .glow-accent {  
       display: none !important;  
@@ -381,7 +403,7 @@
   </div>
 
   <!-- Sticky Main Navigation Header -->
-  <header class="sticky top-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm">  
+  <header class="sticky top-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm sticky-header-shield">  
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
         <img src="./logo.png" alt="REMAKE Logo">  
@@ -1137,6 +1159,29 @@
     </div>  
   </div>
 
+  <!-- Waitlist Popup Modal -->  
+  <div id="waitlistModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">  
+    <div class="modal-content card-luxury p-8 md:p-10 !bg-[var(--rhode-white)]">  
+      <div class="flex items-center justify-between mb-6">  
+        <h3 id="waitlist-title" class="section-title text-2xl text-[#2A2421]">Get Early Access</h3>  
+        <button id="closeWaitlistModal" class="border border-[#F5DDE3] bg-white/40 h-8 w-8 rounded-full flex items-center justify-center text-[#2A2421] hover:bg-[#F5DDE3]/20 transition cursor-pointer text-sm" aria-label="Close">
+          ×
+        </button>  
+      </div>  
+      <p class="text-sm text-[#7C726E] font-light mb-6">Be one of the first 200 to join and get $20 off your first year. Spots are filling fast.</p>  
+      <form id="waitlistForm" class="space-y-4">  
+        <input type="email" name="email" placeholder="Enter your email" required class="input-field w-full" aria-label="Email address"/>  
+        <button type="submit" class="btn-primary w-full">  
+          <span class="btn-text">Join Waitlist</span>  
+        </button>  
+        <input type="text" name="_gotcha" style="display:none">  
+        <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
+      </form>  
+      <p id="waitlistStatus" class="form-status text-center hidden"></p>  
+      <p class="text-xs text-[#B8ADA9] mt-4 font-light text-center">By joining, you agree to our <a href="#" class="underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Terms</a> and <a href="#" class="underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Privacy Policy</a>.</p>  
+    </div>  
+  </div>
+
   <!-- Interactive Lab Javascript Data and Core Logic -->
   <script>
     const productData = {
@@ -1808,9 +1853,32 @@
         if (e.target === scanModal) closeScanModalFn();
       });
 
+      // Waitlist Modal Controls
+      const waitlistModal = document.getElementById('waitlistModal');
+      const closeWaitlistModal = document.getElementById('closeWaitlistModal');
+      const headerCta = document.getElementById('header-cta');
+
+      const openWaitlistModal = () => {
+        if (!waitlistModal) return;
+        waitlistModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeWaitlistModalFn = () => {
+        if (!waitlistModal) return;
+        waitlistModal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      headerCta?.addEventListener('click', openWaitlistModal);
+      closeWaitlistModal?.addEventListener('click', closeWaitlistModalFn);
+      waitlistModal?.addEventListener('click', (e) => {
+        if (e.target === waitlistModal) closeWaitlistModalFn();
+      });
+
       scanToWaitlist?.addEventListener('click', () => {
         closeScanModalFn();
-        document.querySelector('.waitlist-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        openWaitlistModal();
       });
 
       // Interactive Beauty DNA autoplay slide logic
@@ -2016,6 +2084,7 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           closeScanModalFn();
+          closeWaitlistModalFn();
         }
       });
 
