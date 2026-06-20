@@ -2,8 +2,7 @@
 <html lang="en">  
 <head>  
   <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#FFF0F3" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
   <link rel="canonical" href="https://remake.beauty/" />
   <meta name="description" content="Scan skincare & makeup barcodes to reveal toxic, pore-clogging ingredients. Find your flawless foundation shade with the ultimate AI beauty coach.">  
   <title>REMAKE • AI Face Scan, Shade Finder & Skincare Barcode Scanner</title>
@@ -341,17 +340,25 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }  
       .reveal { opacity: 1; transform: none; }
       .scan-laser { display: none; }
-    }
-
-    .sticky-header-shield {
-      box-shadow: 0 -60px 0 0 var(--rhode-white);
-    }
+    }  
     
+    .sticky-header-shield::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: var(--rhode-white);
+      z-index: 30;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
+    }
   </style>  
 </head>  
 <body class="min-h-screen flex flex-col relative z-10">  
     
-  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase relative z-50 flex items-center justify-center">  
+  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase z-50 flex items-center justify-center">  
     STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
   </div>
 
