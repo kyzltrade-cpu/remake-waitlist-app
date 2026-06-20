@@ -2,7 +2,7 @@
 <html lang="en">  
 <head>  
   <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />  
   <meta name="theme-color" content="#2A2421" />  
   <link rel="canonical" href="https://remake.beauty/" />
   <meta name="description" content="Scan skincare & makeup barcodes to reveal toxic, pore-clogging ingredients. Find your flawless foundation shade with the ultimate AI beauty coach.">  
@@ -371,13 +371,18 @@
 </head>  
 <body class="min-h-screen relative z-10">  
     
+  <!-- iOS Safe Area Background Shield -->
+  <div class="fixed top-0 left-0 w-full z-[50] bg-[var(--rhode-white)]" style="height: env(safe-area-inset-top);"></div>
+
   <!-- Top Announcement Bar -->
-  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]">  
-    STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
+  <div class="w-full bg-[#2A2421] relative z-[60]" style="padding-top: env(safe-area-inset-top);">
+    <div class="w-full h-10 text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center">  
+      STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
+    </div>
   </div>
 
   <!-- Sticky Main Navigation Header -->
-  <header class="sticky top-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm sticky-header-shield">  
+  <header class="sticky w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm sticky-header-shield" style="top: env(safe-area-inset-top);">  
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
         <img src="./logo.png" alt="REMAKE Logo">  
