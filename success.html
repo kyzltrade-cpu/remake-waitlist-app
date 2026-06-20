@@ -132,11 +132,10 @@
     }  
     .logo-wrap:hover { background: rgba(253,168,189,0.08); }  
     .logo-wrap img {  
-      height: 34px; width: auto; border-radius: 10px;  
-      box-shadow: 0 4px 12px rgba(217,138,150,0.15);  
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;  
+      height: 34px; width: auto;  
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);  
     }  
-    .logo-wrap:hover img { transform: scale(1.08); box-shadow: 0 6px 18px rgba(217,138,150,0.3); }  
+    .logo-wrap:hover img { transform: scale(1.08); }  
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); }  
 
     .glow-accent {  
@@ -146,7 +145,7 @@
     }  
   </style>  
 </head>  
-<body class="min-h-screen flex flex-col relative z-10">  
+<body class="min-h-screen relative z-10">  
     
   <div class="bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs py-2.5 px-4 font-medium tracking-widest uppercase relative z-20">  
     🔥 SPOT SECURED • CHECK YOUR EMAIL FOR CONFIRMATION
@@ -155,7 +154,7 @@
   <header class="border-b border-[#F5DDE3] bg-[#FFF9F7]/85 backdrop-blur-md sticky top-0 z-30">  
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
-        <img src="./logo.png" alt="REMAKE Logo" class="mix-blend-multiply">  
+        <img src="./logo.png" alt="REMAKE Logo">  
         <span class="logo-text">REMAKE</span>  
       </a>  
       <nav class="hidden md:flex items-center gap-10">  

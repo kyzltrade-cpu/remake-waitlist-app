@@ -268,11 +268,10 @@
     }  
     .logo-wrap:hover { background: rgba(253,168,189,0.08); }  
     .logo-wrap img {  
-      height: 34px; width: auto; border-radius: 10px;  
-      box-shadow: 0 4px 12px rgba(217,138,150,0.15);  
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;  
+      height: 34px; width: auto;  
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);  
     }  
-    .logo-wrap:hover img { transform: scale(1.08); box-shadow: 0 6px 18px rgba(217,138,150,0.3); }  
+    .logo-wrap:hover img { transform: scale(1.08); }  
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); }
 
     .glow-accent {  
@@ -356,7 +355,7 @@
     }
   </style>  
 </head>  
-<body class="min-h-screen flex flex-col relative z-10">  
+<body class="min-h-screen relative z-10">  
     
   <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase z-50 flex items-center justify-center">  
     STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
@@ -365,7 +364,7 @@
   <header class="border-b border-[#F5DDE3] bg-[var(--rhode-white)] sticky top-0 z-40 sticky-header-shield">  
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
-        <img src="./logo.png" alt="REMAKE Logo" class="mix-blend-multiply">  
+        <img src="./logo.png" alt="REMAKE Logo">  
         <span class="logo-text">REMAKE</span>  
       </a>  
       <nav class="hidden lg:flex items-center gap-8">  
@@ -781,7 +780,7 @@
                 <span class="text-[9px] uppercase tracking-widest text-[#D98A96] font-bold block">BEAUTY DNA • SLIDE 1</span>
                 <span class="text-2xl font-serif font-normal text-[#2A2421]">Face Shape Mapping</span>
               </div>
-              <img src="./logo.png" alt="REMAKE" class="h-8 w-auto rounded-lg shadow-sm mix-blend-multiply">
+              <img src="./logo.png" alt="REMAKE" class="h-8 w-auto">
             </div>
 
             <div class="bg-gradient-to-tr from-[#FFF5F2] to-[#FFF9F7] p-5 rounded-2xl border border-[#F5DDE3] flex items-center justify-between shadow-[inset_0_2px_4px_rgba(217,138,150,0.02)]">
@@ -1963,7 +1962,7 @@
                   <span class="text-[9px] uppercase tracking-widest text-[#D98A96] font-bold block">${slide.tag}</span>
                   <span class="text-2xl font-serif font-normal text-[#2A2421]">${slide.title}</span>
                 </div>
-                <img src="./logo.png" alt="REMAKE" class="h-8 w-auto rounded-lg shadow-sm mix-blend-multiply">
+                <img src="./logo.png" alt="REMAKE" class="h-8 w-auto">
               </div>
               ${slide.html}
             `;
