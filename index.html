@@ -340,43 +340,32 @@
       .reveal { opacity: 1; transform: none; }
       .scan-laser { display: none; }
     }  
-    
-    .sticky-header-shield::before {
-      content: "";
-      position: absolute;
-      top: -100px;
-      left: 0;
-      right: 0;
-      height: 100px;
-      background: var(--rhode-white);
-      z-index: 30;
-      transform: translate3d(0, 0, 0);
-      -webkit-transform: translate3d(0, 0, 0);
-    }
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
     
-  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase z-50 flex items-center justify-center">  
+  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase relative z-50 flex items-center justify-center">  
     STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
   </div>
 
-  <header class="border-b border-[#F5DDE3] bg-[var(--rhode-white)] sticky top-0 z-40 sticky-header-shield">  
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
-      <a href="/" class="logo-wrap group">  
-        <img src="./logo.png" alt="REMAKE Logo">  
-        <span class="logo-text">REMAKE</span>  
-      </a>  
-      <nav class="hidden lg:flex items-center gap-8">  
-        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
-        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
-        <a href="#comparison" class="nav-link transition">Compare</a>  
-        <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
-        <a href="#faq" class="nav-link transition">FAQ</a>  
-      </nav>  
-      <button id="header-cta" class="btn-primary px-4 py-2 text-[10px] md:px-6 md:py-2.5 md:text-xs">Get Early Access</button>  
-    </div>  
-  </header>
+  <div class="sticky top-0 z-40 w-full">
+    <header class="border-b border-[#F5DDE3] bg-[var(--rhode-white)]">  
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
+        <a href="/" class="logo-wrap group">  
+          <img src="./logo.png" alt="REMAKE Logo">  
+          <span class="logo-text">REMAKE</span>  
+        </a>  
+        <nav class="hidden lg:flex items-center gap-8">  
+          <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+          <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+          <a href="#comparison" class="nav-link transition">Compare</a>  
+          <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
+          <a href="#faq" class="nav-link transition">FAQ</a>  
+        </nav>  
+        <button id="header-cta" class="btn-primary px-4 py-2 text-[10px] md:px-6 md:py-2.5 md:text-xs">Get Early Access</button>  
+      </div>  
+    </header>
+  </div>
 
   <!-- Hero Section -->
   <section class="flex-1 flex items-center justify-center px-6 py-8 md:py-16 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
