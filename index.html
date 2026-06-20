@@ -354,30 +354,18 @@
       .reveal { opacity: 1; transform: none; }
       .scan-laser { display: none; }
     }  
-
-    .sticky-header-shield::before {
-      content: "";
-      position: absolute;
-      top: -120px;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background: var(--rhode-white);
-      z-index: 45; /* High z-index to block scrolling content but below the absolute top banner (z-60) */
-      transform: translate3d(0, 0, 0);
-      -webkit-transform: translate3d(0, 0, 0);
-      pointer-events: none;
-    }
   </style>  
 </head>  
-<body class="min-h-screen relative z-10 pt-10">  
+<body class="min-h-screen relative z-10 pt-[106px]">  
     
-  <div class="absolute top-0 left-0 w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase z-[60] flex items-center justify-center">  
-    STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
-  </div>
+  <div class="fixed top-0 left-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm">
+    <!-- Top Announcement Bar -->
+    <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center">  
+      STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
+    </div>
 
-  <div class="sticky top-0 z-40 w-full sticky-header-shield">
-    <header class="border-b border-[#F5DDE3] bg-[var(--rhode-white)]">  
+    <!-- Main Navigation Header -->
+    <header class="bg-[var(--rhode-white)]">  
       <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
         <a href="/" class="logo-wrap group">  
           <img src="./logo.png" alt="REMAKE Logo">  
