@@ -288,6 +288,19 @@
     }  
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); }
 
+    /* Bulletproof Safari status bar shield */
+    .sticky-header-shield::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: var(--rhode-white);
+      z-index: -1;
+      pointer-events: none;
+    }
+
     .glow-accent {  
       display: none !important;  
     }
@@ -359,12 +372,12 @@
 <body class="min-h-screen relative z-10">  
     
   <!-- Top Announcement Bar -->
-  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-20">  
+  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]">  
     STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
   </div>
 
   <!-- Sticky Main Navigation Header -->
-  <header class="sticky top-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm">  
+  <header class="sticky top-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm sticky-header-shield">  
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
         <img src="./logo.png" alt="REMAKE Logo">  
