@@ -350,7 +350,9 @@
       right: 0;
       height: 100px;
       background: var(--rhode-white);
-      z-index: 10;
+      z-index: 30;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
     }
   </style>  
 </head>  
@@ -625,9 +627,9 @@
 
       <!-- Matchup Selector Toggles -->
       <div class="flex flex-wrap justify-center gap-3 mb-10">
-        <button onclick="switchComparisonMatchup('filter')" id="comp-btn-filter" class="px-5 py-2.5 text-xs font-bold rounded-full border-2 border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105">GLOW FILTER BATTLE</button>
-        <button onclick="switchComparisonMatchup('bronzer')" id="comp-btn-bronzer" class="px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">MILK BRONZER BATTLE</button>
-        <button onclick="switchComparisonMatchup('lip')" id="comp-btn-lip" class="px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">PEPTIDE LIP BATTLE</button>
+        <button onclick="switchComparisonMatchup('filter')" id="comp-btn-filter" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105">GLOW FILTER BATTLE</button>
+        <button onclick="switchComparisonMatchup('bronzer')" id="comp-btn-bronzer" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">MILK BRONZER BATTLE</button>
+        <button onclick="switchComparisonMatchup('lip')" id="comp-btn-lip" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">PEPTIDE LIP BATTLE</button>
       </div>
 
       <!-- Comparison Grid Layout -->
@@ -1546,9 +1548,9 @@
       ['filter', 'bronzer', 'lip'].forEach(k => {
         const btn = document.getElementById('comp-btn-' + k);
         if (k === key) {
-          btn.className = "px-5 py-2.5 text-xs font-bold rounded-full border-2 border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105";
+          btn.className = "px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105";
         } else {
-          btn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105";
+          btn.className = "px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105";
         }
       });
 
