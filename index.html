@@ -356,32 +356,30 @@
     }  
   </style>  
 </head>  
-<body class="min-h-screen relative z-10 pt-[106px]">  
+<body class="min-h-screen relative z-10">  
     
-  <div class="fixed top-0 left-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm">
-    <!-- Top Announcement Bar -->
-    <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center">  
-      STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
-    </div>
-
-    <!-- Main Navigation Header -->
-    <header class="bg-[var(--rhode-white)]">  
-      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
-        <a href="/" class="logo-wrap group">  
-          <img src="./logo.png" alt="REMAKE Logo">  
-          <span class="logo-text">REMAKE</span>  
-        </a>  
-        <nav class="hidden lg:flex items-center gap-8">  
-          <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
-          <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
-          <a href="#comparison" class="nav-link transition">Compare</a>  
-          <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
-          <a href="#faq" class="nav-link transition">FAQ</a>  
-        </nav>  
-        <button id="header-cta" class="btn-primary px-4 py-2 text-[10px] md:px-6 md:py-2.5 md:text-xs">Get Early Access</button>  
-      </div>  
-    </header>
+  <!-- Top Announcement Bar -->
+  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-20">  
+    STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
   </div>
+
+  <!-- Sticky Main Navigation Header -->
+  <header class="sticky top-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm">  
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
+      <a href="/" class="logo-wrap group">  
+        <img src="./logo.png" alt="REMAKE Logo">  
+        <span class="logo-text">REMAKE</span>  
+      </a>  
+      <nav class="hidden lg:flex items-center gap-8">  
+        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+        <a href="#comparison" class="nav-link transition">Compare</a>  
+        <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
+        <a href="#faq" class="nav-link transition">FAQ</a>  
+      </nav>  
+      <button id="header-cta" class="btn-primary px-4 py-2 text-[10px] md:px-6 md:py-2.5 md:text-xs">Get Early Access</button>  
+    </div>  
+  </header>
 
   <!-- Hero Section -->
   <section class="flex-1 flex items-center justify-center px-6 py-8 md:py-16 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
@@ -526,8 +524,8 @@
             
             <!-- Left Display: Dynamic Rating & State -->
             <div class="flex-shrink-0 text-center flex flex-col items-center">
-              <div class="relative w-36 h-36 flex items-center justify-center mb-4">
-                <svg class="score-ring w-36 h-36" viewBox="0 0 100 100">
+              <div class="relative w-36 h-36 flex items-center justify-center mb-6">
+                <svg class="score-ring w-full h-full" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="42" fill="none" stroke="#F5DDE3" stroke-width="5"/>
                   <circle id="labScorePath" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="15"/>
                 </svg>
