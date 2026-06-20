@@ -275,18 +275,13 @@
     .logo-wrap img {  
       height: 42px; width: 42px;  
       object-fit: contain;  
-      background: #FFF0F3; 
       border-radius: 8px; 
-      padding: 5px; 
-      border: 1px solid rgba(253,168,189,0.3); 
-      box-shadow: 0 3px 10px rgba(217,138,150,0.08);  
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;  
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);  
     }  
     .logo-wrap:hover img {   
       transform: scale(1.08);   
-      box-shadow: 0 5px 15px rgba(217,138,150,0.18);  
     }  
-    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); line-height: 1; display: block; transform: translateY(2px); }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); transform: translateY(-2px); }
 
     /* Bulletproof Safari status bar shield */
 
@@ -452,7 +447,7 @@
                 <div class="scan-laser opacity-70"></div>
 
                 <!-- Raw screenshot image -->
-                <img src="./mockup-scanner-raw.jpg" alt="REMAKE Skincare Barcode Scanner raw screenshot inside premium shell" class="w-full h-full object-cover">
+                <img src="./mockup-scanner-raw.jpg" alt="REMAKE Skincare Barcode Scanner raw screenshot inside premium shell" class="w-full h-full object-cover" style="transform: scale(1.07) translateY(-3%);">
               </div>
             </div>
           </div>
@@ -890,8 +885,8 @@
     <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">  
       <div>
         <div class="flex items-center gap-2 mb-4">
-          <img src="./logo.png" alt="REMAKE" class="h-9 w-9 object-contain bg-[#FFF0F3] rounded-lg p-[5px] border border-[rgba(253,168,189,0.3)] shadow-sm">
-          <span class="font-serif text-2xl text-[#2A2421] tracking-wide" style="line-height: 1; transform: translateY(1px);">REMAKE</span>
+          <img src="./logo.png" alt="REMAKE" class="h-9 w-9 object-contain rounded-lg">
+          <span class="font-serif text-2xl text-[#2A2421] tracking-wide" style="transform: translateY(-2px);">REMAKE</span>
         </div>
         <p class="text-xs font-light leading-relaxed pr-4">Your personal, molecular-level beauty buyer and coach.</p>
       </div>  
