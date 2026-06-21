@@ -332,7 +332,7 @@
       box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
     }
 
-    /* Bulletproof Safari status bar shield - Warm */
+    /* Bulletproof Safari status bar shield - Solid Warm Blush */
     .sticky-header-shield::before {
       content: "";
       position: absolute;
@@ -340,15 +340,13 @@
       left: 0;
       right: 0;
       height: 150px;
-      background: rgba(255, 250, 251, 0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: #FFF0F3 !important; /* Solid luxurious warm blush (matches body bg to block scrolling elements under status bar) */
       z-index: -1;
       pointer-events: none;
-      /* Force iOS Safari to composit this overflowed shield on its own GPU layer to prevent backdrop-filter clipping or transparent dropouts */
+      /* Force iOS Safari to composit this overflowed shield on its own GPU layer to prevent subpixel rounding gaps */
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
-      will-change: transform, backdrop-filter;
+      will-change: transform;
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
