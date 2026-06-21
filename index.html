@@ -1853,6 +1853,7 @@
             const data = await res.json();
 
             if (data.success) {
+              if (window.playEarlyAccessSparkle) window.playEarlyAccessSparkle();
               btnText.textContent = '✓ JOINED';
               statusEl.textContent = "You're on the list. Redirecting...";
               statusEl.className = 'form-status success';
@@ -1949,6 +1950,7 @@
         if (!waitlistModal) return;
         waitlistModal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        if (window.playEarlyAccessSparkle) window.playEarlyAccessSparkle();
       };
 
       const closeWaitlistModalFn = () => {
@@ -2260,8 +2262,46 @@
         }
       };
 
-      // Bind sparkle sound globally so other elements can play it
+      // Beautiful Ab-Major 9th luxury cascade sound for Get Early Access interactions!
+      const playEarlyAccessSparkle = () => {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContext) return;
+          const ctx = new AudioContext();
+          const now = ctx.currentTime;
+          
+          const playTone = (freq, delay, vol) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'triangle'; // triangle waves for luxurious, soft bell-like chime rings
+            osc.frequency.setValueAtTime(freq, now + delay);
+            
+            gain.gain.setValueAtTime(0, now + delay);
+            gain.gain.linearRampToValueAtTime(vol, now + delay + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 0.18); // slightly longer decay for richer resonance
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start(now + delay);
+            osc.stop(now + delay + 0.25);
+          };
+          
+          // Angelic Ab-Major 9th ascending cascade (distinctly wider, richer, and longer than slide sound)
+          playTone(1864.66, 0, 0.035);     // Bb6 (warm bell start)
+          playTone(2489.02, 0.03, 0.03);    // Eb7 (shining sparkle)
+          playTone(3135.96, 0.06, 0.025);   // G7 (high chime)
+          playTone(3729.31, 0.09, 0.02);    // Bb7 (peak luxury glimmer)
+          playTone(4698.63, 0.12, 0.015);   // Eb8 (extreme fairy dust finish)
+        } catch (e) {
+          console.log("AudioContext blocked or not supported", e);
+        }
+      };
+
+      // Bind sparkle sounds globally so other elements can play them
       window.playSparkleSound = playSparkleSound;
+      window.playEarlyAccessSparkle = playEarlyAccessSparkle;
 
       window.nextWrappedSlide = (userClicked = false) => {
         currentWrappedSlideIdx = currentWrappedSlideIdx === 7 ? 1 : currentWrappedSlideIdx + 1;
