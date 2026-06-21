@@ -345,7 +345,7 @@
     }
 
     .sticky-header-wrapper.scrolled {
-      transform: translateY(-40px) !important; /* Gracefully slides the 40px announcement bar off-screen and locks glass navigation header perfectly at top-0 of screen */
+      transform: translateY(calc(-40px - env(safe-area-inset-top))) !important; /* Slide full announcement bar (including safe area) off-screen */
     }
 
     /* Warm Blush Glassmorphism Header */
@@ -364,6 +364,30 @@
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
       padding-top: env(safe-area-inset-top) !important; /* Push header content perfectly below the status bar on notch phones */
+    }
+
+    /* Safe area is now owned by the announcement bar, not glass-header */
+    .glass-header {
+      padding-top: 0 !important;
+      background: rgba(255, 250, 251, 0.82) !important;
+    }
+
+    /* When scrolled, glass-header is at the very top — restore safe area coverage */
+    .sticky-header-wrapper.scrolled .glass-header {
+      padding-top: env(safe-area-inset-top) !important;
+      background: linear-gradient(
+        to bottom,
+        #FFF0F3 0px,
+        #FFF0F3 env(safe-area-inset-top),
+        rgba(255, 250, 251, 0.82) env(safe-area-inset-top),
+        rgba(255, 250, 251, 0.82) 100%
+      ) !important;
+    }
+
+    /* Announcement bar stretches to cover full Dynamic Island / status bar safe area */
+    .sticky-header-wrapper > div:first-child {
+      padding-top: env(safe-area-inset-top) !important;
+      height: calc(40px + env(safe-area-inset-top)) !important;
     }
 
     /* Solid pink status bar shield to completely cover any Safari mobile sticky scroll gaps with a luxurious, non-transparent barrier */
