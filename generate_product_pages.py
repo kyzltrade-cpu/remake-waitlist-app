@@ -640,6 +640,8 @@ html_template = """<!DOCTYPE html>
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />  
   <meta name="theme-color" content="#2A2421" />  
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
   <link rel="canonical" href="https://remake.beauty/products/{slug}.html" />  
   <meta name="description" content="{meta_desc}">  
   <title>{brand} {product} Ingredients & Safety Analysis • REMAKE Beauty</title>  
