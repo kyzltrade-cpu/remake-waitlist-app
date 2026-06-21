@@ -303,6 +303,15 @@
     }  
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 500; letter-spacing: 0.1em; color: var(--rhode-text); transform: translateY(-2px); }
 
+    /* White Glassmorphism Header */
+    .glass-header {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
+      box-shadow: 0 4px 30px rgba(42, 36, 33, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    }
+
     /* Bulletproof Safari status bar shield */
     .sticky-header-shield::before {
       content: "";
@@ -311,7 +320,9 @@
       left: 0;
       right: 0;
       height: 150px;
-      background: var(--rhode-white);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       z-index: -1;
       pointer-events: none;
     }
@@ -403,7 +414,7 @@
   </div>
 
   <!-- Sticky Main Navigation Header -->
-  <header class="sticky top-0 w-full z-40 bg-[var(--rhode-white)] border-b border-[#F5DDE3] shadow-sm sticky-header-shield">  
+  <header class="sticky top-0 w-full z-40 glass-header sticky-header-shield">  
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
         <img src="./logo.png" alt="REMAKE Logo">  
