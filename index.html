@@ -324,34 +324,18 @@
     /* Warm Blush Glassmorphism Header */
     .glass-header {
       position: sticky !important;
-      top: -1.5px !important; /* Defeats Safari subpixel rounding gaps during viewport scroll transitions */
+      top: 0 !important;
       background: rgba(255, 250, 251, 0.82) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
-    }
-
-    /* Bulletproof Safari status bar shield - Solid Warm Blush */
-    .sticky-header-shield::before {
-      content: "";
-      position: absolute;
-      top: -150px;
-      left: 0;
-      right: 0;
-      height: 150px;
-      background: #FFF0F3 !important; /* Solid luxurious warm blush (matches body bg to block scrolling elements under status bar) */
-      z-index: -1;
-      pointer-events: none;
-      /* Force iOS Safari to composit this overflowed shield on its own GPU layer to prevent subpixel rounding gaps */
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
+      padding-top: env(safe-area-inset-top) !important; /* Native safe-area support: extends the glass background under the status bar on notch phones */
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
     section[id] {
-      scroll-margin-top: 76px; /* Offset the sticky header so headings are never cutoff */
+      scroll-margin-top: calc(76px + env(safe-area-inset-top)); /* Dynamically offset header based on notch safe-area on mobile */
     }
 
     /* Perfect laptop viewport vertical balance */
@@ -450,7 +434,7 @@
 <body class="min-h-screen relative z-10">  
     
   <!-- Top Announcement Bar -->
-  <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]">  
+  <div class="w-full bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]" style="padding-top: env(safe-area-inset-top); min-height: calc(40px + env(safe-area-inset-top));">  
     STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
   </div>
 
