@@ -2266,13 +2266,15 @@
       window.nextWrappedSlide = (userClicked = false) => {
         currentWrappedSlideIdx = currentWrappedSlideIdx === 7 ? 1 : currentWrappedSlideIdx + 1;
         renderWrappedSlide(currentWrappedSlideIdx);
-        if (userClicked === true || userClicked instanceof Event) playSparkleSound();
+        // No sound for slide 7 (BEAUTY DNA • SUMMARY / Your Beauty Archetype)
+        if ((userClicked === true || userClicked instanceof Event) && currentWrappedSlideIdx !== 7) playSparkleSound();
       };
 
       window.prevWrappedSlide = (userClicked = false) => {
         currentWrappedSlideIdx = currentWrappedSlideIdx === 1 ? 7 : currentWrappedSlideIdx - 1;
         renderWrappedSlide(currentWrappedSlideIdx);
-        if (userClicked === true || userClicked instanceof Event) playSparkleSound();
+        // No sound for slide 7 (BEAUTY DNA • SUMMARY / Your Beauty Archetype)
+        if ((userClicked === true || userClicked instanceof Event) && currentWrappedSlideIdx !== 7) playSparkleSound();
       };
 
       window.toggleWrappedPlayback = () => {
