@@ -638,7 +638,7 @@ html_template = """<!DOCTYPE html>
 <html lang="en">  
 <head>  
   <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />  
   <meta name="theme-color" content="#2A2421" />  
   <link rel="canonical" href="https://remake.beauty/products/{slug}.html" />  
   <meta name="description" content="{meta_desc}">  
