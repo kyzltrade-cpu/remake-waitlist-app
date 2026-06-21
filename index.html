@@ -900,19 +900,19 @@
       
       <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center pt-8 border-t border-[#F5DDE3]">  
         <div>
-          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal" id="counter1">1,247</div>
+          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal stat-counter" data-target="1247" data-format="comma">0</div>
           <div class="text-[10px] text-[#B8ADA9] uppercase tracking-wider font-semibold">on waitlist</div>
         </div>  
         <div>
-          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal">99.4%</div>
+          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal stat-counter" data-target="99.4" data-format="decimal" data-suffix="%">0%</div>
           <div class="text-[10px] text-[#B8ADA9] uppercase tracking-wider font-semibold">match accuracy</div>
         </div>  
         <div>
-          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal">40+</div>
+          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal stat-counter" data-target="40" data-suffix="+">0+</div>
           <div class="text-[10px] text-[#B8ADA9] uppercase tracking-wider font-semibold">cloggers tracked</div>
         </div>  
         <div>
-          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal">15k+</div>
+          <div class="hero-title text-4xl mb-1 text-[#2A2421] font-normal stat-counter" data-target="15" data-suffix="k+">0k+</div>
           <div class="text-[10px] text-[#B8ADA9] uppercase tracking-wider font-semibold">products checked</div>
         </div>  
       </div>  
@@ -2205,6 +2205,60 @@
           closeWaitlistModalFn();
         }
       });
+
+      // Stat counter scroll-into-view animation
+      const animateCounters = () => {
+        const counters = document.querySelectorAll('.stat-counter');
+        
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const targetEl = entry.target;
+              const targetVal = parseFloat(targetEl.getAttribute('data-target'));
+              const format = targetEl.getAttribute('data-format') || '';
+              const suffix = targetEl.getAttribute('data-suffix') || '';
+              
+              let currentVal = 0;
+              const duration = 2000; // 2 seconds
+              const frameRate = 60;
+              const totalFrames = (duration / 1000) * frameRate;
+              const increment = targetVal / totalFrames;
+              let currentFrame = 0;
+              
+              const updateCounter = () => {
+                currentFrame++;
+                currentVal += increment;
+                
+                if (currentFrame >= totalFrames) {
+                  currentVal = targetVal;
+                }
+                
+                let displayVal = '';
+                if (format === 'comma') {
+                  displayVal = Math.floor(currentVal).toLocaleString();
+                } else if (format === 'decimal') {
+                  displayVal = currentVal.toFixed(1);
+                } else {
+                  displayVal = Math.floor(currentVal);
+                }
+                
+                targetEl.textContent = displayVal + suffix;
+                
+                if (currentFrame < totalFrames) {
+                  requestAnimationFrame(updateCounter);
+                }
+              };
+              
+              requestAnimationFrame(updateCounter);
+              obs.unobserve(targetEl); // trigger only once
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        counters.forEach(counter => observer.observe(counter));
+      };
+      
+      animateCounters();
 
       // Smooth scroll triggers
       document.querySelectorAll('a[href^="#"]').forEach(a => {  
