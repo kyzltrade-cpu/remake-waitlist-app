@@ -321,12 +321,29 @@
       }
     }
 
-    /* Sticky Header Wrapper to prevent Safari sticky calculation gaps */
+    /* Fixed Header Wrapper to prevent Safari mobile sticky offset calculation and Safe Area gaps entirely */
+    body {
+      padding-top: 90px !important; /* Push normal body content down to offset our fixed header wrapper */
+    }
+    @media (min-width: 768px) {
+      body {
+        padding-top: 94px !important;
+      }
+    }
+
     .sticky-header-wrapper {
-      position: sticky !important;
-      top: -40px !important; /* Scrolls the 40px announcement bar out of view, then sticks the header exactly at top-0 */
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
       z-index: 50 !important;
       width: 100%;
+      transform: translateY(0);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sticky-header-wrapper.scrolled {
+      transform: translateY(-40px) !important; /* Gracefully slides the 40px announcement bar off-screen and locks glass navigation header perfectly at top-0 of screen */
     }
 
     /* Warm Blush Glassmorphism Header */
@@ -2425,6 +2442,18 @@
           document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });  
         });  
       });  
+
+      // Ultra-smooth high-performance fixed header scroll state handler
+      const headerWrapper = document.querySelector('.sticky-header-wrapper');
+      if (headerWrapper) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 20) {
+            headerWrapper.classList.add('scrolled');
+          } else {
+            headerWrapper.classList.remove('scrolled');
+          }
+        }, { passive: true });
+      }
     });
   </script>
 </body>  
