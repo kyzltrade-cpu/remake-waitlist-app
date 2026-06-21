@@ -331,11 +331,28 @@
 
     /* Warm Blush Glassmorphism Header */
     .glass-header {
+      position: relative !important;
       background: rgba(255, 250, 251, 0.82) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
+    }
+
+    /* Solid pink status bar shield to completely cover any Safari mobile sticky scroll gaps with a luxurious, non-transparent barrier */
+    .glass-header::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: #FFF0F3 !important; /* Solid premium warm blush pink matching the body bg perfectly */
+      z-index: -1;
+      pointer-events: none;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
