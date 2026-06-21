@@ -363,12 +363,11 @@
       -webkit-backdrop-filter: blur(20px) !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
-      padding-top: env(safe-area-inset-top) !important; /* Push header content perfectly below the status bar on notch phones */
+      /* padding-top handled by scrolled state only — see .sticky-header-wrapper.scrolled .glass-header below */
     }
 
-    /* Safe area is now owned by the announcement bar, not glass-header */
+    /* Non-scrolled: glass-header uses simple translucent bg, no safe-area padding */
     .glass-header {
-      padding-top: 0 !important;
       background: rgba(255, 250, 251, 0.82) !important;
     }
 
