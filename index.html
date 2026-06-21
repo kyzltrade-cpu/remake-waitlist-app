@@ -869,14 +869,14 @@
 
           <!-- Interactive controls overlay -->
           <div class="mt-6 pt-4 border-t border-[#F5DDE3]/40 flex justify-between items-center gap-4 z-20">
-            <button onclick="prevWrappedSlide()" class="w-10 h-10 rounded-full border border-[#F5DDE3] bg-white flex items-center justify-center text-[#7C726E] hover:bg-pink-50 transition active:scale-90">←</button>
+            <button onclick="prevWrappedSlide(true)" class="w-10 h-10 rounded-full border border-[#F5DDE3] bg-white flex items-center justify-center text-[#7C726E] hover:bg-pink-50 transition active:scale-90">←</button>
             <div class="flex-1 text-center">
               <button onclick="toggleWrappedPlayback()" id="wrappedPlayBtn" class="px-4 py-1.5 rounded-full bg-pink-100 text-[#D98A96] text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 mx-auto active:scale-95">
                 <span class="inline-block w-2 h-2 rounded-full bg-[#D98A96] animate-pulse"></span>
                 <span>Pause autoplay</span>
               </button>
             </div>
-            <button onclick="nextWrappedSlide()" class="w-10 h-10 rounded-full border border-[#F5DDE3] bg-white flex items-center justify-center text-[#7C726E] hover:bg-pink-50 transition active:scale-90">→</button>
+            <button onclick="nextWrappedSlide(true)" class="w-10 h-10 rounded-full border border-[#F5DDE3] bg-white flex items-center justify-center text-[#7C726E] hover:bg-pink-50 transition active:scale-90">→</button>
           </div>
           
         </div>
@@ -2155,7 +2155,7 @@
                   <span class="text-[9px] uppercase tracking-widest text-[#D98A96] font-bold block">${slide.tag}</span>
                   <span class="text-2xl font-serif font-normal text-[#2A2421]">${slide.title}</span>
                 </div>
-                <img src="./logo.png" alt="REMAKE" class="h-8 w-auto">
+                <img src="./logo.png" alt="REMAKE" class="h-8 w-8 rounded-full border border-[#F5DDE3] shadow-[0_2px_5px_rgba(217,138,150,0.08)] bg-white p-1">
               </div>
               ${slide.html}
             `;
@@ -2165,14 +2165,53 @@
         }
       };
 
-      window.nextWrappedSlide = () => {
-        currentWrappedSlideIdx = currentWrappedSlideIdx === 7 ? 1 : currentWrappedSlideIdx + 1;
-        renderWrappedSlide(currentWrappedSlideIdx);
+      // Synthesize a dreamy, sparkly high-fashion chime sound using Web Audio API
+      const playSparkleSound = () => {
+        try {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContext) return;
+          const ctx = new AudioContext();
+          const now = ctx.currentTime;
+          
+          const playTone = (freq, delay, vol) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + delay);
+            
+            gain.gain.setValueAtTime(0, now + delay);
+            gain.gain.linearRampToValueAtTime(vol, now + delay + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 0.4);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start(now + delay);
+            osc.stop(now + delay + 0.45);
+          };
+          
+          // Arpeggiated chime chord (major 7th sparkling chord)
+          playTone(880, 0, 0.04);       // A5
+          playTone(1108.73, 0.05, 0.03); // C#6
+          playTone(1318.51, 0.10, 0.03); // E6
+          playTone(1661.22, 0.15, 0.02); // G#6
+          playTone(2217.46, 0.20, 0.015); // C#7
+        } catch (e) {
+          console.log("AudioContext blocked or not supported", e);
+        }
       };
 
-      window.prevWrappedSlide = () => {
+      window.nextWrappedSlide = (userClicked = false) => {
+        currentWrappedSlideIdx = currentWrappedSlideIdx === 7 ? 1 : currentWrappedSlideIdx + 1;
+        renderWrappedSlide(currentWrappedSlideIdx);
+        if (userClicked === true || userClicked instanceof Event) playSparkleSound();
+      };
+
+      window.prevWrappedSlide = (userClicked = false) => {
         currentWrappedSlideIdx = currentWrappedSlideIdx === 1 ? 7 : currentWrappedSlideIdx - 1;
         renderWrappedSlide(currentWrappedSlideIdx);
+        if (userClicked === true || userClicked instanceof Event) playSparkleSound();
       };
 
       window.toggleWrappedPlayback = () => {
