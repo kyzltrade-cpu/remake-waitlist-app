@@ -1309,7 +1309,14 @@
       }
     }
 
+    let selectProductTimeout = null;
+
     function selectProduct(key) {
+      // Clear any pending transition timeout to prevent overlapping runs!
+      if (selectProductTimeout) {
+        clearTimeout(selectProductTimeout);
+      }
+
       // Manage tab state
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       const activeTab = document.getElementById('tab-' + key);
@@ -1319,7 +1326,34 @@
       const card = document.getElementById('productShowcaseCard');
       card.classList.add('scanning-active');
       
-      setTimeout(() => {
+      // Beautiful fade-out of content during the scan for a premium feel
+      const contentElements = card.querySelectorAll(':not(.scan-laser)');
+      contentElements.forEach(el => {
+        el.style.transition = 'opacity 0.25s ease-out';
+        el.style.opacity = '0.2';
+      });
+
+      // Play our high-fashion sparkle chime!
+      if (window.playSparkleSound) {
+        window.playSparkleSound();
+      } else {
+        // Fallback chirp
+        try {
+          const ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(2200, ctx.currentTime);
+          gain.gain.setValueAtTime(0.04, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.1);
+        } catch(e) {}
+      }
+      
+      selectProductTimeout = setTimeout(() => {
         // Fetch product data
         const prod = productData[key];
         if (!prod) return;
@@ -1343,9 +1377,15 @@
         path.style.strokeDashoffset = prod.scoreOffset;
         document.getElementById('labScoreText').textContent = prod.score;
         
+        // Fade content back in gracefully
+        contentElements.forEach(el => {
+          el.style.transition = 'opacity 0.35s ease-in';
+          el.style.opacity = '1';
+        });
+
         // Remove scanner beam state
         card.classList.remove('scanning-active');
-      }, 700);
+      }, 550); // Sleeker 550ms timing for maximum snappiness
     }
 
     // Dynamic Barcode Scan simulation with real beep!
@@ -1872,7 +1912,7 @@
         if (!scanModal) return;
         scanModal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        playScannerBeep();
+        if (window.playSparkleSound) window.playSparkleSound(); else playScannerBeep();
 
         // Animate modal score ring when opened (82% filled match)
         const modalScorePath = document.querySelector('.score-path-modal');
@@ -2219,6 +2259,9 @@
           console.log("AudioContext blocked or not supported", e);
         }
       };
+
+      // Bind sparkle sound globally so other elements can play it
+      window.playSparkleSound = playSparkleSound;
 
       window.nextWrappedSlide = (userClicked = false) => {
         currentWrappedSlideIdx = currentWrappedSlideIdx === 7 ? 1 : currentWrappedSlideIdx + 1;
