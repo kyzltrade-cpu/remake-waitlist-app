@@ -321,21 +321,26 @@
       }
     }
 
+    /* Sticky Header Wrapper to prevent Safari sticky calculation gaps */
+    .sticky-header-wrapper {
+      position: sticky !important;
+      top: -40px !important; /* Scrolls the 40px announcement bar out of view, then sticks the header exactly at top-0 */
+      z-index: 50 !important;
+      width: 100%;
+    }
+
     /* Warm Blush Glassmorphism Header */
     .glass-header {
-      position: sticky !important;
-      top: 0 !important;
       background: rgba(255, 250, 251, 0.82) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
-      padding-top: env(safe-area-inset-top) !important; /* Native safe-area support: extends the glass background under the status bar on notch phones */
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
     section[id] {
-      scroll-margin-top: calc(76px + env(safe-area-inset-top)); /* Dynamically offset header based on notch safe-area on mobile */
+      scroll-margin-top: 76px; /* Offset the sticky header so headings are never cutoff */
     }
 
     /* Perfect laptop viewport vertical balance */
@@ -433,28 +438,31 @@
 </head>  
 <body class="min-h-screen relative z-10">  
     
-  <!-- Top Announcement Bar -->
-  <div class="w-full bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]" style="padding-top: env(safe-area-inset-top); min-height: calc(40px + env(safe-area-inset-top));">  
-    STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
-  </div>
+  <!-- Sticky Header Wrapper (Covers both Announcement Bar and Main Navigation) -->
+  <div class="sticky-header-wrapper">
+    <!-- Top Announcement Bar -->
+    <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]">  
+      STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
+    </div>
 
-  <!-- Sticky Main Navigation Header -->
-  <header class="sticky top-0 w-full z-40 glass-header sticky-header-shield">  
-    <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
-      <a href="/" class="logo-wrap group">  
-        <img src="./logo.png" alt="REMAKE Logo">  
-        <span class="logo-text">REMAKE</span>  
-      </a>  
-      <nav class="hidden lg:flex items-center gap-8">  
-        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
-        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
-        <a href="#comparison" class="nav-link transition">Compare</a>  
-        <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
-        <a href="#faq" class="nav-link transition">FAQ</a>  
-      </nav>  
-      <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
-    </div>  
-  </header>
+    <!-- Main Navigation Header -->
+    <header class="w-full z-40 glass-header">  
+      <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
+        <a href="/" class="logo-wrap group">  
+          <img src="./logo.png" alt="REMAKE Logo">  
+          <span class="logo-text">REMAKE</span>  
+        </a>  
+        <nav class="hidden lg:flex items-center gap-8">  
+          <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+          <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+          <a href="#comparison" class="nav-link transition">Compare</a>  
+          <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
+          <a href="#faq" class="nav-link transition">FAQ</a>  
+        </nav>  
+        <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
+      </div>  
+    </header>
+  </div>
 
   <!-- Hero Section -->
   <section class="flex-1 flex items-center justify-center px-6 py-8 md:py-16 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
