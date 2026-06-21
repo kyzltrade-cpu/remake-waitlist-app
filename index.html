@@ -319,6 +319,8 @@
 
     /* Warm Blush Glassmorphism Header */
     .glass-header {
+      position: sticky !important;
+      top: -1.5px !important; /* Defeats Safari subpixel rounding gaps during viewport scroll transitions */
       background: rgba(255, 250, 251, 0.82) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
@@ -339,6 +341,10 @@
       -webkit-backdrop-filter: blur(20px);
       z-index: -1;
       pointer-events: none;
+      /* Force iOS Safari to composit this overflowed shield on its own GPU layer to prevent backdrop-filter clipping or transparent dropouts */
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      will-change: transform, backdrop-filter;
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
