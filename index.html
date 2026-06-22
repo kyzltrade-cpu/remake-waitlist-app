@@ -118,7 +118,7 @@
       line-height: 1.8; font-weight: 400;  
     }  
     
-    .font-serif { font-family: 'Playfair Display', serif; }
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
     .font-luxury { font-family: 'Cormorant Garamond', serif; }
     .font-light { font-weight: 300; }  
       
@@ -134,7 +134,7 @@
       font-family: 'Inter', sans-serif; font-weight: 500;  
       letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.7rem;  
       display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;  
-      cursor: pointer; border-radius: var(--radius-pill);  
+      cursor: pointer; border-radius: 8px;  
     }  
     
     .btn-primary {   
@@ -218,8 +218,8 @@
     }  
     @keyframes spin { to { transform: rotate(360deg); } }  
       
-    .hero-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }  
-    .section-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.005em; color: var(--rhode-text); }  
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; }  
+    .section-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: -0.015em; color: var(--rhode-text); line-height: 1.2; }  
     
     .nav-link {  
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; position: relative; color: rgba(42, 36, 33, 0.65) !important;  
@@ -307,10 +307,10 @@
       box-shadow: 0 5px 15px rgba(217, 138, 150, 0.15);  
     }  
     .logo-text { 
-      font-family: 'Playfair Display', serif; 
-      font-size: 1.2rem; 
+      font-family: 'Cormorant Garamond', serif; 
+      font-size: 1.3rem; 
       font-weight: 500; 
-      letter-spacing: 0.12em; 
+      letter-spacing: 0.14em; 
       color: var(--rhode-text); 
       transform: translateY(-1px); 
     }
@@ -766,9 +766,9 @@
 
       <!-- Matchup Selector Toggles -->
       <div class="flex flex-wrap justify-center gap-3 mb-10">
-        <button onclick="switchComparisonMatchup('filter')" id="comp-btn-filter" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105">GLOW FILTER BATTLE</button>
-        <button onclick="switchComparisonMatchup('bronzer')" id="comp-btn-bronzer" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">MILK BRONZER BATTLE</button>
-        <button onclick="switchComparisonMatchup('lip')" id="comp-btn-lip" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">PEPTIDE LIP BATTLE</button>
+        <button onclick="switchComparisonMatchup('filter')" id="comp-btn-filter" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-md border border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105">GLOW FILTER BATTLE</button>
+        <button onclick="switchComparisonMatchup('bronzer')" id="comp-btn-bronzer" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-md border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">MILK BRONZER BATTLE</button>
+        <button onclick="switchComparisonMatchup('lip')" id="comp-btn-lip" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-md border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">PEPTIDE LIP BATTLE</button>
       </div>
 
       <!-- Comparison Grid Layout -->
