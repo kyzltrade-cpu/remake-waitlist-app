@@ -134,7 +134,7 @@
       font-family: 'Inter', sans-serif; font-weight: 500;  
       letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.7rem;  
       display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;  
-      cursor: pointer; border-radius: 8px;  
+      cursor: pointer; border-radius: var(--radius-pill);  
     }  
     
     .btn-primary {   
@@ -171,7 +171,7 @@
     .input-field {  
       border: 1px solid var(--rhode-border); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);  
       font-family: 'Inter', sans-serif; background: rgba(255,255,255,0.9); caret-color: var(--rhode-pink-rich);  
-      border-radius: 14px; padding: 1rem 1.4rem;  
+      border-radius: var(--radius-pill); padding: 1rem 1.4rem;  
     }  
     
     .input-field:focus { outline: none; border-color: var(--rhode-pink-deep); box-shadow: 0 0 0 4px rgba(232,160,170,0.15); background: #fff; }  
@@ -766,9 +766,9 @@
 
       <!-- Matchup Selector Toggles -->
       <div class="flex flex-wrap justify-center gap-3 mb-10">
-        <button onclick="switchComparisonMatchup('filter')" id="comp-btn-filter" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-md border border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105">GLOW FILTER BATTLE</button>
-        <button onclick="switchComparisonMatchup('bronzer')" id="comp-btn-bronzer" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-md border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">MILK BRONZER BATTLE</button>
-        <button onclick="switchComparisonMatchup('lip')" id="comp-btn-lip" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-md border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">PEPTIDE LIP BATTLE</button>
+        <button onclick="switchComparisonMatchup('filter')" id="comp-btn-filter" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#D98A96] bg-[#D98A96] text-white shadow-sm transition hover:scale-105">GLOW FILTER BATTLE</button>
+        <button onclick="switchComparisonMatchup('bronzer')" id="comp-btn-bronzer" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">MILK BRONZER BATTLE</button>
+        <button onclick="switchComparisonMatchup('lip')" id="comp-btn-lip" class="px-4 md:px-5 py-2.5 text-xs font-semibold rounded-full border border-[#F5DDE3] bg-white text-[#7C726E] hover:bg-pink-50 transition hover:scale-105">PEPTIDE LIP BATTLE</button>
       </div>
 
       <!-- Comparison Grid Layout -->
