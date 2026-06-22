@@ -222,10 +222,10 @@
     .section-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.005em; color: var(--rhode-text); }  
     
     .nav-link {  
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; position: relative; color: rgba(42, 36, 33, 0.65) !important;  
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; position: relative; color: rgba(42, 36, 33, 0.65) !important;  
       transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }  
-    .nav-link:hover { color: rgba(42, 36, 33, 1) !important; }  
+    .nav-link:hover { color: #D98A96 !important; }  
     
     .text-elegant { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }  
     .text-pink-solid { color: var(--rhode-pink-rich); }  
@@ -325,7 +325,7 @@
 
     /* Bulletproof Sticky Header Scroll Offset */
     section[id] {
-      scroll-margin-top: calc(76px + env(safe-area-inset-top)); /* Dynamically offset header based on notch safe-area on mobile */
+      scroll-margin-top: calc(120px + env(safe-area-inset-top)); /* Dynamically offset header based on notch safe-area on mobile */
     }
 
     /* Perfect laptop viewport vertical balance */
@@ -421,30 +421,30 @@
     }  
   </style>  
 </head>  
-<body class="min-h-screen relative z-10 pt-[100px] md:pt-[106px]">  
+<body class="min-h-screen relative z-10 pt-[120px] md:pt-[120px]">  
     
-  <div class="fixed top-0 left-0 w-full z-50 bg-[#FFF0F3] shadow-sm border-b border-[#F5DDE3]">
+  <div class="fixed top-0 left-0 w-full z-50 bg-[#FFF0F3]/80 backdrop-blur-md shadow-sm border-b border-[#F5DDE3]/40">
     <!-- Top Announcement Bar -->
-    <div class="w-full bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center pt-[env(safe-area-inset-top)] min-h-[40px] md:h-10 px-4">  
+    <div class="w-full bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase flex items-center justify-center pt-[env(safe-area-inset-top)] min-h-[40px] md:h-10 px-4">  
       STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
     </div>
 
-    <!-- Main Navigation Header -->
-    <header class="w-full bg-[#FFF0F3]">  
-      <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
+    <!-- Main Navigation Header (V5 Inspired Layout) -->
+    <header class="w-full h-20 px-6 md:px-12 flex items-center justify-between">  
+      <div class="flex items-center">
         <a href="/" class="logo-wrap group">  
           <img src="./logo.png" alt="REMAKE Logo">  
           <span class="logo-text">REMAKE</span>  
         </a>  
-        <nav class="hidden lg:flex items-center gap-8">  
-          <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
-          <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
-          <a href="#comparison" class="nav-link transition">Compare</a>  
-          <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
-          <a href="#faq" class="nav-link transition">FAQ</a>  
-        </nav>  
-        <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
-      </div>  
+      </div>
+      <nav class="hidden md:flex items-center gap-10">  
+        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+        <a href="#comparison" class="nav-link transition">Compare</a>  
+        <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
+        <a href="#faq" class="nav-link transition">FAQ</a>  
+      </nav>  
+      <button id="header-cta" class="font-bold text-[10px] md:text-xs tracking-widest uppercase bg-[#2A2421] text-white px-5 py-2.5 md:px-6 md:py-3 rounded-md hover:bg-[#D98A96] hover:shadow-lg transition duration-300">Get Early Access</button>  
     </header>
   </div>
 
