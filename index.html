@@ -222,10 +222,10 @@
     .section-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.005em; color: var(--rhode-text); }  
     
     .nav-link {  
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; position: relative; color: rgba(42, 36, 33, 0.65) !important;  
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; position: relative; color: rgba(42, 36, 33, 0.65) !important;  
       transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }  
-    .nav-link:hover { color: #D98A96 !important; }  
+    .nav-link:hover { color: rgba(42, 36, 33, 1) !important; }  
     
     .text-elegant { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }  
     .text-pink-solid { color: var(--rhode-pink-rich); }  
@@ -321,11 +321,93 @@
       }
     }
 
+    /* Fixed Header Wrapper to prevent Safari mobile sticky offset calculation and Safe Area gaps entirely */
+    body {
+      padding-top: calc(90px + env(safe-area-inset-top)) !important; /* Push normal body content down dynamically, accounting for safe area height */
+    }
+    @media (min-width: 768px) {
+      body {
+        padding-top: 94px !important; /* Desktop has no safe area inset top */
+      }
+    }
+
+    .sticky-header-wrapper {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 50 !important;
+      width: 100%;
+      background: #FFF0F3; /* Cover gap above announcement bar on iOS */
+      -webkit-transform: translateZ(0); /* Force hardware layer in Safari */
+      transform: translateY(0);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sticky-header-wrapper.scrolled {
+      transform: translateY(calc(-40px - env(safe-area-inset-top))) !important; /* Slide full announcement bar (including safe area) off-screen */
+    }
+
+    /* Warm Blush Glassmorphism Header */
+    .glass-header {
+      position: relative !important;
+      /* Solid pink linear gradient for the safe area / status bar height, transitioning perfectly to translucent glass below it to permanently eliminate Safari transparent scroll gaps */
+      background: linear-gradient(
+        to bottom,
+        #FFF0F3 0px,
+        #FFF0F3 env(safe-area-inset-top),
+        rgba(255, 250, 251, 0.82) env(safe-area-inset-top),
+        rgba(255, 250, 251, 0.82) 100%
+      ) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
+      box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
+      /* padding-top handled by scrolled state only — see .sticky-header-wrapper.scrolled .glass-header below */
+    }
+
+    /* Non-scrolled: glass-header uses simple translucent bg, no safe-area padding */
+    .glass-header {
+      background: rgba(255, 250, 251, 0.82) !important;
+    }
+
+    /* When scrolled, glass-header is at the very top — restore safe area coverage */
+    .sticky-header-wrapper.scrolled .glass-header {
+      padding-top: env(safe-area-inset-top) !important;
+      background: linear-gradient(
+        to bottom,
+        #FFF0F3 0px,
+        #FFF0F3 env(safe-area-inset-top),
+        rgba(255, 250, 251, 0.82) env(safe-area-inset-top),
+        rgba(255, 250, 251, 0.82) 100%
+      ) !important;
+    }
+
+    /* Announcement bar stretches to cover full Dynamic Island / status bar safe area */
+    .sticky-header-wrapper > div:first-child {
+      padding-top: env(safe-area-inset-top) !important;
+      height: calc(40px + env(safe-area-inset-top)) !important;
+    }
+
+    /* Solid pink status bar shield to completely cover any Safari mobile sticky scroll gaps with a luxurious, non-transparent barrier */
+    .glass-header::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: #FFF0F3 !important; /* Solid premium warm blush pink matching the body bg perfectly */
+      z-index: 1;
+      pointer-events: none;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
     section[id] {
-      scroll-margin-top: calc(120px + env(safe-area-inset-top)); /* Dynamically offset header based on notch safe-area on mobile */
+      scroll-margin-top: calc(76px + env(safe-area-inset-top)); /* Dynamically offset header based on notch safe-area on mobile */
     }
 
     /* Perfect laptop viewport vertical balance */
@@ -421,30 +503,31 @@
     }  
   </style>  
 </head>  
-<body class="min-h-screen relative z-10 pt-[120px] md:pt-[120px]">  
+<body class="min-h-screen relative z-10">  
     
-  <div class="fixed top-0 left-0 w-full z-50 bg-[#FFF0F3]/80 backdrop-blur-md shadow-sm border-b border-[#F5DDE3]/40">
+  <!-- Sticky Header Wrapper (Covers both Announcement Bar and Main Navigation) -->
+  <div class="sticky-header-wrapper">
     <!-- Top Announcement Bar -->
-    <div class="w-full bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase flex items-center justify-center pt-[env(safe-area-inset-top)] min-h-[40px] md:h-10 px-4">  
+    <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]">  
       STOP BREAKING OUT. JOIN THE ACNE-SAFE REVOLUTION TODAY.
     </div>
 
-    <!-- Main Navigation Header (V5 Inspired Layout) -->
-    <header class="w-full h-20 px-6 md:px-12 flex items-center justify-between">  
-      <div class="flex items-center">
+    <!-- Main Navigation Header -->
+    <header class="w-full z-40 glass-header">  
+      <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
         <a href="/" class="logo-wrap group">  
           <img src="./logo.png" alt="REMAKE Logo">  
           <span class="logo-text">REMAKE</span>  
         </a>  
-      </div>
-      <nav class="hidden md:flex items-center gap-10">  
-        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
-        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
-        <a href="#comparison" class="nav-link transition">Compare</a>  
-        <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
-        <a href="#faq" class="nav-link transition">FAQ</a>  
-      </nav>  
-      <button id="header-cta" class="font-bold text-[10px] md:text-xs tracking-widest uppercase bg-[#2A2421] text-white px-5 py-2.5 md:px-6 md:py-3 rounded-md hover:bg-[#D98A96] hover:shadow-lg transition duration-300">Get Early Access</button>  
+        <nav class="hidden lg:flex items-center gap-8">  
+          <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+          <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+          <a href="#comparison" class="nav-link transition">Compare</a>  
+          <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
+          <a href="#faq" class="nav-link transition">FAQ</a>  
+        </nav>  
+        <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
+      </div>  
     </header>
   </div>
 
@@ -2392,6 +2475,18 @@
           document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth', block: 'start' });  
         });  
       });  
+
+      // Ultra-smooth high-performance fixed header scroll state handler
+      const headerWrapper = document.querySelector('.sticky-header-wrapper');
+      if (headerWrapper) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 20) {
+            headerWrapper.classList.add('scrolled');
+          } else {
+            headerWrapper.classList.remove('scrolled');
+          }
+        }, { passive: true });
+      }
     });
   </script>
 </body>  
