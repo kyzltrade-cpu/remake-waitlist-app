@@ -62,7 +62,7 @@
   
   <link rel="icon" href="./favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">  
-  <link rel="stylesheet" href="./styles.css?v=1.0.7">  
+  <link rel="stylesheet" href="./styles.css?v=1.0.8">  
   <link rel="preconnect" href="https://fonts.googleapis.com">  
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">  
@@ -371,6 +371,9 @@
 
     /* Elegant shadow highlight only when the header is stuck / page is scrolled */
     .main-header.stuck {
+      position: -webkit-sticky !important;
+      position: sticky !important;
+      top: calc(-1 * env(safe-area-inset-top)) !important;
       padding-top: env(safe-area-inset-top) !important;
       box-shadow: 0 10px 30px rgba(42, 36, 33, 0.04) !important;
       border-bottom-color: rgba(245, 221, 227, 0.8) !important;
