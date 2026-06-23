@@ -321,73 +321,57 @@
       }
     }
 
-    /* Fixed Header Wrapper to prevent Safari mobile sticky offset calculation and Safe Area gaps entirely */
-    body {
-      padding-top: calc(90px + env(safe-area-inset-top)) !important; /* Push normal body content down dynamically, accounting for safe area height */
-    }
-    @media (min-width: 768px) {
-      body {
-        padding-top: 94px !important; /* Desktop has no safe area inset top */
-      }
+    /* Native Sticky Navigation Header & Announcement Bar */
+    .announcement-bar {
+      position: relative;
+      z-index: 60;
+      width: 100%;
+      height: 40px;
+      background: #2A2421;
     }
 
-    .sticky-header-wrapper {
-      position: fixed !important;
+    /* Pull-down stretch background for the announcement bar on iOS to prevent transparent top gaps */
+    .announcement-bar::before {
+      content: "";
+      position: absolute;
+      top: -200px;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: #2A2421;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .main-header {
+      position: -webkit-sticky !important;
+      position: sticky !important;
       top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
       z-index: 50 !important;
       width: 100%;
-      background: #2A2421; /* Cover gap above announcement bar on iOS */
-      -webkit-transform: translateZ(0); /* Force hardware layer in Safari */
-      transform: translateY(0);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .sticky-header-wrapper.scrolled {
-      transform: translateY(calc(-40px - env(safe-area-inset-top))) !important; /* Slide full announcement bar (including safe area) off-screen */
-    }
-
-    /* Premium Solid White Navigation Header */
-    .glass-header {
-      position: relative !important;
       background: #FFFFFF !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 20px rgba(42, 36, 33, 0.02) !important;
-      /* padding-top handled by scrolled state only — see .sticky-header-wrapper.scrolled .glass-header below */
+      transition: box-shadow 0.25s ease;
     }
 
-    /* Non-scrolled: solid white header */
-    .glass-header {
-      background: #FFFFFF !important;
-    }
-
-    /* When scrolled, glass-header is at the very top — restore safe area coverage with solid white */
-    .sticky-header-wrapper.scrolled .glass-header {
-      padding-top: env(safe-area-inset-top) !important;
-      background: #FFFFFF !important;
-    }
-
-    /* Announcement bar stretches to cover full Dynamic Island / status bar safe area */
-    .sticky-header-wrapper > div:first-child {
-      padding-top: env(safe-area-inset-top) !important;
-      height: calc(40px + env(safe-area-inset-top)) !important;
-    }
-
-    /* Solid white status bar shield to completely cover any Safari mobile sticky scroll gaps with a luxurious, non-transparent white barrier */
-    .glass-header::before {
+    /* Stretched background for the sticky header on rubber-banding pull-downs to prevent transparent gaps */
+    .main-header::before {
       content: "";
       position: absolute;
-      top: -150px;
+      top: -200px;
       left: 0;
       right: 0;
-      height: 150px;
-      background: #FFFFFF !important; /* Solid premium white to match the header background */
-      z-index: 1;
+      height: 200px;
+      background: #FFFFFF !important;
+      z-index: -1;
       pointer-events: none;
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
+    }
+
+    /* Elegant shadow highlight only when the header is stuck / page is scrolled */
+    .main-header.stuck {
+      box-shadow: 0 10px 30px rgba(42, 36, 33, 0.04) !important;
+      border-bottom-color: rgba(245, 221, 227, 0.8) !important;
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
@@ -490,31 +474,28 @@
 </head>  
 <body class="min-h-screen relative z-10">  
     
-  <!-- Sticky Header Wrapper (Covers both Announcement Bar and Main Navigation) -->
-  <div class="sticky-header-wrapper">
-    <!-- Top Announcement Bar -->
-    <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]">  
-      ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
-    </div>
-
-    <!-- Main Navigation Header -->
-    <header class="w-full z-40 glass-header">  
-      <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
-        <a href="/" class="logo-wrap group">  
-          <img src="./logo.png" alt="REMAKE Logo">  
-          <span class="logo-text">REMAKE</span>  
-        </a>  
-        <nav class="hidden lg:flex items-center gap-8">  
-          <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
-          <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
-          <a href="#comparison" class="nav-link transition">Compare</a>  
-          <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
-          <a href="#faq" class="nav-link transition">FAQ</a>  
-        </nav>  
-        <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
-      </div>  
-    </header>
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
+    ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
   </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">  
+    <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
+      <a href="/" class="logo-wrap group">  
+        <img src="./logo.png" alt="REMAKE Logo">  
+        <span class="logo-text">REMAKE</span>  
+      </a>  
+      <nav class="hidden lg:flex items-center gap-8">  
+        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+        <a href="#comparison" class="nav-link transition">Compare</a>  
+        <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
+        <a href="#faq" class="nav-link transition">FAQ</a>  
+      </nav>  
+      <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
+    </div>  
+  </header>
 
   <!-- Hero Section -->
   <section class="flex-1 flex items-center justify-center px-6 pt-28 pb-12 md:py-16 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
@@ -2500,18 +2481,18 @@
         });  
       });  
 
-      // Ultra-smooth high-performance fixed header scroll state handler and dynamic iOS theme-color matching
-      const headerWrapper = document.querySelector('.sticky-header-wrapper');
+      // Ultra-smooth native sticky header scroll state handler and dynamic iOS theme-color matching
+      const mainHeader = document.querySelector('.main-header');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
-      if (headerWrapper) {
+      if (mainHeader) {
         const updateHeaderScroll = () => {
-          if (window.scrollY > 20) {
-            headerWrapper.classList.add('scrolled');
+          if (window.scrollY > 40) {
+            mainHeader.classList.add('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
             }
           } else {
-            headerWrapper.classList.remove('scrolled');
+            mainHeader.classList.remove('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#2A2421') {
               themeMeta.setAttribute('content', '#2A2421');
             }
