@@ -62,7 +62,7 @@
   
   <link rel="icon" href="./favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">  
-  <link rel="stylesheet" href="./styles.css?v=1.0.8">  
+  <link rel="stylesheet" href="./styles.css?v=1.0.9">  
   <link rel="preconnect" href="https://fonts.googleapis.com">  
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">  
@@ -321,7 +321,16 @@
       }
     }
 
-    /* Native Sticky Navigation Header & Announcement Bar */
+    /* Unified Sticky Navigation Wrapper Styles (Consolidated Redo from Scratch) */
+    .sticky-nav-wrapper {
+      position: -webkit-sticky !important;
+      position: sticky !important;
+      top: calc(-40px - env(safe-area-inset-top)) !important; /* Pushes stuck boundary to match the announcement bar scroll out height */
+      z-index: 50 !important;
+      width: 100%;
+      background: transparent !important;
+    }
+
     .announcement-bar {
       position: relative;
       z-index: 60;
@@ -345,38 +354,39 @@
     }
 
     .main-header {
-      position: -webkit-sticky !important;
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 50 !important;
+      position: relative;
       width: 100%;
       background: #FFFFFF !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 20px rgba(42, 36, 33, 0.02) !important;
-      transition: box-shadow 0.25s ease;
+      transition: box-shadow 0.25s ease, padding 0.25s ease;
+      z-index: 50;
     }
 
-    /* Stretched background for the sticky header on rubber-banding pull-downs to prevent transparent gaps */
+    /* Opaque white shield that fills the safe-area gap. Fully backed inside the sticky parent texture to prevent WebKit clipping! */
     .main-header::before {
       content: "";
       position: absolute;
-      top: -200px;
+      top: calc(-1 * env(safe-area-inset-top)) !important;
       left: 0;
       right: 0;
-      height: 200px;
+      height: env(safe-area-inset-top) !important;
       background: #FFFFFF !important;
-      z-index: 50 !important;
+      z-index: -1;
       pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
     }
 
     /* Elegant shadow highlight only when the header is stuck / page is scrolled */
     .main-header.stuck {
-      position: -webkit-sticky !important;
-      position: sticky !important;
-      top: calc(-1 * env(safe-area-inset-top)) !important;
-      padding-top: env(safe-area-inset-top) !important;
       box-shadow: 0 10px 30px rgba(42, 36, 33, 0.04) !important;
       border-bottom-color: rgba(245, 221, 227, 0.8) !important;
+    }
+
+    /* Fade in the white safe-area shield *only* when the header is stuck */
+    .main-header.stuck::before {
+      opacity: 1 !important;
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
@@ -497,28 +507,31 @@
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
-  <!-- Top Announcement Bar -->
-  <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
-    ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
-  </div>
+  <!-- Unified Sticky Navigation Wrapper (Consolidated Redo from Scratch to fix Safe-Area gaps) -->
+  <div class="sticky-nav-wrapper">
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
+      ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
+    </div>
 
-  <!-- Main Navigation Header -->
-  <header class="main-header">  
-    <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
-      <a href="/" class="logo-wrap group">  
-        <img src="./logo.png" alt="REMAKE Logo">  
-        <span class="logo-text">REMAKE</span>  
-      </a>  
-      <nav class="hidden lg:flex items-center gap-8">  
-        <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
-        <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
-        <a href="#comparison" class="nav-link transition">Compare</a>  
-        <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
-        <a href="#faq" class="nav-link transition">FAQ</a>  
-      </nav>  
-      <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
-    </div>  
-  </header>
+    <!-- Main Navigation Header -->
+    <header class="main-header">  
+      <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
+        <a href="/" class="logo-wrap group">  
+          <img src="./logo.png" alt="REMAKE Logo">  
+          <span class="logo-text">REMAKE</span>  
+        </a>  
+        <nav class="hidden lg:flex items-center gap-8">  
+          <a href="#facial-scan" class="nav-link transition">AI Face Scan</a>  
+          <a href="#interactive-lab" class="nav-link transition">Test Lab</a>  
+          <a href="#comparison" class="nav-link transition">Compare</a>  
+          <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
+          <a href="#faq" class="nav-link transition">FAQ</a>  
+        </nav>  
+        <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
+      </div>  
+    </header>
+  </div>
 
   <!-- Hero Section -->
   <section class="px-6 pt-16 pb-16 md:pt-24 md:pb-24 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
