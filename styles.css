@@ -1372,8 +1372,8 @@
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
   }
-  .pt-28 {
-    padding-top: calc(var(--spacing) * 28);
+  .pt-24 {
+    padding-top: calc(var(--spacing) * 24);
   }
   .pr-1 {
     padding-right: var(--spacing);
@@ -2138,9 +2138,9 @@
       padding-block: calc(var(--spacing) * 24);
     }
   }
-  .md\:pt-36 {
+  .md\:pt-32 {
     @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 36);
+      padding-top: calc(var(--spacing) * 32);
     }
   }
   .md\:pb-24 {
