@@ -3,10 +3,10 @@
 <head>  
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />  
-  <meta name="theme-color" content="#2A2421" />  
+  <meta name="theme-color" content="#FFF0F3" />  
   <!-- Apple Standalone Mobile Web App (PWA) configuration to eliminate status bar gaps -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="REMAKE" />
   <link rel="canonical" href="https://remake.beauty/" />
   <meta name="description" content="REMAKE Beauty is the ultimate skincare & makeup barcode scanner. Scan barcodes to reveal toxic, pore-clogging ingredients and find your flawless foundation shade with our AI.">  
@@ -358,8 +358,8 @@
         to bottom,
         #FFF0F3 0px,
         #FFF0F3 env(safe-area-inset-top),
-        rgba(255, 250, 251, 0.82) env(safe-area-inset-top),
-        rgba(255, 250, 251, 0.82) 100%
+        rgba(255, 240, 243, 0.88) env(safe-area-inset-top),
+        rgba(255, 240, 243, 0.88) 100%
       ) !important;
       backdrop-filter: blur(20px) !important;
       -webkit-backdrop-filter: blur(20px) !important;
@@ -370,7 +370,7 @@
 
     /* Non-scrolled: glass-header uses simple translucent bg, no safe-area padding */
     .glass-header {
-      background: rgba(255, 250, 251, 0.82) !important;
+      background: rgba(255, 240, 243, 0.88) !important;
     }
 
     /* When scrolled, glass-header is at the very top — restore safe area coverage */
@@ -380,8 +380,8 @@
         to bottom,
         #FFF0F3 0px,
         #FFF0F3 env(safe-area-inset-top),
-        rgba(255, 250, 251, 0.82) env(safe-area-inset-top),
-        rgba(255, 250, 251, 0.82) 100%
+        rgba(255, 240, 243, 0.88) env(safe-area-inset-top),
+        rgba(255, 240, 243, 0.88) 100%
       ) !important;
     }
 
@@ -534,14 +534,14 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="w-full flex items-center justify-center px-6 py-6 md:py-8 lg:py-12 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
+  <section class="w-full flex items-center justify-center px-6 pt-14 pb-8 md:py-8 lg:py-12 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
     <div class="glow-accent" style="top: 10%; left: 10%;"></div>  
     <div class="glow-accent" style="bottom: 5%; right: 10%;"></div>  
     <div class="max-w-6xl mx-auto relative z-10 w-full flex flex-col md:flex-row items-center gap-6 md:gap-12 lg:gap-16">  
       <div class="w-full md:flex-1 text-center md:text-left flex flex-col items-center md:items-start justify-center">  
         <span class="badge-luxury mb-3 reveal">AI MAKEUP & SKINCARE SCANNER</span>  
         <h1 class="hero-title text-4xl md:text-6xl mb-4 reveal reveal-delay-1 text-[#2A2421]">  
-          REMAKE.<br><span class="font-luxury text-elegant text-pink-solid">your skin's digital gatekeeper.</span>  
+          REMAKE<br><span class="font-luxury text-elegant text-pink-solid">your skin's digital gatekeeper.</span>  
         </h1>  
         <p class="text-base md:text-lg text-[#7C726E] mb-5 max-w-xl font-light leading-relaxed reveal reveal-delay-2">  
           Scan your face with our advanced AI to instantly unlock your personalized Beauty DNA™ profile, find your flawless foundation shade match, and screen any beauty barcode for pore-clogging triggers.  
@@ -1462,7 +1462,8 @@
         
         // Trigger rating animation
         const path = document.getElementById('labScorePath');
-        path.style.strokeDashoffset = prod.scoreOffset;
+        path.setAttribute('stroke-dashoffset', prod.scoreOffset);
+        path.style.strokeDashoffset = prod.scoreOffset + "px";
         document.getElementById('labScoreText').textContent = prod.score;
         
         // Fade content back in gracefully
@@ -2007,10 +2008,12 @@
         const modalScorePath = document.querySelector('.score-path-modal');
         if (modalScorePath) {
           modalScorePath.style.transition = 'none';
-          modalScorePath.style.strokeDashoffset = 264;
+          modalScorePath.setAttribute('stroke-dashoffset', 264);
+          modalScorePath.style.strokeDashoffset = "264px";
           void modalScorePath.offsetWidth; // force reflow
           modalScorePath.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
-          modalScorePath.style.strokeDashoffset = 264 - (264 * 0.82);
+          modalScorePath.setAttribute('stroke-dashoffset', 264 - (264 * 0.82));
+          modalScorePath.style.strokeDashoffset = (264 - (264 * 0.82)) + "px";
         }
       };
 
