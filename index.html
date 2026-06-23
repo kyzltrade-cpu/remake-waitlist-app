@@ -2484,10 +2484,12 @@
 
       // Ultra-smooth native sticky header scroll state handler and dynamic iOS theme-color matching
       const mainHeader = document.querySelector('.main-header');
+      const announcementBar = document.querySelector('.announcement-bar');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
       if (mainHeader) {
         const updateHeaderScroll = () => {
-          if (window.scrollY > 40) {
+          const threshold = announcementBar ? announcementBar.offsetHeight : 40;
+          if (window.scrollY > threshold) {
             mainHeader.classList.add('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
