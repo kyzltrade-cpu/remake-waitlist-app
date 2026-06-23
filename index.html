@@ -325,11 +325,11 @@
 
     /* Fixed Header Wrapper to prevent Safari mobile sticky offset calculation and Safe Area gaps entirely */
     body {
-      padding-top: calc(90px + env(safe-area-inset-top)) !important; /* Push normal body content down dynamically, accounting for safe area height */
+      padding-top: calc(100px + env(safe-area-inset-top)) !important; /* Push normal body content down dynamically, accounting for safe area height */
     }
     @media (min-width: 768px) {
       body {
-        padding-top: 94px !important; /* Desktop has no safe area inset top */
+        padding-top: 104px !important; /* Desktop has no safe area inset top */
       }
     }
 
@@ -510,7 +510,7 @@
   <!-- Sticky Header Wrapper (Covers both Announcement Bar and Main Navigation) -->
   <div class="sticky-header-wrapper">
     <!-- Top Announcement Bar -->
-    <div class="w-full h-10 bg-[#2A2421] text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative z-[60]">  
+    <div class="w-full h-10 bg-[#FFF0F3] text-[#2A2421] border-b border-[#F5DDE3]/50 text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase flex items-center justify-center relative z-[60]">  
       ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
     </div>
 
@@ -534,7 +534,7 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="w-full flex items-center justify-center px-6 pt-14 pb-8 md:py-8 lg:py-12 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
+  <section class="w-full flex items-center justify-center px-6 pt-24 pb-8 md:py-12 lg:py-16 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
     <div class="glow-accent" style="top: 10%; left: 10%;"></div>  
     <div class="glow-accent" style="bottom: 5%; right: 10%;"></div>  
     <div class="max-w-6xl mx-auto relative z-10 w-full flex flex-col md:flex-row items-center gap-6 md:gap-12 lg:gap-16">  
@@ -626,7 +626,7 @@
                 <div class="scan-laser opacity-70"></div>
 
                 <!-- Raw screenshot image (cropped cleanly via scale to completely eliminate double frame bezel) -->
-                <img src="./mockup-scanner-raw.jpg" alt="REMAKE Skincare Barcode Scanner" class="w-full h-full object-cover scale-[1.12] origin-center">
+                <img src="./mockup-scanner-raw.jpg" alt="REMAKE Skincare Barcode Scanner" class="w-full h-full object-cover scale-[1.15] -translate-y-[16px] origin-center">
               </div>
             </div>
           </div>
