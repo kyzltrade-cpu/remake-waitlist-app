@@ -69,23 +69,23 @@
   
   <style>  
     :root {  
-      /* Luxurious, Warm Rhode-Inspired Organic Palette - Pink Infused */  
-      --rhode-text: #2A2421;  
-      --rhode-white: #FFF0F3;  /* Luxurious pale pastel pink */  
-      --rhode-ivory: #FFEBEF;  /* Slightly deeper warm pink */  
-      --rhode-cream: #FFF0F3;  /* Harmonized pale pink */  
-      --rhode-beige: #FCE4EC;  /* Blush pastel pink */  
-      --rhode-blush: #FCE4EC;  
+      /* Luxurious, Warm Rhode-Inspired Organic Palette - Dark Theme */  
+      --rhode-text: #FFF9F7;  /* Creamy white */
+      --rhode-white: #2A2421;  /* Rich dark charcoal brown */  
+      --rhode-ivory: #1E1A18;  /* Deeper dark charcoal */  
+      --rhode-cream: #2A2421;  /* Matching dark charcoal */  
+      --rhode-beige: #2E2724;  /* Accent dark brown */  
+      --rhode-blush: #3D3330;  
       --rhode-pink: #FDA8BD;  
       --rhode-pink-mid: #F0B8C0;  
       --rhode-pink-deep: #E8A0AA;  
       --rhode-pink-rich: #D98A96;  
       --rhode-gold: #D4AF37;  
       --rhode-gold-soft: #E6C88A;  
-      --rhode-gold-dark: #B8943E;  
-      --rhode-border: #F5DDE3;  
-      --rhode-gray: #7C726E;  
-      --rhode-light-gray: #B8ADA9;  
+      --rhode-gold-dark: #FFF9F7;  
+      --rhode-border: rgba(255, 255, 255, 0.15);  
+      --rhode-gray: #B8ADA9;  
+      --rhode-light-gray: #7C726E;  
       --rhode-success: #6E8E75;  
       --rhode-error: #C96F6F;  
         
@@ -109,7 +109,7 @@
     }
     
     html {
-      background: #FFF0F3; /* Match header bg to eliminate Safari mobile scroll gap */
+      background: #2A2421; /* Match header bg to eliminate Safari mobile scroll gap */
     }
     
     body {   
@@ -501,6 +501,110 @@
       .reveal { opacity: 1; transform: none; }
       .scan-laser { display: none; }
     }  
+
+    /* --- EDITORIAL DARK THEME SUPREME OVERRIDES --- */
+    body {
+      background-color: var(--rhode-white) !important;
+      color: var(--rhode-text) !important;
+    }
+    .text-\[\#2A2421\] {
+      color: var(--rhode-text) !important;
+    }
+    .text-\[\#7C726E\] {
+      color: var(--rhode-gray) !important;
+    }
+    .card-luxury {
+      background-color: rgba(255, 255, 255, 0.04) !important;
+      border-color: var(--rhode-border) !important;
+    }
+    .bg-white\/60, .bg-white\/50 {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      border-color: var(--rhode-border) !important;
+      backdrop-filter: blur(20px) !important;
+    }
+    .card-luxury h4, .card-luxury h3 {
+      color: var(--rhode-text) !important;
+    }
+    .input-field {
+      background: rgba(255, 255, 255, 0.06) !important;
+      border-color: var(--rhode-border) !important;
+      color: var(--rhode-text) !important;
+    }
+    .input-field:focus {
+      border-color: var(--rhode-pink-deep) !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+    .btn-primary {
+      background: var(--rhode-text) !important;
+      color: var(--rhode-white) !important;
+      border-color: var(--rhode-text) !important;
+    }
+    .btn-primary:hover {
+      background: var(--rhode-pink-rich) !important;
+      border-color: var(--rhode-pink-rich) !important;
+      color: #FFF9F7 !important;
+    }
+    .nav-link {
+      color: rgba(255, 255, 255, 0.75) !important;
+    }
+    .nav-link:hover {
+      color: var(--rhode-text) !important;
+    }
+    .logo-text {
+      color: var(--rhode-text) !important;
+    }
+    .glass-header {
+      background: linear-gradient(
+        to bottom,
+        #2A2421 0px,
+        #2A2421 env(safe-area-inset-top),
+        rgba(42, 36, 33, 0.88) env(safe-area-inset-top),
+        rgba(42, 36, 33, 0.88) 100%
+      ) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15) !important;
+    }
+    .sticky-header-wrapper {
+      background: #2A2421 !important;
+    }
+    .glass-header::before {
+      background: #2A2421 !important;
+    }
+    section {
+      background-color: var(--rhode-white) !important;
+      border-bottom: 1px solid var(--rhode-border) !important;
+    }
+    #interactive-lab, #facial-scan, #faq {
+      background-color: var(--rhode-ivory) !important;
+    }
+    #wrapped {
+      background-color: #D98A96 !important;
+    }
+    #wrapped .text-\[\#2A2421\] {
+      color: #2A2421 !important;
+    }
+    #wrappedCardBody {
+      background-color: #FFFDFD !important;
+    }
+    #wrappedCardBody .text-\[\#7C726E\] {
+      color: #7C726E !important;
+    }
+    #wrappedCardBody div, #wrappedCardBody span, #wrappedCardBody h4 {
+      color: inherit !important;
+    }
+    #quoteText, #quoteAuthor {
+      color: var(--rhode-text) !important;
+    }
+    .modal-content {
+      background-color: var(--rhode-ivory) !important;
+      border-color: var(--rhode-border) !important;
+    }
+    .modal-content .text-\[\#2A2421\] {
+      color: var(--rhode-text) !important;
+    }
+    .modal-content .text-\[\#7C726E\] {
+      color: var(--rhode-gray) !important;
+    }
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
