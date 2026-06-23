@@ -118,16 +118,14 @@
       line-height: 1.8; font-weight: 400;  
     }  
     
-    .font-serif { font-family: 'Cormorant Garamond', serif; }
+    .font-serif { font-family: 'Playfair Display', serif; }
     .font-luxury { font-family: 'Cormorant Garamond', serif; }
     .font-light { font-weight: 300; }  
       
-    @media (min-width: 1024px) {
-      body::before {  
-        content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;  
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");  
-        pointer-events: none; z-index: 100;  
-      }
+    body::before {  
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;  
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");  
+      pointer-events: none; z-index: 100;  
     }
 
     .btn-primary, .btn-secondary {  
@@ -173,7 +171,7 @@
     .input-field {  
       border: 1px solid var(--rhode-border); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);  
       font-family: 'Inter', sans-serif; background: rgba(255,255,255,0.9); caret-color: var(--rhode-pink-rich);  
-      border-radius: var(--radius-pill); padding: 1rem 1.4rem;  
+      border-radius: 14px; padding: 1rem 1.4rem;  
     }  
     
     .input-field:focus { outline: none; border-color: var(--rhode-pink-deep); box-shadow: 0 0 0 4px rgba(232,160,170,0.15); background: #fff; }  
@@ -220,8 +218,8 @@
     }  
     @keyframes spin { to { transform: rotate(360deg); } }  
       
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: -0.02em; line-height: 1.15; }  
-    .section-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: -0.015em; color: var(--rhode-text); line-height: 1.2; }  
+    .hero-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }  
+    .section-title { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: -0.005em; color: var(--rhode-text); }  
     
     .nav-link {  
       font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; position: relative; color: rgba(42, 36, 33, 0.65) !important;  
@@ -309,10 +307,10 @@
       box-shadow: 0 5px 15px rgba(217, 138, 150, 0.15);  
     }  
     .logo-text { 
-      font-family: 'Cormorant Garamond', serif; 
-      font-size: 1.3rem; 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.2rem; 
       font-weight: 500; 
-      letter-spacing: 0.14em; 
+      letter-spacing: 0.12em; 
       color: var(--rhode-text); 
       transform: translateY(-1px); 
     }
@@ -365,6 +363,7 @@
       -webkit-backdrop-filter: blur(20px) !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
       box-shadow: 0 4px 30px rgba(42, 36, 33, 0.015), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
+      /* padding-top handled by scrolled state only — see .sticky-header-wrapper.scrolled .glass-header below */
     }
 
     /* Non-scrolled: glass-header uses simple translucent bg, no safe-area padding */
@@ -533,16 +532,16 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="w-full flex items-center justify-center px-6 pt-6 pb-12 md:pt-8 md:pb-16 lg:pt-12 lg:pb-20 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
+  <section class="flex-1 flex items-center justify-center px-6 py-8 md:py-16 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
     <div class="glow-accent" style="top: 10%; left: 10%;"></div>  
     <div class="glow-accent" style="bottom: 5%; right: 10%;"></div>  
-    <div class="max-w-6xl mx-auto relative z-10 w-full flex flex-col md:flex-row items-center gap-6 md:gap-12 lg:gap-16">  
-      <div class="w-full md:flex-1 text-center md:text-left flex flex-col items-center md:items-start justify-center">  
-        <span class="badge-luxury mb-2.5 reveal">AI MAKEUP & SKINCARE SCANNER</span>  
-        <h1 class="hero-title text-3xl md:text-5xl lg:text-6xl mb-3 md:mb-4 reveal reveal-delay-1 text-[#2A2421]">  
+    <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-10 md:gap-16">  
+      <div class="flex-1 text-center md:text-left">  
+        <span class="badge-luxury mb-3 reveal">AI MAKEUP & SKINCARE SCANNER</span>  
+        <h1 class="hero-title text-4xl md:text-6xl mb-4 reveal reveal-delay-1 text-[#2A2421]">  
           REMAKE.<br><span class="font-luxury text-elegant text-pink-solid">your skin's digital gatekeeper.</span>  
         </h1>  
-        <p class="text-sm md:text-sm lg:text-base text-[#7C726E] mb-4 lg:mb-5 max-w-xl font-light leading-relaxed reveal reveal-delay-2">  
+        <p class="text-base md:text-lg text-[#7C726E] mb-5 max-w-xl font-light leading-relaxed reveal reveal-delay-2">  
           Scan your face with our advanced AI to instantly unlock your personalized Beauty DNA™ profile, find your flawless foundation shade match, and screen any beauty barcode for pore-clogging triggers.  
         </p>  
           
@@ -558,24 +557,22 @@
         </form>  
         <p class="form-status hidden"></p>  
           
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 mt-2 mb-4 reveal">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 mt-2 mb-6 reveal">
           <p class="text-xs text-[#B8ADA9] font-light">Be the next person to get $20 off Remake’s yearly plan. <span class="font-semibold text-[#D98A96]">Only 200 spots left.</span></p>
         </div>
           
-        <div class="flex flex-wrap items-center gap-2 lg:gap-4 text-[9px] lg:text-[11px] text-[#7C726E] font-medium tracking-wide uppercase reveal justify-center md:justify-start">  
-          <span class="font-bold text-[#D98A96]">5.0 RATING</span>  
-          <span class="text-[#F5DDE3]">•</span>  
-          <span>99.4% ACCURACY</span>  
-          <span class="text-[#F5DDE3]">•</span>  
-          <span>20+ ALLERGENS</span>  
-          <span class="text-[#F5DDE3]">•</span>  
-          <span>CRUELTY-FREE CHECK</span>  
+        <div class="flex flex-wrap items-center gap-6 text-xs text-[#7C726E] font-medium tracking-wide uppercase reveal justify-center md:justify-start">  
+          <div class="flex items-center gap-2"><span class="font-bold text-[#D98A96]">5.0 Rating</span><span>99.4% Verified Accuracy</span></div>  
+          <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
+          <span>20+ Complex Allergens</span>  
+          <span class="hidden sm:inline text-[#F5DDE3]">•</span>  
+          <span>Cruelty-Free Check</span>  
         </div>  
       </div>  
         
       <!-- PHOTOREALISTIC ULTRA-PREMIUM IPHONE 15 PRO SHELL (HOUSED VERBATIM AROUND RAW APP SCREENSHOT) -->
-      <div class="w-full md:flex-1 flex justify-center items-center reveal reveal-delay-2 relative py-2 mt-4 md:mt-0">  
-        <div class="relative w-[235px] h-[510px] md:w-[250px] md:h-[540px] lg:w-[285px] lg:h-[618px]">
+      <div class="flex-1 flex justify-center items-center reveal reveal-delay-2 relative py-4">  
+        <div class="relative w-[235px] h-[510px] md:w-[285px] md:h-[618px]">
           <!-- Left Side Buttons (Volume Rockers + Ring Switcher) -->
           <div class="absolute top-[80px] -left-[3px] w-[3px] h-6 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)]"></div>
           <div class="absolute top-[120px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)]"></div>
@@ -585,11 +582,11 @@
           <div class="absolute top-[110px] -right-[3px] w-[3px] h-[50px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-r shadow-[inset_-1px_1px_1px_rgba(255,255,255,0.1)]"></div>
 
           <!-- Main Bezel Frame: Luxurious Brushed Natural Titanium -->
-          <div class="w-full h-full p-[3px] rounded-[2.4rem] md:rounded-[2.4rem] lg:rounded-[2.8rem] bg-gradient-to-tr from-[#8a8479] via-[#d6d2c4] to-[#a39e93] shadow-[0_30px_70px_rgba(42,36,33,0.38)] ring-1 ring-[#e5e0d4]/40">
+          <div class="w-full h-full p-[3px] rounded-[2.6rem] md:rounded-[3.1rem] bg-gradient-to-tr from-[#8a8479] via-[#d6d2c4] to-[#a39e93] shadow-[0_30px_70px_rgba(42,36,33,0.38)] ring-1 ring-[#e5e0d4]/40">
             <!-- Inner bezel: Slim deep-black bezel margin -->
-            <div class="w-full h-full p-[6px] md:p-[6px] lg:p-[7px] rounded-[2.2rem] md:rounded-[2.2rem] lg:rounded-[2.6rem] bg-zinc-950 border border-zinc-900">
+            <div class="w-full h-full p-[6px] md:p-[7px] rounded-[2.4rem] md:rounded-[2.9rem] bg-zinc-950 border border-zinc-900">
               <!-- Screen Container -->
-              <div class="relative w-full h-full rounded-[1.6rem] md:rounded-[1.6rem] lg:rounded-[2.0rem] overflow-hidden bg-black flex items-center justify-center">
+              <div class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex items-center justify-center">
                 
                 
 
@@ -2490,7 +2487,6 @@
           }
         }, { passive: true });
       }
-
     });
   </script>
 </body>  
