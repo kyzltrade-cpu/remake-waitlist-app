@@ -321,6 +321,25 @@
       }
     }
 
+    /* Safari Status Bar Solid Cover to prevent transparent scroll bleed */
+    .status-bar-cover {
+      display: none;
+    }
+    @media (max-width: 1023px) {
+      .status-bar-cover {
+        display: block;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: env(safe-area-inset-top) !important;
+        background: #2A2421; /* Match announcement bar background initially */
+        z-index: 55 !important;
+        pointer-events: none;
+        transition: background-color 0.2s ease;
+      }
+    }
+
     /* Native Sticky Navigation Header & Announcement Bar */
     .announcement-bar {
       position: relative;
@@ -474,6 +493,8 @@
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
+  <!-- Safari Status Bar Cover to prevent transparent scroll bleed -->
+  <div class="status-bar-cover"></div>
     
   <!-- Top Announcement Bar -->
   <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
@@ -499,7 +520,7 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="flex-1 flex items-center justify-center px-6 pt-32 pb-16 md:pt-44 md:pb-24 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
+  <section class="px-6 pt-32 pb-16 md:pt-44 md:pb-24 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
     <div class="glow-accent" style="top: 10%; left: 10%;"></div>  
     <div class="glow-accent" style="bottom: 5%; right: 10%;"></div>  
     <div class="max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-10 md:gap-16">  
@@ -2485,6 +2506,7 @@
       // Ultra-smooth native sticky header scroll state handler and dynamic iOS theme-color matching
       const mainHeader = document.querySelector('.main-header');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const barCover = document.querySelector('.status-bar-cover');
       if (mainHeader) {
         const updateHeaderScroll = () => {
           if (window.scrollY > 40) {
@@ -2492,11 +2514,13 @@
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
             }
+            if (barCover) barCover.style.backgroundColor = '#FFFFFF';
           } else {
             mainHeader.classList.remove('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#2A2421') {
               themeMeta.setAttribute('content', '#2A2421');
             }
+            if (barCover) barCover.style.backgroundColor = '#2A2421';
           }
         };
         window.addEventListener('scroll', updateHeaderScroll, { passive: true });
