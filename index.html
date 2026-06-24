@@ -328,9 +328,13 @@
       left: 0;
       right: 0;
       height: env(safe-area-inset-top) !important;
-      background: #FFFFFF !important;
+      background: #2A2421 !important; /* Default dark brown matching the announcement bar */
       z-index: 45 !important;
       pointer-events: none;
+      transition: background-color 0.25s ease;
+    }
+    .fixed-status-bar-shield.stuck {
+      background: #FFFFFF !important; /* Pure white matching the header when stuck */
     }
 
     /* Native Sibling Navigation Header & Announcement Bar */
@@ -2563,16 +2567,19 @@
       const mainHeader = document.querySelector('.main-header');
       const announcementBar = document.querySelector('.announcement-bar');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const statusBarShield = document.querySelector('.fixed-status-bar-shield');
       if (mainHeader) {
         const updateHeaderScroll = () => {
           const threshold = announcementBar ? announcementBar.offsetHeight : 40;
           if (window.scrollY > threshold) {
             mainHeader.classList.add('stuck');
+            if (statusBarShield) statusBarShield.classList.add('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
             }
           } else {
             mainHeader.classList.remove('stuck');
+            if (statusBarShield) statusBarShield.classList.remove('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#2A2421') {
               themeMeta.setAttribute('content', '#2A2421');
             }
