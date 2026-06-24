@@ -464,14 +464,10 @@
       100% { transform: translateY(100%); opacity: 0; }
     }
     #productShowcaseCard {
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      perspective: 1200px;
-      transform-style: preserve-3d;
+      transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #productShowcaseCard.scanning-active {
-      transform: scale(0.96) rotateX(6deg) rotateY(-3deg) translateY(4px) !important;
       border-color: var(--rhode-pink) !important;
-      box-shadow: 0 25px 60px rgba(253, 168, 189, 0.32) !important;
     }
 
     /* Tab styles for the interactive lab */
@@ -1434,23 +1430,31 @@
       const activeTab = document.getElementById('tab-' + key);
       if (activeTab) activeTab.classList.add('active');
       
-      // Toggle scan laser line animation
-      const card = document.getElementById('productShowcaseCard');
-      card.classList.add('scanning-active');
+      // Fetch product data
+      const prod = productData[key];
+      if (!prod) return;
       
-      // High-fidelity, GPU-accelerated transition of containers (Apple / Linear style)
-      const scoreContainer = document.getElementById('labScoreContainer');
-      const detailsPanel = document.getElementById('labDetailsPanel');
-      if (scoreContainer && detailsPanel) {
-        scoreContainer.style.transition = 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-        detailsPanel.style.transition = 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-        
-        scoreContainer.style.opacity = '0.35';
-        scoreContainer.style.transform = 'scale(0.96)';
-        
-        detailsPanel.style.opacity = '0.35';
-        detailsPanel.style.transform = 'translateY(6px)';
-      }
+      // Populate layout instantly (no delay, no "disappearing")
+      document.getElementById('labProductName').textContent = prod.name;
+      document.getElementById('labProductBrand').textContent = prod.brand;
+      document.getElementById('labProductDesc').textContent = prod.description;
+      document.getElementById('labAllergenText').textContent = prod.allergen;
+      document.getElementById('labShadeText').textContent = prod.shade;
+      document.getElementById('labRiskText').textContent = prod.risk;
+      document.getElementById('labEthicsText').textContent = prod.ethics;
+      
+      // Set Badge class & text instantly
+      const badge = document.getElementById('labSafetyBadge');
+      badge.textContent = prod.badge;
+      badge.className = prod.badgeClass;
+      
+      // Trigger rating ring path animation instantly
+      const path = document.getElementById('labScorePath');
+      path.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+      path.style.strokeDashoffset = prod.scoreOffset;
+      
+      // Count up score numbers gracefully
+      animateScoreCountUp(prod.score);
 
       // Play our premium iOS double-sine arpeggio sparkle chime!
       try {
@@ -1485,45 +1489,13 @@
         }, 70);
       } catch(e) {}
       
+      // Trigger a clean, overlay-only laser sweep line on top of the text
+      const card = document.getElementById('productShowcaseCard');
+      card.classList.add('scanning-active');
+      
       selectProductTimeout = setTimeout(() => {
-        // Fetch product data
-        const prod = productData[key];
-        if (!prod) return;
-        
-        // Populate layout
-        document.getElementById('labProductName').textContent = prod.name;
-        document.getElementById('labProductBrand').textContent = prod.brand;
-        document.getElementById('labProductDesc').textContent = prod.description;
-        document.getElementById('labAllergenText').textContent = prod.allergen;
-        document.getElementById('labShadeText').textContent = prod.shade;
-        document.getElementById('labRiskText').textContent = prod.risk;
-        document.getElementById('labEthicsText').textContent = prod.ethics;
-        
-        // Set Badge class & text
-        const badge = document.getElementById('labSafetyBadge');
-        badge.textContent = prod.badge;
-        badge.className = prod.badgeClass;
-        
-        // Trigger rating ring path animation
-        const path = document.getElementById('labScorePath');
-        path.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-        path.style.strokeDashoffset = prod.scoreOffset;
-        
-        // Count up score numbers gracefully
-        animateScoreCountUp(prod.score);
-        
-        // Fade content back in gracefully with dynamic layout slide-up
-        if (scoreContainer && detailsPanel) {
-          scoreContainer.style.opacity = '1';
-          scoreContainer.style.transform = 'scale(1)';
-          
-          detailsPanel.style.opacity = '1';
-          detailsPanel.style.transform = 'translateY(0)';
-        }
-
-        // Remove scanner beam state
         card.classList.remove('scanning-active');
-      }, 800); // 800ms timing allows the laser line to sweep gracefully across the card height
+      }, 800);
     }
 
     // Dynamic Barcode Scan simulation with real beep!
