@@ -329,20 +329,15 @@
       right: 0;
       height: 0px; /* Invisible on desktop to prevent top spacing issues */
       display: none;
-      background: #2A2421 !important; /* Default dark brown matching the announcement bar */
+      background: #FFFFFF !important; /* Always solid white to act as backing for stuck header */
       z-index: 45 !important;
       pointer-events: none;
-      transition: background-color 0.25s ease;
     }
     @media (max-width: 768px) {
       .fixed-status-bar-shield {
         display: block;
-        height: 47px !important; /* Standard iOS status bar / notch safe-area fallback */
-        height: env(safe-area-inset-top) !important; /* Dynamic value if parsed by Safari */
+        height: 44px !important; /* Guaranteed iOS status bar / notch safe-area height (prevents WebKit 0px env() bug) */
       }
-    }
-    .fixed-status-bar-shield.stuck {
-      background: #FFFFFF !important; /* Pure white matching the header when stuck */
     }
 
     /* Native Sibling Navigation Header & Announcement Bar */
@@ -2577,19 +2572,16 @@
       const mainHeader = document.querySelector('.main-header');
       const announcementBar = document.querySelector('.announcement-bar');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
-      const statusBarShield = document.querySelector('.fixed-status-bar-shield');
       if (mainHeader) {
         const updateHeaderScroll = () => {
           const threshold = announcementBar ? announcementBar.offsetHeight : 40;
           if (window.scrollY > threshold) {
             mainHeader.classList.add('stuck');
-            if (statusBarShield) statusBarShield.classList.add('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
             }
           } else {
             mainHeader.classList.remove('stuck');
-            if (statusBarShield) statusBarShield.classList.remove('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#2A2421') {
               themeMeta.setAttribute('content', '#2A2421');
             }
