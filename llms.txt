@@ -1,0 +1,40 @@
+# REMAKE Beauty — AI Makeup Shade Finder & Skincare Barcode Scanner
+
+> REMAKE Beauty is the ultimate iOS app that scans beauty product barcodes to expose toxic/comedogenic ingredients, hidden allergens, and provides perfect AI shade matching.
+
+## Core App Features
+- **Skincare & Makeup Barcode Scanner**: Exposes toxic ingredients, hormone disruptors, and skin barrier hazards.
+- **Acne-Safe Comedogenic Checker**: Instantly screens for pore-clogging ingredients.
+- **AI Spectral Shade Matching**: Calibrates for ambient lighting automatically to find the user's flawless foundation match.
+- **Cosmetic Chemistry Dupe Finder**: Identifies affordable drugstore alternatives with 95%+ identical molecular structures.
+- **Hard Paywall Model**: All features are secured behind a subscription ($9.99/mo or $49.99/yr via Apple IAP) following onboarding.
+
+## Key Links
+- [Waitlist Website](https://remake.beauty/) — Secure a spot on our private iOS beta waitlist.
+- [App Pricing Information](https://remake.beauty/pricing.md) — Transparent pricing for iOS subscriptions and features.
+- [Privacy Policy](https://remake.beauty/privacy.html) — How we protect and encrypt skin biology data.
+- [Terms of Service](https://remake.beauty/terms.html) — Terms and conditions for the REMAKE platform.
+
+---
+
+## Science-Backed Product Teardowns (Safe-Ingredient Analysis)
+Our cosmetic chemistry audits expose popular products by analyzing comedogenic ratings, skin irritants, and biochemical hazards.
+
+- [e.l.f. Halo Glow Liquid Filter Analysis](https://remake.beauty/products/elf-halo-glow-liquid-filter-acne-safe.html) — Is e.l.f. Halo Glow safe for acne? Exposing the synthetic fillers and pore-clogging risks.
+- [Laneige Lip Sleeping Mask Ingredients Audit](https://remake.beauty/products/laneige-lip-sleeping-mask-toxic-ingredients.html) — Analysis of Laneige's heavy synthetic waxes, fragrance allergens, and lip-drying risks.
+- [Dior Lip Glow Oil Safety Teardown](https://remake.beauty/products/dior-lip-glow-oil-ingredients.html) — Is Dior's luxury formula worth it? Highlighting fragrance sensitizers and synthetic oils.
+- [Charlotte Tilbury Hollywood Flawless Filter Review](https://remake.beauty/products/charlotte-tilbury-flawless-filter-acne-safe.html) — Analysis of the heavy bismuth oxychloride and potential breakout triggers in this viral primer.
+- [CeraVe Daily Moisturizing Lotion Assessment](https://remake.beauty/products/cerave-daily-moisturizing-lotion-breakouts.html) — Breaking down why this 'dermatologist-recommended' moisturizer still triggers stubborn breakouts in oily skin.
+- [Glossier Cloud Paint Acne Safety Review](https://remake.beauty/products/glossier-cloud-paint-acne-safe.html) — Is this popular liquid blush completely safe for acne-prone skin? An ingredient-by-ingredient audit.
+- [Benefit The POREfessional Primer Analysis](https://remake.beauty/products/benefit-porefessional-primer-toxic.html) — Exposing the heavy silicone wraps (cyclopentasiloxane) that trap sweat and oil in your pores.
+- [Maybelline Fit Me Matte + Poreless Foundation](https://remake.beauty/products/maybelline-fit-me-matte-poreless-ingredients.html) — A comprehensive chemical audit on this budget foundation, checking for potential irritants.
+- [Huda Beauty Easy Bake Loose Powder Audit](https://remake.beauty/products/huda-beauty-easy-bake-powder-toxic.html) — Exposing the heavy talc, synthetic fragrance, and inhalation hazards inside this viral baking powder.
+- [Drunk Elephant Lala Retro Whipped Cream](https://remake.beauty/products/drunk-elephant-lala-retro-acne.html) — Exposing why this thick moisturizer's isopropyl isostearate is a level-5 pore-clogging trap for acne.
+- [Glow Recipe Watermelon Glow PHA+BHA Toner](https://remake.beauty/products/glow-recipe-watermelon-glow-toner-allergens.html) — Is the viral Glow Recipe toner breaking you out? Audit of synthetic fragrance and fruit extract allergens.
+- [Supergoop! Unseen Sunscreen SPF 40 Teardown](https://remake.beauty/products/supergoop-unseen-sunscreen-toxic-filters.html) — Exposing the toxic chemical UV filters (Avobenzone, Homosalate) and heavy suffocating silicones.
+- [Saie Slip Tint Dewy Broad Spectrum SPF 35](https://remake.beauty/products/saie-slip-tint-acne-safe.html) — Exposing the comedogenic rating of Saie's organic oils and checking if it's safe for sensitive barriers.
+- [M·A·C Studio Fix Fluid SPF 15 Analysis](https://remake.beauty/products/mac-studio-fix-fluid-toxic.html) — Is MAC Studio Fix safe for acne? Looking at the heavy chemical filters and pore-cloggers.
+- [Estée Lauder Double Wear Stay-in-Place](https://remake.beauty/products/estee-lauder-double-wear-ingredients.html) — Breakdown of the classic full-coverage formula, checking for toxic ingredients and barrier risks.
+- [Kosas Revealer Concealer Ingredient Audit](https://remake.beauty/products/kosas-revealer-concealer-mold.html) — The truth about Kosas' clean formula, checking preservative efficacy and mold contamination risks.
+- [Fenty Beauty Pro Filt'r Soft Matte Foundation](https://remake.beauty/products/fenty-beauty-pro-filtr-acne-safe.html) — Is Rihanna's matte foundation safe for severe acne? A deep dive into the oil-control chemistry.
+- [Sol de Janeiro Brazilian Bum Bum Cream Audit](https://remake.beauty/products/sol-de-janeiro-bum-bum-cream-toxic.html) — Exposing the heavy fragrance allergens and potential skin sensitizers in this viral body cream.
