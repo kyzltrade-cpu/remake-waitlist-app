@@ -321,18 +321,28 @@
       }
     }
 
-    /* Unified Sticky Navigation Wrapper (Bypasses WebKit fixed viewport clip bugs) */
-    .sticky-nav-wrapper {
-      position: -webkit-sticky !important;
-      position: sticky !important;
-      top: calc(-40px - env(safe-area-inset-top)) !important; /* Pushes stuck boundary to match the announcement bar scroll out height */
-      z-index: 50 !important;
-      width: 100%;
-      background: transparent;
+    /* Permanent Solid Safe-Area Shield (Kyle's requested solid layer over the website notch on scroll) */
+    .fixed-status-bar-shield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0px; /* Invisible on desktop to prevent top spacing issues */
+      display: none;
+      background: #2A2421 !important; /* Default dark brown matching the announcement bar */
+      z-index: 45 !important;
+      pointer-events: none;
       transition: background-color 0.25s ease;
     }
-    .sticky-nav-wrapper.stuck {
-      background: #FFFFFF !important;
+    @media (max-width: 768px) {
+      .fixed-status-bar-shield {
+        display: block;
+        height: 47px !important; /* Standard iOS status bar / notch safe-area fallback */
+        height: env(safe-area-inset-top) !important; /* Dynamic value if parsed by Safari */
+      }
+    }
+    .fixed-status-bar-shield.stuck {
+      background: #FFFFFF !important; /* Pure white matching the header when stuck */
     }
 
     /* Native Sibling Navigation Header & Announcement Bar */
@@ -359,7 +369,10 @@
     }
 
     .main-header {
-      position: relative;
+      position: -webkit-sticky !important;
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 50 !important;
       width: 100%;
       background: #FFFFFF !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
@@ -367,8 +380,8 @@
       transition: box-shadow 0.25s ease;
     }
 
-    /* Stretched background for the sticky wrapper on rubber-banding pull-downs when stuck to prevent transparent gaps */
-    .sticky-nav-wrapper.stuck::before {
+    /* Stretched background for the sticky header on rubber-banding pull-downs to prevent transparent gaps */
+    .main-header::before {
       content: "";
       position: absolute;
       top: -200px;
@@ -376,7 +389,7 @@
       right: 0;
       height: 200px;
       background: #FFFFFF !important;
-      z-index: -1;
+      z-index: 50 !important;
       pointer-events: none;
     }
 
@@ -507,15 +520,16 @@
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
-  <!-- Unified Sticky Navigation Wrapper (Bypasses WebKit fixed viewport clip bugs) -->
-  <div class="sticky-nav-wrapper">
-    <!-- Top Announcement Bar -->
-    <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
-      ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
-    </div>
-  
-    <!-- Main Navigation Header -->
-    <header class="main-header">  
+  <!-- Fixed Solid White Status Bar Shield (Kyle's requested layer over the website notch on scroll) -->
+  <div class="fixed-status-bar-shield"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
+    ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">  
     <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
         <img src="./logo.png" alt="REMAKE Logo">  
@@ -531,7 +545,6 @@
       <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
     </div>  
   </header>
-  </div>
 
   <!-- Hero Section -->
   <section class="px-6 pt-16 pb-16 md:pt-24 md:pb-24 hero-bg relative overflow-hidden border-b border-[#F5DDE3]">  
@@ -2561,22 +2574,22 @@
       });  
 
       // Ultra-smooth native sticky header scroll state handler and dynamic iOS theme-color matching
-      const stickyWrapper = document.querySelector('.sticky-nav-wrapper');
       const mainHeader = document.querySelector('.main-header');
       const announcementBar = document.querySelector('.announcement-bar');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
-      if (stickyWrapper) {
+      const statusBarShield = document.querySelector('.fixed-status-bar-shield');
+      if (mainHeader) {
         const updateHeaderScroll = () => {
           const threshold = announcementBar ? announcementBar.offsetHeight : 40;
           if (window.scrollY > threshold) {
-            stickyWrapper.classList.add('stuck');
-            if (mainHeader) mainHeader.classList.add('stuck');
+            mainHeader.classList.add('stuck');
+            if (statusBarShield) statusBarShield.classList.add('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
             }
           } else {
-            stickyWrapper.classList.remove('stuck');
-            if (mainHeader) mainHeader.classList.remove('stuck');
+            mainHeader.classList.remove('stuck');
+            if (statusBarShield) statusBarShield.classList.remove('stuck');
             if (themeMeta && themeMeta.getAttribute('content') !== '#2A2421') {
               themeMeta.setAttribute('content', '#2A2421');
             }
