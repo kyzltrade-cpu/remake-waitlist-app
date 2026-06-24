@@ -444,7 +444,7 @@
       opacity: 0;
     }
     .scanning-active .scan-laser {
-      animation: scan-once 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation: scan-once 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     @keyframes scan-once {
       0% { top: 0%; opacity: 0; }
@@ -453,12 +453,14 @@
       100% { top: 100%; opacity: 0; }
     }
     #productShowcaseCard {
-      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.8s ease, border-color 0.8s ease;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      perspective: 1200px;
+      transform-style: preserve-3d;
     }
     #productShowcaseCard.scanning-active {
-      transform: scale(0.97) !important;
+      transform: scale(0.96) rotateX(6deg) rotateY(-3deg) translateY(4px) !important;
       border-color: var(--rhode-pink) !important;
-      box-shadow: 0 10px 40px rgba(253, 168, 189, 0.25) !important;
+      box-shadow: 0 25px 60px rgba(253, 168, 189, 0.32) !important;
     }
 
     /* Tab styles for the interactive lab */
@@ -791,8 +793,8 @@
                 <p id="compLuxProduct" class="text-xs text-[#7C726E] font-light">Hollywood Flawless Filter</p>
               </div>
               <div class="text-right">
-                <span id="compLuxScore" class="text-3xl font-serif text-red-500 block">38</span>
-                <span class="text-[8px] uppercase text-[#7C726E] tracking-wider font-light">Score</span>
+                <span id="compLuxScore" class="font-luxury font-light text-4xl md:text-5xl text-red-500 block leading-none">38</span>
+                <span class="text-[8px] uppercase text-[#7C726E] tracking-widest font-light block mt-1">Score</span>
               </div>
             </div>
             
@@ -837,8 +839,8 @@
                 <p id="compSafeProduct" class="text-xs text-[#7C726E] font-light">Halo Glow Liquid Filter</p>
               </div>
               <div class="text-right">
-                <span id="compSafeScore" class="text-3xl font-serif text-[#6E8E75] block">96</span>
-                <span class="text-[8px] uppercase text-[#7C726E] tracking-wider font-light">Score</span>
+                <span id="compSafeScore" class="font-luxury font-light text-4xl md:text-5xl text-[#6E8E75] block leading-none">96</span>
+                <span class="text-[8px] uppercase text-[#7C726E] tracking-widest font-light block mt-1">Score</span>
               </div>
             </div>
             
@@ -1397,8 +1399,8 @@
       const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        // Easing curve (easeOutQuad)
-        const easeProgress = progress * (2 - progress);
+        // After Effects-style Ease-Out Expo curve (snappy initial rush with ultra-smooth deceleration)
+        const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
         const currentScore = Math.floor(startScore + (targetScore - startScore) * easeProgress);
         scoreObj.textContent = currentScore;
         if (progress < 1) {
