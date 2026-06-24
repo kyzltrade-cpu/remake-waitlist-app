@@ -327,11 +327,19 @@
       top: 0;
       left: 0;
       right: 0;
-      height: env(safe-area-inset-top) !important;
+      height: 0px; /* Invisible on desktop to prevent top spacing issues */
+      display: none;
       background: #2A2421 !important; /* Default dark brown matching the announcement bar */
       z-index: 45 !important;
       pointer-events: none;
       transition: background-color 0.25s ease;
+    }
+    @media (max-width: 768px) {
+      .fixed-status-bar-shield {
+        display: block;
+        height: 47px !important; /* Standard iOS status bar / notch safe-area fallback */
+        height: env(safe-area-inset-top) !important; /* Dynamic value if parsed by Safari */
+      }
     }
     .fixed-status-bar-shield.stuck {
       background: #FFFFFF !important; /* Pure white matching the header when stuck */
