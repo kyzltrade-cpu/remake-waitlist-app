@@ -669,11 +669,11 @@ html_template = """<!DOCTYPE html>
       "name": "{brand}"
     }},
     "offers": {{
-      "@type": "AggregateOffer",
+      "@type": "Offer",
+      "price": "0.00",
       "priceCurrency": "USD",
-      "lowPrice": "0",
-      "highPrice": "0",
-      "offerCount": "0"
+      "availability": "https://schema.org/InStock",
+      "url": "https://remake.beauty/products/{slug}.html"
     }},
     "aggregateRating": {{
       "@type": "AggregateRating",
