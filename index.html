@@ -410,10 +410,13 @@
       top: 0 !important;
       z-index: 50 !important;
       width: 100%;
+      margin: 0 auto;
       background: #FFFFFF !important;
+      border: 1px solid transparent !important;
       border-bottom: 1px solid rgba(245, 221, 227, 0.5) !important;
+      border-radius: 0;
       box-shadow: 0 4px 20px rgba(42, 36, 33, 0.02) !important;
-      transition: box-shadow 0.25s ease;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     /* Stretched background for the sticky header on rubber-banding pull-downs to prevent transparent gaps */
@@ -425,15 +428,27 @@
       right: 0;
       height: 200px;
       background: #FFFFFF !important;
-      z-index: 50 !important;
+      z-index: -1 !important;
       pointer-events: none;
+      transition: opacity 0.5s;
     }
 
-    /* Elegant shadow highlight only when the header is stuck / page is scrolled */
+    /* Dynamic Island Header Effect when scrolled */
     .main-header.stuck {
-      padding-top: env(safe-area-inset-top) !important;
-      box-shadow: 0 10px 30px rgba(42, 36, 33, 0.04) !important;
-      border-bottom-color: rgba(245, 221, 227, 0.8) !important;
+      top: calc(0.75rem + env(safe-area-inset-top)) !important;
+      width: calc(100% - 2rem) !important;
+      max-width: 1000px !important;
+      border-radius: 9999px !important;
+      border: 1px solid rgba(245, 221, 227, 0.9) !important;
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 40px rgba(42, 36, 33, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
+      padding-top: 0 !important;
+    }
+    
+    .main-header.stuck::before {
+      opacity: 0;
     }
 
     /* Bulletproof Sticky Header Scroll Offset */
