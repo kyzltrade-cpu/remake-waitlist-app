@@ -530,16 +530,16 @@
       z-index: 30;
       opacity: 0;
       transform: translateY(-100%);
-      will-change: transform, opacity;
+      will-change: top, opacity;
     }
     .scanning-active .lab-scan-laser {
       animation: professional-scan 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
     @keyframes professional-scan {
-      0% { opacity: 0; transform: translateY(-100%); }
-      10% { opacity: 1; transform: translateY(-50%); }
-      90% { opacity: 1; transform: translateY(400px); }
-      100% { opacity: 0; transform: translateY(450px); }
+      0% { opacity: 0; top: 0%; }
+      10% { opacity: 1; top: 5%; }
+      90% { opacity: 1; top: 95%; }
+      100% { opacity: 0; top: 100%; }
     }
     #productShowcaseCard {
       transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1594,6 +1594,8 @@
       
       // Trigger a clean, overlay-only laser sweep line on top of the text
       const card = document.getElementById('productShowcaseCard');
+      card.classList.remove('scanning-active');
+      void card.offsetWidth; // Force reflow to restart animation reliably
       card.classList.add('scanning-active');
       
       selectProductTimeout = setTimeout(() => {
