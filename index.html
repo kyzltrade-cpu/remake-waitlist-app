@@ -500,6 +500,32 @@
       75% { opacity: 1; }
       100% { opacity: 0; }
     }
+
+    /* Professional Lab Scan Laser */
+    .lab-scan-laser {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(217, 138, 150, 0) 0%, rgba(217, 138, 150, 0.05) 70%, rgba(217, 138, 150, 0.3) 100%);
+      border-bottom: 2px solid #D98A96;
+      box-shadow: 0 4px 15px rgba(217, 138, 150, 0.3);
+      pointer-events: none;
+      z-index: 30;
+      opacity: 0;
+      transform: translateY(-100%);
+      will-change: transform, opacity;
+    }
+    .scanning-active .lab-scan-laser {
+      animation: professional-scan 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+    @keyframes professional-scan {
+      0% { opacity: 0; transform: translateY(-100%); }
+      10% { opacity: 1; transform: translateY(-50%); }
+      90% { opacity: 1; transform: translateY(400px); }
+      100% { opacity: 0; transform: translateY(450px); }
+    }
     #productShowcaseCard {
       transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -708,7 +734,7 @@
         <div class="lg:col-span-7">
           <div id="productShowcaseCard" class="card-luxury p-8 flex flex-col md:flex-row gap-8 items-center relative min-h-[380px]">
             <!-- Subtle laser line overlays for scan effect -->
-            <div class="scan-laser" id="labLaser"></div>
+            <div class="lab-scan-laser" id="labLaser"></div>
             
             <!-- Left Display: Dynamic Rating & State -->
             <div class="flex-shrink-0 text-center flex flex-col items-center" id="labScoreContainer">
@@ -1557,7 +1583,7 @@
       
       selectProductTimeout = setTimeout(() => {
         card.classList.remove('scanning-active');
-      }, 800);
+      }, 1000);
     }
 
     // Dynamic Barcode Scan simulation with real beep!
