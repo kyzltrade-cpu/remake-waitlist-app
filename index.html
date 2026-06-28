@@ -484,29 +484,65 @@
       100% { opacity: 0; }
     }
 
-    /* Professional Lab Scan Laser */
+    /* Professional Lab Scan Laser (Ultra-Premium Glassmorphic Sweep with Side Flares) */
     .lab-scan-laser {
       position: absolute;
-      top: -60px; /* Start above */
+      top: 0;
       left: 0;
       width: 100%;
-      height: 60px;
-      background: linear-gradient(to bottom, rgba(217, 138, 150, 0) 0%, rgba(217, 138, 150, 0.05) 70%, rgba(217, 138, 150, 0.3) 100%);
-      border-bottom: 2px solid #D98A96;
-      box-shadow: 0 4px 15px rgba(217, 138, 150, 0.3);
+      height: 100%;
+      /* Premium upward-trailing rose gradient + glassmorphic blur trail */
+      background: linear-gradient(
+        to top,
+        rgba(217, 138, 150, 0.12) 0%,
+        rgba(217, 138, 150, 0.05) 15%,
+        rgba(217, 138, 150, 0.01) 40%,
+        rgba(217, 138, 150, 0) 100%
+      );
+      /* Real glassmorphic refraction sweeping over the content under the laser */
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      
+      /* Sharp laser line on the leading bottom edge */
+      border-bottom: 1.5px solid rgba(217, 138, 150, 0.95);
       pointer-events: none;
       z-index: 30;
       opacity: 0;
+      transform: translateY(-100%);
       will-change: transform, opacity;
     }
+
+    /* Handcrafted left/right reflection flares where laser meets card boundaries */
+    .lab-scan-laser::before,
+    .lab-scan-laser::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; /* Center perfectly over the 1.5px border-bottom */
+      width: 8px;
+      height: 8px;
+      background: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 
+        0 0 8px rgba(217, 138, 150, 0.9), 
+        0 0 16px rgba(217, 138, 150, 0.7), 
+        0 0 24px rgba(217, 138, 150, 0.5);
+      z-index: 31;
+    }
+    .lab-scan-laser::before {
+      left: -2px;
+    }
+    .lab-scan-laser::after {
+      right: -2px;
+    }
+
     .scanning-active .lab-scan-laser {
-      animation: professional-scan 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation: professional-scan 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     @keyframes professional-scan {
-      0% { opacity: 0; transform: translateY(0); }
-      10% { opacity: 1; transform: translateY(60px); }
-      90% { opacity: 1; transform: translateY(380px); }
-      100% { opacity: 0; transform: translateY(440px); }
+      0% { opacity: 0; transform: translateY(-100%); }
+      5% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(100%); }
     }
     #productShowcaseCard {
       transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
