@@ -813,7 +813,7 @@ html_template = """<!DOCTYPE html>
 <body class="min-h-screen flex flex-col justify-between">  
   
   <!-- Premium Editorial Sticky Header -->  
-  <header class="sticky top-0 z-50 w-full bg-[#FFF0F3]/80 backdrop-blur-md border-b border-[#F5DDE3] transition-all duration-300">  
+  <header class="sticky top-0 z-50 w-full bg-[#FFF0F3] border-b border-[#F5DDE3] transition-all duration-300">  
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">  
       <!-- Typographic Text Logo only -->  
       <a href="https://remake.beauty" class="flex items-center gap-3 group">  
