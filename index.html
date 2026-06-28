@@ -362,23 +362,7 @@
       }
     }
 
-    /* Permanent Solid Safe-Area Shield (Kyle's requested solid layer over the website notch on scroll) */
-    .fixed-status-bar-shield {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 0px; /* Invisible on desktop to prevent top spacing issues */
-      display: none;
-      background: #FFFFFF !important; /* Always solid white to act as backing for stuck header */
-      z-index: 45 !important;
-      pointer-events: none;
-    }
-    @media (max-width: 768px) {
-      .fixed-status-bar-shield {
-        display: block;
-        height: 44px !important; /* Guaranteed iOS status bar / notch safe-area height (prevents WebKit 0px env() bug) */
-      }
+    /* Solid Safe-Area Shield removed for Dynamic Island aesthetic */
     }
 
     /* Native Sibling Navigation Header & Announcement Bar */
@@ -519,7 +503,7 @@
     /* Professional Lab Scan Laser */
     .lab-scan-laser {
       position: absolute;
-      top: 0;
+      top: -60px; /* Start above */
       left: 0;
       width: 100%;
       height: 60px;
@@ -529,17 +513,16 @@
       pointer-events: none;
       z-index: 30;
       opacity: 0;
-      transform: translateY(-100%);
-      will-change: top, opacity;
+      will-change: transform, opacity;
     }
     .scanning-active .lab-scan-laser {
-      animation: professional-scan 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation: professional-scan 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     @keyframes professional-scan {
-      0% { opacity: 0; top: 0%; }
-      10% { opacity: 1; top: 5%; }
-      90% { opacity: 1; top: 95%; }
-      100% { opacity: 0; top: 100%; }
+      0% { opacity: 0; transform: translateY(0); }
+      10% { opacity: 1; transform: translateY(60px); }
+      90% { opacity: 1; transform: translateY(380px); }
+      100% { opacity: 0; transform: translateY(440px); }
     }
     #productShowcaseCard {
       transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -597,8 +580,6 @@
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
-  <!-- Fixed Solid White Status Bar Shield (Kyle's requested layer over the website notch on scroll) -->
-  <div class="fixed-status-bar-shield"></div>
 
   <!-- Top Announcement Bar -->
   <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
@@ -1600,7 +1581,7 @@
       
       selectProductTimeout = setTimeout(() => {
         card.classList.remove('scanning-active');
-      }, 1000);
+      }, 1200);
     }
 
     // Dynamic Barcode Scan simulation with real beep!
