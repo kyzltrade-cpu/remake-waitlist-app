@@ -363,7 +363,6 @@
     }
 
     /* Solid Safe-Area Shield removed for Dynamic Island aesthetic */
-    }
 
     /* Native Sibling Navigation Header & Announcement Bar */
     .announcement-bar {
@@ -403,19 +402,7 @@
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
-    /* Stretched background for the sticky header on rubber-banding pull-downs to prevent transparent gaps */
-    .main-header::before {
-      content: "";
-      position: absolute;
-      top: -200px;
-      left: 0;
-      right: 0;
-      height: 200px;
-      background: #FFFFFF !important;
-      z-index: -1 !important;
-      pointer-events: none;
-      transition: opacity 0.5s;
-    }
+    /* Removed Stretched background for the sticky header since dynamic island doesn't need it */
 
     /* Dynamic Island Header Effect when scrolled */
     .main-header.stuck {
@@ -430,10 +417,7 @@
       box-shadow: 0 10px 40px rgba(42, 36, 33, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
       padding-top: 0 !important;
     }
-    
-    .main-header.stuck::before {
-      opacity: 0;
-    }
+
 
     /* Bulletproof Sticky Header Scroll Offset */
     section[id] {
