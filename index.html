@@ -769,7 +769,7 @@
                   <circle id="labScorePath" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="15"/>
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-center">
-                  <div class="font-luxury font-light text-6xl md:text-7xl text-[#2A2421] leading-none lining-nums not-italic" style="margin-top: -16px !important;" id="labScoreText">94</div>
+                  <div class="font-luxury font-normal text-6xl md:text-7xl text-[#2A2421] leading-none lining-nums not-italic" style="margin-top: -16px !important;" id="labScoreText">94</div>
                   <div class="text-[10px] uppercase tracking-widest text-[#7C726E] font-medium" style="margin-top: 6px !important;">score</div>
                 </div>
               </div>
@@ -883,21 +883,29 @@
         <!-- Left Product: The Toxic/Hazardous One -->
         <div class="card-luxury p-8 border-red-200 bg-red-50/25 flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start mb-4">
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-[9px] text-[#C96F6F] font-bold uppercase tracking-widest mb-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#C96F6F]"></span>NOT ACNE SAFE
-                </span>
-                <h3 id="compLuxName" class="font-serif text-2xl text-[#2A2421]">Charlotte Tilbury</h3>
-                <p id="compLuxProduct" class="text-xs text-[#7C726E] font-light">Hollywood Flawless Filter</p>
-              </div>
-              <div class="text-right">
-                <span id="compLuxScore" class="font-luxury font-light text-5xl md:text-6xl text-[#2A2421] block leading-none lining-nums not-italic">38</span>
-                <span class="text-[8px] uppercase text-[#7C726E] tracking-widest font-light block mt-1">Score</span>
+            <!-- Score Ring Centered at Top (Like 94) -->
+            <div class="flex justify-center mb-6">
+              <div class="relative w-36 h-36 flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#FEE2E2" stroke-width="5"/>
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#EF4444" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="163"/>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                  <div id="compLuxScore" class="font-luxury font-normal text-6xl md:text-7xl text-[#2A2421] leading-none lining-nums not-italic" style="margin-top: -16px !important;">38</div>
+                  <div class="text-[10px] uppercase tracking-widest text-[#7C726E] font-medium" style="margin-top: 6px !important;">score</div>
+                </div>
               </div>
             </div>
+
+            <div class="text-center mb-4">
+              <span class="inline-flex items-center gap-1.5 text-[9px] text-[#C96F6F] font-bold uppercase tracking-widest mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C96F6F]"></span>NOT ACNE SAFE
+              </span>
+              <h3 id="compLuxName" class="font-serif text-2xl text-[#2A2421]">Charlotte Tilbury</h3>
+              <p id="compLuxProduct" class="text-xs text-[#7C726E] font-light">Hollywood Flawless Filter</p>
+            </div>
             
-            <p id="compLuxPrice" class="font-mono text-sm text-red-500 font-bold mb-4">$49.00 • High Markup</p>
+            <p id="compLuxPrice" class="font-mono text-sm text-center text-red-500 font-bold mb-4">$49.00 • High Markup</p>
             <div class="divider-elegant !my-3"></div>
 
             <!-- Detailed Chemical breakdown -->
@@ -929,21 +937,29 @@
         <!-- Right Product: The Clean/Safe Alternative -->
         <div class="card-luxury p-8 border-emerald-200 bg-emerald-50/25 flex flex-col justify-between">
           <div>
-            <div class="flex justify-between items-start mb-4">
-              <div>
-                <span class="inline-flex items-center gap-1.5 text-[9px] text-[#6E8E75] font-bold uppercase tracking-widest mb-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#6E8E75]"></span>100% ACNE SAFE
-                </span>
-                <h3 id="compSafeName" class="font-serif text-2xl text-[#2A2421]">e.l.f. Cosmetics</h3>
-                <p id="compSafeProduct" class="text-xs text-[#7C726E] font-light">Halo Glow Liquid Filter</p>
-              </div>
-              <div class="text-right">
-                <span id="compSafeScore" class="font-luxury font-light text-5xl md:text-6xl text-[#2A2421] block leading-none lining-nums not-italic">96</span>
-                <span class="text-[8px] uppercase text-[#7C726E] tracking-widest font-light block mt-1">Score</span>
+            <!-- Score Ring Centered at Top (Like 94) -->
+            <div class="flex justify-center mb-6">
+              <div class="relative w-36 h-36 flex items-center justify-center">
+                <svg class="w-full h-full" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#D1FAE5" stroke-width="5"/>
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="10"/>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                  <div id="compSafeScore" class="font-luxury font-normal text-6xl md:text-7xl text-[#2A2421] leading-none lining-nums not-italic" style="margin-top: -16px !important;">96</div>
+                  <div class="text-[10px] uppercase tracking-widest text-[#7C726E] font-medium" style="margin-top: 6px !important;">score</div>
+                </div>
               </div>
             </div>
+
+            <div class="text-center mb-4">
+              <span class="inline-flex items-center gap-1.5 text-[9px] text-[#6E8E75] font-bold uppercase tracking-widest mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#6E8E75]"></span>100% ACNE SAFE
+              </span>
+              <h3 id="compSafeName" class="font-serif text-2xl text-[#2A2421]">e.l.f. Cosmetics</h3>
+              <p id="compSafeProduct" class="text-xs text-[#7C726E] font-light">Halo Glow Liquid Filter</p>
+            </div>
             
-            <p id="compSafePrice" class="font-mono text-sm text-[#6E8E75] font-bold mb-4">$14.00 • High Value</p>
+            <p id="compSafePrice" class="font-mono text-sm text-center text-[#6E8E75] font-bold mb-4">$14.00 • High Value</p>
             <div class="divider-elegant !my-3"></div>
 
             <!-- Detailed Chemical breakdown -->
