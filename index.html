@@ -387,20 +387,7 @@
       pointer-events: none;
     }
 
-    .fixed-status-bar-shield {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: calc(0.75rem + env(safe-area-inset-top));
-      background: transparent;
-      z-index: 45 !important;
-      pointer-events: none;
-      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .stuck-shield {
-      background: #FFFFFF !important;
-    }
+
 
     .main-header {
       position: -webkit-sticky !important;
@@ -623,8 +610,6 @@
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
-  <div class="fixed-status-bar-shield"></div>
-
   <!-- Top Announcement Bar -->
   <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
     ELEVATE YOUR LOOKS. JOIN THE PERSONALIZED BEAUTY REVOLUTION TODAY.
@@ -2754,19 +2739,16 @@
       const mainHeader = document.querySelector('.main-header');
       const announcementBar = document.querySelector('.announcement-bar');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
-      const statusBarShield = document.querySelector('.fixed-status-bar-shield');
       if (mainHeader) {
         const updateHeaderScroll = () => {
           const threshold = announcementBar ? announcementBar.offsetHeight : 40;
           if (window.scrollY > threshold) {
             mainHeader.classList.add('stuck');
-            statusBarShield?.classList.add('stuck-shield');
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
             }
           } else {
             mainHeader.classList.remove('stuck');
-            statusBarShield?.classList.remove('stuck-shield');
             if (themeMeta && themeMeta.getAttribute('content') !== '#2A2421') {
               themeMeta.setAttribute('content', '#2A2421');
             }
