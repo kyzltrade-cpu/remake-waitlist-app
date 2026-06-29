@@ -629,7 +629,7 @@
         <a href="#wrapped" class="nav-link transition">Beauty DNA™</a>  
         <a href="#faq" class="nav-link transition">FAQ</a>  
       </nav>  
-      <button id="header-cta" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Get Early Access</button>  
+      <a href="#" class="btn-primary px-3.5 py-1.5 text-[9px] md:px-5 md:py-2 md:text-[10.5px]">Download App</a>  
     </div>  
   </header>
 
@@ -647,21 +647,13 @@
           Scan your face with our advanced AI to instantly unlock your personalized Beauty DNA™ profile, find your flawless foundation shade match, and screen any beauty barcode for pore-clogging triggers.  
         </p>  
           
-        <form class="waitlist-form flex flex-col sm:flex-row gap-3 max-w-md mb-3 reveal reveal-delay-3">  
-          <input type="email" name="email" placeholder="Your email address" required  
-            class="input-field flex-1"  
-            aria-label="Email address"/>  
-          <button type="submit" class="btn-primary whitespace-nowrap">  
-            <span class="btn-text">Secure Access</span>  
-          </button>  
-          <input type="text" name="_gotcha" style="display:none">  
-          <input type="hidden" name="_subject" value="New REMAKE Waitlist Signup!">  
-        </form>  
-        <p class="form-status hidden"></p>  
+        <div class="flex flex-col sm:flex-row gap-3 max-w-md mb-3 reveal reveal-delay-3">
+          <a href="#" class="btn-primary w-full sm:w-auto text-center px-8 py-3.5">
+            <span class="btn-text">Download on the App Store</span>
+          </a>
+        </div>  
           
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-3 mt-2 mb-6 reveal">
-          <p class="text-xs text-[#B8ADA9] font-light">Be the next person to get $20 off Remake’s yearly plan. <span class="font-semibold text-[#D98A96]">Only 200 spots left.</span></p>
-        </div>
+        
           
         <div class="flex flex-wrap items-center gap-6 text-xs text-[#7C726E] font-medium tracking-wide uppercase reveal justify-center md:justify-start">  
           <div class="flex items-center gap-2"><span class="font-bold text-[#D98A96]">5.0 Rating</span><span>99.4% Verified Accuracy</span></div>  
@@ -1129,18 +1121,12 @@
     <div class="max-w-2xl mx-auto relative z-10">  
       <span class="text-[10px] tracking-widest uppercase text-white/90 font-bold mb-4 block">SECURE PRIORITY SECTOR ACCESS</span>
       <h2 class="hero-title text-4xl md:text-5xl mb-6">Stop guessing. Start knowing.</h2>  
-      <p class="text-white/80 mb-10 font-light leading-relaxed max-w-lg mx-auto">Join our private beta waitlist today. Stop ruining your skin barrier and burning your wallet on bad products.</p>  
-        
-      <form class="waitlist-form flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4">  
-        <input type="email" name="email" placeholder="Your email address" required  
-          class="input-field flex-1 bg-[#FFF9F7] text-[#2A2421] border-[#E8A0AA]"  
-          aria-label="Email address"/>  
-        <button type="submit" class="btn-primary whitespace-nowrap !bg-[#2A2421] !text-white !border-[#2A2421] hover:!bg-white hover:!text-[#D98A96] hover:!border-white">  
-          <span class="btn-text">Protect My Skin</span>  
-        </button>  
-        <input type="text" name="_gotcha" style="display:none">  
-        <input type="hidden" name="_subject" value="New REMAKE Waitlist Signup!">  
-      </form>  
+      <p class="text-white/80 mb-10 font-light leading-relaxed max-w-lg mx-auto">Stop ruining your skin barrier and burning your wallet on bad products. Download REMAKE today.</p>  
+      <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-4">  
+        <a href="#" class="btn-primary w-full text-center px-8 py-4 bg-white text-[#2A2421] border-white hover:bg-pink-100 hover:text-[#2A2421]">
+          Download on the App Store
+        </a>
+      </div>  
       <p class="form-status text-center hidden" style="color: rgba(255,255,255,0.9);"></p>  
         
       <p class="text-xs text-white/60 mt-6 font-light">Your skin data remains encrypted. No spam. Unsubscribe anytime.</p>  
@@ -1399,33 +1385,12 @@
         
       <div class="pt-6 border-t border-[#F5DDE3] text-center">  
         <p class="text-sm text-[#7C726E] font-light mb-4">Want your custom clinical makeup scan?</p>  
-        <button id="scanToWaitlist" class="btn-primary w-full">Join Waitlist</button>  
+        <a href="#" class="btn-primary w-full text-center py-3 block">Download App</a>  
       </div>  
     </div>  
   </div>
 
-  <!-- Waitlist Popup Modal -->  
-  <div id="waitlistModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">  
-    <div class="modal-content card-luxury p-8 md:p-10 !bg-[var(--rhode-white)]">  
-      <div class="flex items-center justify-between mb-6">  
-        <h3 id="waitlist-title" class="section-title text-2xl text-[#2A2421]">Get Early Access</h3>  
-        <button id="closeWaitlistModal" class="border border-[#F5DDE3] bg-white/40 h-8 w-8 rounded-full flex items-center justify-center text-[#2A2421] hover:bg-[#F5DDE3]/20 transition cursor-pointer text-sm" aria-label="Close">
-          ×
-        </button>  
-      </div>  
-      <p class="text-sm text-[#7C726E] font-light mb-6">Be one of the next 200 to join and get $20 off your first year. Spots are filling fast.</p>  
-      <form id="waitlistForm" class="space-y-4">  
-        <input type="email" name="email" placeholder="Enter your email" required class="input-field w-full" aria-label="Email address"/>  
-        <button type="submit" class="btn-primary w-full">  
-          <span class="btn-text">Join Waitlist</span>  
-        </button>  
-        <input type="text" name="_gotcha" style="display:none">  
-        <input type="hidden" name="_subject" value="New REMAKE Product Scan Signup!">  
-      </form>  
-      <p id="waitlistStatus" class="form-status text-center hidden"></p>  
-      <p class="text-xs text-[#B8ADA9] mt-4 font-light text-center">By joining, you agree to our <a href="#" class="underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Terms</a> and <a href="#" class="underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Privacy Policy</a>.</p>  
-    </div>  
-  </div>
+  
 
   <!-- Interactive Lab Javascript Data and Core Logic -->
   <script>
@@ -2099,100 +2064,13 @@
       // Setup quote slide loop
       setInterval(cycleQuotes, 7000);
 
-      // Web3Forms Submit Handling (Extremely Robust)
-      const handleFormSubmit = (form) => {
-        if (form.dataset.handled === 'true') return;
-        form.dataset.handled = 'true';
 
-        const statusEl = form.classList.contains('waitlist-form') ? form.nextElementSibling : document.getElementById('waitlistStatus');
-        const btn = form.querySelector('button[type="submit"]');
-        const btnText = btn.querySelector('.btn-text') || btn;
-        const original = btnText.textContent;
-        let isSubmitting = false;
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          if (isSubmitting) return;
-          isSubmitting = true;
-          btn.disabled = true;
-          const originalHTML = btnText.innerHTML;
-          btnText.innerHTML = '<span class="spinner"></span>';
-          statusEl.className = 'form-status hidden';
-
-          const emailInput = form.querySelector('input[name="email"]');
-          const email = emailInput ? emailInput.value : '';
-
-          try {
-            const res = await fetch('https://api.web3forms.com/submit', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json'
-              },
-              body: new URLSearchParams({
-                access_key: "4344ced8-a05a-423d-b08e-1f8945ef9e81",
-                email: email,
-                subject: "New REMAKE Waitlist Signup",
-                from_name: "REMAKE Waitlist"
-              })
-            });
-
-            const data = await res.json();
-
-            if (data.success) {
-              if (window.playEarlyAccessSparkle) window.playEarlyAccessSparkle();
-              btnText.textContent = '✓ JOINED';
-              statusEl.textContent = "You're on the list. Redirecting...";
-              statusEl.className = 'form-status success';
-              form.reset();
-              setTimeout(() => {
-                const redirectUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/success.html';
-                window.location.href = redirectUrl;
-              }, 800);
-            } else {
-              throw new Error(data.message || 'Request failed');
-            }
-          } catch (err) {
-            console.error(err);
-            // Fallback to native submission
-            form.action = "https://api.web3forms.com/submit";
-            form.method = "POST";
-            
-            const redirectUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '') + '/success.html';
-
-            const fields = {
-              "access_key": "4344ced8-a05a-423d-b08e-1f8945ef9e81",
-              "subject": "New REMAKE Waitlist Signup",
-              "from_name": "REMAKE Waitlist",
-              "redirect": redirectUrl
-            };
-            
-            for (const [key, value] of Object.entries(fields)) {
-              if (!form.querySelector(`input[name="${key}"]`)) {
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = key;
-                input.value = value;
-                form.appendChild(input);
-              }
-            }
-            
-            form.querySelectorAll('input[name="_gotcha"], input[name="_subject"]').forEach(el => el.remove());
-            form.submit();
-          } finally {
-            isSubmitting = false;
-            btn.disabled = false;
-            statusEl.classList.remove('hidden');
-          }
-        });
-      };
-
-      document.querySelectorAll('.waitlist-form, #waitlistForm').forEach(handleFormSubmit);
+      
 
       // Modal control logic for the "Full Analysis" report modal
       const scanModal = document.getElementById('scanModal');
       const closeScanModal = document.getElementById('closeScanModal');
-      const scanToWaitlist = document.getElementById('scanToWaitlist');
+      
       const viewFullScanBtnPhone = document.getElementById('viewFullScanBtnPhone');
       const viewFullScanBtnMain = document.getElementById('viewFullScanBtnMain');
 
@@ -2228,34 +2106,7 @@
         if (e.target === scanModal) closeScanModalFn();
       });
 
-      // Waitlist Modal Controls
-      const waitlistModal = document.getElementById('waitlistModal');
-      const closeWaitlistModal = document.getElementById('closeWaitlistModal');
-      const headerCta = document.getElementById('header-cta');
-
-      const openWaitlistModal = () => {
-        if (!waitlistModal) return;
-        waitlistModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        if (window.playEarlyAccessSparkle) window.playEarlyAccessSparkle();
-      };
-
-      const closeWaitlistModalFn = () => {
-        if (!waitlistModal) return;
-        waitlistModal.classList.remove('active');
-        document.body.style.overflow = '';
-      };
-
-      headerCta?.addEventListener('click', openWaitlistModal);
-      closeWaitlistModal?.addEventListener('click', closeWaitlistModalFn);
-      waitlistModal?.addEventListener('click', (e) => {
-        if (e.target === waitlistModal) closeWaitlistModalFn();
-      });
-
-      scanToWaitlist?.addEventListener('click', () => {
-        closeScanModalFn();
-        openWaitlistModal();
-      });
+      
 
       // Interactive Beauty DNA autoplay slide logic
       let currentWrappedSlideIdx = 1;
@@ -2470,9 +2321,7 @@
               </div>
             </div>
             <div class="text-center pt-2">
-              <button onclick="document.querySelector('.waitlist-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })" class="w-full bg-[#2A2421] hover:bg-[#D98A96] text-white py-3 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-sm">
-                Join the Beta Waitlist
-              </button>
+              <a href="#" class="w-full inline-block text-center bg-[#2A2421] hover:bg-[#D98A96] text-white py-3 rounded-full text-xs font-bold uppercase tracking-widest transition duration-300 shadow-sm">Download App</a>
             </div>
           `
         }
@@ -2631,7 +2480,7 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           closeScanModalFn();
-          closeWaitlistModalFn();
+          
         }
       });
 

@@ -874,7 +874,7 @@ html_template = """<!DOCTYPE html>
             <p class="text-xs text-white/80 font-light leading-relaxed mb-6">  
               Our iOS scanner detects toxic chemicals, matches shades with 100% precision, and saves your skin barrier.  
             </p>  
-            <a href="https://remake.beauty/#join" class="btn-primary w-full bg-white text-[#2A2421] border-white hover:bg-pink-100 hover:text-[#2A2421]">Join Free Waitlist</a>  
+            <a href="https://remake.beauty/#join" class="btn-primary w-full bg-white text-[#2A2421] border-white hover:bg-pink-100 hover:text-[#2A2421]">Download App</a>  
           </div>  
         </div>  
 
