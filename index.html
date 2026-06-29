@@ -387,6 +387,21 @@
       pointer-events: none;
     }
 
+    .fixed-status-bar-shield {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: calc(0.75rem + env(safe-area-inset-top));
+      background: transparent;
+      z-index: 45 !important;
+      pointer-events: none;
+      transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stuck-shield {
+      background: #FFF0F3 !important;
+    }
+
     .main-header {
       position: -webkit-sticky !important;
       position: sticky !important;
@@ -608,6 +623,7 @@
   </style>  
 </head>  
 <body class="min-h-screen relative z-10">  
+  <div class="fixed-status-bar-shield"></div>
 
   <!-- Top Announcement Bar -->
   <div class="announcement-bar text-[#FFF9F7] text-center text-[10px] md:text-xs font-medium tracking-widest uppercase flex items-center justify-center relative">  
@@ -786,22 +802,26 @@
                 Excellent lightweight hydration. Fully acne-safe and barrier-supporting. Ideal for the Glazed Canvas aesthetic. Contains 0 pore cloggers.
               </p>
               
-              <div class="space-y-2 border-t border-[#F5DDE3] pt-4 text-xs">
-                <div class="flex justify-between items-center py-1">
-                  <span class="text-[#7C726E]">Allergens:</span>
-                  <span class="font-medium" id="labAllergenText">Fragrance-Free</span>
+              <div class="space-y-1 sm:space-y-2.5 border-t border-[#F5DDE3] pt-4 text-xs">
+                <!-- Allergens -->
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-1 border-b border-[#F5DDE3]/30 sm:border-b-0 last:border-b-0">
+                  <span class="text-[9px] uppercase tracking-wider text-[#A09590] font-bold sm:normal-case sm:text-xs sm:text-[#7C726E] sm:font-light sm:tracking-normal mb-1 sm:mb-0">Allergens:</span>
+                  <span class="text-sm sm:text-xs font-semibold text-[#2A2421]" id="labAllergenText">Fragrance-Free</span>
                 </div>
-                <div class="flex justify-between items-center py-1">
-                  <span class="text-[#7C726E]">Undertone matching:</span>
-                  <span class="font-medium text-[#6E8E75]" id="labShadeText">Universal Glaze</span>
+                <!-- Undertone Matching -->
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-1 border-b border-[#F5DDE3]/30 sm:border-b-0 last:border-b-0">
+                  <span class="text-[9px] uppercase tracking-wider text-[#A09590] font-bold sm:normal-case sm:text-xs sm:text-[#7C726E] sm:font-light sm:tracking-normal mb-1 sm:mb-0">Undertone matching:</span>
+                  <span class="text-sm sm:text-xs font-semibold text-[#6E8E75]" id="labShadeText">Universal Glaze</span>
                 </div>
-                <div class="flex justify-between items-center py-1">
-                  <span class="text-[#7C726E]">Safety Risk:</span>
-                  <span class="font-bold text-[#6E8E75]" id="labRiskText">Safe (0 Cloggers)</span>
+                <!-- Safety Risk -->
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-1 border-b border-[#F5DDE3]/30 sm:border-b-0 last:border-b-0">
+                  <span class="text-[9px] uppercase tracking-wider text-[#A09590] font-bold sm:normal-case sm:text-xs sm:text-[#7C726E] sm:font-light sm:tracking-normal mb-1 sm:mb-0">Safety Risk:</span>
+                  <span class="text-sm sm:text-xs font-bold text-[#6E8E75]" id="labRiskText">Safe (0 Cloggers)</span>
                 </div>
-                <div class="flex justify-between items-center py-1">
-                  <span class="text-[#7C726E]">Ethics & Sourcing:</span>
-                  <span class="font-medium" id="labEthicsText">Cruelty-Free, Vegan</span>
+                <!-- Ethics & Sourcing -->
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 sm:py-1 border-b border-[#F5DDE3]/30 sm:border-b-0 last:border-b-0">
+                  <span class="text-[9px] uppercase tracking-wider text-[#A09590] font-bold sm:normal-case sm:text-xs sm:text-[#7C726E] sm:font-light sm:tracking-normal mb-1 sm:mb-0">Ethics & Sourcing:</span>
+                  <span class="text-sm sm:text-xs font-semibold text-[#2A2421]" id="labEthicsText">Cruelty-Free, Vegan</span>
                 </div>
               </div>
             </div>
@@ -1588,6 +1608,23 @@
         document.getElementById('labShadeText').textContent = prod.shade;
         document.getElementById('labRiskText').textContent = prod.risk;
         document.getElementById('labEthicsText').textContent = prod.ethics;
+        
+        // Dynamically style the text colors based on product safety status (no hardcoded static greens!)
+        const riskTextEl = document.getElementById('labRiskText');
+        const shadeTextEl = document.getElementById('labShadeText');
+        if (key === 'char') {
+          // High Risk (Red theme)
+          riskTextEl.className = "text-sm sm:text-xs font-bold text-[#C96F6F]";
+          shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#C96F6F]";
+        } else if (key === 'fenty') {
+          // Warning/Low-Risk (Amber/Orange theme)
+          riskTextEl.className = "text-sm sm:text-xs font-bold text-amber-600";
+          shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#6E8E75]";
+        } else {
+          // Derm Approved / Skin Safe (Green theme)
+          riskTextEl.className = "text-sm sm:text-xs font-bold text-[#6E8E75]";
+          shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#6E8E75]";
+        }
         
         // Set Badge class & text
         const badge = document.getElementById('labSafetyBadge');
@@ -2711,16 +2748,19 @@
       const mainHeader = document.querySelector('.main-header');
       const announcementBar = document.querySelector('.announcement-bar');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const statusBarShield = document.querySelector('.fixed-status-bar-shield');
       if (mainHeader) {
         const updateHeaderScroll = () => {
           const threshold = announcementBar ? announcementBar.offsetHeight : 40;
           if (window.scrollY > threshold) {
             mainHeader.classList.add('stuck');
+            statusBarShield?.classList.add('stuck-shield');
             if (themeMeta && themeMeta.getAttribute('content') !== '#FFFFFF') {
               themeMeta.setAttribute('content', '#FFFFFF');
             }
           } else {
             mainHeader.classList.remove('stuck');
+            statusBarShield?.classList.remove('stuck-shield');
             if (themeMeta && themeMeta.getAttribute('content') !== '#2A2421') {
               themeMeta.setAttribute('content', '#2A2421');
             }
