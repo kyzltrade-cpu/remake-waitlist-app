@@ -551,12 +551,12 @@
       border-color: var(--rhode-pink) !important;
     }
     #labScoreContainer, #labDetailsPanel {
-      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, filter;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
     #labScoreContainer.lab-loading, #labDetailsPanel.lab-loading {
-      opacity: 0.15 !important;
-      filter: blur(4px) !important;
+      opacity: 0 !important;
+      transform: translateY(4px) !important;
     }
 
     /* Tab styles for the interactive lab */
