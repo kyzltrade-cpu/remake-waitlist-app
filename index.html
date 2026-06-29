@@ -408,16 +408,19 @@
 
     /* Dynamic Island Header Effect when scrolled */
     .main-header.stuck {
-      top: calc(0.75rem + env(safe-area-inset-top)) !important;
+      top: calc(1rem + env(safe-area-inset-top)) !important;
       width: calc(100% - 2rem) !important;
-      max-width: 1000px !important;
+      max-width: 900px !important;
       border-radius: 9999px !important;
       border: 1px solid rgba(245, 221, 227, 0.9) !important;
       background: rgba(255, 255, 255, 0.85) !important;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       box-shadow: 0 10px 40px rgba(42, 36, 33, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6) !important;
-      padding-top: 0 !important;
+      padding-top: 0.25rem !important;
+      padding-bottom: 0.25rem !important;
+      margin-left: auto;
+      margin-right: auto;
     }
 
 
@@ -617,7 +620,7 @@
 
   <!-- Main Navigation Header -->
   <header class="main-header">  
-    <div class="max-w-6xl mx-auto px-6 py-2 md:py-2.5 flex items-center justify-between">  
+    <div class="w-full max-w-5xl mx-auto px-5 py-2 md:py-3 flex items-center justify-between">  
       <a href="/" class="logo-wrap group">  
         <img src="./logo.png" alt="REMAKE Logo">  
         <span class="logo-text">REMAKE</span>  
