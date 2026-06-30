@@ -667,39 +667,47 @@
       <!-- PHOTOREALISTIC ULTRA-PREMIUM IPHONE 15 PRO SHELL (HOUSED VERBATIM AROUND RAW APP SCREENSHOT) -->
       <div class="flex-1 flex justify-center items-center reveal reveal-delay-2 relative py-4">  
         <div class="relative w-[235px] h-[510px] md:w-[285px] md:h-[618px]">
+          <!-- Premium 3D Cast Shadow (Diagonally down-right like Image 2) -->
+          <div class="absolute top-[4%] left-[6%] w-[96%] h-[95%] bg-[#362722]/35 rounded-[3.2rem] md:rounded-[3.8rem] blur-[24px] md:blur-[32px] transform translate-x-6 translate-y-6 pointer-events-none z-0"></div>
+          
+          <!-- Ambient Contact Shadow (Inner tight glow) -->
+          <div class="absolute inset-[3px] bg-black/20 rounded-[2.8rem] md:rounded-[3.3rem] blur-[8px] md:blur-[12px] pointer-events-none z-0"></div>
+          
           <!-- Left Side Buttons (Volume Rockers + Ring Switcher) -->
-          <div class="absolute top-[80px] -left-[3px] w-[3px] h-6 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)]"></div>
-          <div class="absolute top-[120px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)]"></div>
-          <div class="absolute top-[170px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)]"></div>
+          <div class="absolute top-[80px] -left-[3px] w-[3px] h-6 bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)] z-10"></div>
+          <div class="absolute top-[120px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)] z-10"></div>
+          <div class="absolute top-[170px] -left-[3px] w-[3px] h-[34px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-l shadow-[inset_1px_1px_1px_rgba(255,255,255,0.1)] z-10"></div>
           
           <!-- Right Side Power/Action Button -->
-          <div class="absolute top-[110px] -right-[3px] w-[3px] h-[50px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-r shadow-[inset_-1px_1px_1px_rgba(255,255,255,0.1)]"></div>
+          <div class="absolute top-[110px] -right-[3px] w-[3px] h-[50px] bg-gradient-to-b from-zinc-700 to-zinc-800 rounded-r shadow-[inset_-1px_1px_1px_rgba(255,255,255,0.1)] z-10"></div>
 
-          <!-- Main Bezel Frame: Luxurious Brushed Natural Titanium -->
-          <div class="w-full h-full p-[3px] rounded-[2.6rem] md:rounded-[3.1rem] bg-gradient-to-tr from-[#8a8479] via-[#d6d2c4] to-[#a39e93] shadow-[0_30px_70px_rgba(42,36,33,0.38)] ring-1 ring-[#e5e0d4]/40">
-            <!-- Inner bezel: Slim deep-black bezel margin -->
-            <div class="w-full h-full p-[6px] md:p-[7px] rounded-[2.4rem] md:rounded-[2.9rem] bg-zinc-950 border border-zinc-900">
-              <!-- Screen Container -->
-              <div class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex items-center justify-center">
+          <!-- Main Bezel Frame: Luxurious Brushed Natural Titanium with chamfer highlight -->
+          <div class="relative z-10 w-full h-full p-[1.5px] rounded-[2.6rem] md:rounded-[3.1rem] bg-gradient-to-br from-[#eae5da] via-[#bdae9c] to-[#4d463b] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]">
+            <div class="w-full h-full p-[2.5px] rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-br from-[#c8bfae] via-[#928876] to-[#363127] shadow-[0_4px_10px_rgba(0,0,0,0.15)]">
+              <!-- Inner bezel: Slim deep-black bezel margin -->
+              <div class="w-full h-full p-[6px] md:p-[7px] rounded-[2.4rem] md:rounded-[2.9rem] bg-zinc-950 border border-[#1a1917] relative">
                 
+                <!-- Left physical metal frame glint (light reflection) -->
+                <div class="absolute top-[2%] left-[1px] w-[1px] h-[96%] bg-gradient-to-b from-white/50 via-white/10 to-transparent opacity-80 z-20 pointer-events-none rounded-full"></div>
                 
+                <!-- Screen Container -->
+                <div class="relative w-full h-full rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden bg-black flex items-center justify-center">
+                  <!-- Real Apple iOS Status Bar Overlay -->
+                  <div class="absolute top-0 left-0 w-full h-8 px-5 pt-3.5 flex justify-between items-center text-[9px] md:text-[10px] text-white font-semibold font-sans tracking-wide z-40 pointer-events-none select-none">
+                  </div>
 
-                
-                <!-- Real Apple iOS Status Bar Overlay -->
-                <div class="absolute top-0 left-0 w-full h-8 px-5 pt-3.5 flex justify-between items-center text-[9px] md:text-[10px] text-white font-semibold font-sans tracking-wide z-40 pointer-events-none select-none">
+                  <!-- Real Apple iOS Home Indicator bar -->
+                  <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-[35%] h-[4px] bg-white/70 rounded-full z-45 pointer-events-none"></div>
+
+                  <!-- Diagonal Screen Glare reflection -->
+                  <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/3 to-white/10 pointer-events-none z-30"></div>
+
+                  <!-- Active laser line -->
+                  <div class="scan-laser opacity-70"></div>
+
+                  <!-- Raw screenshot image -->
+                  <img src="./mockup-scanner-raw.jpg" alt="REMAKE Skincare Barcode Scanner raw screenshot inside premium shell" class="w-full h-full object-cover">
                 </div>
-
-                <!-- Real Apple iOS Home Indicator bar -->
-                <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-[35%] h-[4px] bg-white/70 rounded-full z-45 pointer-events-none"></div>
-
-                <!-- Diagonal Screen Glare reflection -->
-                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/12 pointer-events-none z-30"></div>
-
-                <!-- Active laser line -->
-                <div class="scan-laser opacity-70"></div>
-
-                <!-- Raw screenshot image -->
-                <img src="./mockup-scanner-raw.jpg" alt="REMAKE Skincare Barcode Scanner raw screenshot inside premium shell" class="w-full h-full object-cover">
               </div>
             </div>
           </div>
