@@ -552,24 +552,35 @@
     #productShowcaseCard.scanning-active {
       border-color: var(--rhode-pink) !important;
     }
-    #labScoreContainer, #labDetailsPanel {
-      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
+    #labScoreText, #labDetailsPanel, #labSafetyBadge {
+      transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), filter 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
     }
-    #labScoreContainer.lab-loading, #labDetailsPanel.lab-loading {
+    #labScoreText.lab-loading, #labDetailsPanel.lab-loading, #labSafetyBadge.lab-loading {
       opacity: 0 !important;
       transform: translateY(4px) !important;
+      filter: blur(4px) !important;
     }
 
-    /* Tab styles for the interactive lab */
+    #labScorePath {
+      transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Tab styles for the interactive lab - Vertical Timeline Index */
     .tab-btn {
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      border-bottom: 2px solid transparent;
+      border-left: 2px solid transparent !important;
+      background: transparent;
+      outline: none;
+    }
+    .tab-btn:hover {
+      padding-left: 1.5rem !important;
+      background: rgba(255, 240, 243, 0.25) !important;
     }
     .tab-btn.active {
-      border-color: var(--rhode-pink-rich);
-      color: var(--rhode-text);
-      font-weight: 500;
+      border-color: var(--rhode-pink-rich) !important;
+      background: linear-gradient(90deg, rgba(255, 240, 243, 0.5) 0%, rgba(255, 240, 243, 0) 100%) !important;
+      padding-left: 1.5rem !important;
     }
 
     /* Green pulse online users dot */
@@ -727,29 +738,29 @@
         
         <!-- Interactive Tabs Pane -->
         <div class="lg:col-span-5 flex flex-col gap-3">
-          <div class="text-xs uppercase tracking-widest text-[#B8ADA9] font-semibold mb-2">Select a popular formula:</div>
+          <div class="text-xs uppercase tracking-widest text-[#B8ADA9] font-semibold mb-2 ml-4">Select a popular formula:</div>
           
-          <button onclick="selectProduct('rhode')" id="tab-rhode" class="tab-btn active text-left p-4 rounded-xl border border-[#F5DDE3] hover:bg-white bg-white/50 transition">
-            <div class="font-semibold text-sm">Peptide Glazing Fluid</div>
-            <div class="text-xs text-pink-500 font-light mt-0.5">By Rhode Skin • Lightweight Gel</div>
-          </button>
-          
-          <button onclick="selectProduct('char')" id="tab-char" class="tab-btn text-left p-4 rounded-xl border border-[#F5DDE3] hover:bg-white bg-white/50 transition">
-            <div class="font-semibold text-sm">Hollywood Flawless Filter</div>
-            <div class="text-xs text-red-500 font-bold mt-0.5">By Charlotte Tilbury • Warning: Heavy Cloggers</div>
-          </button>
-          
-          <button onclick="selectProduct('fenty')" id="tab-fenty" class="tab-btn text-left p-4 rounded-xl border border-[#F5DDE3] hover:bg-white bg-white/50 transition">
-            <div class="font-semibold text-sm">Pro Filt'r Soft Matte Longwear</div>
-            <div class="text-xs text-amber-600 font-light mt-0.5">By Fenty Beauty • Shade Base 185</div>
-          </button>
-          
-          <button onclick="selectProduct('laroche')" id="tab-laroche" class="tab-btn text-left p-4 rounded-xl border border-[#F5DDE3] hover:bg-white bg-white/50 transition">
-            <div class="font-semibold text-sm">Effaclar Duo Acne Treatment</div>
-            <div class="text-xs text-[#6E8E75] font-semibold mt-0.5">By La Roche-Posay • Skin-Safe</div>
-          </button>
-
-
+          <div class="relative flex flex-col gap-1.5 border-l border-[#F5DDE3]/70 ml-2">
+            <button onclick="selectProduct('rhode')" id="tab-rhode" class="tab-btn active text-left py-3 px-5 transition-all duration-300 relative border-l border-transparent -ml-[1px] focus:outline-none">
+              <div class="font-serif text-base text-[#2A2421] leading-tight">Peptide Glazing Fluid</div>
+              <div class="text-[10px] tracking-widest uppercase font-medium text-[#9D928E] mt-1">By Rhode Skin • Lightweight Gel</div>
+            </button>
+            
+            <button onclick="selectProduct('char')" id="tab-char" class="tab-btn text-left py-3 px-5 transition-all duration-300 relative border-l border-transparent -ml-[1px] focus:outline-none">
+              <div class="font-serif text-base text-[#2A2421] leading-tight">Hollywood Flawless Filter</div>
+              <div class="text-[10px] tracking-widest uppercase font-medium text-[#9D928E] mt-1">By Charlotte Tilbury • Warning: Heavy Cloggers</div>
+            </button>
+            
+            <button onclick="selectProduct('fenty')" id="tab-fenty" class="tab-btn text-left py-3 px-5 transition-all duration-300 relative border-l border-transparent -ml-[1px] focus:outline-none">
+              <div class="font-serif text-base text-[#2A2421] leading-tight">Pro Filt'r Soft Matte Longwear</div>
+              <div class="text-[10px] tracking-widest uppercase font-medium text-[#9D928E] mt-1">By Fenty Beauty • Shade Base 185</div>
+            </button>
+            
+            <button onclick="selectProduct('laroche')" id="tab-laroche" class="tab-btn text-left py-3 px-5 transition-all duration-300 relative border-l border-transparent -ml-[1px] focus:outline-none">
+              <div class="font-serif text-base text-[#2A2421] leading-tight">Effaclar Duo Acne Treatment</div>
+              <div class="text-[10px] tracking-widest uppercase font-medium text-[#9D928E] mt-1">By La Roche-Posay • Skin-Safe</div>
+            </button>
+          </div>
         </div>
 
         <!-- Animated Scanner Results Display -->
@@ -766,8 +777,8 @@
                   <circle id="labScorePath" cx="50" cy="50" r="42" fill="none" stroke="#D98A96" stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="15"/>
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-center">
-                  <div class="font-serif font-medium lining-nums text-6xl md:text-7xl text-[#2A2421] leading-none tracking-tight" style="margin-top: -16px !important;" id="labScoreText">94</div>
-                  <div class="text-[10px] uppercase tracking-widest text-[#7C726E] font-medium" style="margin-top: 6px !important;">score</div>
+                  <div class="lining-nums text-4xl md:text-5xl text-[#2A2421] leading-none tracking-tight" style="font-family: 'Playfair Display', serif !important; font-weight: 500; margin-top: -2px !important;" id="labScoreText">94</div>
+                  <div class="text-[10px] uppercase tracking-widest text-[#7C726E] font-medium" style="margin-top: 4px !important;">score</div>
                 </div>
               </div>
               <div id="labSafetyBadge" class="scan-badge-safe">Skin Safe</div>
@@ -1522,13 +1533,15 @@
       if (!prod) return;
       
       // Get core panels
-      const scoreContainer = document.getElementById('labScoreContainer');
+      const scoreText = document.getElementById('labScoreText');
+      const safetyBadge = document.getElementById('labSafetyBadge');
       const detailsPanel = document.getElementById('labDetailsPanel');
       const card = document.getElementById('productShowcaseCard');
       
       // Phase 1: Begin high-performance scan effect & fade-out existing values
-      if (scoreContainer && detailsPanel) {
-        scoreContainer.classList.add('lab-loading');
+      if (scoreText && detailsPanel && safetyBadge) {
+        scoreText.classList.add('lab-loading');
+        safetyBadge.classList.add('lab-loading');
         detailsPanel.classList.add('lab-loading');
       }
       
@@ -1553,7 +1566,7 @@
         osc.stop(ctx.currentTime + 0.1);
       } catch(e) {}
 
-      // Phase 2: At exactly 350ms (when laser sweeps past the upper half), swap the data & fade back in
+      // Phase 2: At exactly 150ms, swap data and remove loading class to trigger fluid fade-in
       fadeOutTimeout = setTimeout(() => {
         // Populate layout values
         document.getElementById('labProductName').textContent = prod.name;
@@ -1586,17 +1599,27 @@
         badge.textContent = prod.badge;
         badge.className = prod.badgeClass;
         
-        // Trigger rating ring path animation
+        // Trigger rating ring path animation and transition color on the fly
         const path = document.getElementById('labScorePath');
-        path.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        path.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
         path.style.strokeDashoffset = prod.scoreOffset;
+        
+        // Dynamically style rating path stroke color
+        if (prod.score >= 90) {
+          path.style.stroke = "#D98A96"; // Brand Pink
+        } else if (prod.score >= 70) {
+          path.style.stroke = "#E6A885"; // Terracotta Amber
+        } else {
+          path.style.stroke = "#C96F6F"; // Luxury Red
+        }
         
         // Trigger count-up animation
         animateScoreCountUp(prod.score);
 
         // Remove loading state with high-performance ease-out transition
-        if (scoreContainer && detailsPanel) {
-          scoreContainer.classList.remove('lab-loading');
+        if (scoreText && detailsPanel && safetyBadge) {
+          scoreText.classList.remove('lab-loading');
+          safetyBadge.classList.remove('lab-loading');
           detailsPanel.classList.remove('lab-loading');
         }
 
@@ -1632,7 +1655,7 @@
             } catch(err) {}
           }, 70);
         } catch(e) {}
-      }, 350);
+      }, 150);
       
       selectProductTimeout = setTimeout(() => {
         card.classList.remove('scanning-active');
