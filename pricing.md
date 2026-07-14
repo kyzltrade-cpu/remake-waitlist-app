@@ -1,14 +1,13 @@
-# Pricing Plan — Remake App (iOS)
+# Pricing Plan — REMAKE App (iOS)
 
-Remake operates strictly on a **Hard Paywall Model with Zero Free Tier**. To maintain 100% objective consumer trust and zero brand bias, we do not monetize through ads, brand sponsorships, or selling consumer data. App access requires an active, paid premium subscription immediately after onboarding.
+REMAKE operates strictly on a **Hard Paywall Model with Zero Free Tier**. To maintain 100% objective consumer trust and zero brand bias, we do not monetize through ads, brand sponsorships, or selling consumer data. App access requires an active, paid premium subscription immediately after onboarding.
 
 ## Premium Subscription Tiers
 
 | Plan Name | Price (USD) | Billing Interval | Included Features | Target Audience |
 | :--- | :--- | :--- | :--- | :--- |
-| **Weekly Premium** | $4.99 | Weekly (Recurring) | Infinite barcode scans, toxic ingredient detection, comedogenic rating checkers, custom shade matching | High-intent users looking for quick product teardowns |
-| **Monthly Premium** | $14.99 | Monthly (Recurring) | Infinite barcode scans, toxic ingredient detection, comedogenic rating checkers, custom shade matching | Power users tracking their daily skincare routine |
-| **Annual Membership** | $59.99 | Annually (Recurring) | Infinite barcode scans, toxic ingredient detection, comedogenic checkers, custom shade matching, early beta features | Die-hard skincare advocates seeking maximum savings |
+| **Monthly Premium** | $9.99 | Monthly (Recurring) | Infinite barcode scans, toxic ingredient detection, comedogenic rating checkers, custom shade matching | Power users tracking their daily skincare routine |
+| **Annual Membership** | $49.99 | Annually (Recurring) | Infinite barcode scans, toxic ingredient detection, comedogenic checkers, custom shade matching, early beta features | Die-hard skincare advocates seeking maximum savings |
 
 ## Features Included in All Tiers
 
@@ -20,5 +19,5 @@ Remake operates strictly on a **Hard Paywall Model with Zero Free Tier**. To mai
 
 ## Payment & Verification
 - All payments are handled securely through **Apple In-App Purchases (IAP)**.
-- Subscription state, receipts, and entitlement verification are powered natively by **RevenueCat**.
-- No credit card details are ever stored on Remake's servers.
+- Subscription state, receipts, and entitlement verification are powered natively by **RevenueCat** (loadOfferings() triggered dynamically on launch).
+- No credit card details are ever stored on REMAKE's servers.

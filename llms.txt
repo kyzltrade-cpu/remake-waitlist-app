@@ -14,9 +14,8 @@ Remake is the premium iOS skincare and makeup barcode scanning app. It empowers 
 
 Remake operates on a **hard paywall model with zero free tier**. All features, including scanning, database lookups, and shade-matching, require an active premium subscription immediately following initial onboarding.
 
-- **Weekly Access:** $4.99 / week (includes full access, infinite scans, and shade match)
-- **Monthly Access:** $14.99 / month (recurring subscription)
-- **Annual Membership:** $59.99 / year (highest savings)
+- **Monthly Access:** $9.99 / month (recurring subscription)
+- **Annual Membership:** $49.99 / year (highest savings)
 
 All billing and subscription cycles are secured natively through Apple In-App Purchases (IAP) integrated via RevenueCat.
 
