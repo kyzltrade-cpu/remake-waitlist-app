@@ -1520,12 +1520,6 @@
       const detailsPanel = document.getElementById('labDetailsPanel');
       const card = document.getElementById('productShowcaseCard');
       
-      // Phase 1: Begin high-performance scan effect & fade-out existing values
-      if (scoreContainer && detailsPanel) {
-        scoreContainer.classList.add('lab-loading');
-        detailsPanel.classList.add('lab-loading');
-      }
-      
       // Restart the laser line animation reliably
       card.classList.remove('scanning-active');
       void card.offsetWidth; // Force reflow
@@ -1547,86 +1541,77 @@
         osc.stop(ctx.currentTime + 0.1);
       } catch(e) {}
 
-      // Phase 2: At exactly 350ms (when laser sweeps past the upper half), swap the data & fade back in
-      fadeOutTimeout = setTimeout(() => {
-        // Populate layout values
-        document.getElementById('labProductName').textContent = prod.name;
-        document.getElementById('labProductBrand').textContent = prod.brand;
-        document.getElementById('labProductDesc').textContent = prod.description;
-        document.getElementById('labAllergenText').textContent = prod.allergen;
-        document.getElementById('labShadeText').textContent = prod.shade;
-        document.getElementById('labRiskText').textContent = prod.risk;
-        document.getElementById('labEthicsText').textContent = prod.ethics;
-        
-        // Dynamically style the text colors based on product safety status (no hardcoded static greens!)
-        const riskTextEl = document.getElementById('labRiskText');
-        const shadeTextEl = document.getElementById('labShadeText');
-        if (key === 'char') {
-          // High Risk (Red theme)
-          riskTextEl.className = "text-sm sm:text-xs font-bold text-[#C96F6F]";
-          shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#C96F6F]";
-        } else if (key === 'fenty') {
-          // Warning/Low-Risk (Amber/Orange theme)
-          riskTextEl.className = "text-sm sm:text-xs font-bold text-amber-600";
-          shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#6E8E75]";
-        } else {
-          // Derm Approved / Skin Safe (Green theme)
-          riskTextEl.className = "text-sm sm:text-xs font-bold text-[#6E8E75]";
-          shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#6E8E75]";
-        }
-        
-        // Set Badge class & text
-        const badge = document.getElementById('labSafetyBadge');
-        badge.textContent = prod.badge;
-        badge.className = prod.badgeClass;
-        
-        // Trigger rating ring path animation
-        const path = document.getElementById('labScorePath');
-        path.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-        path.style.strokeDashoffset = prod.scoreOffset;
-        
-        // Trigger count-up animation
-        animateScoreCountUp(prod.score);
+      // Swap the data instantly!
+      document.getElementById('labProductName').textContent = prod.name;
+      document.getElementById('labProductBrand').textContent = prod.brand;
+      document.getElementById('labProductDesc').textContent = prod.description;
+      document.getElementById('labAllergenText').textContent = prod.allergen;
+      document.getElementById('labShadeText').textContent = prod.shade;
+      document.getElementById('labRiskText').textContent = prod.risk;
+      document.getElementById('labEthicsText').textContent = prod.ethics;
+      
+      // Dynamically style the text colors based on product safety status (no hardcoded static greens!)
+      const riskTextEl = document.getElementById('labRiskText');
+      const shadeTextEl = document.getElementById('labShadeText');
+      if (key === 'char') {
+        // High Risk (Red theme)
+        riskTextEl.className = "text-sm sm:text-xs font-bold text-[#C96F6F]";
+        shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#C96F6F]";
+      } else if (key === 'fenty') {
+        // Warning/Low-Risk (Amber/Orange theme)
+        riskTextEl.className = "text-sm sm:text-xs font-bold text-amber-600";
+        shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#6E8E75]";
+      } else {
+        // Derm Approved / Skin Safe (Green theme)
+        riskTextEl.className = "text-sm sm:text-xs font-bold text-[#6E8E75]";
+        shadeTextEl.className = "text-sm sm:text-xs font-semibold text-[#6E8E75]";
+      }
+      
+      // Set Badge class & text
+      const badge = document.getElementById('labSafetyBadge');
+      badge.textContent = prod.badge;
+      badge.className = prod.badgeClass;
+      
+      // Trigger rating ring path animation
+      const path = document.getElementById('labScorePath');
+      path.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+      path.style.strokeDashoffset = prod.scoreOffset;
+      
+      // Trigger count-up animation
+      animateScoreCountUp(prod.score);
 
-        // Remove loading state with high-performance ease-out transition
-        if (scoreContainer && detailsPanel) {
-          scoreContainer.classList.remove('lab-loading');
-          detailsPanel.classList.remove('lab-loading');
-        }
-
-        // Play premium iOS-sparkle chime arpeggio
-        try {
-          const ctx = new (window.AudioContext || window.webkitAudioContext)();
-          
-          // First chime (warmer base tone)
-          const osc1 = ctx.createOscillator();
-          const gain1 = ctx.createGain();
-          osc1.type = 'sine';
-          osc1.frequency.setValueAtTime(1400, ctx.currentTime);
-          gain1.gain.setValueAtTime(0.015, ctx.currentTime);
-          gain1.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
-          osc1.connect(gain1);
-          gain1.connect(ctx.destination);
-          osc1.start();
-          osc1.stop(ctx.currentTime + 0.3);
-          
-          // Second chime (higher harmonic highlight, offset by 70ms)
-          setTimeout(() => {
-            try {
-              const osc2 = ctx.createOscillator();
-              const gain2 = ctx.createGain();
-              osc2.type = 'sine';
-              osc2.frequency.setValueAtTime(2100, ctx.currentTime);
-              gain2.gain.setValueAtTime(0.01, ctx.currentTime);
-              gain2.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
-              osc2.connect(gain2);
-              gain2.connect(ctx.destination);
-              osc2.start();
-              osc2.stop(ctx.currentTime + 0.35);
-            } catch(err) {}
-          }, 70);
-        } catch(e) {}
-      }, 350);
+      // Play premium iOS-sparkle chime arpeggio
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // First chime (warmer base tone)
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(1400, ctx.currentTime);
+        gain1.gain.setValueAtTime(0.015, ctx.currentTime);
+        gain1.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start();
+        osc1.stop(ctx.currentTime + 0.3);
+        
+        // Second chime (higher harmonic highlight, offset by 70ms)
+        setTimeout(() => {
+          try {
+            const osc2 = ctx.createOscillator();
+            const gain2 = ctx.createGain();
+            osc2.type = 'sine';
+            osc2.frequency.setValueAtTime(2100, ctx.currentTime);
+            gain2.gain.setValueAtTime(0.01, ctx.currentTime);
+            gain2.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+            osc2.connect(gain2);
+            gain2.connect(ctx.destination);
+            osc2.start();
+            osc2.stop(ctx.currentTime + 0.35);
+          } catch(err) {}
+        }, 70);
+      } catch(e) {}
       
       selectProductTimeout = setTimeout(() => {
         card.classList.remove('scanning-active');
