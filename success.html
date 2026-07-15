@@ -104,12 +104,7 @@
       position: relative; overflow: hidden; border-radius: var(--radius-soft);  
       box-shadow: var(--card-shadow);  
     }  
-    .card-luxury::before {  
-      content: ""; position: absolute; inset: 0; background: var(--glaze-gradient);  
-      opacity: 0; transition: opacity 0.5s ease; pointer-events: none;  
-    }  
     .card-luxury:hover { box-shadow: var(--hover-shadow); transform: translateY(-4px); border-color: rgba(245,221,227,0.95); }  
-    .card-luxury:hover::before { opacity: 1; }  
       
     .badge-luxury {  
       background: rgba(110,142,117,0.1);   
