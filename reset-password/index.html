@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FFF0F3" />
+  <title>Reset Password • REMAKE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --rhode-text: #2A2421;
+      --rhode-white: #FFF0F3;
+      --rhode-border: #F5DDE3;
+      --rhode-pink-rich: #D98A96;
+      --rhode-pink-deep: #E8A0AA;
+      --rhode-gray: #7C726E;
+      --rhode-light-gray: #B8ADA9;
+      --rhode-success: #6E8E75;
+      --rhode-error: #C96F6F;
+      
+      --radius-soft: 20px;
+      --radius-pill: 100px;
+      --card-shadow: 0 10px 30px rgba(42,36,33,0.03), 0 1px 3px rgba(217,138,150,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--rhode-white);
+      color: var(--rhode-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: var(--card-shadow);
+      border-radius: var(--radius-soft);
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 2.1rem;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .text-elegant {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: var(--rhode-pink-rich);
+      margin-bottom: 24px;
+    }
+
+    .subtitle {
+      font-size: 0.88rem;
+      color: var(--rhode-gray);
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.65rem;
+      color: var(--rhode-gray);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid var(--rhode-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.85);
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.25s ease;
+      color: var(--rhode-text);
+    }
+
+    input:focus {
+      border-color: var(--rhode-pink-deep);
+      box-shadow: 0 0 0 4px rgba(232,160,170,0.15);
+      background: #fff;
+    }
+
+    .btn {
+      width: 100%;
+      background: var(--rhode-text);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 16px 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: 10px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--rhode-pink-rich);
+      box-shadow: 0 4px 15px rgba(217, 138, 150, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .status-msg {
+      font-size: 0.82rem;
+      margin-top: 15px;
+      min-height: 20px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .status-msg.success {
+      color: var(--rhode-success);
+    }
+
+    .status-msg.error {
+      color: var(--rhode-error);
+    }
+
+    .footer-link {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: var(--rhode-light-gray);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-block;
+    }
+
+    .footer-link:hover {
+      color: var(--rhode-gray);
+    }
+
+    /* Loading state */
+    .btn-loading {
+      background: var(--rhode-gray);
+      pointer-events: none;
+    }
+
+    /* Hidden elements */
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img src="https://raw.githubusercontent.com/kyzltrade-cpu/remake-waitlist/master/email-logo.png" alt="REMAKE Logo" class="logo">
+    
+    <!-- Reset Form State -->
+    <div id="reset-state">
+      <h1>Reset your password</h1>
+      <p class="text-elegant">beauty self-analysis</p>
+      <p class="subtitle">Please enter your new password below. Make sure it is at least 8 characters.</p>
+      
+      <form id="reset-form" onsubmit="handleReset(event)">
+        <div class="form-group">
+          <label for="password">New Password</label>
+          <input type="password" id="password" required placeholder="••••••••" minlength="8">
+        </div>
+        
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" required placeholder="••••••••" minlength="8">
+        </div>
+        
+        <button type="submit" id="submit-btn" class="btn">Update Password</button>
+      </form>
+      <div id="status-msg" class="status-msg"></div>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="hidden">
+      <h1 style="color: var(--rhode-error);">Invalid Link</h1>
+      <p class="text-elegant" style="color: var(--rhode-error);">expired or empty token</p>
+      <p class="subtitle">This password reset link is invalid or has expired. Please open the REMAKE app and request a new password reset link.</p>
+      <a href="remake://reset-password" class="btn">Open REMAKE App</a>
+    </div>
+
+    <!-- Success State -->
+    <div id="success-state" class="hidden">
+      <h1 style="color: var(--rhode-success);">Password Updated</h1>
+      <p class="text-elegant">security synced</p>
+      <p class="subtitle">Your password has been successfully updated. You can now return to the REMAKE app to log in.</p>
+      <a href="remake://reset-password" class="btn">Open REMAKE App</a>
+    </div>
+
+    <a href="https://remake.beauty" class="footer-link">Back to remake.beauty</a>
+  </div>
+
+  <script>
+    // Initialize Supabase Client
+    const SUPABASE_URL = "https://vfrmfnxfaocknnkxocvg.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmcm1mbnhmYW9ja25ua3hvY3ZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMzY1ODUsImV4cCI6MjA5NTkxMjU4NX0.9Di1Qzm9vfOJDAYHsVtkUpVA6hWAAo-rJWCQ-ryRSzY";
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const resetForm = document.getElementById("reset-form");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirm-password");
+    const submitBtn = document.getElementById("submit-btn");
+    const statusMsg = document.getElementById("status-msg");
+
+    const resetState = document.getElementById("reset-state");
+    const errorState = document.getElementById("error-state");
+    const successState = document.getElementById("success-state");
+
+    // Check if we have the session token in the hash on mount
+    function checkToken() {
+      const hash = window.location.hash;
+      const parsed = hash.substring(1).split('&').reduce((acc, item) => {
+        const parts = item.split('=');
+        if (parts[0]) acc[parts[0]] = parts[1];
+        return acc;
+      }, {});
+
+      // Supabase places access_token in the URL hash on deep link redirection
+      if (!parsed.access_token) {
+        // No access token means this page is visited directly or the link is completely dead
+        resetState.classList.add("hidden");
+        errorState.classList.remove("hidden");
+        return false;
+      }
+      return true;
+    }
+
+    // Initial check
+    const hasToken = checkToken();
+
+    async function handleReset(event) {
+      event.preventDefault();
+      
+      const password = passwordInput.value;
+      const confirmPassword = confirmPasswordInput.value;
+
+      // Reset state UI
+      statusMsg.textContent = "";
+      statusMsg.className = "status-msg";
+
+      if (password !== confirmPassword) {
+        statusMsg.textContent = "Passwords do not match.";
+        statusMsg.classList.add("error");
+        return;
+      }
+
+      if (password.length < 8) {
+        statusMsg.textContent = "Password must be at least 8 characters.";
+        statusMsg.classList.add("error");
+        return;
+      }
+
+      // Set loading state
+      submitBtn.textContent = "Updating...";
+      submitBtn.classList.add("btn-loading");
+      passwordInput.disabled = true;
+      confirmPasswordInput.disabled = true;
+
+      try {
+        // Supabase client uses the active token from URL automatically to authenticate this call
+        const { data, error } = await supabase.auth.updateUser({ password: password });
+
+        if (error) {
+          throw error;
+        }
+
+        // Success! Hide reset form, show success screen
+        resetState.classList.add("hidden");
+        successState.classList.remove("hidden");
+        
+        // Optional: attempt automatic deep link trigger back to app
+        setTimeout(() => {
+          window.location.href = "remake://reset-password";
+        }, 1000);
+
+      } catch (err) {
+        console.error("Reset error:", err);
+        statusMsg.textContent = err.message || "An error occurred. Please try again.";
+        statusMsg.classList.add("error");
+        
+        // Reset button state
+        submitBtn.textContent = "Update Password";
+        submitBtn.classList.remove("btn-loading");
+        passwordInput.disabled = false;
+        confirmPasswordInput.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
