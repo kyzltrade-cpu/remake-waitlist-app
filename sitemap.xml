@@ -170,4 +170,8 @@
   <url>
     <loc>https://remake.beauty/products/polyglyceryl-3-diisostearate-acne-safe.html</loc>
   </url>
+  <url>
+    <loc>https://remake.beauty/products/lanolin-comedogenic-acne.html</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>
