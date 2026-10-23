@@ -1,4 +1,5 @@
 import os
+import json
 
 html_template = """<!DOCTYPE html>  
 <html lang="en">  
@@ -65,9 +66,9 @@ html_template = """<!DOCTYPE html>
             </div>  
           </div>  
 
-          <div class="text-3xl text-pink-300 font-luxury tracking-widest mb-2">{rating_num}<span class="text-xl text-[#7C726E]/40">/5</span></div>
-          <div class="flex gap-1 text-pink-300 text-sm">
-            ★☆☆☆☆
+          <div class="text-3xl text-[#D98A96] font-luxury tracking-widest mb-2">{rating_num}<span class="text-xl text-[#7C726E]/40">/5</span></div>
+          <div class="flex gap-1 text-[#D98A96] text-sm">
+            ★★☆☆☆
           </div>
         </div>  
 
@@ -114,95 +115,98 @@ html_template = """<!DOCTYPE html>
 </body>  
 </html>"""
 
-p = {
-    "slug": "isopropyl-palmitate-comedogenic-acne",
-    "brand": "Skincare Ingredient Audit",
-    "product": "Isopropyl Palmitate",
-    "rating": "1.0/5",
-    "badge": "SEVERE PORE-CLOGGING RISK",
-    "badge_color": "bg-red-100 text-red-700 border-red-200",
-    "score": "12",
-    "score_offset": "221.05",
-    "verdict": "Isopropyl Palmitate is a highly comedogenic texture enhancer and emollient derived from palmitic acid and isopropyl alcohol. It carries a severe comedogenic rating of 4 out of 5. For acne-prone skin, this ingredient is an absolute nightmare—it readily penetrates and stretches out pores, trapping dead skin and sebum, which rapidly forms closed comedones and deep cystic acne.",
-    "ingredients": [
-        {
-            "name": "Comedogenic Rating 4",
-            "risk": "Severe Acne Trigger",
-            "desc": "Scores a 4/5 on the comedogenic scale. Its molecular structure acts as a thick, occlusive barrier that congests follicles and traps acne-causing bacteria."
-        },
-        {
-            "name": "Palmitic Acid Base",
-            "risk": "Highly Occlusive",
-            "desc": "Derived from palmitic acid, a heavy fatty acid that disrupts normal sebum shedding and glues dead skin cells inside the pore lining."
-        },
-        {
-            "name": "Penetration Enhancer",
-            "risk": "Irritation Amplifier",
-            "desc": "Increases the absorption of other potentially irritating or acne-triggering chemicals in the formula, acting as an amplifier for breakouts."
-        }
-    ],
-    "metrics": {
-        "Comedogenic Rating": "4/5 (Extremely High Risk)",
-        "Oily & Acne-Prone Match": "Absolutely Avoid",
-        "Primary Function": "Emollient / Texture Enhancer",
-        "Ingredient Type": "Synthetic Fatty Acid Ester"
-    },
-    "meta_desc": "Is Isopropyl Palmitate comedogenic and safe for acne? Exposing the severe pore-clogging risks of this common makeup ingredient in our REMAKE Chemical Audit."
-}
-
-slug = p["slug"]
-brand = p["brand"]
-product = p["product"]
-rating = p["rating"]
-rating_num = rating.split("/")[0]
-badge = p["badge"]
-badge_color = p["badge_color"]
-score = p["score"]
-score_offset = p["score_offset"]
-verdict = p["verdict"]
-meta_desc = p["meta_desc"]
-
-ing_items = []
-for ing in p["ingredients"]:
-    border_color = "border-red-300" if "red" in badge_color else "border-orange-300"
-    badge_bg = "bg-red-50 text-red-600 border-red-200" if "red" in badge_color else "bg-orange-50 text-orange-600 border-orange-200"
+def generate_pages():
+    os.makedirs("/tmp/remake-waitlist-app-seo/products", exist_ok=True)
     
-    ing_html = f'''<div class="border-l-2 {border_color} pl-4 py-1">
-        <div class="flex justify-between items-start">
-          <span class="font-semibold text-sm text-[#2A2421]">{ing["name"]}</span>
-          <span class="text-[10px] {badge_bg} border px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">{ing["risk"]}</span>
-        </div>
-        <p class="text-xs text-[#7C726E] font-light mt-1 leading-relaxed">{ing["desc"]}</p>
-      </div>'''
-    ing_items.append(ing_html)
-ingredients_html = "\n              ".join(ing_items)
+    p = {
+        "slug": "ceteareth-20-comedogenic-acne-safe",
+        "brand": "Skincare Ingredient Audit",
+        "product": "Ceteareth-20",
+        "rating": "2.0/5",
+        "badge": "HIGH COMEDOGENIC RISK",
+        "badge_color": "bg-red-100 text-red-700 border-red-200",
+        "score": "20",
+        "score_offset": "200",
+        "verdict": "Ceteareth-20 is a common emulsifier and surfactant in skincare and makeup. While it helps keep ingredients mixed together, it is known to be highly comedogenic—especially when combined with Cetearyl Alcohol. If you have acne-prone skin, this ingredient is notorious for causing closed comedones and breakouts, completely destroying the skin barrier.",
+        "ingredients": [
+            {
+                "name": "Comedogenic Synergy",
+                "risk": "Severe Pore-Clogging Risk",
+                "desc": "When Ceteareth-20 is combined with Cetearyl Alcohol (a very common combination in thick moisturizers), the mixture becomes highly comedogenic, scoring a 4 or 5 out of 5 on the comedogenicity scale."
+            },
+            {
+                "name": "Surfactant Properties",
+                "risk": "Skin Barrier Disruption",
+                "desc": "As a cleansing agent, it can strip the skin of its natural lipids if used in leave-on products at high concentrations, leading to barrier damage and increased acne flare-ups."
+            },
+            {
+                "name": "Penetration Enhancer",
+                "risk": "Moderate Risk",
+                "desc": "It alters the skin structure to allow other ingredients to penetrate deeper, which can drag other pore-clogging or irritating ingredients straight into your pores."
+            }
+        ],
+        "metrics": {
+            "Allergens": "Not typically an allergen, but can be an irritant",
+            "Oily & Acne-Prone Match": "Highly NOT Recommended",
+            "Safety Risk": "Moderate (May contain trace 1,4-dioxane)",
+            "Comedogenic Rating": "4/5 (High Risk)"
+        },
+        "meta_desc": "Is Ceteareth-20 comedogenic and acne-safe? Discover why this common skincare emulsifier might be causing your closed comedones and breakouts."
+    }
+    
+    slug = p["slug"]
+    brand = p["brand"]
+    product = p["product"]
+    rating = p["rating"]
+    rating_num = rating.split("/")[0]
+    badge = p["badge"]
+    badge_color = p["badge_color"]
+    score = p["score"]
+    score_offset = p["score_offset"]
+    verdict = p["verdict"]
+    meta_desc = p["meta_desc"]
+    
+    ing_items = []
+    for ing in p["ingredients"]:
+        ing_html = f'''<div class="border-l-2 border-red-400 pl-4 py-1">
+            <div class="flex justify-between items-start">
+              <span class="font-semibold text-sm text-[#2A2421]">{ing["name"]}</span>
+              <span class="text-[10px] text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">{ing["risk"]}</span>
+            </div>
+            <p class="text-xs text-[#7C726E] font-light mt-1 leading-relaxed">{ing["desc"]}</p>
+          </div>'''
+        ing_items.append(ing_html)
+    ingredients_html = "\n              ".join(ing_items)
+    
+    spec_items = []
+    for label, val in p["metrics"].items():
+        spec_html = f'''<div class="flex justify-between items-center py-2 border-b border-[#F5DDE3]/50">
+            <span class="text-[#7C726E]">{label}:</span>
+            <span class="font-medium text-[#2A2421] text-right">{val}</span>
+          </div>'''
+        spec_items.append(spec_html)
+    specs_html = "\n              ".join(spec_items)
+    
+    final_html = html_template.format(
+        slug=slug,
+        brand=brand,
+        product=product,
+        rating=rating,
+        rating_num=rating_num,
+        badge=badge,
+        badge_color=badge_color,
+        score=score,
+        score_offset=score_offset,
+        verdict=verdict,
+        meta_desc=meta_desc,
+        ingredients_html=ingredients_html,
+        specs_html=specs_html
+    )
+    
+    path = f"/tmp/remake-waitlist-app-seo/products/{slug}.html"
+    with open(path, "w") as f:
+        f.write(final_html)
+    print(f"Generated: {path}")
 
-spec_items = []
-for label, val in p["metrics"].items():
-    spec_html = f'''<div class="flex justify-between items-center py-2 border-b border-[#F5DDE3]/50">
-        <span class="text-[#7C726E]">{label}:</span>
-        <span class="font-medium text-[#2A2421] text-right">{val}</span>
-      </div>'''
-    spec_items.append(spec_html)
-specs_html = "\n              ".join(spec_items)
-
-final_html = html_template.format(
-    slug=slug,
-    brand=brand,
-    product=product,
-    rating=rating,
-    rating_num=rating_num,
-    badge=badge,
-    badge_color=badge_color,
-    score=score,
-    score_offset=score_offset,
-    verdict=verdict,
-    meta_desc=meta_desc,
-    ingredients_html=ingredients_html,
-    specs_html=specs_html
-)
-
-path = f"products/{slug}.html"
-with open(path, "w") as f:
-    f.write(final_html)
-print(f"Generated: {path}")
+if __name__ == "__main__":
+    generate_pages()
