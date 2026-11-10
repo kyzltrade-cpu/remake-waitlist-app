@@ -295,4 +295,10 @@
     <lastmod>2026-11-08</lastmod>
     <priority>0.8</priority>
   </url>
-  <url>\n    <loc>https://remake.beauty/products/cetyl-acetate-comedogenic-acne.html</loc>\n  </url>\n</urlset>
+  <url>\n    <loc>https://remake.beauty/products/cetyl-acetate-comedogenic-acne.html</loc>\n  </url>\n  <url>
+    <loc>https://remake.beauty/products/algae-extract.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
