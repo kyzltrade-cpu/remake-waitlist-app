@@ -1,33 +1,34 @@
-import os
+import re
+from datetime import datetime
 
-# Update sitemap.xml
-sitemap_path = "/tmp/remake-waitlist-app-seo/sitemap.xml"
+# 1. Update sitemap.xml
+sitemap_path = "sitemap.xml"
 with open(sitemap_path, "r") as f:
-    sitemap = f.read()
+    sitemap_content = f.read()
 
-new_sitemap_entry = """  <url>
-    <loc>https://remake.beauty/products/yuka-app-vs-remake-app.html</loc>
+new_sitemap_entry = f"""
+  <url>
+    <loc>https://remake.beauty/products/isostearyl-isostearate-comedogenic-acne.html</loc>
+    <lastmod>{datetime.now().strftime("%Y-%m-%d")}</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>"""
 
-sitemap = sitemap.replace("</urlset>", new_sitemap_entry)
-
+sitemap_content = sitemap_content.replace("</urlset>", new_sitemap_entry.strip() + "\n</urlset>")
 with open(sitemap_path, "w") as f:
-    f.write(sitemap)
-print("Sitemap updated.")
+    f.write(sitemap_content)
+print("Updated sitemap.xml")
 
-# Update index.html
-index_path = "/tmp/remake-waitlist-app-seo/index.html"
+# 2. Update index.html
+index_path = "index.html"
 with open(index_path, "r") as f:
-    index_html = f.read()
+    index_content = f.read()
 
-target_li = '<li><a href="/products/shea-butter-comedogenic-acne.html" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Shea Butter Audit</a></li>'
-new_li = '<li><a href="/products/shea-butter-comedogenic-acne.html" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Shea Butter Audit</a></li>\n          <li><a href="/products/yuka-app-vs-remake-app.html" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Yuka App vs Remake</a></li>'
+new_footer_link = '<li><a href="/products/isostearyl-isostearate-comedogenic-acne.html" class="hover:underline hover:text-[#2A2421] transition decoration-[#E8A0AA]">Isostearyl Isostearate Audit</a></li>\n          <li><a href="/products/ethylhexyl-palmitate-acne-safe.html"'
 
-index_html = index_html.replace(target_li, new_li)
+index_content = index_content.replace('<li><a href="/products/ethylhexyl-palmitate-acne-safe.html"', new_footer_link)
 
 with open(index_path, "w") as f:
-    f.write(index_html)
-print("index.html updated.")
-
+    f.write(index_content)
+print("Updated index.html")
